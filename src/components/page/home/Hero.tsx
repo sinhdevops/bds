@@ -29,11 +29,11 @@ export default function Hero() {
     <section
       id="hero"
       ref={containerRef}
-      className="relative w-full h-screen min-h-[700px] max-h-[1080px] flex overflow-hidden bg-[#F6F3EE]"
+      className="relative w-full flex flex-col lg:flex-row lg:h-screen lg:min-h-[700px] lg:max-h-[1080px] overflow-hidden bg-[#F6F3EE]"
     >
       {/* Left — Text content */}
       <motion.div
-        className="relative z-10 flex flex-col justify-center w-full lg:w-[45%] px-8 lg:px-16 xl:px-20 pt-20 pb-12"
+        className="relative z-10 flex flex-col justify-center w-full lg:w-[45%] px-8 lg:px-16 xl:px-20 pt-24 pb-10 lg:py-12 bg-[#F6F3EE]"
         style={{ y: textY }}
       >
         {/* Label */}
@@ -128,7 +128,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.4, duration: 0.8 }}
-          className="absolute bottom-10 left-8 lg:left-16 xl:left-20 flex flex-col items-start gap-2"
+          className="absolute bottom-10 left-8 lg:left-16 xl:left-20 hidden lg:flex flex-col items-start gap-2"
         >
           <span className="label-small text-[#8A8A8A]">Cuộn xuống</span>
           <motion.div
@@ -141,14 +141,13 @@ export default function Hero() {
 
       {/* Right — Image */}
       <motion.div
-        className="absolute right-0 top-0 w-full lg:w-[62%] h-full bg-[#0B2545]"
+        className="relative w-full h-[56vw] min-h-[260px] lg:absolute lg:right-0 lg:top-0 lg:w-[62%] lg:h-full bg-[#0B2545]"
         initial={{ opacity: 0, scale: 1.04 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.4, ease: [0.25, 0.1, 0.25, 1], delay: 0.1 }}
         style={{ y: imageY }}
       >
-        {/* Gradient overlay on the left side for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#F6F3EE] via-[#F6F3EE]/30 to-transparent z-10 lg:hidden" />
+        {/* Desktop: subtle left fade for text bleed */}
         <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#F6F3EE] to-transparent z-10 hidden lg:block" />
 
         <Image
