@@ -73,7 +73,7 @@ const ContactFormSection = () => {
                     ),
                     label: "Hotline 24/7",
                     val: "0981 814 814",
-                    href: "tel:0981814814",
+                    href: "tel:0325610016",
                   },
                   {
                     icon: (

@@ -92,7 +92,7 @@ export default function ProjectDetailCTA({ project }: Props) {
               transition={{ delay: 0.4 }}
               className="flex flex-col gap-5"
             >
-              <a href="tel:0981814814" className="flex items-center gap-4 group">
+              <a href="tel:0325610016" className="flex items-center gap-4 group">
                 <div className="w-11 h-11 rounded-full border border-[#C6A77D]/30 flex items-center justify-center group-hover:bg-[#C6A77D]/10 transition-colors">
                   <svg viewBox="0 0 20 20" fill="none" stroke="#C6A77D" strokeWidth="1.3" className="w-4.5 h-4.5">
                     <path d="M15.9 12.9l-2.3.3c-.5.1-1 .3-1.3.8-.2.4-.5 1.5-3.8-1.8C5.2 8.9 6.3 8.6 6.7 8.4c.5-.3.7-.8.8-1.3l.3-2.3c.1-.5-.1-1-.4-1.4L6.2 2.3C5.8 1.8 5 1.6 4.4 2L2.6 3.3C2 3.7 1.7 4.5 1.9 5.2c.7 3.5 2.9 7 6 10.1s6.6 5.3 10.1 6c.7.1 1.5-.1 1.9-.7l1.3-1.8c.4-.6.2-1.4-.3-1.8l-1.1-1.2c-.4-.3-.9-.5-1.4-.4z" />

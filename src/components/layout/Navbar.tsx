@@ -6,13 +6,11 @@ import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 
 const NAV_LINKS = [
-  { label: "Trang Chủ", href: "/" },
-  { label: "Về SRT Miền Trung", href: "/about" },
-  { label: "Dự Án", href: "/project" },
-  { label: "Tin Tức", href: "/news" },
-  { label: "Chính Sách", href: "/sales-policy" },
-  { label: "Liên Hệ", href: "/contact" },
-] as const;
+  { label: "Trang Chủ", href: "/", isPage: true },
+  { label: "Dự Án", href: "/project", isPage: false },
+  { label: "Tin Tức", href: "/news", isPage: true },
+  { label: "Liên Hệ", href: "/contact", isPage: true },
+];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -23,6 +21,13 @@ export default function Navbar() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const linkClass = (scrolled: boolean) =>
+    `label-small link-underline transition-colors duration-300 font-semibold ${
+      scrolled
+        ? "text-[#555555] hover:text-[#0B2545]"
+        : "text-white/95 hover:text-[#C6A77D] drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]"
+    }`;
 
   return (
     <>
@@ -41,7 +46,7 @@ export default function Navbar() {
           <Link href="/" className="flex items-center group">
             <Image
               src="/images/logo.png"
-              alt="SRT Miền Trung"
+              alt="Sông Hàn Premium Residence"
               width={160}
               height={52}
               priority
@@ -51,19 +56,25 @@ export default function Navbar() {
 
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-8">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`label-small link-underline transition-colors duration-300 font-semibold ${
-                  scrolled
-                    ? "text-[#555555] hover:text-[#0B2545]"
-                    : "text-white/95 hover:text-[#C6A77D] drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]"
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {NAV_LINKS.map((link) =>
+              link.isPage ? (
+                <Link
+                  key={link.href}
+                  href={link.href as "/" | "/news" | "/contact"}
+                  className={linkClass(scrolled)}
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className={linkClass(scrolled)}
+                >
+                  {link.label}
+                </a>
+              ),
+            )}
           </nav>
 
           {/* CTA + Hamburger */}
@@ -72,7 +83,7 @@ export default function Navbar() {
               href="/contact"
               className="hidden lg:inline-flex items-center gap-2 px-6 py-2.5 bg-[#C6A77D] text-[#1A1A1A] label-small font-semibold tracking-[0.12em] rounded-sm hover:bg-[#0B2545] hover:text-white transition-all duration-300 shadow-sm"
             >
-              Đăng Ký Tư Vấn
+              Nhận Tư Vấn
             </Link>
 
             <button
@@ -81,13 +92,13 @@ export default function Navbar() {
               aria-label="Toggle menu"
             >
               <span
-                className={`block w-6 h-px transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-2 bg-[#1A1A1A]" : scrolled ? "bg-[#1A1A1A]" : "bg-[#1A1A1A] lg:bg-white"}`}
+                className={`block w-6 h-px transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-2 bg-[#1A1A1A]" : "bg-[#1A1A1A]"}`}
               />
               <span
-                className={`block w-4 h-px transition-all duration-300 ${menuOpen ? "opacity-0 bg-[#1A1A1A]" : scrolled ? "bg-[#1A1A1A]" : "bg-[#1A1A1A] lg:bg-white"}`}
+                className={`block w-4 h-px transition-all duration-300 ${menuOpen ? "opacity-0 bg-[#1A1A1A]" : "bg-[#1A1A1A]"}`}
               />
               <span
-                className={`block w-6 h-px transition-all duration-300 ${menuOpen ? "-rotate-45 -translate-y-2 bg-[#1A1A1A]" : scrolled ? "bg-[#1A1A1A]" : "bg-[#1A1A1A] lg:bg-white"}`}
+                className={`block w-6 h-px transition-all duration-300 ${menuOpen ? "-rotate-45 -translate-y-2 bg-[#1A1A1A]" : "bg-[#1A1A1A]"}`}
               />
             </button>
           </div>
@@ -112,14 +123,25 @@ export default function Navbar() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.06, duration: 0.4 }}
                 >
-                  <Link
-                    href={link.href}
-                    className="text-2xl font-serif text-[#1A1A1A] hover:text-[#C6A77D] transition-colors duration-300"
-                    style={{ fontFamily: "var(--font-serif)" }}
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    {link.label}
-                  </Link>
+                  {link.isPage ? (
+                    <Link
+                      href={link.href as "/" | "/news" | "/contact"}
+                      className="text-2xl font-serif text-[#1A1A1A] hover:text-[#C6A77D] transition-colors duration-300"
+                      style={{ fontFamily: "var(--font-serif)" }}
+                      onClick={() => setMenuOpen(false)}
+                    >
+                      {link.label}
+                    </Link>
+                  ) : (
+                    <a
+                      href={link.href}
+                      className="text-2xl font-serif text-[#1A1A1A] hover:text-[#C6A77D] transition-colors duration-300"
+                      style={{ fontFamily: "var(--font-serif)" }}
+                      onClick={() => setMenuOpen(false)}
+                    >
+                      {link.label}
+                    </a>
+                  )}
                 </motion.div>
               ))}
               <motion.div
@@ -133,7 +155,7 @@ export default function Navbar() {
                   className="inline-flex items-center gap-2 px-8 py-3 bg-[#C6A77D] text-[#1A1A1A] label-small tracking-[0.12em] rounded-sm"
                   onClick={() => setMenuOpen(false)}
                 >
-                  Đăng Ký Tư Vấn
+                  Nhận Tư Vấn
                 </Link>
               </motion.div>
             </nav>

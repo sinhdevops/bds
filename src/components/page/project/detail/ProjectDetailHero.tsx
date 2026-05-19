@@ -123,7 +123,7 @@ export default function ProjectDetailHero({ project }: Props) {
                 Đăng Ký Tư Vấn
               </a>
               <a
-                href="tel:0981814814"
+                href="tel:0325610016"
                 className="flex items-center gap-2.5 px-6 py-3.5 border border-white/25 text-white label-small rounded-sm hover:border-[#C6A77D]/60 hover:text-[#C6A77D] transition-all duration-300"
               >
                 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-3.5 h-3.5">
