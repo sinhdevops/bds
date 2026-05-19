@@ -5,11 +5,15 @@
   --color-cream: #F6F3EE;
   --color-cream-light: #FAF8F5;
   --color-cream-mid: #F5F1EB;
-  --color-ink: #1A1A1A;
+  --color-parchment: #F8F6F2;
+  --color-ink: #111111;
+  --color-ink-deep: #1A1A1A;
   --color-ink-soft: #2B2B2B;
   --color-muted: #555555;
+  --color-muted-mid: #5F5F5F;
   --color-muted-light: #8A8A8A;
-  --color-gold: #C6A77D;
+  --color-gold: #B89B72;
+  --color-gold-warm: #C6A77D;
   --color-bronze: #9C7B5D;
   --color-border: #E5E0D8;
   --color-border-light: #EDE8E0;
@@ -36,8 +40,8 @@ html {
 }
 
 body {
-  background-color: #F6F3EE;
-  color: #1A1A1A;
+  background-color: #F8F6F2;
+  color: #111111;
   font-family: var(--font-sans);
   font-weight: 400;
   line-height: 1.6;

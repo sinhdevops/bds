@@ -7,38 +7,48 @@ import Image from "next/image";
 const AMENITIES = [
   {
     id: "pool",
-    name: "Bể Bơi Vô Cực Sông Hàn",
+    name: "Bể Bơi Vô Cực",
+    label: "View Sông Hàn",
     desc: "Bể bơi vô cực trên cao với tầm nhìn 180° ôm trọn dòng Sông Hàn và trung tâm Đà Nẵng",
-    image: "https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=900&q=85&fit=crop",
-    span: "col-span-2 row-span-2",
+    image: "https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=1200&q=85&fit=crop",
+    cols: "lg:col-span-2",
+    rows: "lg:row-span-2",
   },
   {
-    id: "marina",
-    name: "Bến Du Thuyền Cá Nhân",
-    desc: "Bến du thuyền hạng sang ngay trước sảnh dự án, đặc quyền cho cư dân tinh hoa",
-    image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=600&q=85&fit=crop",
-    span: "col-span-1 row-span-1",
+    id: "skybar",
+    name: "Sky Bar",
+    label: "Trên không",
+    desc: "Điểm thưởng ngoạn pháo hoa quốc tế DIFF độc bản trên đỉnh tòa tháp",
+    image: "https://images.unsplash.com/photo-1560184897-ae75f418493e?w=800&q=85&fit=crop",
+    cols: "",
+    rows: "",
   },
   {
     id: "gym",
-    name: "Wellness & Yoga Club",
-    desc: "Phòng tập Gym hiện đại trang bị máy Technogym cao cấp nhất",
-    image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=85&fit=crop",
-    span: "col-span-1 row-span-1",
+    name: "Phòng Gym",
+    label: "Hiện đại",
+    desc: "Trang bị máy Technogym cao cấp, không gian tập luyện đẳng cấp 5 sao",
+    image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&q=85&fit=crop",
+    cols: "",
+    rows: "",
   },
   {
-    id: "lounge",
-    name: "Sky Lounge & Bistro",
-    desc: "Điểm thưởng ngoạn pháo hoa quốc tế DIFF độc bản trên đỉnh tòa tháp",
-    image: "https://images.unsplash.com/photo-1560184897-ae75f418493e?w=600&q=85&fit=crop",
-    span: "col-span-1 row-span-1",
+    id: "spa",
+    name: "Spa & Wellness",
+    label: "Thư giãn",
+    desc: "Không gian spa cao cấp với liệu trình độc quyền từ thương hiệu quốc tế",
+    image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1000&q=85&fit=crop",
+    cols: "lg:col-span-2",
+    rows: "",
   },
   {
-    id: "park",
-    name: "Công Viên Ven Sông Hàn",
-    desc: "Không gian cảnh quan xanh mát chạy dọc theo mép nước Sông Hàn",
-    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&q=85&fit=crop",
-    span: "col-span-2 row-span-1",
+    id: "kids",
+    name: "Khu Vui Chơi Trẻ Em",
+    label: "An toàn",
+    desc: "Không gian vui chơi an toàn và sáng tạo, thiết kế bởi chuyên gia quốc tế",
+    image: "https://images.unsplash.com/photo-1555685812-4b943f1cb0eb?w=800&q=85&fit=crop",
+    cols: "",
+    rows: "",
   },
 ];
 
@@ -46,24 +56,30 @@ export default function Amenities() {
   const [hovered, setHovered] = useState<string | null>(null);
 
   return (
-    <section id="amenities" className="bg-[#F6F3EE] py-24 lg:py-32">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+    <section id="amenities" className="bg-[#F8F6F2] py-24 lg:py-32">
+      <div className="max-w-[1440px] mx-auto px-8 lg:px-20">
         {/* Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-12 lg:mb-16 gap-6">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-14 lg:mb-16 gap-8">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
           >
-            <span className="label-small text-[#9C7B5D] block mb-4">Hệ Thống Tiện Ích Thượng Lưu</span>
+            <div className="flex items-center gap-3 mb-5">
+              <span className="w-8 h-px bg-[#B89B72]" />
+              <span className="label-small text-[#B89B72]">Tiện Ích Chuẩn Resort</span>
+            </div>
             <h2
-              className="font-serif text-headline text-[#0B2545] font-light"
-              style={{ fontFamily: "var(--font-serif)" }}
+              className="font-serif text-[#111111] font-light leading-[1.08]"
+              style={{
+                fontFamily: "var(--font-serif)",
+                fontSize: "clamp(2.25rem, 4vw, 3.5rem)",
+              }}
             >
-              Chuẩn resort
+              Trải nghiệm sống
               <br />
-              <em>ngay thềm nhà</em>
+              <em className="text-[#B89B72]">nghỉ dưỡng mỗi ngày</em>
             </h2>
           </motion.div>
 
@@ -71,41 +87,44 @@ export default function Amenities() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.15 }}
-            className="flex flex-col gap-3"
+            transition={{ duration: 0.9, delay: 0.15 }}
+            className="flex flex-col gap-4 lg:max-w-xs"
           >
-            <p className="text-[#555555] text-base leading-relaxed font-light max-w-sm">
-              Hệ thống tiện ích 5 sao đặc quyền được vận hành bởi đơn vị quản lý quốc tế, mang lại chuẩn sống an nhiên đẳng cấp.
+            <p className="text-[#5F5F5F] text-[0.9375rem] leading-[1.8] font-light">
+              Hệ thống tiện ích 5 sao vận hành bởi đơn vị quản lý quốc tế, mang lại chuẩn sống an nhiên đẳng cấp mỗi ngày.
             </p>
             <a
               href="#contact"
-              className="flex items-center gap-2 text-[#C6A77D] label-small font-semibold group w-fit"
+              className="flex items-center gap-2 text-[#B89B72] label-small group w-fit"
             >
-              Khám Phá Tiện Ích
-              <svg viewBox="0 0 24 14" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-5 h-3 group-hover:translate-x-1 transition-transform duration-300">
+              Xem tất cả tiện ích
+              <svg viewBox="0 0 24 14" fill="none" stroke="currentColor" strokeWidth="1.4" className="w-5 h-3 group-hover:translate-x-1 transition-transform duration-300">
                 <path d="M1 7h22M17 1l6 6-6 6" />
               </svg>
             </a>
           </motion.div>
         </div>
 
-        {/* Masonry-style gallery grid */}
-        <div className="grid grid-cols-3 grid-rows-3 gap-4 lg:gap-5" style={{ height: "clamp(500px, 70vw, 700px)" }}>
+        {/* Bento grid */}
+        <div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+          style={{ gridAutoRows: "280px" }}
+        >
           {AMENITIES.map((item, i) => (
             <motion.div
               key={item.id}
-              className={`${item.span} relative rounded-2xl overflow-hidden cursor-pointer group`}
+              className={`relative overflow-hidden cursor-pointer group ${item.cols} ${item.rows}`}
               initial={{ opacity: 0, scale: 0.97 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1], delay: i * 0.08 }}
+              transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1], delay: i * 0.08 }}
               onHoverStart={() => setHovered(item.id)}
               onHoverEnd={() => setHovered(null)}
             >
-              {/* Image */}
+              {/* Image with zoom on hover */}
               <motion.div
                 className="absolute inset-0"
-                animate={{ scale: hovered === item.id ? 1.06 : 1 }}
+                animate={{ scale: hovered === item.id ? 1.07 : 1 }}
                 transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
               >
                 <Image
@@ -113,33 +132,48 @@ export default function Amenities() {
                   alt={item.name}
                   fill
                   className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
               </motion.div>
 
-              {/* Gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-              <div className="absolute inset-0 bg-[#C6A77D]/8 mix-blend-multiply" />
+              {/* Overlays */}
+              <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/15 to-transparent" />
+              <motion.div
+                className="absolute inset-0 bg-[#B89B72]/0"
+                animate={{ opacity: hovered === item.id ? 1 : 0 }}
+                transition={{ duration: 0.5 }}
+                style={{ background: "rgba(184,155,114,0.06)" }}
+              />
 
-              {/* Content */}
+              {/* Label badge — top left */}
+              <div className="absolute top-4 left-4">
+                <span className="px-2.5 py-1 bg-black/40 backdrop-blur-sm label-small text-[#B89B72]" style={{ fontSize: "0.6rem" }}>
+                  {item.label}
+                </span>
+              </div>
+
+              {/* Content — bottom */}
               <div className="absolute bottom-0 left-0 right-0 p-5 lg:p-6">
                 <motion.div
-                  animate={{ y: hovered === item.id ? 0 : 4, opacity: hovered === item.id ? 1 : 0.9 }}
+                  animate={{ y: hovered === item.id ? 0 : 3 }}
                   transition={{ duration: 0.35 }}
                 >
                   <h3
-                    className="font-serif text-white font-light leading-tight mb-1"
-                    style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(0.95rem, 1.5vw, 1.25rem)" }}
+                    className="font-serif text-white font-light leading-tight mb-1.5"
+                    style={{
+                      fontFamily: "var(--font-serif)",
+                      fontSize: "clamp(1rem, 1.4vw, 1.3rem)",
+                    }}
                   >
                     {item.name}
                   </h3>
                   <AnimatePresence>
                     {hovered === item.id && (
                       <motion.p
-                        className="text-white/70 text-xs font-light"
-                        initial={{ opacity: 0, y: 6 }}
+                        className="text-white/60 text-xs font-light leading-relaxed max-w-xs"
+                        initial={{ opacity: 0, y: 8 }}
                         animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 6 }}
+                        exit={{ opacity: 0, y: 8 }}
                         transition={{ duration: 0.25 }}
                       >
                         {item.desc}
