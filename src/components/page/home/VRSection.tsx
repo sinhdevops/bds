@@ -9,7 +9,7 @@ const GALLERY = [
     id: "living",
     label: "Phòng khách",
     image:
-      "https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?w=1600&q=85&fit=crop",
+      "https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?w=1800&q=85&fit=crop",
   },
   {
     id: "bedroom",
@@ -33,133 +33,78 @@ const GALLERY = [
 
 export default function VRSection() {
   const [active, setActive] = useState(0);
-
-  const prev = () =>
-    setActive((a) => (a - 1 + GALLERY.length) % GALLERY.length);
+  const prev = () => setActive((a) => (a - 1 + GALLERY.length) % GALLERY.length);
   const next = () => setActive((a) => (a + 1) % GALLERY.length);
 
   return (
-    <section id="vr-tour" className="relative bg-[#111111] overflow-hidden">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#B89B72]/25 to-transparent" />
-
-      <div className="max-w-[1440px] mx-auto px-8 lg:px-20 py-20 lg:py-28">
-        <div className="grid lg:grid-cols-[380px_1fr] gap-10 lg:gap-16 items-center">
-          {/* LEFT — Content */}
+    <section id="vr-tour" className="relative overflow-hidden bg-[#111111]">
+      <div className="relative min-h-[380px] lg:min-h-[420px]">
+        <AnimatePresence mode="wait">
           <motion.div
-            className="flex flex-col"
+            key={GALLERY[active].id}
+            className="absolute inset-0"
+            initial={{ opacity: 0, scale: 1.03 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.98 }}
+            transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
+          >
+            <Image
+              src={GALLERY[active].image}
+              alt={GALLERY[active].label}
+              fill
+              className="object-cover"
+              sizes="100vw"
+            />
+          </motion.div>
+        </AnimatePresence>
+
+        <div className="absolute inset-0 bg-linear-to-r from-black/88 via-black/46 to-black/8" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/72 via-transparent to-black/16" />
+
+        <div className="relative z-10 mx-auto grid max-w-[1240px] px-6 py-16 lg:min-h-[420px] lg:grid-cols-[360px_1fr] lg:items-center lg:gap-16">
+          <motion.div
             initial={{ opacity: 0, x: -28 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
           >
-            <div className="flex items-center gap-3 mb-5">
-              <span className="w-8 h-px bg-[#B89B72]" />
-              <span className="label-small text-gold">Khám Phá Không Gian</span>
+            <div className="mb-5 flex items-center gap-3">
+              <span className="h-px w-8 bg-[#C6A77D]" />
+              <span className="label-small text-[#C6A77D]">Khám Phá Không Gian</span>
             </div>
-
             <h2
-              className="font-serif text-white font-light leading-[1.08] mb-6"
-              style={{
-                fontFamily: "var(--font-serif)",
-                fontSize: "clamp(2rem, 3.5vw, 3rem)",
-              }}
+              className="mb-6 font-serif text-white font-light leading-[1.08]"
+              style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(2rem, 3.5vw, 3rem)" }}
             >
               Tinh tế trong
               <br />
-              <em className="text-gold">từng chi tiết</em>
+              <em className="text-[#C6A77D]">từng chi tiết</em>
             </h2>
-
-            <p className="text-white/40 text-sm font-light leading-[1.8] mb-10 max-w-xs">
-              Mỗi không gian được chăm chút tỉ mỉ, mang đến trải nghiệm sống
-              đẳng cấp và khác biệt.
+            <p className="mb-8 max-w-xs text-sm font-medium leading-[1.8] text-white/70">
+              Mỗi không gian được chăm chút tỉ mỉ, mang đến trải nghiệm sống đẳng cấp và khác biệt.
             </p>
-
             <a
               href="#contact"
-              className="inline-flex items-center gap-3 px-7 py-3.5 bg-[#B89B72] text-[#111111] label-small tracking-[0.12em] hover:bg-white transition-colors duration-300 w-fit mb-12"
+              className="inline-flex w-fit items-center gap-3 rounded-[3px] bg-[#C6A77D] px-7 py-3.5 text-white label-small font-bold transition-colors duration-300 hover:bg-white hover:text-[#0B2545]"
             >
               Khám Phá 360°
             </a>
-
-            {/* Navigation arrows */}
-            <div className="flex items-center gap-3">
-              <button
-                onClick={prev}
-                className="w-10 h-10 border border-white/15 flex items-center justify-center text-white/50 hover:border-[#B89B72]/60 hover:text-gold transition-all duration-300"
-              >
-                <svg
-                  viewBox="0 0 10 16"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.4"
-                  className="w-2.5 h-4"
-                >
-                  <path d="M9 1L1 8l8 7" />
-                </svg>
-              </button>
-              <button
-                onClick={next}
-                className="w-10 h-10 border border-white/15 flex items-center justify-center text-white/50 hover:border-[#B89B72]/60 hover:text-gold transition-all duration-300"
-              >
-                <svg
-                  viewBox="0 0 10 16"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.4"
-                  className="w-2.5 h-4"
-                >
-                  <path d="M1 1l8 7-8 7" />
-                </svg>
-              </button>
-            </div>
           </motion.div>
 
-          {/* RIGHT — Image + Thumbnails */}
           <motion.div
-            initial={{ opacity: 0, x: 28 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{
-              duration: 0.9,
-              ease: [0.25, 0.1, 0.25, 1],
-              delay: 0.1,
-            }}
+            transition={{ duration: 0.9, delay: 0.1 }}
+            className="mt-10 self-end lg:mt-44"
           >
-            {/* Main image */}
-            <div
-              className="relative overflow-hidden mb-3"
-              style={{ aspectRatio: "16/10" }}
-            >
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={GALLERY[active].id}
-                  className="absolute inset-0"
-                  initial={{ opacity: 0, scale: 1.04 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.97 }}
-                  transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
-                >
-                  <Image
-                    src={GALLERY[active].image}
-                    alt={GALLERY[active].label}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 100vw, 65vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-                  <div className="absolute inset-0 bg-[#B89B72]/4 mix-blend-multiply" />
-                </motion.div>
-              </AnimatePresence>
-            </div>
-
-            {/* Thumbnail strip */}
-            <div className="grid grid-cols-4 gap-2">
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
               {GALLERY.map((room, i) => (
                 <button
                   key={room.id}
                   onClick={() => setActive(i)}
-                  className="relative overflow-hidden group"
-                  style={{ aspectRatio: "4/3" }}
+                  className="group relative overflow-hidden rounded-md border border-white/20"
+                  style={{ aspectRatio: "16/10" }}
                 >
                   <Image
                     src={room.image}
@@ -168,27 +113,29 @@ export default function VRSection() {
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                     sizes="180px"
                   />
-                  <div
-                    className="absolute inset-0 transition-opacity duration-300"
-                    style={{
-                      background: "rgba(0,0,0,0.45)",
-                      opacity: i === active ? 0 : 1,
-                    }}
-                  />
-                  {i === active && (
-                    <div className="absolute inset-0 ring-1 ring-[#B89B72]" />
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  <span
-                    className="absolute bottom-1.5 left-2 label-small text-white/80"
-                    style={{ fontSize: "0.52rem" }}
-                  >
+                  <div className="absolute inset-0 bg-linear-to-t from-black/70 to-transparent" />
+                  {i === active && <div className="absolute inset-0 ring-2 ring-[#C6A77D]" />}
+                  <span className="absolute bottom-2 left-3 text-[0.68rem] font-semibold text-white">
                     {room.label}
                   </span>
                 </button>
               ))}
             </div>
           </motion.div>
+
+          <div className="absolute right-6 top-1/2 hidden -translate-y-1/2 items-center gap-3 lg:flex">
+            {[{ fn: prev, d: "M9 1L1 8l8 7" }, { fn: next, d: "M1 1l8 7-8 7" }].map((btn, i) => (
+              <button
+                key={i}
+                onClick={btn.fn}
+                className="flex h-11 w-11 items-center justify-center rounded-full bg-white text-[#111111] transition-colors duration-300 hover:bg-[#C6A77D] hover:text-white"
+              >
+                <svg viewBox="0 0 10 16" fill="none" stroke="currentColor" strokeWidth="1.4" className="h-4 w-2.5">
+                  <path d={btn.d} />
+                </svg>
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </section>

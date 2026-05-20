@@ -17,7 +17,7 @@ export default function CTASection() {
     <section id="contact" className="relative bg-[#111111] overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#B89B72]/20 to-transparent" />
 
-      <div className="grid lg:grid-cols-2 min-h-[680px]">
+      <div className="grid lg:grid-cols-[1fr_1.15fr] min-h-[420px]">
         {/* LEFT — Building image + text overlay */}
         <motion.div
           className="relative hidden lg:block overflow-hidden"
@@ -37,7 +37,7 @@ export default function CTASection() {
           <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
           <div className="absolute inset-0 bg-[#B89B72]/6 mix-blend-multiply" />
 
-          <div className="absolute inset-0 flex flex-col justify-end p-14">
+          <div className="absolute inset-0 flex flex-col justify-end p-10 lg:p-12">
             <div className="flex items-center gap-3 mb-5">
               <span className="w-8 h-px bg-[#B89B72]" />
               <span className="label-small text-gold">
@@ -52,7 +52,7 @@ export default function CTASection() {
               <br />
               <em className="text-gold">bên bờ Sông Hàn</em>
             </h2>
-            <p className="text-white/40 text-sm font-light leading-[1.8] max-w-xs mb-10">
+            <p className="text-white/55 text-sm font-medium leading-[1.8] max-w-xs mb-8">
               Đăng ký để nhận bảng giá, chính sách ưu đãi và thông tin mới nhất
               từ dự án.
             </p>
@@ -77,7 +77,7 @@ export default function CTASection() {
                   >
                     Tư vấn 24/7
                   </span>
-                  <span className="text-gold text-lg">0981 814 814</span>
+                  <span className="text-gold text-lg">0325 610016</span>
                 </div>
               </div>
 
@@ -109,7 +109,7 @@ export default function CTASection() {
 
         {/* RIGHT — Form */}
         <motion.div
-          className="flex items-center justify-center py-20 px-8 lg:px-16"
+          className="flex items-center justify-center py-12 px-8 lg:px-16"
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
@@ -176,7 +176,7 @@ export default function CTASection() {
                   {
                     key: "phone",
                     label: "Số điện thoại",
-                    placeholder: "0901 234 567",
+                    placeholder: "0325 610016",
                     type: "tel",
                   },
                   {
@@ -198,7 +198,7 @@ export default function CTASection() {
                       }
                       placeholder={field.placeholder}
                       required={field.key !== "email"}
-                      className="w-full px-4 py-3.5 bg-white/4 border border-white/10 text-white text-sm font-light placeholder:text-white/20 focus:outline-none focus:border-[#B89B72]/60 transition-all duration-300"
+                    className="w-full rounded-[3px] px-4 py-3.5 bg-white/4 border border-white/10 text-white text-sm font-medium placeholder:text-white/20 focus:outline-none focus:border-[#B89B72]/60 transition-all duration-300"
                     />
                   </div>
                 ))}
@@ -207,7 +207,7 @@ export default function CTASection() {
                   type="submit"
                   whileHover={{ scale: 1.01 }}
                   whileTap={{ scale: 0.99 }}
-                  className="w-full py-4 bg-[#B89B72] text-[#111111] label-small tracking-[0.14em] hover:bg-white transition-colors duration-300 mt-1"
+                  className="w-full rounded-[3px] py-4 bg-[#C6A77D] text-white label-small font-bold hover:bg-white hover:text-[#0B2545] transition-colors duration-300 mt-1"
                 >
                   Nhận Thông Tin Ngay
                 </motion.button>

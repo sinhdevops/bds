@@ -104,7 +104,7 @@ export default function ProjectDetailCTA({ project }: Props) {
                     className="font-serif text-2xl text-[#C6A77D] font-light"
                     style={{ fontFamily: "var(--font-serif)" }}
                   >
-                    0981 814 814
+                    0325 610016
                   </span>
                 </div>
               </a>
@@ -190,7 +190,7 @@ export default function ProjectDetailCTA({ project }: Props) {
                       type="tel"
                       value={form.phone}
                       onChange={update("phone")}
-                      placeholder="0981 814 814"
+                      placeholder="0325 610016"
                       required
                       className={inputCls}
                     />

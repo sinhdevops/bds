@@ -1,168 +1,364 @@
 "use client";
 
-import React, { useState, useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import { motion } from "framer-motion";
+import {
+  FiCheck,
+  FiClock,
+  FiMail,
+  FiMapPin,
+  FiMessageCircle,
+  FiPhone,
+  FiSend,
+} from "react-icons/fi";
+
+type FormData = {
+  name: string;
+  phone: string;
+  email: string;
+  project: string;
+  interest: string;
+  channel: string;
+  message: string;
+};
+
+const initialForm: FormData = {
+  name: "",
+  phone: "",
+  email: "",
+  project: "",
+  interest: "Nhận bảng giá",
+  channel: "Gọi điện",
+  message: "",
+};
+
+const contactCards = [
+  {
+    icon: FiPhone,
+    label: "Hotline",
+    value: "0325 610016",
+    meta: "Tư vấn 24/7",
+    href: "tel:0325610016",
+  },
+  {
+    icon: FiMail,
+    label: "Email",
+    value: "info@srtmientrung.vn",
+    meta: "Phản hồi trong ngày",
+    href: "mailto:info@srtmientrung.vn",
+  },
+  {
+    icon: FiMapPin,
+    label: "Văn phòng",
+    value: "Lô 12, Khu B2-4, đường Lê Văn Duyệt, Sơn Trà, Đà Nẵng",
+    meta: "Tiếp khách theo lịch hẹn",
+  },
+];
+
+const interests = ["Nhận bảng giá", "Xem nhà mẫu", "Tư vấn đầu tư", "Hỗ trợ vay vốn"];
+const channels = ["Gọi điện", "Zalo", "Email"];
 
 const ContactFormSection = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    message: "",
-  });
+  const [formData, setFormData] = useState<FormData>(initialForm);
+  const [submitted, setSubmitted] = useState(false);
 
-  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+  const handleChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+      const { name, value } = e.target;
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    },
+    []
+  );
+
+  const handleChoice = useCallback((name: "interest" | "channel", value: string) => {
+    setFormData((prev) => ({ ...prev, [name]: value }));
   }, []);
 
   const handleSubmit = useCallback((e: React.FormEvent) => {
     e.preventDefault();
-    alert(`Cảm ơn quý khách ${formData.name}! SRT Miền Trung sẽ liên hệ lại qua số điện thoại ${formData.phone} trong vòng 15 phút.`);
-    setFormData({ name: "", phone: "", email: "", message: "" });
-  }, [formData]);
+    setSubmitted(true);
+    setFormData(initialForm);
+  }, []);
 
   return (
-    <section className="bg-[#FAF8F5] py-20 lg:py-28">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-stretch">
-          
-          {/* Left Column: Office info */}
+    <section id="contact-form" className="bg-[#FAF8F5] py-16 lg:py-24">
+      <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
+        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="flex flex-col justify-between"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.65, ease: "easeOut" }}
+            className="flex flex-col justify-between gap-10"
           >
             <div>
-              <span className="label-small text-[#9C7B5D] block mb-4 uppercase">Thông Tin Trụ Sở</span>
+              <span className="label-small mb-4 block text-[#9C7B5D]">
+                Kênh liên hệ chính thức
+              </span>
               <h2
-                className="font-serif text-headline text-[#0B2545] font-light leading-tight mb-6"
-                style={{ fontFamily: "var(--font-serif)" }}
+                className="font-serif max-w-xl text-[#0B2545] font-light leading-[1.1]"
+                style={{ fontSize: "clamp(2.2rem, 4vw, 4rem)" }}
               >
-                Công ty TNHH Thương mại và Đầu tư
-                <br />
-                <em>SRT Miền Trung</em>
+                Một đầu mối tư vấn, đủ thông tin để quyết định nhanh hơn
               </h2>
-              <p className="text-[#555555] text-sm leading-[1.8] font-light mb-8 max-w-md">
-                SRT Miền Trung luôn tự hào là đại lý chiến lược dẫn đầu doanh số của các dự án Sun Group Đà Nẵng. Hãy liên hệ với chúng tôi để nhận những giỏ hàng ưu đãi độc quyền đẹp nhất.
+              <p className="mt-6 max-w-lg text-sm font-medium leading-[1.85] text-[#555555]">
+                SRT Miền Trung hỗ trợ lọc giỏ hàng, cập nhật chính sách bán hàng,
+                đặt lịch xem nhà và tư vấn phương án tài chính cho khách mua ở hoặc
+                đầu tư.
               </p>
+            </div>
 
-              {/* Detail list */}
-              <div className="flex flex-col gap-6">
-                {[
-                  {
-                    icon: (
-                      <svg viewBox="0 0 16 20" fill="none" stroke="#C6A77D" strokeWidth="1.2" className="w-4 h-5 mt-0.5 flex-shrink-0">
-                        <path d="M8 1C4.7 1 2 3.7 2 7c0 4.5 6 12 6 12s6-7.5 6-12c0-3.3-2.7-6-6-6z" />
-                        <circle cx="8" cy="7" r="2" />
-                      </svg>
-                    ),
-                    label: "Địa chỉ văn phòng",
-                    val: "Lô 12, Khu B2-4, Đường Lê Văn Duyệt, Sơn Trà, TP. Đà Nẵng",
-                  },
-                  {
-                    icon: (
-                      <svg viewBox="0 0 16 16" fill="none" stroke="#C6A77D" strokeWidth="1.2" className="w-4 h-4 mt-0.5 flex-shrink-0">
-                        <path d="M13 10.7l-1.9.2c-.4 0-.8.3-1 .6-.2.3-.4 1.2-3.1-1.5C4.4 7.3 5.3 7 5.5 6.7c.3-.3.5-.6.6-1l.2-1.9c0-.4-.1-.8-.3-1.1L5.2 1.9c-.3-.4-.9-.5-1.4-.2L2.3 2.7C1.7 3 1.5 3.7 1.7 4.3c.6 2.8 2.3 5.6 4.8 8.1 2.5 2.5 5.3 4.2 8.1 4.8.6.1 1.3-.1 1.6-.6l1.1-1.5c.3-.5.2-1.1-.2-1.4l-.9-1c-.3-.2-.7-.4-1.2-.3z" />
-                      </svg>
-                    ),
-                    label: "Hotline 24/7",
-                    val: "0981 814 814",
-                    href: "tel:0325610016",
-                  },
-                  {
-                    icon: (
-                      <svg viewBox="0 0 16 12" fill="none" stroke="#C6A77D" strokeWidth="1.2" className="w-4 h-3.5 mt-1 flex-shrink-0">
-                        <rect x="1" y="1" width="14" height="10" rx="1" />
-                        <path d="M1 3l7 5 7-5" />
-                      </svg>
-                    ),
-                    label: "Email hỗ trợ",
-                    val: "info@srtmientrung.vn",
-                    href: "mailto:info@srtmientrung.vn",
-                  },
-                ].map((item) => (
-                  <div key={item.label} className="flex gap-4 items-start">
-                    {item.icon}
-                    <div>
-                      <span className="text-[10px] text-[#8A8A8A] font-light uppercase tracking-wider block mb-0.5">{item.label}</span>
-                      {item.href ? (
-                        <a href={item.href} className="text-sm text-[#0B2545] font-semibold hover:text-[#C6A77D] transition-colors duration-300">
-                          {item.val}
-                        </a>
-                      ) : (
-                        <span className="text-sm text-[#0B2545] font-light leading-relaxed block">{item.val}</span>
-                      )}
-                    </div>
+            <div className="grid gap-3">
+              {contactCards.map((item) => {
+                const Icon = item.icon;
+                const content = (
+                  <div className="grid gap-1">
+                    <span className="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-[#8A8A8A]">
+                      {item.label}
+                    </span>
+                    <span className="text-sm font-semibold leading-relaxed text-[#0B2545]">
+                      {item.value}
+                    </span>
+                    <span className="text-xs font-medium text-[#8A8A8A]">{item.meta}</span>
                   </div>
-                ))}
-              </div>
+                );
+
+                return (
+                  <div
+                    key={item.label}
+                    className="grid grid-cols-[44px_1fr] gap-4 rounded-[6px] border border-[#E5E0D8] bg-white px-4 py-4"
+                  >
+                    <div className="flex h-11 w-11 items-center justify-center rounded-[4px] bg-[#0B2545] text-[#C6A77D]">
+                      <Icon className="h-5 w-5" aria-hidden="true" />
+                    </div>
+                    {item.href ? (
+                      <a href={item.href} className="transition-colors hover:text-[#9C7B5D]">
+                        {content}
+                      </a>
+                    ) : (
+                      content
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="grid gap-4 border-l border-[#C6A77D] pl-5">
+              {[
+                { icon: FiClock, text: "Ưu tiên phản hồi các yêu cầu có số điện thoại rõ ràng." },
+                { icon: FiMessageCircle, text: "Có thể tư vấn qua Zalo cho khách cần xem nhà từ xa." },
+              ].map((item) => {
+                const Icon = item.icon;
+                return (
+                  <div key={item.text} className="flex gap-3 text-sm font-medium text-[#555555]">
+                    <Icon className="mt-1 h-4 w-4 flex-none text-[#9C7B5D]" aria-hidden="true" />
+                    <span>{item.text}</span>
+                  </div>
+                );
+              })}
             </div>
           </motion.div>
 
-          {/* Right Column: Dark Navy Form */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.15 }}
-            className="p-8 bg-[#0B2545] rounded-3xl border border-[#C6A77D]/10 flex flex-col justify-center"
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.65, ease: "easeOut", delay: 0.12 }}
+            className="rounded-[8px] bg-[#0B2545] p-5 shadow-2xl shadow-[#0B2545]/15 md:p-8"
           >
-            <div className="mb-6">
-              <span className="label-small text-[#C6A77D] tracking-wider uppercase block mb-1">Đăng Ký Tư Vấn</span>
-              <h3 className="font-serif text-xl text-white font-medium" style={{ fontFamily: "var(--font-serif)" }}>Nhận Báo Giá Độc Quyền</h3>
-            </div>
+            {submitted ? (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.97 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="flex min-h-[520px] flex-col items-center justify-center text-center"
+              >
+                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-[#C6A77D]/35 text-[#C6A77D]">
+                  <FiCheck className="h-7 w-7" aria-hidden="true" />
+                </div>
+                <h3 className="font-serif text-3xl font-light text-white">
+                  Đã nhận thông tin
+                </h3>
+                <p className="mt-4 max-w-sm text-sm font-medium leading-[1.8] text-white/58">
+                  Chuyên viên SRT Miền Trung sẽ liên hệ lại trong thời gian sớm nhất
+                  theo kênh bạn đã chọn.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setSubmitted(false)}
+                  className="mt-8 rounded-[4px] border border-white/18 px-5 py-3 text-xs font-bold uppercase tracking-[0.14em] text-white transition-colors hover:border-[#C6A77D] hover:text-[#C6A77D]"
+                >
+                  Gửi yêu cầu khác
+                </button>
+              </motion.div>
+            ) : (
+              <form onSubmit={handleSubmit} className="grid gap-6">
+                <div>
+                  <span className="label-small mb-3 block text-[#C6A77D]">
+                    Đăng ký tư vấn
+                  </span>
+                  <h3 className="font-serif text-2xl font-light text-white md:text-3xl">
+                    Nhận thông tin dự án phù hợp
+                  </h3>
+                </div>
 
-            <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-              {[
-                { name: "name", label: "Họ và tên của quý khách", type: "text", val: formData.name },
-                { name: "phone", label: "Số điện thoại liên hệ", type: "tel", val: formData.phone },
-                { name: "email", label: "Địa chỉ Email (Không bắt buộc)", type: "email", val: formData.email },
-              ].map((field) => (
-                <div key={field.name} className="flex flex-col gap-1.5">
-                  <label className="text-[10px] text-white/50 uppercase tracking-wider font-medium">{field.label}</label>
-                  <input
-                    name={field.name}
-                    type={field.type}
-                    value={field.val}
+                <div className="grid gap-4 md:grid-cols-2">
+                  <Field
+                    label="Họ và tên"
+                    name="name"
+                    value={formData.name}
                     onChange={handleChange}
-                    required={field.name !== "email"}
-                    className="w-full bg-[#134074]/30 border border-white/10 rounded-lg px-4 py-3 text-sm text-white placeholder-white/20 focus:border-[#C6A77D] focus:outline-none transition-colors duration-300"
-                    placeholder={`Nhập ${field.label.toLowerCase()}...`}
+                    placeholder="Nguyễn Văn A"
+                    required
+                  />
+                  <Field
+                    label="Số điện thoại"
+                    name="phone"
+                    type="tel"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder="0325 610016"
+                    required
+                  />
+                  <Field
+                    label="Email"
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="email@example.com"
+                  />
+                  <div className="grid gap-2">
+                    <label className="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-white/45">
+                      Khu vực quan tâm
+                    </label>
+                    <select
+                      name="project"
+                      value={formData.project}
+                      onChange={handleChange}
+                      className="h-12 w-full rounded-[4px] border border-white/10 bg-white/[0.06] px-4 text-sm font-medium text-white outline-none transition-colors focus:border-[#C6A77D]"
+                    >
+                      <option className="text-[#111111]" value="">Chưa xác định</option>
+                      <option className="text-[#111111]" value="Sun Symphony Residence">Sun Symphony Residence</option>
+                      <option className="text-[#111111]" value="Sun Solar Residence">Sun Solar Residence</option>
+                      <option className="text-[#111111]" value="Sun Ponte Residence">Sun Ponte Residence</option>
+                      <option className="text-[#111111]" value="Capital Square Đà Nẵng">Capital Square Đà Nẵng</option>
+                    </select>
+                  </div>
+                </div>
+
+                <ChoiceGroup
+                  label="Nhu cầu"
+                  name="interest"
+                  value={formData.interest}
+                  options={interests}
+                  onSelect={handleChoice}
+                />
+
+                <ChoiceGroup
+                  label="Kênh liên hệ ưu tiên"
+                  name="channel"
+                  value={formData.channel}
+                  options={channels}
+                  onSelect={handleChoice}
+                />
+
+                <div className="grid gap-2">
+                  <label className="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-white/45">
+                    Ghi chú thêm
+                  </label>
+                  <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    rows={4}
+                    className="w-full resize-none rounded-[4px] border border-white/10 bg-white/[0.06] px-4 py-3 text-sm font-medium text-white outline-none transition-colors placeholder:text-white/22 focus:border-[#C6A77D]"
+                    placeholder="Ví dụ: cần căn 2PN, view sông, ngân sách dự kiến..."
                   />
                 </div>
-              ))}
 
-              <div className="flex flex-col gap-1.5">
-                <label className="text-[10px] text-white/50 uppercase tracking-wider font-medium">Yêu cầu cụ thể của quý khách</label>
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  rows={3}
-                  className="w-full bg-[#134074]/30 border border-white/10 rounded-lg px-4 py-3 text-sm text-white placeholder-white/20 focus:border-[#C6A77D] focus:outline-none transition-colors duration-300 resize-none"
-                  placeholder="Ví dụ: Quan tâm căn hộ 2PN tòa Symphony 5 view Sông Hàn..."
-                />
-              </div>
+                <button
+                  type="submit"
+                  className="inline-flex h-12 items-center justify-center gap-2 rounded-[4px] bg-[#C6A77D] px-6 text-xs font-bold uppercase tracking-[0.14em] text-[#111111] transition-colors duration-300 hover:bg-white"
+                >
+                  Gửi yêu cầu tư vấn
+                  <FiSend className="h-4 w-4" aria-hidden="true" />
+                </button>
 
-              <button
-                type="submit"
-                className="mt-4 w-full py-4 bg-[#C6A77D] text-[#1A1A1A] label-small font-bold rounded-lg hover:bg-[#FAF8F5] hover:text-[#0B2545] transition-all duration-300 shadow-md uppercase tracking-wider"
-              >
-                Gửi Đăng Ký Tư Vấn
-              </button>
-            </form>
+                <p className="text-center text-xs font-medium leading-relaxed text-white/34">
+                  Thông tin của bạn chỉ dùng cho mục đích tư vấn dự án và chính sách bán hàng.
+                </p>
+              </form>
+            )}
           </motion.div>
-
         </div>
       </div>
     </section>
   );
 };
+
+type FieldProps = {
+  label: string;
+  name: keyof FormData;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void;
+  placeholder: string;
+  type?: string;
+  required?: boolean;
+};
+
+const Field = ({ label, name, value, onChange, placeholder, type = "text", required }: FieldProps) => (
+  <div className="grid gap-2">
+    <label className="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-white/45">
+      {label}
+    </label>
+    <input
+      name={name}
+      type={type}
+      value={value}
+      onChange={onChange}
+      placeholder={placeholder}
+      required={required}
+      className="h-12 w-full rounded-[4px] border border-white/10 bg-white/[0.06] px-4 text-sm font-medium text-white outline-none transition-colors placeholder:text-white/22 focus:border-[#C6A77D]"
+    />
+  </div>
+);
+
+type ChoiceGroupProps = {
+  label: string;
+  name: "interest" | "channel";
+  value: string;
+  options: string[];
+  onSelect: (name: "interest" | "channel", value: string) => void;
+};
+
+const ChoiceGroup = ({ label, name, value, options, onSelect }: ChoiceGroupProps) => (
+  <div className="grid gap-3">
+    <span className="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-white/45">
+      {label}
+    </span>
+    <div className="flex flex-wrap gap-2">
+      {options.map((option) => {
+        const active = option === value;
+        return (
+          <button
+            key={option}
+            type="button"
+            onClick={() => onSelect(name, option)}
+            className={`rounded-[4px] border px-3.5 py-2 text-xs font-semibold transition-colors ${
+              active
+                ? "border-[#C6A77D] bg-[#C6A77D] text-[#111111]"
+                : "border-white/12 bg-white/[0.04] text-white/62 hover:border-[#C6A77D] hover:text-white"
+            }`}
+          >
+            {option}
+          </button>
+        );
+      })}
+    </div>
+  </div>
+);
 
 export default React.memo(ContactFormSection);

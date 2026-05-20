@@ -47,8 +47,8 @@ function AmenityCard({ item, hovered, onHover, onLeave }: {
 }) {
   return (
     <motion.div
-      className="relative overflow-hidden cursor-pointer rounded-xl"
-      style={{ aspectRatio: "3/4" }}
+      className="relative overflow-hidden cursor-pointer rounded-md bg-white shadow-[0_8px_24px_rgba(10,18,28,0.08)]"
+      style={{ aspectRatio: "16/9" }}
       onHoverStart={onHover}
       onHoverEnd={onLeave}
     >
@@ -65,15 +65,15 @@ function AmenityCard({ item, hovered, onHover, onLeave }: {
           sizes="(max-width: 768px) 60vw, (max-width: 1024px) 33vw, 20vw"
         />
       </motion.div>
-      <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/10 to-transparent" />
-      <div className="absolute bottom-0 left-0 right-0 p-4">
+      <div className="absolute inset-0 bg-linear-to-t from-black/22 via-transparent to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 bg-white px-3 py-2">
         <p
-          className="font-serif text-white font-light leading-tight mb-0.5"
-          style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(0.9rem, 1.2vw, 1.1rem)" }}
+          className="font-sans text-[#111111] font-bold leading-tight mb-0.5"
+          style={{ fontFamily: "var(--font-sans)", fontSize: "0.82rem" }}
         >
           {item.name}
         </p>
-        <span className="text-white/50" style={{ fontSize: "0.58rem", letterSpacing: "0.1em" }}>
+        <span className="text-[#777]" style={{ fontSize: "0.62rem", letterSpacing: 0 }}>
           {item.label}
         </span>
       </div>
@@ -85,10 +85,10 @@ export default function Amenities() {
   const [hovered, setHovered] = useState<string | null>(null);
 
   return (
-    <section id="amenities" className="bg-white py-14 lg:py-28">
-      <div className="max-w-[1440px] mx-auto">
+    <section id="amenities" className="bg-white py-12 lg:py-14">
+      <div className="max-w-[1240px] mx-auto">
         {/* Header */}
-        <div className="flex items-end justify-between mb-8 lg:mb-12 px-6 lg:px-20">
+        <div className="flex items-end justify-between mb-7 px-6">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -145,7 +145,7 @@ export default function Amenities() {
         </div>
 
         {/* Desktop: grid */}
-        <div className="hidden lg:grid grid-cols-5 gap-3 px-20">
+        <div className="hidden lg:grid grid-cols-5 gap-4 px-6">
           {AMENITIES.map((item, i) => (
             <motion.div
               key={item.id}

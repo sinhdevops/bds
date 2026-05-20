@@ -3,92 +3,98 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { openConsultationModal } from "@/components/shared/ConsultationModal";
 
 const STATS = [
-  { value: "3", label: "Dự Án", note: "Tại Đà Nẵng" },
-  { value: "1,066", label: "Căn Hộ", note: "Studio → Penthouse" },
-  { value: "2.8 Tỷ", label: "Giá Từ", note: "Hỗ trợ vay 70%" },
+  { value: "3", label: "Dự án", note: "Ven sông Hàn" },
+  { value: "1.066+", label: "Sản phẩm", note: "Căn hộ, villa, shophouse" },
+  { value: "2.8 tỷ", label: "Giá từ", note: "Có phương án vay" },
 ];
 
 const ProjectHero = () => {
   return (
-    <section className="relative w-full overflow-hidden bg-[#0B2545]" style={{ minHeight: "56vh" }}>
+    <section className="relative min-h-[620px] overflow-hidden bg-[#071522]">
       <Image
-        src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1800&q=80&fit=crop"
-        alt="Dự án căn hộ cao cấp Đà Nẵng"
+        src="/images/hero-song-han-clean.png"
+        alt="Danh mục dự án căn hộ cao cấp ven sông Hàn Đà Nẵng"
         fill
-        className="object-cover object-center opacity-[0.18] select-none pointer-events-none"
+        className="object-cover object-center opacity-80"
         priority
+        sizes="100vw"
       />
+      <div className="absolute inset-0 bg-linear-to-r from-[#071522]/94 via-[#071522]/70 to-[#071522]/24" />
+      <div className="absolute inset-0 bg-linear-to-t from-[#071522] via-transparent to-[#071522]/48" />
 
-      <div className="absolute inset-0 bg-linear-to-r from-[#0B2545] via-[#0B2545]/85 to-[#0B2545]/50" />
-      <div className="absolute inset-0 bg-linear-to-b from-transparent via-transparent to-[#0B2545]/70" />
-
-      <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10 pt-32 pb-14">
-        {/* Left – heading */}
+      <div className="relative z-10 mx-auto grid min-h-[620px] max-w-[1240px] items-end gap-10 px-6 pb-16 pt-32 lg:grid-cols-[1.05fr_0.95fr] lg:pb-20">
         <div>
           <motion.div
             initial={{ opacity: 0, x: -16 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.55 }}
-            className="flex items-center gap-3 mb-5"
+            className="mb-5 flex items-center gap-3"
           >
-            <span className="w-8 h-px bg-gold block" />
-            <span className="label-small text-gold tracking-[0.22em]">DANH MỤC DỰ ÁN</span>
+            <span className="block h-px w-8 bg-[#C6A77D]" />
+            <span className="label-small text-[#C6A77D]">Danh mục dự án</span>
           </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
-            className="font-serif text-white font-light leading-[1.08] mb-5"
-            style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(2.8rem, 5.5vw, 5rem)" }}
+            className="mb-6 font-serif font-normal leading-[1.02] text-white"
+            style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(3.1rem, 6vw, 5.7rem)" }}
           >
-            Tuyệt Tác
+            Chọn đúng
             <br />
-            <em className="not-italic text-gold">Sông Hàn</em>
+            <em className="text-[#C6A77D]">không gian đầu tư</em>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.25 }}
-            className="text-white/50 font-light leading-relaxed max-w-[480px]"
-            style={{ fontSize: "clamp(0.875rem, 1.4vw, 1rem)" }}
+            className="mb-8 max-w-[560px] text-base font-medium leading-[1.85] text-white/76"
           >
-            Ba tổ hợp căn hộ hạng sang Sun Group tọa lạc tại vị trí đắc địa ven bờ Sông Hàn — pháp lý đầy đủ, đầu tư sinh lời bền vững.
+            So sánh nhanh các dự án Sun Group nổi bật tại Đà Nẵng theo vị trí, trạng thái bàn giao, mức giá và nhu cầu khai thác.
           </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.35 }}
+            className="flex flex-col gap-3 sm:flex-row"
+          >
+            <a
+              href="#project-finder"
+              className="rounded-[3px] bg-[#C6A77D] px-8 py-4 text-center label-small font-bold text-white shadow-[0_14px_32px_rgba(0,0,0,0.26)] transition-colors duration-300 hover:bg-white hover:text-[#0B2545]"
+            >
+              Xem danh mục
+            </a>
+            <button
+              type="button"
+              onClick={openConsultationModal}
+              className="rounded-[3px] border border-white/28 bg-white/6 px-8 py-4 text-center label-small font-bold text-white backdrop-blur-sm transition-colors duration-300 hover:border-[#C6A77D] hover:text-[#C6A77D]"
+            >
+              Nhận tư vấn chọn dự án
+            </button>
+          </motion.div>
         </div>
 
-        {/* Right – stats */}
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.35 }}
-          className="flex items-end gap-8 lg:gap-12 shrink-0"
+          className="grid gap-3 sm:grid-cols-3 lg:self-end"
         >
-          {STATS.map((s, i) => (
-            <div key={s.label} className={`flex flex-col ${i > 0 ? "border-l border-white/12 pl-8 lg:pl-12" : ""}`}>
-              <span
-                className="font-serif text-white font-light leading-none"
-                style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.75rem, 3vw, 2.6rem)" }}
-              >
-                {s.value}
-              </span>
-              <span className="text-gold label-small mt-1.5">{s.label}</span>
-              <span className="text-white/35 text-[10px] font-light mt-0.5 hidden sm:block">{s.note}</span>
+          {STATS.map((stat) => (
+            <div key={stat.label} className="rounded-md border border-white/12 bg-white/9 p-5 backdrop-blur-md">
+              <span className="block text-2xl font-bold leading-none text-white">{stat.value}</span>
+              <span className="mt-2 block label-small text-[#C6A77D]">{stat.label}</span>
+              <span className="mt-1 block text-xs font-medium leading-relaxed text-white/52">{stat.note}</span>
             </div>
           ))}
         </motion.div>
       </div>
-
-      {/* Bottom divider */}
-      <motion.div
-        initial={{ scaleX: 0, opacity: 0 }}
-        animate={{ scaleX: 1, opacity: 1 }}
-        transition={{ duration: 1.4, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-        className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-gold/35 to-transparent origin-left"
-      />
     </section>
   );
 };

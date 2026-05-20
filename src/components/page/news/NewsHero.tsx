@@ -6,47 +6,72 @@ import Image from "next/image";
 
 const NewsHero = () => {
   return (
-    <section className="relative w-full h-[45vh] min-h-[340px] overflow-hidden flex items-center justify-center bg-[#0B2545]">
-      {/* Background Image */}
+    <section className="relative min-h-[520px] overflow-hidden bg-[#071522]">
       <Image
-        src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1800&q=80&fit=crop"
-        alt="Real Estate news header"
+        src="/images/hero-song-han-clean.png"
+        alt="Tin tức bất động sản Đà Nẵng"
         fill
-        className="object-cover object-center opacity-25 select-none pointer-events-none"
+        className="object-cover object-center opacity-75"
         priority
+        sizes="100vw"
       />
+      <div className="absolute inset-0 bg-linear-to-r from-[#071522]/94 via-[#071522]/72 to-[#071522]/18" />
+      <div className="absolute inset-0 bg-linear-to-t from-[#071522] via-transparent to-[#071522]/38" />
 
-      {/* Luxury gold & navy dark gradient overlays */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0B2545]/40 via-[#0B2545]/60 to-[#0B2545]" />
-      <div className="absolute inset-0 bg-[#C6A77D]/5 mix-blend-multiply" />
+      <div className="relative z-10 mx-auto grid min-h-[520px] max-w-[1240px] items-end gap-10 px-6 pb-16 pt-32 lg:grid-cols-[1fr_420px]">
+        <div>
+          <motion.div
+            initial={{ opacity: 0, x: -16 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.55 }}
+            className="mb-5 flex items-center gap-3"
+          >
+            <span className="h-px w-8 bg-[#C6A77D]" />
+            <span className="label-small text-[#C6A77D]">Tin tức & phân tích</span>
+          </motion.div>
 
-      {/* Content */}
-      <div className="relative max-w-[1400px] mx-auto px-6 lg:px-12 text-center z-10 pt-20">
-        <motion.span
-          initial={{ opacity: 0, y: 15 }}
+          <motion.h1
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="font-serif font-normal leading-[1.02] text-white"
+            style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(3rem, 6vw, 5.6rem)" }}
+          >
+            Đọc nhanh
+            <br />
+            <em className="text-[#C6A77D]">ra quyết định tốt hơn</em>
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.25 }}
+            className="mt-6 max-w-[600px] text-base font-medium leading-[1.85] text-white/72"
+          >
+            Cập nhật thị trường, quy hoạch, tiến độ dự án và các góc nhìn cần thiết trước khi xuống tiền vào bất động sản Đà Nẵng.
+          </motion.p>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="label-small text-[#C6A77D] tracking-[0.25em] font-bold block mb-4 uppercase"
+          transition={{ duration: 0.7, delay: 0.35 }}
+          className="rounded-md border border-white/12 bg-white/9 p-5 backdrop-blur-md"
         >
-          Tin Tức & Sự Kiện
-        </motion.span>
-        <motion.h1
-          initial={{ opacity: 0, y: 25 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
-          className="font-serif text-white font-light leading-tight mb-4"
-          style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(2.5rem, 5vw, 4.25rem)" }}
-        >
-          Tin Tức Thị Trường
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
-          className="text-white/60 text-sm md:text-base font-light max-w-xl mx-auto leading-relaxed"
-        >
-          Cập nhật nhanh chóng thông tin quy hoạch, sự kiện mở bán và những chuyển động đầu tư đắt giá tại thị trường Đà Nẵng.
-        </motion.p>
+          <p className="label-small text-[#C6A77D]">Bản tin tuần này</p>
+          <h2 className="mt-3 font-serif text-2xl font-normal leading-tight text-white" style={{ fontFamily: "var(--font-serif)" }}>
+            Dòng tiền đang dịch chuyển về các dự án ven sông có pháp lý rõ ràng
+          </h2>
+          <p className="mt-4 text-sm font-medium leading-relaxed text-white/62">
+            Ưu tiên hiện tại của nhà đầu tư là vị trí thật, khả năng khai thác rõ và tiến độ minh bạch.
+          </p>
+          <a
+            href="#news-list"
+            className="mt-5 inline-flex rounded-[3px] bg-[#C6A77D] px-5 py-3 label-small font-bold text-white transition-colors hover:bg-white hover:text-[#071522]"
+          >
+            Xem bài mới
+          </a>
+        </motion.div>
       </div>
     </section>
   );

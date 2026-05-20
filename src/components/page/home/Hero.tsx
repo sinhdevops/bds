@@ -3,21 +3,14 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
-import { images } from "@/../public/images";
 
 const SIDE_ACTIONS = [
   {
     label: "Hotline",
     href: "tel:0325610016",
     icon: (
-      <svg
-        viewBox="0 0 16 16"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.2"
-        className="w-3.5 h-3.5"
-      >
-        <path d="M13 10.7l-1.9.2c-.4 0-.8.3-1 .6-.2.3-.4 1.2-3.1-1.5C4.4 7.3 5.3 7 5.5 6.7c.3-.3.5-.6.6-1l.2-1.9c0-.4-.1-.8-.3-1.1L5.2 1.9c-.3-.4-.9-.5-1.4-.2L2.3 2.7C1.7 3 1.5 3.7 1.7 4.3c.6 2.8 2.3 5.6 4.8 8.1 2.5 2.5 5.3 4.2 8.1 4.8.6.1 1.3-.1 1.6-.6l1.1-1.5c.3-.5.2-1.1-.2-1.4l-.9-1c-.3-.2-.7-.4-1.2-.3l.9-.7z" />
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.25" className="h-4 w-4">
+        <path d="M13 10.7l-1.9.2c-.4 0-.8.3-1 .6-.2.3-.4 1.2-3.1-1.5C4.4 7.3 5.3 7 5.5 6.7c.3-.3.5-.6.6-1l.2-1.9c0-.4-.1-.8-.3-1.1L5.2 1.9c-.3-.4-.9-.5-1.4-.2L2.3 2.7C1.7 3 1.5 3.7 1.7 4.3c.6 2.8 2.3 5.6 4.8 8.1 2.5 2.5 5.3 4.2 8.1 4.8.6.1 1.3-.1 1.6-.6l1.1-1.5c.3-.5.2-1.1-.2-1.4l-.9-1c-.3-.2-.7-.4-1.2-.3z" />
       </svg>
     ),
   },
@@ -25,31 +18,19 @@ const SIDE_ACTIONS = [
     label: "Zalo",
     href: "#",
     icon: (
-      <svg
-        viewBox="0 0 16 16"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.2"
-        className="w-3.5 h-3.5"
-      >
-        <rect x="1" y="1" width="14" height="14" rx="3" />
-        <path d="M4.5 9.5L7 5.5l2.5 4M7 7.5h3M10.5 9.5V5.5" />
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.25" className="h-4 w-4">
+        <rect x="1.5" y="1.5" width="13" height="13" rx="3" />
+        <path d="M4.5 10h3.2L4.7 6h3.1M9.3 10V6h2.2c.9 0 1.5.5 1.5 1.3 0 .9-.6 1.4-1.5 1.4H9.3" />
       </svg>
     ),
   },
   {
-    label: "Đặt lịch",
+    label: "Đặt lịch xem",
     href: "#contact",
     icon: (
-      <svg
-        viewBox="0 0 16 16"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.2"
-        className="w-3.5 h-3.5"
-      >
-        <rect x="1" y="3" width="14" height="12" rx="1" />
-        <path d="M1 7h14M5 1v4M11 1v4" />
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.25" className="h-4 w-4">
+        <rect x="1.5" y="3" width="13" height="11.5" rx="1.5" />
+        <path d="M1.5 6.5h13M5 1.5V4M11 1.5V4M5 9h2M9 9h2M5 12h2" />
       </svg>
     ),
   },
@@ -57,15 +38,9 @@ const SIDE_ACTIONS = [
     label: "VR Tour",
     href: "#vr-tour",
     icon: (
-      <svg
-        viewBox="0 0 16 16"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.2"
-        className="w-3.5 h-3.5"
-      >
-        <path d="M8 2C4.7 2 2 4.7 2 8s2.7 6 6 6 6-2.7 6-6-2.7-6-6-6z" />
-        <path d="M2 8h12M8 2c-1.7 1.3-2.7 3.5-2.7 6s1 4.7 2.7 6M8 2c1.7 1.3 2.7 3.5 2.7 6S9.7 12.7 8 14" />
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.25" className="h-4 w-4">
+        <path d="M2 6.8c1.2-1.1 2.4-1.6 3.7-1.6 1.2 0 2 .4 2.3 1.2.4-.8 1.2-1.2 2.3-1.2 1.3 0 2.5.5 3.7 1.6v4.4c0 .9-.7 1.6-1.6 1.6h-1.2c-.8 0-1.4-.4-1.8-1.1L8 9.2l-1.4 2.5c-.4.7-1 1.1-1.8 1.1H3.6c-.9 0-1.6-.7-1.6-1.6V6.8z" />
+        <path d="M4.4 8.9h2.1M5.5 7.8V10M10 8.9h.1M12 8.9h.1" />
       </svg>
     ),
   },
@@ -78,28 +53,27 @@ export default function Hero() {
     offset: ["start start", "end start"],
   });
 
-  const imageScale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
-  const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
-  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const imageScale = useTransform(scrollYProgress, [0, 1], [1, 1.12]);
+  const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "12%"]);
+  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "22%"]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.52], [1, 0]);
 
   return (
     <section
       id="hero"
       ref={containerRef}
-      className="relative w-full min-h-[460px] aspect-1440/544 overflow-hidden bg-ink"
+      className="relative h-screen max-h-[820px] min-h-[560px] w-full overflow-hidden bg-[#071522]"
     >
-      {/* Background image — parallax + slow zoom in */}
       <motion.div
         className="absolute inset-0 z-0"
         style={{ scale: imageScale, y: imageY }}
-        initial={{ scale: 1.08, opacity: 0 }}
+        initial={{ scale: 1.06, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 1.8, ease: [0.25, 0.1, 0.25, 1] }}
       >
         <Image
-          src={images.banner}
-          alt="Sun Symphony Residence — Căn hộ cao cấp bên bờ Sông Hàn Đà Nẵng"
+          src="/images/hero-song-han-clean.png"
+          alt="Toàn cảnh Sông Hàn Đà Nẵng lúc hoàng hôn"
           fill
           priority
           className="object-cover object-center"
@@ -107,48 +81,34 @@ export default function Hero() {
         />
       </motion.div>
 
-      {/* Cinematic overlays */}
-      <div className="absolute inset-0 z-1 bg-linear-to-t from-black/80 via-black/30 to-black/10" />
-      <div className="absolute inset-0 z-1 bg-linear-to-r from-black/55 via-transparent to-transparent" />
-      <div className="absolute inset-0 z-1 bg-[#B89B72]/6 mix-blend-multiply" />
+      <div className="absolute inset-0 z-1 bg-linear-to-t from-[#071522]/72 via-[#071522]/16 to-[#071522]/24" />
+      <div className="absolute inset-0 z-1 bg-linear-to-r from-[#071522]/84 via-[#071522]/20 to-transparent" />
+      <div className="absolute inset-0 z-1 bg-linear-to-b from-[#06111C]/56 via-transparent to-transparent" />
+      <div className="absolute inset-0 z-1 bg-[#C6A77D]/8 mix-blend-multiply" />
 
-      {/* Main content — overlaid bottom-left */}
       <motion.div
-        className="absolute inset-0 z-10 flex flex-col justify-end px-6 pb-10 lg:px-20 lg:pb-24"
+        className="absolute inset-0 z-10 flex flex-col justify-center px-6 pb-24 pt-20 md:px-12 lg:px-[92px] lg:pt-24"
         style={{ y: textY, opacity: contentOpacity }}
       >
-        {/* Label */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1], delay: 0.7 }}
-          className="flex items-center gap-3 mb-7"
-        >
-          <span className="w-10 h-px bg-[#B89B72]" />
-          <span className="label-small text-gold">
-            Sun Symphony Residence 5
-          </span>
-        </motion.div>
-
-        {/* Headline — line-by-line reveal */}
-        <div className="mb-8">
+        <div className="mb-5 max-w-[620px]">
           <h1
-            className="font-serif text-white font-light leading-[0.92]"
+            className="font-serif text-[3.75rem] font-normal leading-[1.02] text-white md:text-[4.4rem] lg:text-[5.15rem]"
             style={{
               fontFamily: "var(--font-serif)",
-              fontSize: "clamp(3rem, 6.5vw, 5.5rem)",
-              letterSpacing: "-0.025em",
+              letterSpacing: 0,
+              textShadow: "0 4px 22px rgba(0,0,0,0.58)",
             }}
           >
-            {["Tuyệt tác", "Bên dòng Sông Hàn"].map((text, i) => (
-              <span key={text} className="block">
+            {["Tuyệt tác", "bên dòng Sông Hàn"].map((text, index) => (
+              <span key={text} className="block overflow-hidden">
                 <motion.span
+                  className="block"
                   initial={{ y: "110%" }}
                   animate={{ y: 0 }}
                   transition={{
                     duration: 1.1,
                     ease: [0.16, 1, 0.3, 1],
-                    delay: 0.2 + i * 0.15,
+                    delay: 0.2 + index * 0.15,
                   }}
                 >
                   {text}
@@ -158,109 +118,72 @@ export default function Hero() {
           </h1>
         </div>
 
-        {/* Subtitle */}
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1], delay: 0.9 }}
-          className="text-white/60 text-[0.9375rem] font-light leading-[1.75] max-w-xs mb-8"
+          className="mb-9 max-w-[480px] text-[0.95rem] font-medium leading-[1.85] text-white/86 drop-shadow-[0_2px_10px_rgba(0,0,0,0.55)]"
         >
-          Biểu tượng sống thượng lưu mới tại Đà Nẵng.
+          Biểu tượng sống thượng lưu mới tại Đà Nẵng
           <br />
-          Căn hộ hàng hiệu · Resort Living · Tầm nhìn vĩnh cửu.
+          Căn hộ hàng hiệu • Resort Living • Tầm nhìn vĩnh cửu.
         </motion.p>
 
-        {/* CTAs */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1], delay: 1.05 }}
-          className="flex items-center gap-3"
+          className="flex flex-col gap-3 sm:flex-row sm:items-center"
         >
           <a
             href="#apartments"
-            className="px-8 py-3.5 bg-[#B89B72] text-[#111111] label-small tracking-[0.14em] hover:bg-white transition-colors duration-300"
+            className="min-w-[184px] rounded-[3px] bg-[#C6A77D] px-8 py-4 text-center label-small font-bold text-white shadow-[0_10px_24px_rgba(0,0,0,0.24)] transition-colors duration-300 hover:bg-white hover:text-[#0B2545]"
           >
             Khám Phá Dự Án
           </a>
           <a
             href="#vr-tour"
-            className="px-8 py-3.5 border border-white/30 text-white label-small tracking-[0.14em] hover:border-[#B89B72] hover:text-gold transition-colors duration-300"
+            className="min-w-[194px] rounded-[3px] border border-white/35 bg-[#071522]/22 px-8 py-4 text-center label-small font-bold text-white backdrop-blur-[2px] transition-colors duration-300 hover:border-[#C6A77D] hover:text-[#C6A77D]"
           >
             Xem Căn Mẫu 360°
           </a>
         </motion.div>
       </motion.div>
 
-      {/* Scroll indicator — bottom center, desktop only */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2.2, duration: 1 }}
-        className="absolute bottom-7 left-1/2 -translate-x-1/2 z-20 hidden lg:flex flex-col items-center gap-2"
+        className="absolute bottom-7 left-1/2 z-20 hidden -translate-x-1/2 flex-col items-center gap-3 lg:flex"
       >
-        <span
-          className="label-small text-white/30"
-          style={{ fontSize: "0.6rem", letterSpacing: "0.2em" }}
+        <motion.div
+          animate={{ y: [0, 6, 0] }}
+          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+          className="flex h-10 w-6 justify-center rounded-full border border-[#C6A77D]/75 pt-2"
         >
+          <span className="h-1.5 w-1.5 rounded-full bg-[#C6A77D]" />
+        </motion.div>
+        <span className="text-[0.72rem] font-medium text-white/48">
           Cuộn xuống để khám phá
         </span>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-          className="w-px h-10 bg-linear-to-b from-[#B89B72] to-transparent"
-        />
       </motion.div>
 
-      {/* Right side floating social actions — desktop only */}
       <motion.div
         initial={{ opacity: 0, x: 16 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 1.6, duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-        className="absolute right-5 top-1/2 -translate-y-1/2 z-20 hidden lg:flex flex-col items-center gap-4"
+        className="absolute right-5 top-1/2 z-20 hidden w-[86px] -translate-y-1/2 flex-col items-center gap-4 rounded-[4px] bg-[#071522]/76 py-5 shadow-[0_18px_36px_rgba(0,0,0,0.36)] backdrop-blur-md lg:flex"
       >
         {SIDE_ACTIONS.map((action) => (
-          <a
-            key={action.label}
-            href={action.href}
-            className="flex flex-col items-center gap-1.5 group"
-          >
-            <div className="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-white/50 group-hover:border-[#B89B72]/60 group-hover:text-gold group-hover:bg-[#B89B72]/10 transition-all duration-300">
+          <a key={action.label} href={action.href} className="group flex w-full flex-col items-center gap-1.5">
+            <div className="flex h-9 w-9 items-center justify-center rounded-full border border-white/28 text-white/86 transition-all duration-300 group-hover:border-[#C6A77D]/80 group-hover:bg-[#C6A77D]/10 group-hover:text-[#C6A77D]">
               {action.icon}
             </div>
-            <span
-              className="label-small text-white/30 group-hover:text-gold transition-colors duration-300"
-              style={{ fontSize: "0.5rem", letterSpacing: "0.12em" }}
-            >
+            <span className="max-w-[64px] text-center text-[0.62rem] font-semibold leading-tight text-white/86 transition-colors duration-300 group-hover:text-[#C6A77D]">
               {action.label}
             </span>
           </a>
         ))}
-        <div className="w-px h-12 bg-linear-to-b from-white/10 to-transparent mt-1" />
-      </motion.div>
-
-      {/* Page counter — bottom left, desktop only */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.8, duration: 0.8 }}
-        className="absolute bottom-20 left-8 lg:left-20 z-20 hidden lg:flex items-center gap-3"
-      >
-        <span
-          className="label-small text-white/25"
-          style={{ fontSize: "0.6rem" }}
-        >
-          01
-        </span>
-        <div className="w-14 h-px bg-white/15 relative">
-          <div className="absolute left-0 top-0 h-full w-1/3 bg-[#B89B72]" />
-        </div>
-        <span
-          className="label-small text-white/15"
-          style={{ fontSize: "0.6rem" }}
-        >
-          05
-        </span>
       </motion.div>
     </section>
   );

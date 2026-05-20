@@ -1,22 +1,22 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Inter } from "next/font/google";
+import { Montserrat, Playfair_Display } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import "../globals.css";
 
-const cormorant = Cormorant_Garamond({
+const playfair = Playfair_Display({
   subsets: ["vietnamese", "latin"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
-  variable: "--font-cormorant",
+  variable: "--font-playfair",
   display: "swap",
 });
 
-const inter = Inter({
+const montserrat = Montserrat({
   subsets: ["vietnamese", "latin"],
-  weight: ["300", "400", "500", "600"],
-  variable: "--font-inter",
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-montserrat",
   display: "swap",
 });
 
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     template: "%s | SRT Miền Trung",
   },
   description:
-    "Đại lý phân phối chiến lược Sun Group tại Đà Nẵng. Mua căn hộ Sun Symphony, Sun Ponte, Sun Cosmo Residence — lý tưởng đầu tư từ Hà Nội. Giá từ 2.8 tỷ. Hotline: 0981 814 814.",
+    "Đại lý phân phối chiến lược Sun Group tại Đà Nẵng. Mua căn hộ Sun Symphony, Sun Ponte, Sun Cosmo Residence — lý tưởng đầu tư từ Hà Nội. Giá từ 2.8 tỷ. Hotline: 0325 610016.",
   keywords: [
     "SRT Miền Trung",
     "Sun Group Đà Nẵng",
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
     site: "@SRTMienTrung",
     title: "SRT Miền Trung — BĐS Cao Cấp Sun Group Đà Nẵng",
     description:
-      "Căn hộ Sun Symphony, Sun Ponte, Sun Cosmo Residence tại Đà Nẵng — đầu tư sinh lời từ Hà Nội. Hotline: 0981 814 814.",
+      "Căn hộ Sun Symphony, Sun Ponte, Sun Cosmo Residence tại Đà Nẵng — đầu tư sinh lời từ Hà Nội. Hotline: 0325 610016.",
   },
 };
 
@@ -79,7 +79,7 @@ const organizationSchema = {
   description:
     "Đại lý phân phối chiến lược các dự án căn hộ cao cấp của Tập đoàn Sun Group tại Đà Nẵng.",
   url: siteUrl,
-  telephone: "+84981814814",
+  telephone: "+84325610016",
   address: {
     "@type": "PostalAddress",
     streetAddress: "259 Trần Hưng Đạo",
@@ -116,7 +116,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   }
 
   return (
-    <html lang={locale} className={`${cormorant.variable} ${inter.variable}`}>
+    <html lang={locale} className={`${playfair.variable} ${montserrat.variable}`}>
       <head>
         <script
           type="application/ld+json"
@@ -133,6 +133,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
           <main className="grow relative">{children}</main>
           <Footer />
           <StickyBar />
+          <ConsultationModal />
         </NextIntlClientProvider>
       </body>
     </html>
@@ -142,3 +143,4 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import StickyBar from "@/components/layout/StickyBar";
+import ConsultationModal from "@/components/shared/ConsultationModal";

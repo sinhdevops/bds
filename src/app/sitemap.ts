@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { getAllProjectSlugs } from "@/lib/projects";
+import { getCatalogProjectSlugs } from "@/lib/projectCatalog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://srtmientrung.vn";
@@ -17,7 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/chinh-sach-bao-mat`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
   ];
 
-  const projectPages: MetadataRoute.Sitemap = getAllProjectSlugs().map((slug) => ({
+  const projectPages: MetadataRoute.Sitemap = getCatalogProjectSlugs().map((slug) => ({
     url: `${baseUrl}/du-an/${slug}`,
     lastModified: now,
     changeFrequency: "weekly" as const,

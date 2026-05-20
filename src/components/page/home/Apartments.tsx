@@ -59,12 +59,12 @@ function ProjectCard({
 }) {
   return (
     <motion.div
-      className="group bg-white overflow-hidden flex flex-col rounded-2xl h-full"
+      className="group bg-white overflow-hidden flex flex-col rounded-md h-full ring-1 ring-black/5"
       style={{
         boxShadow:
           hovered === project.id
-            ? "0 8px 40px rgba(0,0,0,0.10)"
-            : "0 2px 12px rgba(0,0,0,0.05)",
+            ? "0 14px 42px rgba(10,18,28,0.14)"
+            : "0 6px 22px rgba(10,18,28,0.07)",
         transition: "box-shadow 0.35s ease",
       }}
       onHoverStart={onHover}
@@ -73,7 +73,7 @@ function ProjectCard({
       {/* Image */}
       <div
         className="relative overflow-hidden"
-        style={{ aspectRatio: "16/10" }}
+        style={{ aspectRatio: "16/8.2" }}
       >
         <motion.div
           className="absolute inset-0"
@@ -96,8 +96,8 @@ function ProjectCard({
               fontSize: "0.58rem",
               letterSpacing: "0.12em",
               fontWeight: 500,
-              background: "rgba(10,10,10,0.72)",
-              color: project.statusActive ? "#C8A96A" : "rgba(255,255,255,0.8)",
+              background: "rgba(255,255,255,0.92)",
+              color: "#111111",
               backdropFilter: "blur(6px)",
               borderRadius: "3px",
             }}
@@ -108,19 +108,19 @@ function ProjectCard({
       </div>
 
       {/* Content */}
-      <div className="px-5 pt-4 pb-5 flex-1 flex flex-col">
+      <div className="px-5 pt-4 pb-4 flex-1 flex flex-col">
         <h3
           className="font-serif text-[#111111] font-light mb-0.5"
           style={{
             fontFamily: "var(--font-serif)",
-            fontSize: "clamp(1rem, 1.4vw, 1.25rem)",
+            fontSize: "clamp(1.05rem, 1.4vw, 1.28rem)",
             lineHeight: 1.3,
           }}
         >
           {project.name}
         </h3>
         <p
-          className="text-[#999] font-light mb-4 leading-snug"
+          className="text-[#777] font-medium mb-4 leading-snug"
           style={{ fontSize: "0.75rem" }}
         >
           {project.address}
@@ -131,7 +131,7 @@ function ProjectCard({
           style={{
             borderBottom: "1px solid rgba(229,224,216,0.7)",
             fontSize: "0.72rem",
-            color: "#555",
+            color: "#666",
           }}
         >
           <span className="flex items-center gap-1.5">
@@ -208,11 +208,11 @@ export default function Apartments() {
     <section
       id="apartments"
       style={{ backgroundColor: "#FAF8F5" }}
-      className="py-5 lg:py-10"
+      className="py-10 lg:py-12"
     >
-      <div className="max-w-[1440px] mx-auto">
+      <div className="max-w-[1240px] mx-auto">
         {/* Header */}
-        <div className="flex items-end justify-between mb-8 lg:mb-12 px-6 lg:px-20">
+        <div className="flex items-end justify-between mb-7 lg:mb-8 px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -220,7 +220,7 @@ export default function Apartments() {
             transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
           >
             <p
-              className="text-[#8A8A8A] font-light mb-3 tracking-[0.18em] uppercase"
+              className="text-[#9C7B5D] font-semibold mb-3 tracking-[0.16em] uppercase"
               style={{ fontSize: "0.65rem" }}
             >
               Dự án nổi bật
@@ -229,7 +229,7 @@ export default function Apartments() {
               className="font-serif text-[#111111] font-light"
               style={{
                 fontFamily: "var(--font-serif)",
-                fontSize: "clamp(1.6rem, 3vw, 2.75rem)",
+                fontSize: "clamp(1.7rem, 3vw, 2.65rem)",
                 lineHeight: 1.1,
               }}
             >
@@ -287,7 +287,7 @@ export default function Apartments() {
         </div>
 
         {/* Desktop: grid */}
-        <div className="hidden lg:flex items-stretch gap-3 px-20">
+        <div className="hidden lg:flex items-stretch gap-4 px-6">
           <div className="grid grid-cols-3 gap-4 flex-1">
             {PROJECTS.map((project, i) => (
               <motion.div

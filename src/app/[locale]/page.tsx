@@ -13,7 +13,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://srtmientrung.vn";
 export const metadata: Metadata = {
   title: "SRT Miền Trung — Mua Căn Hộ Sun Group Đà Nẵng, Đầu Tư Từ Hà Nội",
   description:
-    "Mua căn hộ cao cấp Sun Symphony, Sun Ponte, Sun Cosmo Residence tại Đà Nẵng. Lý tưởng cho khách Hà Nội đầu tư nghỉ dưỡng, cho thuê sinh lời. Sở hữu lâu dài, pháp lý đầy đủ. Giá từ 2.8 tỷ. Tư vấn 24/7: 0981 814 814.",
+    "Mua căn hộ cao cấp Sun Symphony, Sun Ponte, Sun Cosmo Residence tại Đà Nẵng. Lý tưởng cho khách Hà Nội đầu tư nghỉ dưỡng, cho thuê sinh lời. Sở hữu lâu dài, pháp lý đầy đủ. Giá từ 2.8 tỷ. Tư vấn 24/7: 0325 610016.",
   keywords: [
     "mua căn hộ Đà Nẵng",
     "đầu tư căn hộ Đà Nẵng từ Hà Nội",

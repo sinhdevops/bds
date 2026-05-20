@@ -4,9 +4,11 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
+import { FiMenu, FiX } from "react-icons/fi";
+import { openConsultationModal } from "@/components/shared/ConsultationModal";
 
 const NAV_LINKS = [
-  { label: "Trang Chủ", href: "/", isPage: true },
+  { label: "Trang Chủ", href: "/", isPage: true, active: true },
   { label: "Dự Án", href: "/project", isPage: false },
   { label: "Tin Tức", href: "/news", isPage: true },
   { label: "Liên Hệ", href: "/contact", isPage: true },
@@ -22,12 +24,12 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const linkClass = (scrolled: boolean) =>
+  const linkClass = (scrolled: boolean, active?: boolean) =>
     `label-small link-underline transition-colors duration-300 font-semibold ${
       scrolled
         ? "text-[#555555] hover:text-[#0B2545]"
         : "text-white/95 hover:text-[#C6A77D] drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]"
-    }`;
+    } ${active && !scrolled ? "text-[#C6A77D] after:w-full" : ""}`;
 
   return (
     <>
@@ -55,13 +57,13 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-7">
             {NAV_LINKS.map((link) =>
               link.isPage ? (
                 <Link
                   key={link.href}
                   href={link.href as "/" | "/news" | "/contact"}
-                  className={linkClass(scrolled)}
+                  className={linkClass(scrolled, link.active)}
                 >
                   {link.label}
                 </Link>
@@ -69,7 +71,7 @@ export default function Navbar() {
                 <a
                   key={link.href}
                   href={link.href}
-                  className={linkClass(scrolled)}
+                  className={linkClass(scrolled, link.active)}
                 >
                   {link.label}
                 </a>
@@ -79,27 +81,29 @@ export default function Navbar() {
 
           {/* CTA + Hamburger */}
           <div className="flex items-center gap-4">
-            <Link
-              href="/contact"
-              className="hidden lg:inline-flex items-center gap-2 px-6 py-2.5 bg-[#C6A77D] text-[#1A1A1A] label-small font-semibold tracking-[0.12em] rounded-sm hover:bg-[#0B2545] hover:text-white transition-all duration-300 shadow-sm"
+            <button
+              type="button"
+              onClick={openConsultationModal}
+              className="hidden lg:inline-flex items-center gap-2 px-8 py-3 bg-[#C6A77D] text-white label-small font-semibold rounded-[3px] hover:bg-white hover:text-[#0B2545] transition-all duration-300 shadow-[0_8px_20px_rgba(0,0,0,0.18)]"
             >
               Nhận Tư Vấn
-            </Link>
+            </button>
 
             <button
-              className="lg:hidden p-2 flex flex-col gap-1.5 group"
+              className={`lg:hidden inline-flex h-11 w-11 items-center justify-center rounded-[4px] border transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#C6A77D]/50 ${
+                menuOpen || scrolled
+                  ? "border-[#C6A77D]/70 bg-[#FAF8F5] text-[#0B2545] shadow-[0_8px_20px_rgba(11,37,69,0.12)]"
+                  : "border-[#C6A77D] bg-[#071A31]/70 text-[#C6A77D] shadow-[0_8px_22px_rgba(0,0,0,0.22)] backdrop-blur"
+              }`}
               onClick={() => setMenuOpen(!menuOpen)}
-              aria-label="Toggle menu"
+              aria-label={menuOpen ? "Đóng menu" : "Mở menu"}
+              aria-expanded={menuOpen}
             >
-              <span
-                className={`block w-6 h-px transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-2 bg-[#1A1A1A]" : "bg-[#1A1A1A]"}`}
-              />
-              <span
-                className={`block w-4 h-px transition-all duration-300 ${menuOpen ? "opacity-0 bg-[#1A1A1A]" : "bg-[#1A1A1A]"}`}
-              />
-              <span
-                className={`block w-6 h-px transition-all duration-300 ${menuOpen ? "-rotate-45 -translate-y-2 bg-[#1A1A1A]" : "bg-[#1A1A1A]"}`}
-              />
+              {menuOpen ? (
+                <FiX className="h-6 w-6" aria-hidden="true" />
+              ) : (
+                <FiMenu className="h-6 w-6" aria-hidden="true" />
+              )}
             </button>
           </div>
         </div>
@@ -150,13 +154,16 @@ export default function Navbar() {
                 transition={{ delay: 0.5 }}
                 className="mt-4 pt-6 border-t border-[#E5E0D8]"
               >
-                <Link
-                  href="/contact"
+                <button
+                  type="button"
                   className="inline-flex items-center gap-2 px-8 py-3 bg-[#C6A77D] text-[#1A1A1A] label-small tracking-[0.12em] rounded-sm"
-                  onClick={() => setMenuOpen(false)}
+                  onClick={() => {
+                    setMenuOpen(false);
+                    openConsultationModal();
+                  }}
                 >
                   Nhận Tư Vấn
-                </Link>
+                </button>
               </motion.div>
             </nav>
           </motion.div>

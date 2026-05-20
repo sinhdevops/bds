@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const FLOORS = ["Tầng 5", "Tầng 6", "Tầng 7", "Tầng 8", "Tầng 9", "Tầng 10"];
 const VIEWS = ["View sông Hàn", "View thành phố", "View nội khu"];
@@ -252,10 +253,10 @@ export default function Floorplan() {
   const [selected, setSelected] = useState<Unit>(SELECTED_UNIT);
 
   return (
-    <section id="floorplan" className="bg-[#FAF8F5] py-20 lg:py-28">
-      <div className="max-w-[1440px] mx-auto px-8 lg:px-20">
+    <section id="floorplan" className="bg-[#FAF8F5] py-14 lg:py-18">
+      <div className="max-w-[1240px] mx-auto px-6">
         {/* Header */}
-        <div className="mb-10">
+        <div className="mb-8">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -272,7 +273,7 @@ export default function Floorplan() {
               className="font-serif text-[#111111] font-light"
               style={{
                 fontFamily: "var(--font-serif)",
-                fontSize: "clamp(1.75rem, 3vw, 2.5rem)",
+                fontSize: "clamp(1.75rem, 3vw, 2.45rem)",
               }}
             >
               Chọn căn hộ theo nhu cầu
@@ -281,7 +282,7 @@ export default function Floorplan() {
         </div>
 
         {/* 3-column layout */}
-        <div className="grid lg:grid-cols-[200px_1fr_280px] gap-6 items-start">
+        <div className="grid lg:grid-cols-[210px_1fr_300px] gap-7 items-start">
           {/* LEFT — Filters */}
           <motion.div
             className="flex flex-col gap-4"
@@ -302,7 +303,7 @@ export default function Floorplan() {
                 <select
                   value={floor}
                   onChange={(e) => setFloor(e.target.value)}
-                  className="w-full px-3 py-2.5 bg-white border border-[#E5E0D8] text-[#111111] text-sm font-light appearance-none focus:outline-none focus:border-[#B89B72] transition-colors duration-200"
+                  className="w-full rounded-[3px] px-3 py-3 bg-white border border-[#E5E0D8] text-[#111111] text-sm font-medium appearance-none focus:outline-none focus:border-[#B89B72] transition-colors duration-200"
                 >
                   {FLOORS.map((f) => (
                     <option key={f}>{f}</option>
@@ -332,7 +333,7 @@ export default function Floorplan() {
                 <select
                   value={view}
                   onChange={(e) => setView(e.target.value)}
-                  className="w-full px-3 py-2.5 bg-white border border-[#E5E0D8] text-[#111111] text-sm font-light appearance-none focus:outline-none focus:border-[#B89B72] transition-colors duration-200"
+                  className="w-full rounded-[3px] px-3 py-3 bg-white border border-[#E5E0D8] text-[#111111] text-sm font-medium appearance-none focus:outline-none focus:border-[#B89B72] transition-colors duration-200"
                 >
                   {VIEWS.map((v) => (
                     <option key={v}>{v}</option>
@@ -362,7 +363,7 @@ export default function Floorplan() {
                 <select
                   value={type}
                   onChange={(e) => setType(e.target.value)}
-                  className="w-full px-3 py-2.5 bg-white border border-[#E5E0D8] text-[#111111] text-sm font-light appearance-none focus:outline-none focus:border-[#B89B72] transition-colors duration-200"
+                  className="w-full rounded-[3px] px-3 py-3 bg-white border border-[#E5E0D8] text-[#111111] text-sm font-medium appearance-none focus:outline-none focus:border-[#B89B72] transition-colors duration-200"
                 >
                   {TYPES.map((t) => (
                     <option key={t}>{t}</option>
@@ -380,14 +381,14 @@ export default function Floorplan() {
               </div>
             </div>
 
-            <button className="w-full py-3 bg-[#111111] text-white label-small tracking-[0.12em] hover:bg-[#B89B72] hover:text-[#111111] transition-all duration-300 mt-2">
+            <button className="w-full rounded-[3px] py-3 bg-[#071522] text-white label-small font-bold hover:bg-[#B89B72] hover:text-white transition-all duration-300 mt-2">
               Tìm Kiếm
             </button>
           </motion.div>
 
           {/* CENTER — Floor Plan SVG */}
           <motion.div
-            className="relative bg-white border border-[#E5E0D8]/60 p-4"
+            className="relative bg-white border border-[#E5E0D8]/60 rounded-md p-4 shadow-[0_10px_28px_rgba(10,18,28,0.06)]"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -546,7 +547,16 @@ export default function Floorplan() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             {selected && (
-              <div className="bg-white border border-[#E5E0D8]/60 overflow-hidden">
+              <div className="bg-white border border-[#E5E0D8]/60 overflow-hidden rounded-md shadow-[0_14px_36px_rgba(10,18,28,0.10)]">
+                <div className="relative h-36">
+                  <Image
+                    src="https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?w=700&q=85&fit=crop"
+                    alt="Căn hộ mẫu"
+                    fill
+                    className="object-cover"
+                    sizes="300px"
+                  />
+                </div>
                 {/* Unit header */}
                 <div className="p-5 pb-4 border-b border-[#E5E0D8]/60">
                   <div className="flex items-start justify-between mb-1">

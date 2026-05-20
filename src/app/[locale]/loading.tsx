@@ -12,7 +12,7 @@ export default function Loading() {
         <div className="flex flex-col items-center gap-1">
           <span
             className="font-serif text-[#0B2545] text-lg font-semibold tracking-[0.1em] uppercase"
-            style={{ fontFamily: "var(--font-cormorant)" }}
+            style={{ fontFamily: "var(--font-serif)" }}
           >
             SRT Miền Trung
           </span>

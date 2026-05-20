@@ -35,7 +35,7 @@ export default function PrivacyPage() {
             3. Quyền của khách hàng
           </h2>
           <p>
-            Quý khách hoàn toàn có quyền yêu cầu SRT Miền Trung chỉnh sửa, cập nhật hoặc xóa bỏ hoàn toàn dữ liệu cá nhân đã đăng ký khỏi hệ thống dữ liệu khách hàng của chúng tôi bất kỳ lúc nào bằng cách liên hệ trực tiếp với bộ phận chăm sóc khách hàng qua Hotline **0981 814 814**.
+            Quý khách hoàn toàn có quyền yêu cầu SRT Miền Trung chỉnh sửa, cập nhật hoặc xóa bỏ hoàn toàn dữ liệu cá nhân đã đăng ký khỏi hệ thống dữ liệu khách hàng của chúng tôi bất kỳ lúc nào bằng cách liên hệ trực tiếp với bộ phận chăm sóc khách hàng qua Hotline **0325 610016**.
           </p>
         </div>
       </section>

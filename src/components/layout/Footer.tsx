@@ -129,13 +129,13 @@ export default function Footer() {
             <p className="label-small text-[#555555] mb-5 font-semibold">Liên Hệ</p>
             <div className="flex flex-col gap-3 mb-5">
               <a
-                href="tel:0809294387"
+                href="tel:0325610016"
                 className="flex items-center gap-2 text-white/50 hover:text-[#C6A77D] transition-colors duration-300"
               >
                 <svg viewBox="0 0 16 16" fill="none" stroke="#C6A77D" strokeWidth="1.2" className="w-3.5 h-3.5 shrink-0">
                   <path d="M13 10.7l-1.9.2c-.4 0-.8.3-1 .6-.2.3-.4 1.2-3.1-1.5C4.4 7.3 5.3 7 5.5 6.7c.3-.3.5-.6.6-1l.2-1.9c0-.4-.1-.8-.3-1.1L5.2 1.9c-.3-.4-.9-.5-1.4-.2L2.3 2.7C1.7 3 1.5 3.7 1.7 4.3c.6 2.8 2.3 5.6 4.8 8.1 2.5 2.5 5.3 4.2 8.1 4.8.6.1 1.3-.1 1.6-.6l1.1-1.5c.3-.5.2-1.1-.2-1.4l-.9-1c-.3-.2-.7-.4-1.2-.3z" />
                 </svg>
-                <span className="text-sm font-medium">0809 294 387</span>
+                <span className="text-sm font-medium">0325 610016</span>
               </a>
               <a
                 href="mailto:info@songhancondos.vn"

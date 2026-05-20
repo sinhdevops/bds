@@ -1,427 +1,280 @@
 "use client";
 
-import React, { useState, useMemo, useCallback } from "react";
+import React, { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
-import { STATUS_CONFIG } from "@/lib/projects";
+import { PROJECT_CATALOG, type ProjectCatalogItem, type ProjectStatus } from "@/lib/projectCatalog";
 
-interface ProjectItem {
-  slug: string;
-  name: string;
-  tagline: string;
-  status: "open" | "under-construction" | "delivered";
-  statusLabel: string;
-  location: string;
-  priceFrom: string;
-  priceTo: string;
-  floors: number;
-  totalUnits: number;
-  image: string;
-  badge?: string;
-  category: "song-han" | "cau-rong" | "tran-thi-ly";
-}
+type Segment = "all" | "river" | "bridge" | "ready" | "urban";
+type Budget = "all" | "under4" | "4to8" | "over8";
 
-const PROJECTS: ProjectItem[] = [
-  {
-    slug: "sun-symphony-residence",
-    name: "Sun Symphony Residence",
-    tagline: "Khúc giao hưởng giữa lòng thành phố",
-    status: "open",
-    statusLabel: "Đang Mở Bán",
-    location: "Trần Hưng Đạo · Sơn Trà",
-    priceFrom: "2.8",
-    priceTo: "18",
-    floors: 39,
-    totalUnits: 396,
-    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=900&q=80&fit=crop",
-    badge: "Hot — Symphony 5",
-    category: "song-han",
-  },
-  {
-    slug: "sun-ponte-residence",
-    name: "Sun Ponte Residence",
-    tagline: "Kiệt tác sống bên Cầu Rồng huyền thoại",
-    status: "under-construction",
-    statusLabel: "Đang Xây Dựng",
-    location: "Phạm Văn Đồng · Sơn Trà",
-    priceFrom: "3.5",
-    priceTo: "22",
-    floors: 35,
-    totalUnits: 352,
-    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=900&q=80&fit=crop",
-    badge: "Căn Hộ Hạng Sang",
-    category: "cau-rong",
-  },
-  {
-    slug: "sun-cosmo-residence",
-    name: "Sun Cosmo Residence",
-    tagline: "Cuộc sống tầm cao giữa sông núi hữu tình",
-    status: "delivered",
-    statusLabel: "Đã Bàn Giao",
-    location: "Nguyễn Tất Thành · Hải Châu",
-    priceFrom: "3.0",
-    priceTo: "14",
-    floors: 33,
-    totalUnits: 318,
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=80&fit=crop",
-    badge: "Nhận Nhà Ngay",
-    category: "tran-thi-ly",
-  },
+const FILTERS: { id: Segment; label: string }[] = [
+  { id: "all", label: "Tất cả" },
+  { id: "river", label: "Ven sông Hàn" },
+  { id: "bridge", label: "View Cầu Rồng" },
+  { id: "urban", label: "Đô thị mới" },
+  { id: "ready", label: "Nhận nhà ngay" },
 ];
 
-const FILTER_TABS = [
-  { id: "all", label: "Tất Cả", count: 3 },
-  { id: "song-han", label: "Sông Hàn", count: 1 },
-  { id: "cau-rong", label: "Cầu Rồng", count: 1 },
-  { id: "tran-thi-ly", label: "Trần Thị Lý", count: 1 },
+const BUDGETS: { id: Budget; label: string }[] = [
+  { id: "all", label: "Mọi ngân sách" },
+  { id: "under4", label: "Dưới 4 tỷ" },
+  { id: "4to8", label: "4 - 8 tỷ" },
+  { id: "over8", label: "Trên 8 tỷ" },
 ];
 
-const LocationIcon = () => (
-  <svg viewBox="0 0 14 18" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-3 h-4 shrink-0">
-    <path d="M7 1C4.2 1 2 3.2 2 6c0 4 5 11 5 11s5-7 5-11c0-2.8-2.2-5-5-5z" />
-    <circle cx="7" cy="6" r="1.8" />
-  </svg>
-);
+const STATUS_STYLE: Record<ProjectStatus, string> = {
+  open: "bg-emerald-500/12 text-emerald-700 ring-emerald-500/20",
+  "under-construction": "bg-amber-500/14 text-amber-700 ring-amber-500/20",
+  delivered: "bg-sky-500/12 text-sky-700 ring-sky-500/20",
+  rumored: "bg-stone-500/12 text-stone-700 ring-stone-500/20",
+};
 
 const ArrowIcon = () => (
-  <svg viewBox="0 0 16 10" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-2.5 shrink-0">
+  <svg viewBox="0 0 16 10" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-2.5 w-4">
     <path d="M1 5h14M11 1l4 4-4 4" />
   </svg>
 );
 
-function StatusBadge({ status, label }: { status: ProjectItem["status"]; label: string }) {
-  const cfg = STATUS_CONFIG[status];
-  return (
-    <div className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full ${cfg.bg} backdrop-blur-sm`}>
-      <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${cfg.dot} ${status === "open" ? "animate-pulse" : ""}`} />
-      <span className={`label-small ${cfg.text}`}>{label}</span>
-    </div>
-  );
+function budgetMatches(project: ProjectCatalogItem, budget: Budget) {
+  if (budget === "all") return true;
+  if (project.priceFrom === null || project.priceTo === null) return false;
+  if (budget === "under4") return project.priceFrom < 4;
+  if (budget === "4to8") return project.priceFrom <= 8 && project.priceTo >= 4;
+  return project.priceTo > 8;
 }
 
-/** Large editorial card — used when a project is "featured" (first in filtered list) */
-function FeaturedCard({ proj, index }: { proj: ProjectItem; index: number }) {
-  const num = String(index + 1).padStart(2, "0");
-
+function ProjectCard({ project, featured }: { project: ProjectCatalogItem; featured?: boolean }) {
   return (
-    <Link href={{ pathname: "/project/[slug]", params: { slug: proj.slug } }} className="group block h-full">
-      <motion.article
-        className="relative overflow-hidden rounded-2xl h-full min-h-[420px] lg:min-h-[500px] bg-navy"
-        whileHover={{ scale: 1.012 }}
-        transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-      >
-        {/* Background image */}
+    <motion.article
+      layout
+      initial={{ opacity: 0, y: 18 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -12 }}
+      transition={{ duration: 0.35 }}
+      className={`group overflow-hidden rounded-md bg-white ring-1 ring-black/5 shadow-[0_8px_26px_rgba(10,18,28,0.08)] transition-shadow duration-300 hover:shadow-[0_18px_48px_rgba(10,18,28,0.14)] ${
+        featured ? "lg:grid lg:grid-cols-[1.18fr_0.82fr]" : ""
+      }`}
+    >
+      <Link href={{ pathname: "/project/[slug]", params: { slug: project.slug } }} className="relative block min-h-[260px] overflow-hidden">
         <Image
-          src={proj.image}
-          alt={proj.name}
+          src={project.thumbnail}
+          alt={project.name}
           fill
           className="object-cover transition-transform duration-700 group-hover:scale-105"
-          sizes="(max-width: 768px) 100vw, 66vw"
+          sizes={featured ? "(max-width: 1024px) 100vw, 58vw" : "(max-width: 768px) 100vw, 33vw"}
         />
-
-        {/* Overlay layers */}
-        <div className="absolute inset-0 bg-linear-to-t from-[#0B2545] via-[#0B2545]/35 to-transparent" />
-        <div className="absolute inset-0 bg-linear-to-r from-[#0B2545]/25 to-transparent" />
-
-        {/* Index number – watermark */}
-        <div className="absolute top-5 left-6 select-none pointer-events-none">
-          <span
-            className="font-serif text-white/15 font-light"
-            style={{ fontFamily: "var(--font-serif)", fontSize: "5rem", lineHeight: 1 }}
-          >
-            {num}
-          </span>
+        <div className="absolute inset-0 bg-linear-to-t from-black/62 via-black/12 to-transparent" />
+        <div className="absolute left-4 top-4 rounded-[3px] bg-white px-3 py-1.5 text-[0.66rem] font-bold uppercase tracking-[0.1em] text-[#111111]">
+          {project.badge}
         </div>
-
-        {/* Top-right badges */}
-        <div className="absolute top-5 right-5 flex flex-col items-end gap-2">
-          {proj.badge && (
-            <div className="px-3 py-1 bg-gold rounded-sm">
-              <span className="label-small text-[#0B2545]">{proj.badge}</span>
-            </div>
-          )}
-          <StatusBadge status={proj.status} label={proj.statusLabel} />
-        </div>
-
-        {/* Bottom content */}
-        <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
-          <div className="flex items-center gap-1.5 text-white/55 mb-2">
-            <LocationIcon />
-            <span className="text-xs font-light">{proj.location}</span>
-          </div>
-
-          <h3
-            className="font-serif text-white font-light leading-tight mb-1.5"
-            style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.5rem, 3vw, 2.25rem)" }}
-          >
-            {proj.name}
+        <div className="absolute bottom-5 left-5 right-5">
+          <p className="mb-2 text-xs font-semibold text-white/70">{project.address}</p>
+          <h3 className="font-serif text-3xl font-normal leading-tight text-white" style={{ fontFamily: "var(--font-serif)" }}>
+            {project.name}
           </h3>
-          <p
-            className="text-white/45 text-sm font-light italic mb-5"
-            style={{ fontFamily: "var(--font-serif)" }}
-          >
-            {proj.tagline}
-          </p>
-
-          {/* Stats + CTA */}
-          <div className="flex items-end justify-between gap-4">
-            <div className="flex items-center gap-5">
-              <div>
-                <span
-                  className="font-serif text-gold font-light leading-none"
-                  style={{ fontFamily: "var(--font-serif)", fontSize: "1.6rem" }}
-                >
-                  {proj.priceFrom}
-                </span>
-                <span className="text-white/40 text-xs ml-1.5">– {proj.priceTo} Tỷ</span>
-              </div>
-              <div className="hidden sm:flex items-center gap-4 border-l border-white/15 pl-5">
-                <div className="text-center">
-                  <div className="text-white text-sm font-light leading-none">{proj.floors}</div>
-                  <div className="text-white/40 text-[10px] mt-0.5">Tầng</div>
-                </div>
-                <div className="w-px h-7 bg-white/15" />
-                <div className="text-center">
-                  <div className="text-white text-sm font-light leading-none">{proj.totalUnits}</div>
-                  <div className="text-white/40 text-[10px] mt-0.5">Căn</div>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-2 text-gold label-small group-hover:gap-3 transition-all duration-300">
-              Xem Dự Án
-              <ArrowIcon />
-            </div>
-          </div>
         </div>
-      </motion.article>
-    </Link>
-  );
-}
+      </Link>
 
-/** Compact card — used for secondary projects in the bento layout */
-function CompactCard({ proj, index }: { proj: ProjectItem; index: number }) {
-  const num = String(index + 1).padStart(2, "0");
-
-  return (
-    <Link href={{ pathname: "/project/[slug]", params: { slug: proj.slug } }} className="group block h-full">
-      <motion.article
-        className="flex flex-col overflow-hidden rounded-2xl h-full bg-white shadow-[0_2px_16px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_40px_rgba(11,37,69,0.12)] transition-shadow duration-500"
-        whileHover={{ y: -3 }}
-        transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-      >
-        {/* Image */}
-        <div className="relative overflow-hidden shrink-0" style={{ height: "180px" }}>
-          <Image
-            src={proj.image}
-            alt={proj.name}
-            fill
-            className="object-cover transition-transform duration-600 group-hover:scale-105"
-            sizes="(max-width: 768px) 100vw, 33vw"
-          />
-          <div className="absolute inset-0 bg-linear-to-t from-[#0B2545]/55 via-transparent to-transparent" />
-
-          <div className="absolute top-4 left-4 select-none pointer-events-none">
-            <span
-              className="font-serif text-white/20 font-light"
-              style={{ fontFamily: "var(--font-serif)", fontSize: "3rem", lineHeight: 1 }}
-            >
-              {num}
+      <div className="flex flex-col p-5 lg:p-6">
+        <div className="mb-4 flex items-start justify-between gap-4">
+          <div>
+            <span className={`inline-flex rounded-full px-3 py-1 text-[0.68rem] font-bold uppercase tracking-[0.08em] ring-1 ${STATUS_STYLE[project.status]}`}>
+              {project.statusLabel}
             </span>
+            <p className="mt-3 text-sm font-medium leading-relaxed text-[#555555]">{project.summary}</p>
           </div>
-
-          <div className="absolute top-4 right-4">
-            <StatusBadge status={proj.status} label={proj.statusLabel} />
-          </div>
-        </div>
-
-        {/* Content */}
-        <div className="flex flex-col gap-3 p-5 flex-1">
-          <div className="flex items-center gap-1.5 text-muted-light">
-            <LocationIcon />
-            <span className="text-xs font-light">{proj.location}</span>
-          </div>
-
-          <h3
-            className="font-serif text-navy font-light leading-snug group-hover:text-gold transition-colors duration-300"
-            style={{ fontFamily: "var(--font-serif)", fontSize: "1.15rem" }}
-          >
-            {proj.name}
-          </h3>
-
-          <p
-            className="text-muted-light text-xs font-light italic line-clamp-1"
-            style={{ fontFamily: "var(--font-serif)" }}
-          >
-            {proj.tagline}
-          </p>
-
-          {/* Footer */}
-          <div className="flex items-center justify-between pt-3 mt-auto border-t border-border">
-            <div>
-              <span
-                className="font-serif text-gold font-light"
-                style={{ fontFamily: "var(--font-serif)", fontSize: "1.1rem" }}
-              >
-                {proj.priceFrom}
-              </span>
-              <span className="text-muted-light text-xs ml-1">– {proj.priceTo} Tỷ</span>
-            </div>
-            <div className="flex items-center gap-1.5 text-gold label-small group-hover:gap-2.5 transition-all duration-300">
-              Chi Tiết
-              <ArrowIcon />
-            </div>
+          <div className="shrink-0 text-right">
+            <p className="text-[0.66rem] font-bold uppercase tracking-[0.12em] text-[#9C7B5D]">Giá từ</p>
+            <p className="font-serif text-2xl text-[#111111]" style={{ fontFamily: "var(--font-serif)" }}>
+              {project.priceFrom ? `${project.priceFrom} tỷ` : "Liên hệ"}
+            </p>
           </div>
         </div>
-      </motion.article>
-    </Link>
-  );
-}
 
-/** Determines which layout variant to use based on result count */
-function ProjectLayout({ projects }: { projects: ProjectItem[] }) {
-  if (projects.length === 0) {
-    return (
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        className="py-20 text-center"
-      >
-        <p className="text-muted font-light text-lg mb-2">Không có dự án nào phù hợp</p>
-        <p className="text-muted-light text-sm font-light">Thử chọn bộ lọc khác</p>
-      </motion.div>
-    );
-  }
+        <div className="grid grid-cols-3 gap-2 border-y border-[#E5E0D8] py-4">
+          {[
+            ["Quy mô", project.floors ? `${project.floors} tầng` : "Đang cập nhật"],
+            ["Sản phẩm", project.totalUnits ? `${project.totalUnits} căn` : "Đang cập nhật"],
+            ["Diện tích", project.area],
+          ].map(([label, value]) => (
+            <div key={label}>
+              <p className="text-[0.64rem] font-bold uppercase tracking-[0.1em] text-[#9C7B5D]">{label}</p>
+              <p className="mt-1 text-sm font-semibold text-[#111111]">{value}</p>
+            </div>
+          ))}
+        </div>
 
-  if (projects.length === 1) {
-    return (
-      <div className="max-w-2xl mx-auto" style={{ minHeight: "440px" }}>
-        <FeaturedCard proj={projects[0]} index={0} />
+        <div className="mt-4 flex flex-wrap gap-2">
+          {project.views.map((view) => (
+            <span key={view} className="rounded-full bg-[#F5F1EB] px-3 py-1 text-xs font-semibold text-[#555555]">
+              {view}
+            </span>
+          ))}
+        </div>
+
+        <p className="mt-4 text-sm font-medium leading-relaxed text-[#666666]">
+          <span className="font-bold text-[#111111]">Phù hợp:</span> {project.idealFor}
+        </p>
+
+        <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+          <Link
+            href={{ pathname: "/project/[slug]", params: { slug: project.slug } }}
+            className="inline-flex flex-1 items-center justify-center gap-2 rounded-[3px] bg-[#071522] px-5 py-3 text-center label-small font-bold text-white transition-colors duration-300 hover:bg-[#C6A77D]"
+          >
+            Xem chi tiết
+            <ArrowIcon />
+          </Link>
+          <Link
+            href="/contact"
+            className="inline-flex flex-1 items-center justify-center rounded-[3px] border border-[#C6A77D] px-5 py-3 text-center label-small font-bold text-[#9C7B5D] transition-colors duration-300 hover:bg-[#C6A77D] hover:text-white"
+          >
+            Nhận bảng giá
+          </Link>
+        </div>
       </div>
-    );
-  }
-
-  if (projects.length === 2) {
-    return (
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6" style={{ minHeight: "420px" }}>
-        {projects.map((proj, i) => (
-          <FeaturedCard key={proj.slug} proj={proj} index={i} />
-        ))}
-      </div>
-    );
-  }
-
-  /* 3+ projects: editorial bento — featured left (2/3) + supporting right (1/3 stacked) */
-  const [featured, ...rest] = projects;
-  return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
-      {/* Featured */}
-      <div className="lg:col-span-2" style={{ minHeight: "500px" }}>
-        <FeaturedCard proj={featured} index={0} />
-      </div>
-
-      {/* Supporting */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6">
-        {rest.map((proj, i) => (
-          <CompactCard key={proj.slug} proj={proj} index={i + 1} />
-        ))}
-      </div>
-    </div>
+    </motion.article>
   );
 }
 
 const ProjectGrid = () => {
-  const [filter, setFilter] = useState<string>("all");
+  const [segment, setSegment] = useState<Segment>("all");
+  const [budget, setBudget] = useState<Budget>("all");
+  const [query, setQuery] = useState("");
 
-  const filteredProjects = useMemo(
-    () => (filter === "all" ? PROJECTS : PROJECTS.filter((p) => p.category === filter)),
-    [filter]
-  );
+  const filteredProjects = useMemo(() => {
+    const normalizedQuery = query.trim().toLowerCase();
 
-  const handleFilterChange = useCallback((id: string) => setFilter(id), []);
+    return PROJECT_CATALOG.filter((project) => {
+      const segmentOk = segment === "all" || project.segment === segment;
+      const budgetOk = budgetMatches(project, budget);
+      const queryOk =
+        !normalizedQuery ||
+        [project.name, project.shortName, project.location, project.address, project.idealFor, ...project.views]
+          .join(" ")
+          .toLowerCase()
+          .includes(normalizedQuery);
+
+      return segmentOk && budgetOk && queryOk;
+    });
+  }, [segment, budget, query]);
+
+  const featuredProject = filteredProjects[0];
+  const restProjects = filteredProjects.slice(1);
 
   return (
-    <section className="bg-cream-light py-16 lg:py-24">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+    <section id="project-finder" className="relative z-30 bg-[#FAF8F5] py-12 lg:py-16">
+      <div className="mx-auto max-w-[1240px] px-6">
+        <div className="relative z-40 -mt-16 mb-10 rounded-md bg-white p-4 shadow-[0_20px_56px_rgba(10,18,28,0.14)] ring-1 ring-black/5 lg:-mt-20 lg:p-5">
+          <div className="grid gap-4 lg:grid-cols-[1fr_auto] lg:items-center">
+            <div className="relative">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#9C7B5D]">
+                <circle cx="9" cy="9" r="6" />
+                <path d="M14 14l4 4" />
+              </svg>
+              <input
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+                placeholder="Tìm theo tên dự án, vị trí, view, nhu cầu..."
+                className="h-12 w-full rounded-[3px] border border-[#E5E0D8] bg-[#FAF8F5] pl-11 pr-4 text-sm font-medium text-[#111111] outline-none transition-colors placeholder:text-[#8A8A8A] focus:border-[#C6A77D]"
+              />
+            </div>
 
-        {/* Section header */}
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
-          <div>
-            <p className="label-small text-muted mb-2">
-              Hiển thị{" "}
-              <span className="text-navy font-medium">{filteredProjects.length}</span> dự án
-            </p>
-            <h2
-              className="font-serif text-navy font-light leading-tight"
-              style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.5rem, 3vw, 2.25rem)" }}
+            <Link
+              href="/contact"
+              className="inline-flex h-12 items-center justify-center rounded-[3px] bg-[#C6A77D] px-7 label-small font-bold text-white transition-colors hover:bg-[#071522]"
             >
-              Danh Mục Dự Án
-            </h2>
+              Cần tư vấn nhanh?
+            </Link>
           </div>
 
-          {/* Filter tabs */}
-          <div className="flex items-center gap-2 flex-wrap">
-            {FILTER_TABS.map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => handleFilterChange(tab.id)}
-                className={`relative inline-flex items-center gap-1.5 px-4 py-2 rounded-full label-small transition-all duration-300 ${
-                  filter === tab.id
-                    ? "bg-navy text-white shadow-sm"
-                    : "border border-border text-muted hover:border-navy/40 hover:text-navy"
-                }`}
-              >
-                {tab.label}
-                <span
-                  className={`text-[10px] px-1.5 py-0.5 rounded-full transition-colors duration-300 ${
-                    filter === tab.id ? "bg-white/20 text-white" : "bg-border text-muted"
+          <div className="mt-4 flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+            <div className="flex flex-wrap gap-2">
+              {FILTERS.map((filter) => (
+                <button
+                  key={filter.id}
+                  onClick={() => setSegment(filter.id)}
+                  className={`rounded-full px-4 py-2 text-xs font-bold transition-colors ${
+                    segment === filter.id ? "bg-[#071522] text-white" : "bg-[#F5F1EB] text-[#555555] hover:bg-[#E5E0D8]"
                   }`}
                 >
-                  {tab.count}
-                </span>
-              </button>
-            ))}
+                  {filter.label}
+                </button>
+              ))}
+            </div>
+
+            <select
+              value={budget}
+              onChange={(event) => setBudget(event.target.value as Budget)}
+              className="h-10 rounded-[3px] border border-[#E5E0D8] bg-white px-3 text-sm font-semibold text-[#111111] outline-none focus:border-[#C6A77D]"
+            >
+              {BUDGETS.map((item) => (
+                <option key={item.id} value={item.id}>
+                  {item.label}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
 
-        {/* Content */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={filter}
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-          >
-            <ProjectLayout projects={filteredProjects} />
-          </motion.div>
+        <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="label-small text-[#9C7B5D]">Hiển thị {filteredProjects.length} dự án phù hợp</p>
+            <h2 className="mt-2 font-serif text-3xl font-normal leading-tight text-[#111111]" style={{ fontFamily: "var(--font-serif)" }}>
+              Danh mục dự án Sun Group Đà Nẵng
+            </h2>
+          </div>
+          <p className="max-w-md text-sm font-medium leading-relaxed text-[#666666]">
+            Mỗi card được tối ưu để so sánh nhanh: mức giá, vị trí, view, trạng thái và nhu cầu phù hợp.
+          </p>
+        </div>
+
+        <AnimatePresence mode="popLayout">
+          {filteredProjects.length === 0 ? (
+            <motion.div
+              key="empty"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="rounded-md border border-[#E5E0D8] bg-white p-10 text-center"
+            >
+              <p className="font-serif text-2xl text-[#111111]" style={{ fontFamily: "var(--font-serif)" }}>
+                Chưa có dự án phù hợp
+              </p>
+              <p className="mt-2 text-sm font-medium text-[#777777]">Thử đổi bộ lọc hoặc để lại thông tin để được tư vấn danh mục phù hợp hơn.</p>
+            </motion.div>
+          ) : (
+            <motion.div key="results" layout className="space-y-6">
+              {featuredProject && <ProjectCard project={featuredProject} featured />}
+              {restProjects.length > 0 && (
+                <div className="grid gap-6 lg:grid-cols-2">
+                  {restProjects.map((project) => (
+                    <ProjectCard key={project.slug} project={project} />
+                  ))}
+                </div>
+              )}
+            </motion.div>
+          )}
         </AnimatePresence>
 
-        {/* Bottom CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className="mt-14 pt-10 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-5"
-        >
+        <div className="mt-12 grid gap-4 rounded-md bg-[#071522] p-6 text-white lg:grid-cols-[1fr_auto] lg:items-center lg:p-8">
           <div>
-            <p className="text-navy font-serif font-light text-lg mb-1" style={{ fontFamily: "var(--font-serif)" }}>
-              Chưa tìm được sản phẩm ưng ý?
-            </p>
-            <p className="text-muted-light text-sm font-light">
-              Chuyên gia của chúng tôi sẽ tư vấn danh mục phù hợp với nhu cầu của bạn.
+            <p className="label-small text-[#C6A77D]">Tư vấn chọn dự án</p>
+            <h3 className="mt-2 font-serif text-2xl font-normal" style={{ fontFamily: "var(--font-serif)" }}>
+              Không chắc dự án nào hợp ngân sách và mục tiêu?
+            </h3>
+            <p className="mt-2 max-w-2xl text-sm font-medium leading-relaxed text-white/62">
+              Gửi nhu cầu, đội ngũ tư vấn sẽ lọc theo ngân sách, thời điểm nhận nhà, mục tiêu ở hay đầu tư và gửi shortlist rõ ràng.
             </p>
           </div>
           <Link
             href="/contact"
-            className="shrink-0 inline-flex items-center gap-2.5 px-7 py-3.5 bg-navy text-white label-small rounded-sm hover:bg-gold hover:text-navy transition-all duration-300"
+            className="inline-flex items-center justify-center rounded-[3px] bg-[#C6A77D] px-8 py-4 label-small font-bold text-white transition-colors hover:bg-white hover:text-[#071522]"
           >
-            Liên Hệ Chuyên Gia
-            <ArrowIcon />
+            Nhận shortlist
           </Link>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

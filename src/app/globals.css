@@ -19,8 +19,8 @@
   --color-border-light: #EDE8E0;
 
   /* Fonts */
-  --font-serif: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
-  --font-sans: var(--font-inter), "Inter", system-ui, sans-serif;
+  --font-serif: var(--font-playfair), "Playfair Display", Georgia, serif;
+  --font-sans: var(--font-montserrat), "Montserrat", Arial, system-ui, sans-serif;
 
   /* Easings */
   --ease-luxury: cubic-bezier(0.25, 0.1, 0.25, 1);
@@ -78,13 +78,13 @@ body {
 .text-display {
   font-size: clamp(3.5rem, 7vw, 6.5rem);
   line-height: 1.05;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 
 .text-headline {
   font-size: clamp(2.5rem, 4vw, 4rem);
   line-height: 1.1;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
 }
 
 .text-title {

@@ -6,9 +6,9 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://srtmientrung.vn";
 const pageUrl = `${siteUrl}/contact`;
 
 export const metadata: Metadata = {
-  title: "Liên Hệ Tư Vấn Mua Căn Hộ Đà Nẵng — Hotline 0981 814 814",
+  title: "Liên Hệ Tư Vấn Mua Căn Hộ Đà Nẵng - Hotline 0325 610016",
   description:
-    "Liên hệ SRT Miền Trung để nhận tư vấn mua căn hộ Sun Group tại Đà Nẵng. Chuyên viên tư vấn riêng cho khách Hà Nội, hỗ trợ xem nhà online, nhận bảng giá & chính sách ưu đãi. Hotline: 0981 814 814.",
+    "Liên hệ SRT Miền Trung để nhận tư vấn mua căn hộ Sun Group tại Đà Nẵng. Hỗ trợ xem nhà online, nhận bảng giá, chính sách ưu đãi và lịch xem nhà. Hotline: 0325 610016.",
   keywords: [
     "liên hệ mua căn hộ Đà Nẵng",
     "tư vấn bất động sản Đà Nẵng từ Hà Nội",
@@ -19,9 +19,9 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: pageUrl },
   openGraph: {
-    title: "Liên Hệ Tư Vấn Mua Căn Hộ Đà Nẵng — SRT Miền Trung",
+    title: "Liên Hệ Tư Vấn Mua Căn Hộ Đà Nẵng - SRT Miền Trung",
     description:
-      "Nhận tư vấn 1-1 về căn hộ Sun Group Đà Nẵng. Hỗ trợ đặc biệt cho khách Hà Nội: xem nhà online, hỗ trợ vay vốn, ký kết từ xa.",
+      "Nhận tư vấn 1-1 về căn hộ Sun Group Đà Nẵng. Hỗ trợ xem nhà online, tư vấn tài chính và cập nhật chính sách bán hàng.",
     url: pageUrl,
     type: "website",
   },

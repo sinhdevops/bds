@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { openConsultationModal } from "@/components/shared/ConsultationModal";
 
 export default function StickyBar() {
   const [visible, setVisible] = useState(false);
@@ -65,16 +66,17 @@ export default function StickyBar() {
                 >
                   <path d="M13 10.7l-1.9.2c-.4 0-.8.3-1 .6-.2.3-.4 1.2-3.1-1.5C4.4 7.3 5.3 7 5.5 6.7c.3-.3.5-.6.6-1l.2-1.9c0-.4-.1-.8-.3-1.1L5.2 1.9c-.3-.4-.9-.5-1.4-.2L2.3 2.7C1.7 3 1.5 3.7 1.7 4.3c.6 2.8 2.3 5.6 4.8 8.1 2.5 2.5 5.3 4.2 8.1 4.8.6.1 1.3-.1 1.6-.6l1.1-1.5c.3-.5.2-1.1-.2-1.4l-.9-1c-.3-.2-.7-.4-1.2-.3z" />
                 </svg>
-                0981 814 814
+                0325 610016
               </a>
 
               {/* CTA button (Full width on mobile, normal width on desktop) */}
-              <a
-                href="#contact"
+              <button
+                type="button"
+                onClick={openConsultationModal}
                 className="flex-grow sm:flex-grow-0 text-center justify-center px-6 py-2.5 bg-[#C6A77D] text-[#1A1A1A] label-small font-semibold tracking-[0.1em] rounded-sm hover:bg-[#0B2545] hover:text-white transition-all duration-300 shadow-sm"
               >
                 Đăng Ký Tư Vấn Ngay
-              </a>
+              </button>
             </div>
           </div>
         </motion.div>

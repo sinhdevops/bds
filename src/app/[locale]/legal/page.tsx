@@ -1,66 +1,82 @@
 import type { Metadata } from "next";
+import InfoPageLayout from "@/components/page/info/InfoPageLayout";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://srtmientrung.vn";
 const pageUrl = `${siteUrl}/phap-ly`;
 
 export const metadata: Metadata = {
-  title: "Pháp Lý Dự Án — Sổ Hồng Lâu Dài, Minh Bạch 100%",
+  title: "FAQ & Pháp Lý Dự Án — SRT Miền Trung",
   description:
-    "Toàn bộ dự án Sun Group tại Đà Nẵng được phân phối bởi SRT Miền Trung đều có pháp lý đầy đủ: quy hoạch 1/500, giấy phép xây dựng, sổ hồng sở hữu lâu dài. An tâm đầu tư từ Hà Nội.",
-  keywords: [
-    "pháp lý căn hộ Đà Nẵng",
-    "sổ hồng căn hộ Đà Nẵng",
-    "pháp lý Sun Symphony Residence",
-    "pháp lý Sun Ponte Residence",
-    "quyền sở hữu lâu dài căn hộ Đà Nẵng",
-    "đầu tư an toàn bất động sản Đà Nẵng",
-  ],
+    "Các câu hỏi thường gặp về pháp lý, sổ hồng, quy trình đặt cọc, thanh toán và tư vấn mua căn hộ Sun Group tại Đà Nẵng.",
   alternates: { canonical: pageUrl },
-  openGraph: {
-    title: "Pháp Lý Dự Án Sun Group — Sổ Hồng Lâu Dài, An Tâm Đầu Tư",
-    description:
-      "Đầy đủ quy hoạch 1/500, giấy phép xây dựng, sổ hồng sở hữu lâu dài. Khách Hà Nội an tâm đầu tư căn hộ Đà Nẵng.",
-    url: pageUrl,
-    type: "website",
-  },
 };
+
+const FAQS = [
+  {
+    q: "Các dự án có pháp lý đầy đủ không?",
+    a: "Trước khi tư vấn giữ chỗ hoặc đặt cọc, đội ngũ sẽ cung cấp thông tin pháp lý theo từng dự án: quy hoạch, điều kiện bán hàng, hồ sơ chủ đầu tư và các tài liệu liên quan nếu khách hàng yêu cầu.",
+  },
+  {
+    q: "Khách ở xa có thể mua và làm việc online không?",
+    a: "Có. Khách hàng có thể nhận tư vấn online, xem giỏ hàng, chọn căn, đặt lịch xem nhà thực tế hoặc ủy quyền theo quy trình được hướng dẫn riêng.",
+  },
+  {
+    q: "Khi nào cần đặt cọc?",
+    a: "Chỉ nên đặt cọc sau khi đã xác nhận mã căn, tầng, hướng view, giá bán, chính sách thanh toán và điều kiện hoàn/khấu trừ cọc nếu có.",
+  },
+  {
+    q: "Có hỗ trợ vay ngân hàng không?",
+    a: "Tùy dự án và thời điểm mở bán, khách hàng có thể được tư vấn phương án vay, tỷ lệ vay, hồ sơ cần chuẩn bị và thời gian xét duyệt.",
+  },
+  {
+    q: "Thông tin trên website có phải giá cuối cùng không?",
+    a: "Không. Giá trên website là thông tin tham khảo. Bảng giá chính xác phụ thuộc mã căn, tầng, view, chính sách hiện hành và tình trạng giỏ hàng tại thời điểm tư vấn.",
+  },
+];
 
 export default function LegalPage() {
   return (
-    <>
-      <section className="relative w-full h-[30vh] min-h-[220px] overflow-hidden flex items-center justify-center bg-[#0B2545]">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0B2545]/40 via-[#0B2545]/60 to-[#0B2545] z-0" />
-        <div className="relative text-center z-10 pt-16">
-          <h1 className="font-serif text-white font-light text-3xl md:text-5xl" style={{ fontFamily: "var(--font-serif)" }}>
-            Pháp Lý Dự Án
-          </h1>
+    <InfoPageLayout
+      active="faq"
+      eyebrow="FAQ"
+      title="Câu hỏi thường gặp trước khi mua căn hộ Đà Nẵng"
+      description="Tập hợp các câu hỏi phổ biến về pháp lý, thanh toán, đặt cọc và quy trình làm việc để khách hàng kiểm tra nhanh trước khi liên hệ tư vấn."
+    >
+      <div className="grid gap-8 lg:grid-cols-[1fr_320px]">
+        <div className="space-y-4">
+          {FAQS.map((item, index) => (
+            <details
+              key={item.q}
+              className="group rounded-md bg-white p-6 shadow-[0_8px_26px_rgba(10,18,28,0.06)] ring-1 ring-black/5"
+              open={index === 0}
+            >
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-5 text-base font-bold text-[#111111]">
+                {item.q}
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#F5F1EB] text-[#9C7B5D] transition-transform group-open:rotate-45">
+                  +
+                </span>
+              </summary>
+              <p className="mt-4 text-sm font-medium leading-[1.8] text-[#666666]">{item.a}</p>
+            </details>
+          ))}
         </div>
-      </section>
 
-      <section className="bg-[#FAF8F5] py-16 lg:py-24 text-[#555555]">
-        <div className="max-w-[800px] mx-auto px-6 font-light leading-relaxed text-sm md:text-base flex flex-col gap-6">
-          <h2 className="font-serif text-2xl text-[#0B2545] font-semibold" style={{ fontFamily: "var(--font-serif)" }}>
-            1. Quy hoạch 1/500 & Quyết định bàn giao đất
+        <aside className="rounded-md bg-white p-7 shadow-[0_8px_26px_rgba(10,18,28,0.07)] ring-1 ring-black/5">
+          <p className="label-small text-[#9C7B5D]">Cần kiểm tra hồ sơ?</p>
+          <h2 className="mt-3 font-serif text-3xl font-normal text-[#111111]" style={{ fontFamily: "var(--font-serif)" }}>
+            Nhận checklist trước khi đặt cọc
           </h2>
-          <p>
-            Tất cả các dự án căn hộ cao cấp bao gồm <strong>Sun Symphony Residence</strong> và <strong>Sun Ponte Residence</strong> đều được phê duyệt quy hoạch chi tiết xây dựng tỷ lệ 1/500 và sở hữu đầy đủ Quyết định bàn giao đất chính thức từ UBND Thành phố Đà Nẵng, bảo đảm nền tảng pháp lý tối cao.
+          <p className="mt-4 text-sm font-medium leading-relaxed text-[#666666]">
+            Chúng tôi có thể gửi danh sách tài liệu cần kiểm tra theo từng dự án và từng giai đoạn giao dịch.
           </p>
-
-          <h2 className="font-serif text-2xl text-[#0B2545] font-semibold mt-4" style={{ fontFamily: "var(--font-serif)" }}>
-            2. Giấy phép xây dựng
-          </h2>
-          <p>
-            Các công trình đã được cấp Giấy phép xây dựng hợp lệ từ Sở Xây dựng TP. Đà Nẵng, hoàn thành đầy đủ nghĩa vụ đóng thuế quyền sử dụng đất và đang triển khai thi công xây dựng móng cọc đúng tiến độ cam kết.
-          </p>
-
-          <h2 className="font-serif text-2xl text-[#0B2545] font-semibold mt-4" style={{ fontFamily: "var(--font-serif)" }}>
-            3. Quyền sở hữu lâu dài
-          </h2>
-          <p>
-            Khách hàng sở hữu quốc tịch Việt Nam khi mua căn hộ tại dự án của Sun Group thông qua <strong>SRT Miền Trung</strong> sẽ được cấp Giấy chứng nhận quyền sử dụng đất, quyền sở hữu nhà ở và tài sản khác gắn liền với đất (Sổ hồng) với thời hạn <strong>Sở hữu lâu dài</strong> (Permanent Ownership).
-          </p>
-        </div>
-      </section>
-    </>
+          <a
+            href="tel:0325610016"
+            className="mt-6 inline-flex w-full justify-center rounded-[3px] bg-[#C6A77D] px-5 py-3 label-small font-bold text-white transition-colors hover:bg-[#071522]"
+          >
+            Gọi tư vấn pháp lý
+          </a>
+        </aside>
+      </div>
+    </InfoPageLayout>
   );
 }

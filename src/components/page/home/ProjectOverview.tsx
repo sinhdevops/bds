@@ -85,14 +85,14 @@ export default function ProjectOverview() {
     <section
       id="project"
       style={{ backgroundColor: "#FAF8F5" }}
-      className="border-b border-border/50"
+      className="relative z-20 pb-4 lg:pb-8"
     >
-      <div className="max-w-[1440px] mx-auto">
-        <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-[#E5E0D8]/60">
+      <div className="max-w-[1240px] mx-auto px-6">
+        <div className="-mt-10 lg:-mt-14 grid grid-cols-2 lg:grid-cols-4 divide-x divide-[#E5E0D8]/70 rounded-md bg-white shadow-[0_18px_48px_rgba(10,18,28,0.10)] ring-1 ring-black/5">
           {STATS.map((stat, i) => (
             <motion.div
               key={stat.title}
-              className="flex items-center gap-5 px-8 lg:px-10 py-8 lg:py-10"
+              className="flex items-center gap-5 px-6 py-6 lg:px-10 lg:py-7"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
@@ -102,30 +102,27 @@ export default function ProjectOverview() {
                 delay: i * 0.1,
               }}
             >
-              <div className="text-gold/70 shrink-0">{stat.icon}</div>
+              <div className="text-[#C6A77D] shrink-0">{stat.icon}</div>
               <div>
                 <div className="flex items-baseline gap-1 mb-0.5">
                   <span
-                    className="font-serif text-[#111111]"
+                    className="font-sans text-[#141414] uppercase"
                     style={{
-                      fontFamily: "var(--font-serif)",
-                      fontSize: "clamp(1.3rem, 2vw, 1.75rem)",
-                      fontWeight: 300,
+                      fontFamily: "var(--font-sans)",
+                      fontSize: "clamp(0.95rem, 1.2vw, 1.12rem)",
+                      fontWeight: 700,
                       lineHeight: 1.1,
                     }}
                   >
                     {stat.number}
                   </span>
                   {stat.unit && (
-                    <span
-                      className="label-small text-gold"
-                      style={{ fontSize: "0.6rem" }}
-                    >
+                    <span className="label-small text-[#141414]" style={{ fontSize: "0.6rem" }}>
                       {stat.unit}
                     </span>
                   )}
                 </div>
-                <p className="text-[#111111] text-xs font-medium leading-snug">
+                <p className="text-[#292929] text-xs font-semibold leading-snug">
                   {stat.title}
                 </p>
                 <p className="text-[#8A8A8A] text-xs font-light leading-snug">
