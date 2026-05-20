@@ -296,7 +296,7 @@ const NewsGrid = () => {
                     Cập nhật giá và tiến độ mới nhất
                   </h3>
                   <p className="mt-3 text-sm font-medium leading-relaxed text-[#666666]">
-                    Để lại thông tin, SRT Miền Trung sẽ gửi bản tin ngắn gọn theo nhu cầu của bạn.
+                    Để lại thông tin, BĐS Đà Nẵng sẽ gửi bản tin ngắn gọn theo nhu cầu của bạn.
                   </p>
                   <Link
                     href="/contact"

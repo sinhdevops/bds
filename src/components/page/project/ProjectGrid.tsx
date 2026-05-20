@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { PROJECT_CATALOG, type ProjectCatalogItem, type ProjectStatus } from "@/lib/projectCatalog";
+import { openConsultationModal } from "@/components/shared/ConsultationModal";
 
 type Segment = "all" | "river" | "bridge" | "ready" | "urban";
 type Budget = "all" | "under4" | "4to8" | "over8";
@@ -46,6 +47,10 @@ function budgetMatches(project: ProjectCatalogItem, budget: Budget) {
 }
 
 function ProjectCard({ project, featured }: { project: ProjectCatalogItem; featured?: boolean }) {
+  const handlePriceRequest = useCallback(() => {
+    openConsultationModal();
+  }, []);
+
   return (
     <motion.article
       layout
@@ -126,12 +131,13 @@ function ProjectCard({ project, featured }: { project: ProjectCatalogItem; featu
             Xem chi tiết
             <ArrowIcon />
           </Link>
-          <Link
-            href="/contact"
+          <button
+            type="button"
+            onClick={handlePriceRequest}
             className="inline-flex flex-1 items-center justify-center rounded-[3px] border border-[#C6A77D] px-5 py-3 text-center label-small font-bold text-[#9C7B5D] transition-colors duration-300 hover:bg-[#C6A77D] hover:text-white"
           >
             Nhận bảng giá
-          </Link>
+          </button>
         </div>
       </div>
     </motion.article>
@@ -142,6 +148,18 @@ const ProjectGrid = () => {
   const [segment, setSegment] = useState<Segment>("all");
   const [budget, setBudget] = useState<Budget>("all");
   const [query, setQuery] = useState("");
+
+  const handleQueryChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+    setQuery(event.target.value);
+  }, []);
+
+  const handleBudgetChange = useCallback((event: React.ChangeEvent<HTMLSelectElement>) => {
+    setBudget(event.target.value as Budget);
+  }, []);
+
+  const handleLeadRequest = useCallback(() => {
+    openConsultationModal();
+  }, []);
 
   const filteredProjects = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
@@ -175,18 +193,19 @@ const ProjectGrid = () => {
               </svg>
               <input
                 value={query}
-                onChange={(event) => setQuery(event.target.value)}
+                onChange={handleQueryChange}
                 placeholder="Tìm theo tên dự án, vị trí, view, nhu cầu..."
                 className="h-12 w-full rounded-[3px] border border-[#E5E0D8] bg-[#FAF8F5] pl-11 pr-4 text-sm font-medium text-[#111111] outline-none transition-colors placeholder:text-[#8A8A8A] focus:border-[#C6A77D]"
               />
             </div>
 
-            <Link
-              href="/contact"
+            <button
+              type="button"
+              onClick={handleLeadRequest}
               className="inline-flex h-12 items-center justify-center rounded-[3px] bg-[#C6A77D] px-7 label-small font-bold text-white transition-colors hover:bg-[#071522]"
             >
               Cần tư vấn nhanh?
-            </Link>
+            </button>
           </div>
 
           <div className="mt-4 flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
@@ -206,7 +225,7 @@ const ProjectGrid = () => {
 
             <select
               value={budget}
-              onChange={(event) => setBudget(event.target.value as Budget)}
+              onChange={handleBudgetChange}
               className="h-10 rounded-[3px] border border-[#E5E0D8] bg-white px-3 text-sm font-semibold text-[#111111] outline-none focus:border-[#C6A77D]"
             >
               {BUDGETS.map((item) => (
@@ -268,12 +287,13 @@ const ProjectGrid = () => {
               Gửi nhu cầu, đội ngũ tư vấn sẽ lọc theo ngân sách, thời điểm nhận nhà, mục tiêu ở hay đầu tư và gửi shortlist rõ ràng.
             </p>
           </div>
-          <Link
-            href="/contact"
+          <button
+            type="button"
+            onClick={handleLeadRequest}
             className="inline-flex items-center justify-center rounded-[3px] bg-[#C6A77D] px-8 py-4 label-small font-bold text-white transition-colors hover:bg-white hover:text-[#071522]"
           >
             Nhận shortlist
-          </Link>
+          </button>
         </div>
       </div>
     </section>

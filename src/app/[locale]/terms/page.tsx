@@ -1,7 +1,12 @@
-export const metadata = {
-  title: "Điều Khoản Sử Dụng — SRT Miền Trung",
-  description: "Các điều khoản và điều kiện áp dụng cho người dùng truy cập và tra cứu thông tin bất động sản trên website chính thức của SRT Miền Trung.",
-};
+import type { Metadata } from "next";
+import { ROUTES, createMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = createMetadata({
+  title: "Điều Khoản Sử Dụng - BĐS Đà Nẵng",
+  description:
+    "Các điều khoản và điều kiện áp dụng cho người dùng truy cập, tra cứu thông tin bất động sản và đăng ký tư vấn trên website BĐS Đà Nẵng.",
+  path: ROUTES.terms,
+});
 
 export default function TermsPage() {
   return (
@@ -21,21 +26,21 @@ export default function TermsPage() {
             1. Quy định chung
           </h2>
           <p>
-            Chào mừng quý khách đến với cổng thông tin bất động sản chính thức của **SRT Miền Trung**. Khi truy cập và sử dụng trang web này, quý khách mặc nhiên đồng ý tuân thủ toàn bộ các điều khoản và điều kiện được nêu dưới đây. Nếu không đồng ý, xin vui lòng ngừng truy cập.
+            Chào mừng quý khách đến với cổng thông tin BĐS Đà Nẵng. Khi truy cập và sử dụng website, quý khách đồng ý tuân thủ các điều khoản được nêu tại trang này.
           </p>
 
           <h2 className="font-serif text-2xl text-[#0B2545] font-semibold mt-4" style={{ fontFamily: "var(--font-serif)" }}>
             2. Quyền sở hữu trí tuệ
           </h2>
           <p>
-            Toàn bộ nội dung trên website bao gồm văn bản, thiết kế, hình ảnh dự án, sơ đồ tầng tháp Symphony 5, các mã nguồn, nhãn hiệu thương hiệu đều thuộc quyền sở hữu trí tuệ của **SRT Miền Trung** và các đối tác liên quan. Nghiêm cấm mọi hành vi sao chép, phân phối hoặc tái xuất bản khi chưa có sự đồng ý bằng văn bản từ chúng tôi.
+            Nội dung trên website bao gồm văn bản, thiết kế, hình ảnh dự án và dữ liệu tham khảo thuộc quyền sở hữu của BĐS Đà Nẵng hoặc các đối tác liên quan. Mọi hành vi sao chép, phân phối hoặc tái xuất bản cần có sự đồng ý phù hợp.
           </p>
 
           <h2 className="font-serif text-2xl text-[#0B2545] font-semibold mt-4" style={{ fontFamily: "var(--font-serif)" }}>
             3. Giới hạn trách nhiệm
           </h2>
           <p>
-            Các thông tin về căn hộ, giá bán và chính sách bán hàng của dự án Sun Symphony Residence, Sun Ponte Residence chỉ mang tính chất tham khảo dự kiến. SRT Miền Trung nỗ lực đảm bảo thông tin chính xác nhất nhưng không chịu trách nhiệm pháp lý đối với bất kỳ sai lệch khách quan nào từ phía chủ đầu tư.
+            Thông tin về căn hộ, giá bán và chính sách bán hàng chỉ mang tính tham khảo tại thời điểm công bố. Bảng giá và chính sách cuối cùng phụ thuộc vào chủ đầu tư, giỏ hàng và thời điểm tư vấn.
           </p>
         </div>
       </section>

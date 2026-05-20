@@ -2,7 +2,19 @@ import type { Metadata } from "next";
 import { Montserrat, Playfair_Display } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
+import StickyBar from "@/components/layout/StickyBar";
+import ConsultationModal from "@/components/shared/ConsultationModal";
 import { routing } from "@/i18n/routing";
+import {
+  DEFAULT_OG_IMAGE,
+  HOTLINE_E164,
+  SITE_NAME,
+  SITE_URL,
+  absoluteUrl,
+  createMetadata,
+} from "@/lib/seo";
 import "../globals.css";
 
 const playfair = Playfair_Display({
@@ -20,87 +32,99 @@ const montserrat = Montserrat({
   display: "swap",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://srtmientrung.vn";
-
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
-  title: {
-    default: "SRT Miền Trung — Nhà Phân Phối BĐS Cao Cấp Sun Group Đà Nẵng",
-    template: "%s | SRT Miền Trung",
+  metadataBase: new URL(SITE_URL),
+  ...createMetadata({
+    title: "BĐS Đà Nẵng - Căn Hộ Cao Cấp Sun Group & Ven Sông Hàn",
+    description:
+      "Cổng thông tin tư vấn căn hộ cao cấp Đà Nẵng: Sun Symphony, Sun Ponte, Sun Cosmo, Sun Solar và Capital Square. Nhận bảng giá, giỏ hàng và chính sách mới nhất.",
+    keywords: [
+      "BĐS Đà Nẵng",
+      "bds-da-nang.com",
+      "Sun Group Đà Nẵng",
+      "mua căn hộ Đà Nẵng",
+      "căn hộ Sun Group Đà Nẵng",
+      "Sun Symphony Residence",
+      "Sun Ponte Residence",
+      "Sun Cosmo Residence",
+      "Capital Square Đà Nẵng",
+      "bất động sản sông Hàn",
+      "đầu tư căn hộ Đà Nẵng",
+      "bảng giá căn hộ Đà Nẵng",
+    ],
+  }),
+  applicationName: SITE_NAME,
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  category: "Real Estate",
+  formatDetection: {
+    telephone: true,
+    address: true,
+    email: true,
   },
-  description:
-    "Đại lý phân phối chiến lược Sun Group tại Đà Nẵng. Mua căn hộ Sun Symphony, Sun Ponte, Sun Cosmo Residence — lý tưởng đầu tư từ Hà Nội. Giá từ 2.8 tỷ. Hotline: 0325 610016.",
-  keywords: [
-    "SRT Miền Trung",
-    "Sun Group Đà Nẵng",
-    "Sun Symphony Residence",
-    "Sun Ponte Residence",
-    "Sun Cosmo Residence",
-    "mua căn hộ Đà Nẵng từ Hà Nội",
-    "đầu tư bất động sản Đà Nẵng",
-    "căn hộ nghỉ dưỡng Đà Nẵng",
-    "đầu tư căn hộ Đà Nẵng cho thuê",
-    "bất động sản Đà Nẵng 2025 2026",
-    "căn hộ cao cấp Đà Nẵng",
-    "căn hộ view sông Hàn Đà Nẵng",
-    "nhà phân phối Sun Group Đà Nẵng",
-  ],
-  authors: [{ name: "SRT Miền Trung", url: siteUrl }],
-  creator: "SRT Miền Trung",
-  publisher: "SRT Miền Trung",
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: { index: true, follow: true, "max-image-preview": "large" },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/images/logo.png",
   },
   openGraph: {
-    siteName: "SRT Miền Trung",
-    title: "SRT Miền Trung — Nhà Phân Phối BĐS Cao Cấp Sun Group Đà Nẵng",
-    description:
-      "Mua căn hộ Sun Symphony, Sun Ponte, Sun Cosmo Residence tại Đà Nẵng — lý tưởng đầu tư từ Hà Nội. Giá từ 2.8 tỷ, sở hữu lâu dài, pháp lý đầy đủ.",
-    type: "website",
-    locale: "vi_VN",
-    url: siteUrl,
-  },
-  twitter: {
-    card: "summary_large_image",
-    site: "@SRTMienTrung",
-    title: "SRT Miền Trung — BĐS Cao Cấp Sun Group Đà Nẵng",
-    description:
-      "Căn hộ Sun Symphony, Sun Ponte, Sun Cosmo Residence tại Đà Nẵng — đầu tư sinh lời từ Hà Nội. Hotline: 0325 610016.",
+    ...createMetadata({
+      title: "BĐS Đà Nẵng - Căn Hộ Cao Cấp Sun Group & Ven Sông Hàn",
+      description:
+        "Tư vấn căn hộ Đà Nẵng: bảng giá, giỏ hàng, chính sách bán hàng, lịch xem nhà và pháp lý dự án.",
+    }).openGraph,
+    images: [{ url: absoluteUrl(DEFAULT_OG_IMAGE), width: 1200, height: 630, alt: SITE_NAME }],
   },
 };
 
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "RealEstateAgent",
-  "@id": `${siteUrl}/#organization`,
-  name: "SRT Miền Trung",
+  "@id": `${SITE_URL}/#organization`,
+  name: SITE_NAME,
+  alternateName: ["BDS Da Nang", "bds-da-nang.com"],
   description:
-    "Đại lý phân phối chiến lược các dự án căn hộ cao cấp của Tập đoàn Sun Group tại Đà Nẵng.",
-  url: siteUrl,
-  telephone: "+84325610016",
+    "Cổng thông tin tư vấn và cập nhật các dự án căn hộ cao cấp tại Đà Nẵng.",
+  url: SITE_URL,
+  logo: absoluteUrl("/images/logo.png"),
+  image: absoluteUrl(DEFAULT_OG_IMAGE),
+  telephone: HOTLINE_E164,
+  priceRange: "$$",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "259 Trần Hưng Đạo",
     addressLocality: "Đà Nẵng",
     addressRegion: "Đà Nẵng",
     addressCountry: "VN",
   },
   areaServed: [
     { "@type": "City", name: "Đà Nẵng" },
-    { "@type": "City", name: "Hà Nội" },
+    { "@type": "Country", name: "Việt Nam" },
+  ],
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      telephone: HOTLINE_E164,
+      contactType: "sales",
+      areaServed: "VN",
+      availableLanguage: ["vi"],
+    },
   ],
 };
 
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "@id": `${siteUrl}/#website`,
-  url: siteUrl,
-  name: "SRT Miền Trung",
-  publisher: { "@id": `${siteUrl}/#organization` },
+  "@id": `${SITE_URL}/#website`,
+  url: SITE_URL,
+  name: SITE_NAME,
+  publisher: { "@id": `${SITE_URL}/#organization` },
   inLanguage: "vi-VN",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: `${SITE_URL}/du-an?keyword={search_term_string}`,
+    "query-input": "required name=search_term_string",
+  },
 };
 
 interface LocaleLayoutProps {
@@ -139,8 +163,3 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
     </html>
   );
 }
-
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
-import StickyBar from "@/components/layout/StickyBar";
-import ConsultationModal from "@/components/shared/ConsultationModal";

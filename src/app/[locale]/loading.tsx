@@ -14,7 +14,7 @@ export default function Loading() {
             className="font-serif text-[#0B2545] text-lg font-semibold tracking-[0.1em] uppercase"
             style={{ fontFamily: "var(--font-serif)" }}
           >
-            SRT Miền Trung
+            BĐS Đà Nẵng
           </span>
           <span className="text-[0.625rem] text-[#C6A77D] tracking-[0.2em] uppercase font-semibold">
             Real Estate

@@ -1,19 +1,15 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import type { ChangeEvent, FormEvent } from "react";
-import { useCallback, useEffect, useState } from "react";
+import type { ChangeEvent, FormEvent, MouseEvent } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import { FiCheck, FiPhoneCall, FiSend, FiX } from "react-icons/fi";
-
-type FormState = {
-  name: string;
-  phone: string;
-};
-
-const initialForm: FormState = {
-  name: "",
-  phone: "",
-};
+import {
+  HOTLINE_DISPLAY,
+  HOTLINE_TEL,
+  INITIAL_LEAD_FORM,
+  type LeadFormState,
+} from "@/lib/contact";
 
 export const CONSULTATION_MODAL_EVENT = "open-consultation-modal";
 
@@ -21,26 +17,37 @@ export const openConsultationModal = () => {
   window.dispatchEvent(new CustomEvent(CONSULTATION_MODAL_EVENT));
 };
 
+const modalMotion = {
+  initial: { opacity: 0, y: 18, scale: 0.97 },
+  animate: { opacity: 1, y: 0, scale: 1 },
+  exit: { opacity: 0, y: 12, scale: 0.98 },
+  transition: { duration: 0.25, ease: "easeOut" as const },
+};
+
 export default function ConsultationModal() {
   const [open, setOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [form, setForm] = useState<FormState>(initialForm);
+  const [form, setForm] = useState<LeadFormState>(INITIAL_LEAD_FORM);
+
+  const reset = useCallback(() => {
+    setSubmitted(false);
+    setForm(INITIAL_LEAD_FORM);
+  }, []);
 
   const close = useCallback(() => {
     setOpen(false);
-    setSubmitted(false);
-    setForm(initialForm);
-  }, []);
+    reset();
+  }, [reset]);
+
+  const openModal = useCallback(() => {
+    reset();
+    setOpen(true);
+  }, [reset]);
 
   useEffect(() => {
-    const onOpen = () => {
-      setSubmitted(false);
-      setOpen(true);
-    };
-
-    window.addEventListener(CONSULTATION_MODAL_EVENT, onOpen);
-    return () => window.removeEventListener(CONSULTATION_MODAL_EVENT, onOpen);
-  }, []);
+    window.addEventListener(CONSULTATION_MODAL_EVENT, openModal);
+    return () => window.removeEventListener(CONSULTATION_MODAL_EVENT, openModal);
+  }, [openModal]);
 
   useEffect(() => {
     if (!open) return;
@@ -58,15 +65,22 @@ export default function ConsultationModal() {
     };
   }, [close, open]);
 
-  const update = (field: keyof FormState) => (event: ChangeEvent<HTMLInputElement>) => {
-    setForm((prev) => ({ ...prev, [field]: event.target.value }));
-  };
+  const updateField = useCallback(
+    (field: keyof LeadFormState) => (event: ChangeEvent<HTMLInputElement>) => {
+      setForm((prev) => ({ ...prev, [field]: event.target.value }));
+    },
+    []
+  );
 
-  const handleSubmit = (event: FormEvent) => {
+  const handleSubmit = useCallback((event: FormEvent) => {
     event.preventDefault();
     setSubmitted(true);
-    setForm(initialForm);
-  };
+    setForm(INITIAL_LEAD_FORM);
+  }, []);
+
+  const stopPropagation = useCallback((event: MouseEvent) => {
+    event.stopPropagation();
+  }, []);
 
   return (
     <AnimatePresence>
@@ -82,108 +96,15 @@ export default function ConsultationModal() {
           onMouseDown={close}
         >
           <motion.div
-            initial={{ opacity: 0, y: 18, scale: 0.97 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 12, scale: 0.98 }}
-            transition={{ duration: 0.25, ease: "easeOut" }}
+            {...modalMotion}
             className="relative w-full max-w-[460px] rounded-[8px] border border-white/10 bg-[#0B2545] p-6 shadow-2xl shadow-black/30 md:p-8"
-            onMouseDown={(event) => event.stopPropagation()}
+            onMouseDown={stopPropagation}
           >
-            <button
-              type="button"
-              onClick={close}
-              className="absolute right-4 top-4 inline-flex h-9 w-9 items-center justify-center rounded-[4px] border border-white/10 text-white/62 transition-colors hover:border-[#C6A77D] hover:text-[#C6A77D] focus:outline-none focus:ring-2 focus:ring-[#C6A77D]/40"
-              aria-label="Đóng modal"
-            >
-              <FiX className="h-5 w-5" aria-hidden="true" />
-            </button>
-
+            <CloseButton onClose={close} />
             {submitted ? (
-              <div className="flex min-h-[300px] flex-col items-center justify-center text-center">
-                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-[#C6A77D]/35 text-[#C6A77D]">
-                  <FiCheck className="h-7 w-7" aria-hidden="true" />
-                </div>
-                <h2
-                  id="consultation-modal-title"
-                  className="font-serif text-3xl font-light text-white"
-                >
-                  Đã nhận thông tin
-                </h2>
-                <p className="mt-4 max-w-sm text-sm font-medium leading-[1.8] text-white/58">
-                  Chuyên viên SRT Miền Trung sẽ liên hệ lại theo số điện thoại bạn đã gửi.
-                </p>
-                <button
-                  type="button"
-                  onClick={close}
-                  className="mt-8 rounded-[4px] bg-[#C6A77D] px-5 py-3 text-xs font-bold uppercase tracking-[0.14em] text-[#111111] transition-colors hover:bg-white"
-                >
-                  Hoàn tất
-                </button>
-              </div>
+              <SuccessState onClose={close} />
             ) : (
-              <form onSubmit={handleSubmit} className="grid gap-5">
-                <div className="pr-10">
-                  <span className="label-small mb-3 block text-[#C6A77D]">
-                    Đăng ký tư vấn nhanh
-                  </span>
-                  <h2
-                    id="consultation-modal-title"
-                    className="font-serif text-2xl font-light leading-tight text-white md:text-3xl"
-                  >
-                    Để lại thông tin, chúng tôi sẽ gọi lại
-                  </h2>
-                  <p className="mt-3 text-sm font-medium leading-[1.75] text-white/54">
-                    Chỉ cần tên và số điện thoại để chuyên viên tư vấn đúng nhu cầu của bạn.
-                  </p>
-                </div>
-
-                <div className="grid gap-4">
-                  <div className="grid gap-2">
-                    <label className="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-white/45">
-                      Họ và tên
-                    </label>
-                    <input
-                      type="text"
-                      value={form.name}
-                      onChange={update("name")}
-                      placeholder="Nguyễn Văn A"
-                      autoFocus
-                      required
-                      className="h-12 w-full rounded-[4px] border border-white/10 bg-white/[0.06] px-4 text-sm font-medium text-white outline-none transition-colors placeholder:text-white/22 focus:border-[#C6A77D]"
-                    />
-                  </div>
-
-                  <div className="grid gap-2">
-                    <label className="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-white/45">
-                      Số điện thoại
-                    </label>
-                    <input
-                      type="tel"
-                      value={form.phone}
-                      onChange={update("phone")}
-                      placeholder="0325 610016"
-                      required
-                      className="h-12 w-full rounded-[4px] border border-white/10 bg-white/[0.06] px-4 text-sm font-medium text-white outline-none transition-colors placeholder:text-white/22 focus:border-[#C6A77D]"
-                    />
-                  </div>
-                </div>
-
-                <button
-                  type="submit"
-                  className="mt-1 inline-flex h-12 items-center justify-center gap-2 rounded-[4px] bg-[#C6A77D] px-6 text-xs font-bold uppercase tracking-[0.14em] text-[#111111] transition-colors duration-300 hover:bg-white"
-                >
-                  Gửi thông tin
-                  <FiSend className="h-4 w-4" aria-hidden="true" />
-                </button>
-
-                <a
-                  href="tel:0325610016"
-                  className="inline-flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-[0.12em] text-white/48 transition-colors hover:text-[#C6A77D]"
-                >
-                  <FiPhoneCall className="h-4 w-4" aria-hidden="true" />
-                  Gọi ngay 0325 610016
-                </a>
-              </form>
+              <LeadForm form={form} onChange={updateField} onSubmit={handleSubmit} />
             )}
           </motion.div>
         </motion.div>
@@ -191,3 +112,132 @@ export default function ConsultationModal() {
     </AnimatePresence>
   );
 }
+
+const CloseButton = memo(function CloseButton({ onClose }: { onClose: () => void }) {
+  return (
+    <button
+      type="button"
+      onClick={onClose}
+      className="absolute right-4 top-4 inline-flex h-9 w-9 items-center justify-center rounded-[4px] border border-white/10 text-white/62 transition-colors hover:border-[#C6A77D] hover:text-[#C6A77D] focus:outline-none focus:ring-2 focus:ring-[#C6A77D]/40"
+      aria-label="Đóng modal"
+    >
+      <FiX className="h-5 w-5" aria-hidden="true" />
+    </button>
+  );
+});
+
+const SuccessState = memo(function SuccessState({ onClose }: { onClose: () => void }) {
+  return (
+    <div className="flex min-h-[300px] flex-col items-center justify-center text-center">
+      <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-[#C6A77D]/35 text-[#C6A77D]">
+        <FiCheck className="h-7 w-7" aria-hidden="true" />
+      </div>
+      <h2 id="consultation-modal-title" className="font-serif text-3xl font-light text-white">
+        Đã nhận thông tin
+      </h2>
+      <p className="mt-4 max-w-sm text-sm font-medium leading-[1.8] text-white/58">
+        Chuyên viên BĐS Đà Nẵng sẽ liên hệ lại theo số điện thoại bạn đã gửi.
+      </p>
+      <button
+        type="button"
+        onClick={onClose}
+        className="mt-8 rounded-[4px] bg-[#C6A77D] px-5 py-3 text-xs font-bold uppercase tracking-[0.14em] text-[#111111] transition-colors hover:bg-white"
+      >
+        Hoàn tất
+      </button>
+    </div>
+  );
+});
+
+type LeadFormProps = {
+  form: LeadFormState;
+  onChange: (field: keyof LeadFormState) => (event: ChangeEvent<HTMLInputElement>) => void;
+  onSubmit: (event: FormEvent) => void;
+};
+
+const LeadForm = memo(function LeadForm({ form, onChange, onSubmit }: LeadFormProps) {
+  return (
+    <form onSubmit={onSubmit} className="grid gap-5">
+      <div className="pr-10">
+        <span className="label-small mb-3 block text-[#C6A77D]">Đăng ký tư vấn nhanh</span>
+        <h2
+          id="consultation-modal-title"
+          className="font-serif text-2xl font-light leading-tight text-white md:text-3xl"
+        >
+          Để lại thông tin, chúng tôi sẽ gọi lại
+        </h2>
+        <p className="mt-3 text-sm font-medium leading-[1.75] text-white/54">
+          Chỉ cần tên và số điện thoại để chuyên viên tư vấn đúng nhu cầu của bạn.
+        </p>
+      </div>
+
+      <div className="grid gap-4">
+        <LeadInput
+          label="Họ và tên"
+          value={form.name}
+          onChange={onChange("name")}
+          placeholder="Nguyễn Văn A"
+          autoFocus
+        />
+        <LeadInput
+          label="Số điện thoại"
+          value={form.phone}
+          onChange={onChange("phone")}
+          placeholder={HOTLINE_DISPLAY}
+          type="tel"
+        />
+      </div>
+
+      <button
+        type="submit"
+        className="mt-1 inline-flex h-12 items-center justify-center gap-2 rounded-[4px] bg-[#C6A77D] px-6 text-xs font-bold uppercase tracking-[0.14em] text-[#111111] transition-colors duration-300 hover:bg-white"
+      >
+        Gửi thông tin
+        <FiSend className="h-4 w-4" aria-hidden="true" />
+      </button>
+
+      <a
+        href={HOTLINE_TEL}
+        className="inline-flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-[0.12em] text-white/48 transition-colors hover:text-[#C6A77D]"
+      >
+        <FiPhoneCall className="h-4 w-4" aria-hidden="true" />
+        Gọi ngay {HOTLINE_DISPLAY}
+      </a>
+    </form>
+  );
+});
+
+type LeadInputProps = {
+  label: string;
+  value: string;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  placeholder: string;
+  type?: string;
+  autoFocus?: boolean;
+};
+
+const LeadInput = memo(function LeadInput({
+  label,
+  value,
+  onChange,
+  placeholder,
+  type = "text",
+  autoFocus = false,
+}: LeadInputProps) {
+  return (
+    <div className="grid gap-2">
+      <label className="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-white/45">
+        {label}
+      </label>
+      <input
+        type={type}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        autoFocus={autoFocus}
+        required
+        className="h-12 w-full rounded-[4px] border border-white/10 bg-white/[0.06] px-4 text-sm font-medium text-white outline-none transition-colors placeholder:text-white/22 focus:border-[#C6A77D]"
+      />
+    </div>
+  );
+});

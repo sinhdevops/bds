@@ -71,7 +71,7 @@ export const PROJECTS: Record<string, ProjectData> = {
     description:
       "Sun Symphony Residence là tổ hợp căn hộ hạng sang tọa lạc tại vị trí đắc địa nhất ven bờ Sông Hàn — cung đường Trần Hưng Đạo tỷ đô. Kiến trúc lấy cảm hứng từ những nhịp sóng âm nhạc, tạo nên bản nhạc kiến trúc sống động giữa lòng Đà Nẵng. Mỗi căn hộ là một không gian sống nghỉ dưỡng đẳng cấp với tầm nhìn toàn cảnh sông biển.",
     developer: "Tập Đoàn Sun Group",
-    distributor: "SRT Miền Trung",
+    distributor: "BĐS Đà Nẵng",
     status: "open",
     statusLabel: "Đang Mở Bán — Symphony 5",
     location: "Sơn Trà, Đà Nẵng",
@@ -219,7 +219,7 @@ export const PROJECTS: Record<string, ProjectData> = {
     mapDescription:
       "Sun Symphony Residence tọa lạc tại vị trí trung tâm nhất của Đà Nẵng — cung đường Trần Hưng Đạo ven Sông Hàn, kết nối thuận tiện đến mọi tiện ích đô thị đẳng cấp.",
     seoTitle:
-      "Sun Symphony Residence Đà Nẵng — Căn Hộ Hạng Sang Mặt Tiền Sông Hàn | SRT Miền Trung",
+      "Sun Symphony Residence Đà Nẵng — Căn Hộ Hạng Sang Mặt Tiền Sông Hàn | BĐS Đà Nẵng",
     seoDesc:
       "Mua căn hộ Sun Symphony Residence Đà Nẵng — tổ hợp 39 tầng mặt tiền Sông Hàn, Trần Hưng Đạo. Giá từ 2.8 tỷ. Hotline: 0325 610016.",
   },
@@ -232,7 +232,7 @@ export const PROJECTS: Record<string, ProjectData> = {
     description:
       "Sun Ponte Residence mang đến trải nghiệm sống độc bản tại Đà Nẵng — tầm nhìn trực diện Cầu Rồng biểu tượng và toàn cảnh Sông Hàn huyền ảo về đêm. Kiến trúc đương đại kết hợp nội thất hạng sang tạo nên không gian sống xứng tầm đẳng cấp quốc tế.",
     developer: "Tập Đoàn Sun Group",
-    distributor: "SRT Miền Trung",
+    distributor: "BĐS Đà Nẵng",
     status: "under-construction",
     statusLabel: "Đang Xây Dựng — Dự Kiến 2026",
     location: "Sơn Trà, Đà Nẵng",
@@ -369,7 +369,7 @@ export const PROJECTS: Record<string, ProjectData> = {
     mapDescription:
       "Sun Ponte Residence tọa lạc ngay cạnh Cầu Rồng — trục kết nối trung tâm Đà Nẵng, dễ dàng di chuyển đến mọi điểm đến du lịch và thương mại của thành phố.",
     seoTitle:
-      "Sun Ponte Residence Đà Nẵng — Căn Hộ View Cầu Rồng Độc Quyền | SRT Miền Trung",
+      "Sun Ponte Residence Đà Nẵng — Căn Hộ View Cầu Rồng Độc Quyền | BĐS Đà Nẵng",
     seoDesc:
       "Mua căn hộ Sun Ponte Residence Đà Nẵng — tầm nhìn trực diện Cầu Rồng huyền thoại. Giá từ 3.5 tỷ. Hotline: 0325 610016.",
   },
@@ -382,7 +382,7 @@ export const PROJECTS: Record<string, ProjectData> = {
     description:
       "Sun Cosmo Residence là tổ hợp căn hộ đã bàn giao tọa lạc bên bờ Sông Hàn nhìn ra Cầu Trần Thị Lý và dãy Ngũ Hành Sơn hùng vĩ. Với thiết kế tối ưu cho từng góc nhìn, Sun Cosmo mang đến không gian sống trọn vẹn giữa thiên nhiên sông — núi độc đáo của Đà Nẵng.",
     developer: "Tập Đoàn Sun Group",
-    distributor: "SRT Miền Trung",
+    distributor: "BĐS Đà Nẵng",
     status: "delivered",
     statusLabel: "Đã Bàn Giao — Nhận Nhà Ngay",
     location: "Hải Châu, Đà Nẵng",
@@ -518,7 +518,7 @@ export const PROJECTS: Record<string, ProjectData> = {
     mapDescription:
       "Sun Cosmo Residence tọa lạc tại Hải Châu — quận trung tâm của Đà Nẵng, kết nối thuận tiện đến toàn thành phố và các điểm đến du lịch nổi tiếng.",
     seoTitle:
-      "Sun Cosmo Residence Đà Nẵng — Căn Hộ Đã Bàn Giao View Sông Hàn & Ngũ Hành Sơn | SRT Miền Trung",
+      "Sun Cosmo Residence Đà Nẵng — Căn Hộ Đã Bàn Giao View Sông Hàn & Ngũ Hành Sơn | BĐS Đà Nẵng",
     seoDesc:
       "Mua căn hộ Sun Cosmo Residence — đã bàn giao, nhận nhà ngay. View Sông Hàn & Ngũ Hành Sơn. Giá từ 3 tỷ. Hotline: 0325 610016.",
   },

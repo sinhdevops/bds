@@ -71,7 +71,7 @@ const AboutContent = () => {
               <em>phân phối bất động sản cao cấp</em>
             </h2>
             <p className="text-[#555555] text-base leading-[1.8] font-light mb-6">
-              Công ty TNHH Thương mại và Đầu tư SRT Miền Trung là một trong những đối tác phân phối chính thức, chiến lược hàng đầu của Tập đoàn Sun Group. Chúng tôi cam kết là cầu nối uy tín mang lại các giải pháp an cư và đầu tư thông minh vượt trội bên dòng Sông Hàn và cung đường ven biển Đà Nẵng.
+              BĐS Đà Nẵng là kênh cập nhật và tư vấn các dự án bất động sản cao cấp tại Đà Nẵng. Chúng tôi tập trung cung cấp thông tin rõ ràng về vị trí, giỏ hàng, chính sách và pháp lý để khách hàng ra quyết định tốt hơn.
             </p>
           </motion.div>
 

@@ -1,38 +1,61 @@
 import type { Metadata } from "next";
 import ProjectHero from "@/components/page/project/ProjectHero";
 import ProjectGrid from "@/components/page/project/ProjectGrid";
+import { PROJECT_CATALOG } from "@/lib/projectCatalog";
+import { ROUTES, absoluteUrl, breadcrumbSchema, createMetadata, webPageSchema } from "@/lib/seo";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://srtmientrung.vn";
-const pageUrl = `${siteUrl}/project`;
+const title = "Dự Án Căn Hộ Cao Cấp Đà Nẵng - Sun Group & Ven Sông Hàn";
+const description =
+  "Danh mục dự án căn hộ cao cấp tại Đà Nẵng: Sun Symphony, Sun Ponte, Sun Cosmo, Sun Solar và Capital Square. So sánh vị trí, giá, tiến độ và tiềm năng đầu tư.";
 
-export const metadata: Metadata = {
-  title: "Dự Án Căn Hộ Cao Cấp Đà Nẵng — Sun Symphony, Sun Ponte, Sun Cosmo",
-  description:
-    "Danh sách các dự án căn hộ cao cấp Sun Group tại Đà Nẵng: Sun Symphony Residence, Sun Ponte Residence, Sun Cosmo Residence. Lý tưởng đầu tư từ Hà Nội — view sông Hàn, sở hữu lâu dài, giá từ 2.8 tỷ.",
+export const metadata: Metadata = createMetadata({
+  title,
+  description,
+  path: ROUTES.project,
   keywords: [
     "dự án căn hộ cao cấp Đà Nẵng",
     "Sun Symphony Residence",
     "Sun Ponte Residence",
     "Sun Cosmo Residence",
-    "căn hộ view sông Hàn Đà Nẵng",
-    "mua căn hộ Sun Group Đà Nẵng",
-    "đầu tư bất động sản Đà Nẵng 2025",
+    "Sun Solar Residence",
+    "Capital Square Đà Nẵng",
+    "căn hộ view sông Hàn",
     "bảng giá căn hộ Đà Nẵng",
-    "Sun Group Đà Nẵng",
   ],
-  alternates: { canonical: pageUrl },
-  openGraph: {
-    title: "Dự Án Căn Hộ Cao Cấp Đà Nẵng — Sun Symphony, Sun Ponte, Sun Cosmo",
-    description:
-      "Ba tổ hợp căn hộ cao cấp nhất Đà Nẵng: Sun Symphony, Sun Ponte, Sun Cosmo Residence. Đầu tư từ Hà Nội — pháp lý đầy đủ, sinh lời cao.",
-    url: pageUrl,
-    type: "website",
+});
+
+const schemas = [
+  webPageSchema({
+    id: `${absoluteUrl(ROUTES.project)}/#webpage`,
+    url: absoluteUrl(ROUTES.project),
+    name: title,
+    description,
+  }),
+  breadcrumbSchema([
+    { name: "Trang chủ", url: absoluteUrl(ROUTES.home) },
+    { name: "Dự án", url: absoluteUrl(ROUTES.project) },
+  ]),
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "@id": `${absoluteUrl(ROUTES.project)}/#project-list`,
+    name: "Danh mục dự án căn hộ Đà Nẵng",
+    itemListElement: PROJECT_CATALOG.map((project, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: project.name,
+      url: absoluteUrl(`${ROUTES.project}/${project.slug}`),
+    })),
   },
-};
+];
 
 export default function ProjectPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
+      />
       <ProjectHero />
       <ProjectGrid />
     </>

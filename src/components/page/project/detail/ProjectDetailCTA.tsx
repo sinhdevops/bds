@@ -81,7 +81,7 @@ export default function ProjectDetailCTA({ project }: Props) {
               transition={{ duration: 0.8, delay: 0.25 }}
               className="text-white/45 text-base font-light leading-relaxed max-w-md mb-10"
             >
-              Đội ngũ chuyên gia SRT Miền Trung sẽ đồng hành cùng bạn trong từng bước — từ tư vấn sản phẩm, chính sách tài chính đến pháp lý căn hộ.
+              Đội ngũ chuyên gia BĐS Đà Nẵng sẽ đồng hành cùng bạn trong từng bước — từ tư vấn sản phẩm, chính sách tài chính đến pháp lý căn hộ.
             </motion.p>
 
             {/* Contact info */}
@@ -109,7 +109,7 @@ export default function ProjectDetailCTA({ project }: Props) {
                 </div>
               </a>
 
-              <a href="mailto:info@srtmientrung.vn" className="flex items-center gap-4 group">
+              <a href="mailto:contact@bds-da-nang.com" className="flex items-center gap-4 group">
                 <div className="w-11 h-11 rounded-full border border-white/15 flex items-center justify-center group-hover:border-[#C6A77D]/40 transition-colors">
                   <svg viewBox="0 0 20 16" fill="none" stroke="#C6A77D" strokeWidth="1.3" className="w-4 h-3.5">
                     <rect x="1" y="1" width="18" height="14" rx="2" />
@@ -117,7 +117,7 @@ export default function ProjectDetailCTA({ project }: Props) {
                   </svg>
                 </div>
                 <span className="text-white/50 text-sm font-light group-hover:text-[#C6A77D] transition-colors">
-                  info@srtmientrung.vn
+                  contact@bds-da-nang.com
                 </span>
               </a>
             </motion.div>
@@ -151,7 +151,7 @@ export default function ProjectDetailCTA({ project }: Props) {
                     Đã nhận thông tin!
                   </h3>
                   <p className="text-white/50 text-sm font-light leading-relaxed max-w-xs mx-auto">
-                    Chuyên gia SRT Miền Trung sẽ liên hệ với bạn trong vòng <strong className="text-[#C6A77D]">30 phút</strong> để tư vấn về {project.shortName}.
+                    Chuyên gia BĐS Đà Nẵng sẽ liên hệ với bạn trong vòng <strong className="text-[#C6A77D]">30 phút</strong> để tư vấn về {project.shortName}.
                   </p>
                 </div>
               </div>
@@ -165,7 +165,7 @@ export default function ProjectDetailCTA({ project }: Props) {
                     Đăng ký nhận tư vấn
                   </h3>
                   <p className="text-white/35 text-xs font-light">
-                    {project.name} · SRT Miền Trung
+                    {project.name} · BĐS Đà Nẵng
                   </p>
                 </div>
 
@@ -232,7 +232,7 @@ export default function ProjectDetailCTA({ project }: Props) {
                 </button>
 
                 <p className="text-center text-[10px] text-white/25 font-light">
-                  Thông tin của bạn được bảo mật tuyệt đối theo chính sách của SRT Miền Trung
+                  Thông tin của bạn được bảo mật tuyệt đối theo chính sách của BĐS Đà Nẵng
                 </p>
               </form>
             )}

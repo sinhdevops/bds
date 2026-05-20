@@ -10,7 +10,7 @@ const AboutHero = () => {
       {/* Background Image */}
       <Image
         src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1800&q=80&fit=crop"
-        alt="SRT Miền Trung Corporate Office"
+        alt="BĐS Đà Nẵng"
         fill
         className="object-cover object-center opacity-30 select-none pointer-events-none"
         priority
@@ -37,7 +37,7 @@ const AboutHero = () => {
           className="font-serif text-white font-light leading-tight mb-4"
           style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(2.5rem, 5vw, 4.25rem)" }}
         >
-          Về SRT Miền Trung
+          Về BĐS Đà Nẵng
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 15 }}

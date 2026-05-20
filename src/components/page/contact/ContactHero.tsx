@@ -28,7 +28,7 @@ const ContactHero = () => {
             transition={{ duration: 0.55, ease: "easeOut" }}
             className="label-small mb-5 block text-[#C6A77D]"
           >
-            Liên hệ SRT Miền Trung
+            Liên hệ BĐS Đà Nẵng
           </motion.span>
 
           <motion.h1
