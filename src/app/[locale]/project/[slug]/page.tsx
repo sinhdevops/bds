@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getCatalogProject, getCatalogProjectSlugs } from "@/lib/projectCatalog";
-import { parseProjectMarkdown, readProjectMarkdown } from "@/lib/projectMarkdown";
+import { parseProjectMarkdown } from "@/lib/projectMarkdown";
 import MarkdownProjectPage from "@/components/page/project/MarkdownProjectPage";
 import {
   HOTLINE_E164,
@@ -113,7 +113,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
   const project = getCatalogProject(slug);
   if (!project) notFound();
 
-  const fallbackMarkdown = [
+  const markdown = [
     `# ${project.name}`,
     "",
     `![${project.name}](${project.heroImage})`,
@@ -134,7 +134,6 @@ export default async function ProjectDetailPage({ params }: PageProps) {
     "",
     project.idealFor,
   ].join("\n");
-  const markdown = readProjectMarkdown(project.contentFile, fallbackMarkdown);
   const { blocks, toc } = parseProjectMarkdown(markdown);
   const schemas = buildProjectSchemas(project);
 

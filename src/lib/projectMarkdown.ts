@@ -1,6 +1,3 @@
-import fs from "node:fs";
-import path from "node:path";
-
 export interface TocItem {
   id: string;
   text: string;
@@ -22,15 +19,6 @@ function slugify(text: string) {
     .replace(/[^a-z0-9\s-]/g, "")
     .trim()
     .replace(/\s+/g, "-");
-}
-
-export function readProjectMarkdown(fileName: string, fallback = "") {
-  const filePath = path.join(process.cwd(), "src", "content", "projects", fileName);
-  try {
-    return fs.readFileSync(filePath, "utf8");
-  } catch {
-    return fallback;
-  }
 }
 
 export function parseProjectMarkdown(markdown: string) {
