@@ -1,5 +1,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
+import { routing } from "@/i18n/routing";
 import { getCatalogProject, getCatalogProjectSlugs } from "@/lib/projectCatalog";
 import { parseProjectMarkdown } from "@/lib/projectMarkdown";
 import MarkdownProjectPage from "@/components/page/project/MarkdownProjectPage";
@@ -16,15 +18,17 @@ import {
 } from "@/lib/seo";
 
 interface PageProps {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 }
 
 export async function generateStaticParams() {
-  return getCatalogProjectSlugs().map((slug) => ({ slug }));
+  return routing.locales.flatMap((locale) => getCatalogProjectSlugs().map((slug) => ({ locale, slug })));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { slug } = await params;
+  const { locale, slug } = await params;
+  setRequestLocale(locale);
+
   const project = getCatalogProject(slug);
   if (!project) return { title: "Dự án không tồn tại", robots: { index: false, follow: false } };
 
@@ -109,7 +113,9 @@ function buildProjectSchemas(project: NonNullable<ReturnType<typeof getCatalogPr
 }
 
 export default async function ProjectDetailPage({ params }: PageProps) {
-  const { slug } = await params;
+  const { locale, slug } = await params;
+  setRequestLocale(locale);
+
   const project = getCatalogProject(slug);
   if (!project) notFound();
 

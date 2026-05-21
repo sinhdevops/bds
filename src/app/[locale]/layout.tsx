@@ -9,6 +9,7 @@ import StickyBar from "@/components/layout/StickyBar";
 import FloatingContact from "@/components/layout/FloatingContact";
 import ConsultationModal from "@/components/shared/ConsultationModal";
 import { routing } from "@/i18n/routing";
+import { OFFICE_ADDRESS } from "@/lib/contact";
 import {
   DEFAULT_OG_IMAGE,
   HOTLINE_E164,
@@ -38,7 +39,7 @@ export const metadata: Metadata = {
   ...createMetadata({
     title: "BĐS Đà Nẵng - Căn Hộ Cao Cấp Sun Group & Ven Sông Hàn",
     description:
-      "Cổng thông tin tư vấn căn hộ cao cấp Đà Nẵng: Sun Symphony, Sun Ponte, Sun Cosmo, Sun Solar và Capital Square. Nhận bảng giá, giỏ hàng và chính sách mới nhất.",
+      `Cổng thông tin tư vấn căn hộ cao cấp Đà Nẵng: Sun Symphony, Sun Ponte, Sun Cosmo, Sun Solar và Capital Square. Văn phòng ${OFFICE_ADDRESS}.`,
     keywords: [
       "BĐS Đà Nẵng",
       "bds-da-nang.com",
@@ -73,7 +74,7 @@ export const metadata: Metadata = {
     ...createMetadata({
       title: "BĐS Đà Nẵng - Căn Hộ Cao Cấp Sun Group & Ven Sông Hàn",
       description:
-        "Tư vấn căn hộ Đà Nẵng: bảng giá, giỏ hàng, chính sách bán hàng, lịch xem nhà và pháp lý dự án.",
+        `Tư vấn căn hộ Đà Nẵng: bảng giá, giỏ hàng, chính sách bán hàng, lịch xem nhà và pháp lý dự án. Văn phòng ${OFFICE_ADDRESS}.`,
     }).openGraph,
     images: [{ url: absoluteUrl(DEFAULT_OG_IMAGE), width: 1200, height: 630, alt: SITE_NAME }],
   },
@@ -94,6 +95,7 @@ const organizationSchema = {
   priceRange: "$$",
   address: {
     "@type": "PostalAddress",
+    streetAddress: OFFICE_ADDRESS,
     addressLocality: "Đà Nẵng",
     addressRegion: "Đà Nẵng",
     addressCountry: "VN",

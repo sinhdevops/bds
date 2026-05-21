@@ -85,7 +85,7 @@ const AboutContent = () => {
             <div className="p-8 bg-[#F6F3EE] rounded-2xl border border-[#E5E0D8]/60">
               <h3 className="label-medium text-[#0B2545] font-bold mb-3 uppercase tracking-wider">Tầm Nhìn Chiến Lược</h3>
               <p className="text-sm text-[#555555] leading-relaxed font-light">
-                Trở thành biểu tượng của sự tin cậy, chuyên nghiệp trong lĩnh vực phân phối bất động sản cao cấp và nghỉ dưỡng tại miền Trung, mang lại chất sống thượng lưu đỉnh cao cho khách hàng.
+                Trở thành địa chỉ tư vấn đáng tin cậy cho khách hàng quan tâm bất động sản cao cấp tại Đà Nẵng, mang lại lựa chọn sống và đầu tư rõ ràng, bền vững.
               </p>
             </div>
             <div className="p-8 bg-[#F6F3EE] rounded-2xl border border-[#E5E0D8]/60">

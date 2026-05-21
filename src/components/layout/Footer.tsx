@@ -78,7 +78,7 @@ export default function Footer() {
               />
             </div>
             <p className="text-white/35 text-sm font-light leading-relaxed max-w-xs mb-5">
-              Nhà phân phối chiến lược các dự án bất động sản cao cấp tại Đà Nẵng.
+              Tư vấn chuyên sâu các dự án căn hộ cao cấp ven sông Hàn tại Đà Nẵng.
             </p>
             <div className="flex items-start gap-2">
               <svg viewBox="0 0 16 20" fill="none" stroke="#C6A77D" strokeWidth="1.2" className="w-3.5 h-4.5 mt-0.5 shrink-0">

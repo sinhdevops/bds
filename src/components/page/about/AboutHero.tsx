@@ -45,7 +45,7 @@ const AboutHero = () => {
           transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
           className="text-white/60 text-sm md:text-base font-light max-w-xl mx-auto leading-relaxed"
         >
-          Đại lý phân phối chiến lược bất động sản cao cấp hàng đầu của Tập đoàn Sun Group tại khu vực miền Trung Việt Nam.
+          Đơn vị tư vấn dự án căn hộ cao cấp Sun Group và bất động sản ven sông Hàn tại Đà Nẵng.
         </motion.p>
       </div>
     </section>
