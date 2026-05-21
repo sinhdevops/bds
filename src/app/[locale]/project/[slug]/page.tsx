@@ -113,7 +113,28 @@ export default async function ProjectDetailPage({ params }: PageProps) {
   const project = getCatalogProject(slug);
   if (!project) notFound();
 
-  const markdown = readProjectMarkdown(project.contentFile);
+  const fallbackMarkdown = [
+    `# ${project.name}`,
+    "",
+    `![${project.name}](${project.heroImage})`,
+    "",
+    "## Tổng quan",
+    "",
+    project.summary,
+    "",
+    "## Thông tin nhanh",
+    "",
+    `- Vị trí: ${project.location}`,
+    `- Địa chỉ: ${project.address}`,
+    `- Giá từ: ${project.priceFrom ? `${project.priceFrom} tỷ` : "Liên hệ"}`,
+    `- Diện tích: ${project.area}`,
+    `- Bàn giao: ${project.handover}`,
+    "",
+    "## Góc nhìn tư vấn",
+    "",
+    project.idealFor,
+  ].join("\n");
+  const markdown = readProjectMarkdown(project.contentFile, fallbackMarkdown);
   const { blocks, toc } = parseProjectMarkdown(markdown);
   const schemas = buildProjectSchemas(project);
 

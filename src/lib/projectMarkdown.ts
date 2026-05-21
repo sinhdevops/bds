@@ -24,9 +24,13 @@ function slugify(text: string) {
     .replace(/\s+/g, "-");
 }
 
-export function readProjectMarkdown(fileName: string) {
+export function readProjectMarkdown(fileName: string, fallback = "") {
   const filePath = path.join(process.cwd(), "src", "content", "projects", fileName);
-  return fs.readFileSync(filePath, "utf8");
+  try {
+    return fs.readFileSync(filePath, "utf8");
+  } catch {
+    return fallback;
+  }
 }
 
 export function parseProjectMarkdown(markdown: string) {
