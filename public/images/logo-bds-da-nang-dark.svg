@@ -1,0 +1,12 @@
+<svg width="640" height="180" viewBox="0 0 640 180" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">BDS Đà Nẵng</title>
+  <desc id="desc">Logo BDS Đà Nẵng màu xanh navy và vàng đồng</desc>
+  <path d="M78 28L126 56V112L78 140L30 112V56L78 28Z" fill="#0B2545"/>
+  <path d="M78 44L112 64V104L78 124L44 104V64L78 44Z" fill="#FAF8F5"/>
+  <path d="M78 57L101 70V97L78 110L55 97V70L78 57Z" fill="#C6A77D"/>
+  <path d="M78 70L90 77V91L78 98L66 91V77L78 70Z" fill="#0B2545"/>
+  <path d="M78 28L126 56V112L78 140L30 112V56L78 28Z" stroke="#C6A77D" stroke-width="4"/>
+  <text x="162" y="82" fill="#0B2545" font-family="Montserrat, Arial, sans-serif" font-size="48" font-weight="700" letter-spacing="4">BDS ĐÀ NẴNG</text>
+  <path d="M164 101H516" stroke="#C6A77D" stroke-width="2"/>
+  <text x="162" y="130" fill="#9C7B5D" font-family="Montserrat, Arial, sans-serif" font-size="17" font-weight="600" letter-spacing="4">PREMIUM REAL ESTATE</text>
+</svg>

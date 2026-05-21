@@ -27,10 +27,14 @@ const modalMotion = {
 export default function ConsultationModal() {
   const [open, setOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const [form, setForm] = useState<LeadFormState>(INITIAL_LEAD_FORM);
 
   const reset = useCallback(() => {
     setSubmitted(false);
+    setSubmitting(false);
+    setErrorMessage("");
     setForm(INITIAL_LEAD_FORM);
   }, []);
 
@@ -74,9 +78,34 @@ export default function ConsultationModal() {
 
   const handleSubmit = useCallback((event: FormEvent) => {
     event.preventDefault();
-    setSubmitted(true);
-    setForm(INITIAL_LEAD_FORM);
-  }, []);
+    setSubmitting(true);
+    setErrorMessage("");
+
+    fetch("/api/lead", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        ...form,
+        source: typeof window !== "undefined" ? window.location.href : "Website",
+        message: "Đăng ký tư vấn nhanh từ popup",
+      }),
+    })
+      .then(async (response) => {
+        if (!response.ok) {
+          const data = await response.json().catch(() => null);
+          throw new Error(data?.error ?? "Không thể gửi thông tin");
+        }
+
+        setSubmitted(true);
+        setForm(INITIAL_LEAD_FORM);
+      })
+      .catch(() => {
+        setErrorMessage("Chưa gửi được thông tin. Vui lòng thử lại hoặc gọi hotline.");
+      })
+      .finally(() => {
+        setSubmitting(false);
+      });
+  }, [form]);
 
   const stopPropagation = useCallback((event: MouseEvent) => {
     event.stopPropagation();
@@ -104,7 +133,13 @@ export default function ConsultationModal() {
             {submitted ? (
               <SuccessState onClose={close} />
             ) : (
-              <LeadForm form={form} onChange={updateField} onSubmit={handleSubmit} />
+              <LeadForm
+                form={form}
+                onChange={updateField}
+                onSubmit={handleSubmit}
+                submitting={submitting}
+                errorMessage={errorMessage}
+              />
             )}
           </motion.div>
         </motion.div>
@@ -153,9 +188,17 @@ type LeadFormProps = {
   form: LeadFormState;
   onChange: (field: keyof LeadFormState) => (event: ChangeEvent<HTMLInputElement>) => void;
   onSubmit: (event: FormEvent) => void;
+  submitting: boolean;
+  errorMessage: string;
 };
 
-const LeadForm = memo(function LeadForm({ form, onChange, onSubmit }: LeadFormProps) {
+const LeadForm = memo(function LeadForm({
+  form,
+  onChange,
+  onSubmit,
+  submitting,
+  errorMessage,
+}: LeadFormProps) {
   return (
     <form onSubmit={onSubmit} className="grid gap-5">
       <div className="pr-10">
@@ -167,7 +210,7 @@ const LeadForm = memo(function LeadForm({ form, onChange, onSubmit }: LeadFormPr
           Để lại thông tin, chúng tôi sẽ gọi lại
         </h2>
         <p className="mt-3 text-sm font-medium leading-[1.75] text-white/54">
-          Chỉ cần tên và số điện thoại để chuyên viên tư vấn đúng nhu cầu của bạn.
+          Chỉ cần tên, số điện thoại và email để chuyên viên tư vấn đúng nhu cầu của bạn.
         </p>
       </div>
 
@@ -186,15 +229,27 @@ const LeadForm = memo(function LeadForm({ form, onChange, onSubmit }: LeadFormPr
           placeholder={HOTLINE_DISPLAY}
           type="tel"
         />
+        <LeadInput
+          label="Email"
+          value={form.email}
+          onChange={onChange("email")}
+          placeholder="email@example.com"
+          type="email"
+        />
       </div>
 
       <button
         type="submit"
-        className="mt-1 inline-flex h-12 items-center justify-center gap-2 rounded-[4px] bg-[#C6A77D] px-6 text-xs font-bold uppercase tracking-[0.14em] text-[#111111] transition-colors duration-300 hover:bg-white"
+        disabled={submitting}
+        className="mt-1 inline-flex h-12 items-center justify-center gap-2 rounded-[4px] bg-[#C6A77D] px-6 text-xs font-bold uppercase tracking-[0.14em] text-[#111111] transition-colors duration-300 hover:bg-white disabled:cursor-not-allowed disabled:opacity-70"
       >
-        Gửi thông tin
+        {submitting ? "Đang gửi..." : "Gửi thông tin"}
         <FiSend className="h-4 w-4" aria-hidden="true" />
       </button>
+
+      {errorMessage ? (
+        <p className="text-center text-xs font-semibold text-red-200">{errorMessage}</p>
+      ) : null}
 
       <a
         href={HOTLINE_TEL}

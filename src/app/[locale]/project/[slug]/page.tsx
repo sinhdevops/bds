@@ -30,14 +30,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const priceText = project.priceFrom ? `Giá từ ${project.priceFrom} tỷ` : "Nhận bảng giá mới nhất";
   const title = `${project.name} - ${priceText} | BĐS Đà Nẵng`;
-  const description = `${project.name} tại ${project.location}. ${project.summary} Tư vấn bảng giá, giỏ hàng và chính sách mới nhất qua hotline 0325 610016.`;
+  const description = `${project.name} tại ${project.location}. ${priceText}, cập nhật giỏ hàng, chính sách bán hàng và lịch xem nhà qua hotline 0702252678.`;
 
   return createMetadata({
     title,
     description,
     path: `${ROUTES.project}/${slug}`,
     image: project.heroImage,
-    keywords: [
+    keywords: project.seoKeywords ?? [
       project.name,
       project.shortName,
       `${project.name} Đà Nẵng`,

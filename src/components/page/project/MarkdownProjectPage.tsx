@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import type { MarkdownBlock, TocItem } from "@/lib/projectMarkdown";
-import type { ProjectCatalogItem } from "@/lib/projectCatalog";
+import { PROJECT_CATALOG, type ProjectCatalogItem } from "@/lib/projectCatalog";
 
 function renderInline(text: string) {
   const parts = text.split(/(\*\*.*?\*\*)/g);
@@ -22,6 +22,8 @@ export default function MarkdownProjectPage({
   blocks: MarkdownBlock[];
   toc: TocItem[];
 }) {
+  const relatedProjects = PROJECT_CATALOG.filter((item) => item.slug !== project.slug).slice(0, 3);
+
   return (
     <main className="bg-[#FAF8F5]">
       <section className="relative min-h-[620px] overflow-hidden bg-[#071522]">
@@ -140,6 +142,108 @@ export default function MarkdownProjectPage({
           })}
         </article>
       </section>
+
+      {relatedProjects.length > 0 && (
+        <section className="border-t border-[#E5E0D8] bg-white py-14 lg:py-18">
+          <div className="mx-auto max-w-[1240px] px-6">
+            <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p className="label-small text-[#9C7B5D]">Dự án liên quan</p>
+                <h2
+                  className="mt-3 font-serif text-3xl font-normal leading-tight text-[#111111] lg:text-4xl"
+                  style={{ fontFamily: "var(--font-serif)" }}
+                >
+                  Có thể phù hợp với nhu cầu của bạn
+                </h2>
+              </div>
+              <Link
+                href="/project"
+                className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-[#111111] transition-colors hover:text-[#9C7B5D]"
+              >
+                Xem tất cả dự án
+                <ArrowIcon />
+              </Link>
+            </div>
+
+            <div className="grid gap-5 md:grid-cols-3">
+              {relatedProjects.map((item) => (
+                <RelatedProjectCard key={item.slug} project={item} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
     </main>
+  );
+}
+
+function RelatedProjectCard({ project }: { project: ProjectCatalogItem }) {
+  const price = project.priceFrom ? `${project.priceFrom} tỷ` : "Liên hệ";
+
+  return (
+    <article className="group flex h-full flex-col overflow-hidden rounded-md bg-[#FAF8F5] shadow-[0_8px_26px_rgba(10,18,28,0.07)] ring-1 ring-black/5 transition-shadow duration-300 hover:shadow-[0_18px_48px_rgba(10,18,28,0.13)]">
+      <Link
+        href={{ pathname: "/project/[slug]", params: { slug: project.slug } }}
+        className="relative block overflow-hidden"
+        style={{ aspectRatio: "16/9.5" }}
+      >
+        <Image
+          src={project.thumbnail}
+          alt={project.name}
+          fill
+          className="object-cover transition-transform duration-700 group-hover:scale-105"
+          sizes="(max-width: 768px) 100vw, 33vw"
+        />
+        <div className="absolute inset-0 bg-linear-to-t from-black/58 via-black/8 to-transparent" />
+        <span className="absolute left-4 top-4 rounded-[3px] bg-white/94 px-3 py-1.5 text-[0.66rem] font-bold uppercase tracking-[0.1em] text-[#111111]">
+          {project.badge}
+        </span>
+      </Link>
+
+      <div className="flex flex-1 flex-col p-5">
+        <div className="mb-3 flex items-start justify-between gap-4">
+          <div className="min-w-0">
+            <p className="text-xs font-semibold text-[#9C7B5D]">{project.location}</p>
+            <Link
+              href={{ pathname: "/project/[slug]", params: { slug: project.slug } }}
+              className="mt-1 line-clamp-2 block min-h-[3.65rem] font-serif text-2xl font-normal leading-tight text-[#111111] transition-colors hover:text-[#9C7B5D]"
+              style={{ fontFamily: "var(--font-serif)" }}
+            >
+              {project.name}
+            </Link>
+          </div>
+          <div className="shrink-0 text-right">
+            <p className="text-[0.62rem] font-bold uppercase tracking-[0.12em] text-[#9C7B5D]">Giá từ</p>
+            <p className="font-semibold text-[#111111]">{price}</p>
+          </div>
+        </div>
+
+        <div className="mb-4 flex min-h-[2rem] flex-wrap gap-1.5">
+          {project.views.slice(0, 3).map((view) => (
+            <span key={view} className="rounded-full bg-white px-2.5 py-1 text-[0.68rem] font-semibold text-[#555555]">
+              {view}
+            </span>
+          ))}
+        </div>
+
+        <p className="text-sm font-medium leading-[1.75] text-[#666666]">{project.summary}</p>
+
+        <Link
+          href={{ pathname: "/project/[slug]", params: { slug: project.slug } }}
+          className="mt-6 inline-flex w-fit items-center gap-2 rounded-[3px] bg-[#071522] px-5 py-3 label-small font-bold text-white transition-colors hover:bg-[#C6A77D] md:mt-auto"
+        >
+          Xem chi tiết
+          <ArrowIcon />
+        </Link>
+      </div>
+    </article>
+  );
+}
+
+function ArrowIcon() {
+  return (
+    <svg viewBox="0 0 16 10" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-2.5 w-4">
+      <path d="M1 5h14M11 1l4 4-4 4" />
+    </svg>
   );
 }

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
+import { CONTACT_EMAIL, CONTACT_EMAIL_HREF, OFFICE_ADDRESS } from "@/lib/contact";
 
 const PROJECT_LINKS = [
   { label: "Tòa Symphony", href: "/project" },
@@ -69,11 +70,11 @@ export default function Footer() {
           <div className="col-span-2 lg:col-span-1">
             <div className="mb-5">
               <Image
-                src="/images/logo.png"
-                alt="Sông Hàn Premium Residence"
-                width={140}
-                height={46}
-                className="h-9 w-auto object-contain opacity-90"
+                src="/images/logo-bds-da-nang-light.svg"
+                alt="BDS Đà Nẵng"
+                width={178}
+                height={50}
+                className="h-11 w-auto object-contain opacity-90"
               />
             </div>
             <p className="text-white/35 text-sm font-light leading-relaxed max-w-xs mb-5">
@@ -85,7 +86,7 @@ export default function Footer() {
                 <circle cx="8" cy="7" r="2" />
               </svg>
               <p className="text-white/35 text-xs font-light leading-relaxed">
-                Số 1 Nguyễn Văn Linh, Đà Nẵng
+                {OFFICE_ADDRESS}
               </p>
             </div>
           </div>
@@ -129,30 +130,30 @@ export default function Footer() {
             <p className="label-small text-[#555555] mb-5 font-semibold">Liên Hệ</p>
             <div className="flex flex-col gap-3 mb-5">
               <a
-                href="tel:0325610016"
+                href="tel:0702252678"
                 className="flex items-center gap-2 text-white/50 hover:text-[#C6A77D] transition-colors duration-300"
               >
                 <svg viewBox="0 0 16 16" fill="none" stroke="#C6A77D" strokeWidth="1.2" className="w-3.5 h-3.5 shrink-0">
                   <path d="M13 10.7l-1.9.2c-.4 0-.8.3-1 .6-.2.3-.4 1.2-3.1-1.5C4.4 7.3 5.3 7 5.5 6.7c.3-.3.5-.6.6-1l.2-1.9c0-.4-.1-.8-.3-1.1L5.2 1.9c-.3-.4-.9-.5-1.4-.2L2.3 2.7C1.7 3 1.5 3.7 1.7 4.3c.6 2.8 2.3 5.6 4.8 8.1 2.5 2.5 5.3 4.2 8.1 4.8.6.1 1.3-.1 1.6-.6l1.1-1.5c.3-.5.2-1.1-.2-1.4l-.9-1c-.3-.2-.7-.4-1.2-.3z" />
                 </svg>
-                <span className="text-sm font-medium">0325 610016</span>
+                <span className="text-sm font-medium">0702252678</span>
               </a>
               <a
-                href="mailto:info@songhancondos.vn"
+                href={CONTACT_EMAIL_HREF}
                 className="flex items-center gap-2 text-white/50 hover:text-[#C6A77D] transition-colors duration-300"
               >
                 <svg viewBox="0 0 16 12" fill="none" stroke="#C6A77D" strokeWidth="1.2" className="w-3.5 h-3 shrink-0">
                   <rect x="1" y="1" width="14" height="10" rx="1" />
                   <path d="M1 3l7 5 7-5" />
                 </svg>
-                <span className="text-xs font-light">info@songhancondos.vn</span>
+                <span className="text-xs font-light">{CONTACT_EMAIL}</span>
               </a>
               <div className="flex items-center gap-2 text-white/50">
                 <svg viewBox="0 0 16 20" fill="none" stroke="#C6A77D" strokeWidth="1.2" className="w-3.5 h-4 shrink-0">
                   <path d="M8 1C4.7 1 2 3.7 2 7c0 4.5 6 12 6 12s6-7.5 6-12c0-3.3-2.7-6-6-6z" />
                   <circle cx="8" cy="7" r="2" />
                 </svg>
-                <span className="text-xs font-light">Số 1 Nguyễn Văn Linh, Đà Nẵng</span>
+                <span className="text-xs font-light">{OFFICE_ADDRESS}</span>
               </div>
             </div>
 
@@ -176,7 +177,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="pt-7 border-t border-white/8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-white/20 font-light">
-            ©2026 Sông Hàn Premium Residence. All rights reserved.
+            ©2026 BDS Đà Nẵng. All rights reserved.
           </p>
           <div className="flex items-center gap-5">
             <Link href="/terms" className="text-xs text-white/20 font-light hover:text-white/45 transition-colors duration-300">

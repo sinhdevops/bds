@@ -67,12 +67,12 @@ export default function Navbar() {
         <div className="mx-auto flex h-full max-w-[1400px] items-center justify-between px-6 lg:px-12">
           <Link href="/" className="flex items-center group" onClick={closeMenu}>
             <Image
-              src="/images/logo.png"
+              src={scrolled ? "/images/logo-bds-da-nang-dark.svg" : "/images/logo-bds-da-nang-light.svg"}
               alt="BĐS Đà Nẵng"
-              width={160}
-              height={52}
+              width={178}
+              height={50}
               priority
-              className="h-10 w-auto object-contain transition-opacity duration-300 group-hover:opacity-90"
+              className="h-11 w-auto object-contain transition-opacity duration-300 group-hover:opacity-90"
             />
           </Link>
 

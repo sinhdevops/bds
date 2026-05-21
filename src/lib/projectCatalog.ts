@@ -24,6 +24,7 @@ export interface ProjectCatalogItem {
   summary: string;
   contentFile: string;
   sourceNotes: string[];
+  seoKeywords?: string[];
 }
 
 export const PROJECT_CATALOG: ProjectCatalogItem[] = [
@@ -78,6 +79,14 @@ export const PROJECT_CATALOG: ProjectCatalogItem[] = [
       "Sun Symphony 5 là phân khu căn hộ nổi bật trong tổ hợp Sun Symphony Residences, đặt trọng tâm vào trải nghiệm sống ven sông Hàn và tiêu chuẩn nghỉ dưỡng trong đô thị.",
     contentFile: "sun-symphony-5.md",
     sourceNotes: ["symphonyresidence.vn", "dinhtanbds.com"],
+    seoKeywords: [
+      "chung cư đà nẵng",
+      "căn hộ đà nẵng",
+      "symphony 5",
+      "mua symphony 5",
+      "mua symphony 5 đà nẵng",
+      "symphony 5 đà nẵng",
+    ],
   },
   {
     slug: "capital-square-da-nang",

@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
-import { ROUTES, createMetadata } from "@/lib/seo";
+import { ROUTES, absoluteUrl, breadcrumbSchema, createMetadata, webPageSchema } from "@/lib/seo";
+
+const title = "Chính Sách Bảo Mật - BĐS Đà Nẵng";
+const description =
+  "Chính sách bảo mật thông tin khách hàng khi đăng ký nhận bảng giá, tư vấn dự án và cập nhật chính sách bán hàng tại BĐS Đà Nẵng.";
 
 export const metadata: Metadata = createMetadata({
   title: "Chính Sách Bảo Mật - BĐS Đà Nẵng",
@@ -8,9 +12,26 @@ export const metadata: Metadata = createMetadata({
   path: ROUTES.privacy,
 });
 
+const schemas = [
+  webPageSchema({
+    id: `${absoluteUrl(ROUTES.privacy)}/#webpage`,
+    url: absoluteUrl(ROUTES.privacy),
+    name: title,
+    description,
+  }),
+  breadcrumbSchema([
+    { name: "Trang chủ", url: absoluteUrl(ROUTES.home) },
+    { name: "Chính sách bảo mật", url: absoluteUrl(ROUTES.privacy) },
+  ]),
+];
+
 export default function PrivacyPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
+      />
       <section className="relative w-full h-[30vh] min-h-[220px] overflow-hidden flex items-center justify-center bg-[#0B2545]">
         <div className="absolute inset-0 bg-gradient-to-b from-[#0B2545]/40 via-[#0B2545]/60 to-[#0B2545] z-0" />
         <div className="relative text-center z-10 pt-16">
@@ -40,7 +61,7 @@ export default function PrivacyPage() {
             3. Quyền của khách hàng
           </h2>
           <p>
-            Quý khách có quyền yêu cầu chỉnh sửa, cập nhật hoặc xóa dữ liệu cá nhân đã đăng ký bằng cách liên hệ bộ phận chăm sóc khách hàng qua hotline 0325 610016.
+            Quý khách có quyền yêu cầu chỉnh sửa, cập nhật hoặc xóa dữ liệu cá nhân đã đăng ký bằng cách liên hệ bộ phận chăm sóc khách hàng qua hotline 0702252678.
           </p>
         </div>
       </section>

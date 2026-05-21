@@ -107,7 +107,7 @@ export default function LegalPage() {
               Chúng tôi có thể gửi danh sách tài liệu cần kiểm tra theo từng dự án và từng giai đoạn giao dịch.
             </p>
             <a
-              href="tel:0325610016"
+              href="tel:0702252678"
               className="mt-6 inline-flex w-full justify-center rounded-[3px] bg-[#C6A77D] px-5 py-3 label-small font-bold text-white transition-colors hover:bg-[#071522]"
             >
               Gọi tư vấn pháp lý

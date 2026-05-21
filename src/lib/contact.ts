@@ -10,24 +10,27 @@ import type { IconType } from "react-icons";
 export type LeadFormState = {
   name: string;
   phone: string;
+  email: string;
 };
 
 export type ContactFormState = LeadFormState & {
-  email: string;
   project: string;
   interest: string;
   channel: string;
   message: string;
 };
 
-export const HOTLINE_DISPLAY = "0325 610016";
-export const HOTLINE_TEL = "tel:0325610016";
-export const CONTACT_EMAIL = "contact@bds-da-nang.com";
+export const HOTLINE_DISPLAY = "0702252678";
+export const HOTLINE_TEL = "tel:0702252678";
+export const ZALO_HREF = "https://zalo.me/0702252678";
+export const CONTACT_EMAIL = "sinh.dev.ops@gmail.com";
 export const CONTACT_EMAIL_HREF = `mailto:${CONTACT_EMAIL}`;
+export const OFFICE_ADDRESS = "04 Bình Minh 5, Đà Nẵng";
 
 export const INITIAL_LEAD_FORM: LeadFormState = {
   name: "",
   phone: "",
+  email: "",
 };
 
 export const INITIAL_CONTACT_FORM: ContactFormState = {
@@ -63,7 +66,7 @@ export const CONTACT_CARDS: {
   {
     icon: FiMapPin,
     label: "Văn phòng",
-    value: "Lô 12, Khu B2-4, đường Lê Văn Duyệt, Sơn Trà, Đà Nẵng",
+    value: OFFICE_ADDRESS,
     meta: "Tiếp khách theo lịch hẹn",
   },
 ];

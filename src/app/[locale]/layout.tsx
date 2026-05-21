@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import StickyBar from "@/components/layout/StickyBar";
+import FloatingContact from "@/components/layout/FloatingContact";
 import ConsultationModal from "@/components/shared/ConsultationModal";
 import { routing } from "@/i18n/routing";
 import {
@@ -15,7 +16,6 @@ import {
   absoluteUrl,
   createMetadata,
 } from "@/lib/seo";
-import "../globals.css";
 
 const playfair = Playfair_Display({
   subsets: ["vietnamese", "latin"],
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
-    apple: "/images/logo.png",
+    apple: "/images/logo-bds-da-nang-dark.svg",
   },
   openGraph: {
     ...createMetadata({
@@ -87,7 +87,7 @@ const organizationSchema = {
   description:
     "Cổng thông tin tư vấn và cập nhật các dự án căn hộ cao cấp tại Đà Nẵng.",
   url: SITE_URL,
-  logo: absoluteUrl("/images/logo.png"),
+  logo: absoluteUrl("/images/logo-bds-da-nang-dark.svg"),
   image: absoluteUrl(DEFAULT_OG_IMAGE),
   telephone: HOTLINE_E164,
   priceRange: "$$",
@@ -156,6 +156,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
           <Navbar />
           <main className="grow relative">{children}</main>
           <Footer />
+          <FloatingContact />
           <StickyBar />
           <ConsultationModal />
         </NextIntlClientProvider>

@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { FiArrowRight, FiMapPin, FiPhoneCall } from "react-icons/fi";
 import { openConsultationModal } from "@/components/shared/ConsultationModal";
+import { OFFICE_ADDRESS } from "@/lib/contact";
 
 const ContactHero = () => {
   return (
@@ -66,11 +67,11 @@ const ContactHero = () => {
               <FiArrowRight className="h-4 w-4" aria-hidden="true" />
             </button>
             <a
-              href="tel:0325610016"
+              href="tel:0702252678"
               className="inline-flex h-12 items-center justify-center gap-2 rounded-[4px] border border-white/22 px-6 text-xs font-bold uppercase tracking-[0.14em] text-white transition-colors duration-300 hover:border-[#C6A77D] hover:text-[#C6A77D]"
             >
               <FiPhoneCall className="h-4 w-4" aria-hidden="true" />
-              0325 610016
+              0702252678
             </a>
           </motion.div>
 
@@ -108,7 +109,7 @@ const ContactHero = () => {
             <span className="label-small">Văn phòng</span>
           </div>
           <p className="text-sm font-medium leading-[1.75] text-white/72">
-            Lô 12, Khu B2-4, đường Lê Văn Duyệt, Sơn Trà, TP. Đà Nẵng
+            {OFFICE_ADDRESS}
           </p>
         </motion.div>
       </div>

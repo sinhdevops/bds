@@ -93,10 +93,10 @@ export default function AboutPage() {
               Gửi ngân sách và mục tiêu, đội ngũ tư vấn sẽ đề xuất shortlist rõ ràng thay vì để bạn tự đọc quá nhiều thông tin rời rạc.
             </p>
             <a
-              href="tel:0325610016"
+              href="tel:0702252678"
               className="mt-6 inline-flex w-full justify-center rounded-[3px] bg-[#C6A77D] px-5 py-3 label-small font-bold text-white transition-colors hover:bg-white hover:text-[#071522]"
             >
-              Gọi 0325 610016
+              Gọi 0702252678
             </a>
           </aside>
         </div>

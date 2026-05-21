@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
-import { ROUTES, createMetadata } from "@/lib/seo";
+import { ROUTES, absoluteUrl, breadcrumbSchema, createMetadata, webPageSchema } from "@/lib/seo";
+
+const title = "Điều Khoản Sử Dụng - BĐS Đà Nẵng";
+const description =
+  "Các điều khoản và điều kiện áp dụng cho người dùng truy cập, tra cứu thông tin bất động sản và đăng ký tư vấn trên website BĐS Đà Nẵng.";
 
 export const metadata: Metadata = createMetadata({
   title: "Điều Khoản Sử Dụng - BĐS Đà Nẵng",
@@ -8,9 +12,26 @@ export const metadata: Metadata = createMetadata({
   path: ROUTES.terms,
 });
 
+const schemas = [
+  webPageSchema({
+    id: `${absoluteUrl(ROUTES.terms)}/#webpage`,
+    url: absoluteUrl(ROUTES.terms),
+    name: title,
+    description,
+  }),
+  breadcrumbSchema([
+    { name: "Trang chủ", url: absoluteUrl(ROUTES.home) },
+    { name: "Điều khoản", url: absoluteUrl(ROUTES.terms) },
+  ]),
+];
+
 export default function TermsPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
+      />
       <section className="relative w-full h-[30vh] min-h-[220px] overflow-hidden flex items-center justify-center bg-[#0B2545]">
         <div className="absolute inset-0 bg-gradient-to-b from-[#0B2545]/40 via-[#0B2545]/60 to-[#0B2545] z-0" />
         <div className="relative text-center z-10 pt-16">

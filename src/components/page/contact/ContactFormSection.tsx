@@ -24,6 +24,8 @@ const fieldClass =
 const ContactFormSection = () => {
   const [formData, setFormData] = useState<ContactFormState>(INITIAL_CONTACT_FORM);
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const identityFields = useMemo(
     () => [
@@ -38,7 +40,7 @@ const ContactFormSection = () => {
         label: "Số điện thoại",
         name: "phone" as const,
         value: formData.phone,
-        placeholder: "0325 610016",
+        placeholder: "0702252678",
         type: "tel",
         required: true,
       },
@@ -64,11 +66,38 @@ const ContactFormSection = () => {
 
   const handleSubmit = useCallback((event: FormEvent) => {
     event.preventDefault();
-    setSubmitted(true);
-    setFormData(INITIAL_CONTACT_FORM);
-  }, []);
+    setSubmitting(true);
+    setErrorMessage("");
 
-  const resetSubmitted = useCallback(() => setSubmitted(false), []);
+    fetch("/api/lead", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        ...formData,
+        source: typeof window !== "undefined" ? window.location.href : "Trang liên hệ",
+      }),
+    })
+      .then(async (response) => {
+        if (!response.ok) {
+          const data = await response.json().catch(() => null);
+          throw new Error(data?.error ?? "Không thể gửi yêu cầu");
+        }
+
+        setSubmitted(true);
+        setFormData(INITIAL_CONTACT_FORM);
+      })
+      .catch(() => {
+        setErrorMessage("Chưa gửi được yêu cầu. Vui lòng thử lại hoặc gọi hotline.");
+      })
+      .finally(() => {
+        setSubmitting(false);
+      });
+  }, [formData]);
+
+  const resetSubmitted = useCallback(() => {
+    setSubmitted(false);
+    setErrorMessage("");
+  }, []);
 
   return (
     <section id="contact-form" className="bg-[#FAF8F5] py-16 lg:py-24">
@@ -92,6 +121,8 @@ const ContactFormSection = () => {
                 onChange={handleChange}
                 onChoice={handleChoice}
                 onSubmit={handleSubmit}
+                submitting={submitting}
+                errorMessage={errorMessage}
               />
             )}
           </motion.div>
@@ -196,6 +227,8 @@ type ConsultationFormProps = {
   onChange: (event: InputEvent) => void;
   onChoice: (name: ChoiceName, value: string) => void;
   onSubmit: (event: FormEvent) => void;
+  submitting: boolean;
+  errorMessage: string;
 };
 
 const ConsultationForm = memo(function ConsultationForm({
@@ -204,6 +237,8 @@ const ConsultationForm = memo(function ConsultationForm({
   onChange,
   onChoice,
   onSubmit,
+  submitting,
+  errorMessage,
 }: ConsultationFormProps) {
   return (
     <form onSubmit={onSubmit} className="grid gap-6">
@@ -253,11 +288,16 @@ const ConsultationForm = memo(function ConsultationForm({
 
       <button
         type="submit"
-        className="inline-flex h-12 items-center justify-center gap-2 rounded-[4px] bg-[#C6A77D] px-6 text-xs font-bold uppercase tracking-[0.14em] text-[#111111] transition-colors duration-300 hover:bg-white"
+        disabled={submitting}
+        className="inline-flex h-12 items-center justify-center gap-2 rounded-[4px] bg-[#C6A77D] px-6 text-xs font-bold uppercase tracking-[0.14em] text-[#111111] transition-colors duration-300 hover:bg-white disabled:cursor-not-allowed disabled:opacity-70"
       >
-        Gửi yêu cầu tư vấn
+        {submitting ? "Đang gửi..." : "Gửi yêu cầu tư vấn"}
         <FiSend className="h-4 w-4" aria-hidden="true" />
       </button>
+
+      {errorMessage ? (
+        <p className="text-center text-xs font-semibold text-red-200">{errorMessage}</p>
+      ) : null}
 
       <p className="text-center text-xs font-medium leading-relaxed text-white/34">
         Thông tin của bạn chỉ dùng cho mục đích tư vấn dự án và chính sách bán hàng.

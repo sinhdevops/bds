@@ -37,7 +37,7 @@ export default function StickyBar() {
             <div className="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end flex-shrink-0">
               {/* Call button on Mobile */}
               <a
-                href="tel:0325610016"
+                href="tel:0702252678"
                 className="flex sm:hidden w-11 h-11 rounded-full bg-[#0B2545] items-center justify-center text-white shadow-sm hover:bg-[#C6A77D] transition-colors duration-300 flex-shrink-0"
                 aria-label="Gọi điện tư vấn"
               >
@@ -54,7 +54,7 @@ export default function StickyBar() {
 
               {/* Call text on Desktop */}
               <a
-                href="tel:0325610016"
+                href="tel:0702252678"
                 className="hidden sm:flex items-center gap-2 text-[#0B2545] label-small font-bold"
               >
                 <svg
@@ -66,7 +66,7 @@ export default function StickyBar() {
                 >
                   <path d="M13 10.7l-1.9.2c-.4 0-.8.3-1 .6-.2.3-.4 1.2-3.1-1.5C4.4 7.3 5.3 7 5.5 6.7c.3-.3.5-.6.6-1l.2-1.9c0-.4-.1-.8-.3-1.1L5.2 1.9c-.3-.4-.9-.5-1.4-.2L2.3 2.7C1.7 3 1.5 3.7 1.7 4.3c.6 2.8 2.3 5.6 4.8 8.1 2.5 2.5 5.3 4.2 8.1 4.8.6.1 1.3-.1 1.6-.6l1.1-1.5c.3-.5.2-1.1-.2-1.4l-.9-1c-.3-.2-.7-.4-1.2-.3z" />
                 </svg>
-                0325 610016
+                0702252678
               </a>
 
               {/* CTA button (Full width on mobile, normal width on desktop) */}

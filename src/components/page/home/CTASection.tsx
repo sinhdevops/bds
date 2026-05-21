@@ -77,7 +77,7 @@ export default function CTASection() {
                   >
                     Tư vấn 24/7
                   </span>
-                  <span className="text-gold text-lg">0325 610016</span>
+                  <span className="text-gold text-lg">0702252678</span>
                 </div>
               </div>
 
@@ -176,7 +176,7 @@ export default function CTASection() {
                   {
                     key: "phone",
                     label: "Số điện thoại",
-                    placeholder: "0325 610016",
+                    placeholder: "0702252678",
                     type: "tel",
                   },
                   {
