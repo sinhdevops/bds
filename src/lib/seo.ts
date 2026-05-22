@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-export const SITE_NAME = "BĐS Đà Nẵng";
+export const SITE_NAME = "BĐS cao cấp Đà Nẵng";
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://bds-da-nang.com";
 export const DEFAULT_OG_IMAGE = "/images/hero-song-han-clean.png";
 export const HOTLINE = "0702252678";
