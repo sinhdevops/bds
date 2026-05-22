@@ -78,7 +78,7 @@ export const PROJECTS: Record<string, ProjectData> = {
     fullAddress: "259 Trần Hưng Đạo, Phường An Hải Bắc, Quận Sơn Trà, Đà Nẵng",
     floors: 39,
     totalUnits: 396,
-    priceFrom: "2.8",
+    priceFrom: "2.1",
     priceTo: "18",
     completionYear: "2025",
     heroImage:
@@ -99,7 +99,7 @@ export const PROJECTS: Record<string, ProjectData> = {
       { label: "Số tầng", value: "39", unit: "tầng" },
       { label: "Tổng căn", value: "396", unit: "căn" },
       { label: "Diện tích", value: "52 – 158", unit: "m²" },
-      { label: "Giá từ", value: "2.8", unit: "Tỷ VND" },
+      { label: "Giá từ", value: "2.1", unit: "Tỷ VND" },
     ],
     highlights: [
       {
@@ -130,7 +130,7 @@ export const PROJECTS: Record<string, ProjectData> = {
         bathrooms: 1,
         area: 52,
         view: "Sông Hàn",
-        priceFrom: "2.8",
+        priceFrom: "2.1",
         image: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=700&q=80",
         available: 12,
       },
@@ -221,7 +221,7 @@ export const PROJECTS: Record<string, ProjectData> = {
     seoTitle:
       "Sun Symphony Residence Đà Nẵng — Căn Hộ Hạng Sang Mặt Tiền Sông Hàn | BĐS Đà Nẵng",
     seoDesc:
-      "Mua căn hộ Sun Symphony Residence Đà Nẵng — tổ hợp 39 tầng mặt tiền Sông Hàn, Trần Hưng Đạo. Giá từ 2.8 tỷ. Hotline: 0702252678.",
+      "Mua căn hộ Sun Symphony Residence Đà Nẵng — tổ hợp 39 tầng mặt tiền Sông Hàn, Trần Hưng Đạo. Giá từ 2.1 tỷ. Hotline: 0702252678.",
   },
 
   "sun-ponte-residence": {

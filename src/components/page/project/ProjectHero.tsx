@@ -8,7 +8,7 @@ import { openConsultationModal } from "@/components/shared/ConsultationModal";
 const STATS = [
   { value: "3", label: "Dự án", note: "Ven sông Hàn" },
   { value: "1.066+", label: "Sản phẩm", note: "Căn hộ, villa, shophouse" },
-  { value: "2.8 tỷ", label: "Giá từ", note: "Có phương án vay" },
+  { value: "2.1 tỷ", label: "Giá từ", note: "Có phương án vay" },
 ];
 
 const ProjectHero = () => {

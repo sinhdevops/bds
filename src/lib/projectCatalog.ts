@@ -62,7 +62,7 @@ export const PROJECT_CATALOG: ProjectCatalogItem[] = [
     statusLabel: "Đang mở bán",
     location: "Sơn Trà, Đà Nẵng",
     address: "Trần Hưng Đạo - Lê Văn Duyệt",
-    priceFrom: 2.8,
+    priceFrom: 2.1,
     priceTo: 18,
     floors: 39,
     totalUnits: 396,
