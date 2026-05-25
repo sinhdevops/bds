@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { motion } from "framer-motion";
@@ -77,7 +77,7 @@ export default function CTASection() {
                   >
                     Tư vấn 24/7
                   </span>
-                  <span className="text-gold text-lg">0702252678</span>
+                  <span className="text-gold text-lg">0352.787777</span>
                 </div>
               </div>
 
@@ -176,7 +176,7 @@ export default function CTASection() {
                   {
                     key: "phone",
                     label: "Số điện thoại",
-                    placeholder: "0702252678",
+                    placeholder: "0352.787777",
                     type: "tel",
                   },
                   {
@@ -223,3 +223,4 @@ export default function CTASection() {
     </section>
   );
 }
+

@@ -1,10 +1,11 @@
-import { notFound } from "next/navigation";
+﻿import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { getCatalogProject, getCatalogProjectSlugs } from "@/lib/projectCatalog";
 import { parseProjectMarkdown } from "@/lib/projectMarkdown";
 import MarkdownProjectPage from "@/components/page/project/MarkdownProjectPage";
+import SymphonyFiveLanding from "@/components/page/project/SymphonyFiveLanding";
 import {
   HOTLINE_E164,
   ROUTES,
@@ -34,7 +35,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const priceText = project.priceFrom ? `Giá từ ${project.priceFrom} tỷ` : "Nhận bảng giá mới nhất";
   const title = `${project.name} - ${priceText} | BĐS Đà Nẵng`;
-  const description = `${project.name} tại ${project.location}. ${priceText}, cập nhật giỏ hàng, chính sách bán hàng và lịch xem nhà qua hotline 0702252678.`;
+  const description = `${project.name} tại ${project.location}. ${priceText}, cập nhật giỏ hàng, chính sách bán hàng và lịch xem nhà qua hotline 0352.787777.`;
 
   return createMetadata({
     title,
@@ -118,6 +119,19 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 
   const project = getCatalogProject(slug);
   if (!project) notFound();
+  const schemas = buildProjectSchemas(project);
+
+  if (project.slug === "sun-symphony-5") {
+    return (
+      <>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
+        />
+        <SymphonyFiveLanding project={project} />
+      </>
+    );
+  }
 
   const markdown = [
     `# ${project.name}`,
@@ -141,7 +155,6 @@ export default async function ProjectDetailPage({ params }: PageProps) {
     project.idealFor,
   ].join("\n");
   const { blocks, toc } = parseProjectMarkdown(markdown);
-  const schemas = buildProjectSchemas(project);
 
   return (
     <>
@@ -153,3 +166,4 @@ export default async function ProjectDetailPage({ params }: PageProps) {
     </>
   );
 }
+

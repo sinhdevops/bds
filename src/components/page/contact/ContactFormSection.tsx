@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { memo, useCallback, useMemo, useState } from "react";
 import type { ChangeEvent, FormEvent } from "react";
@@ -40,7 +40,7 @@ const ContactFormSection = () => {
         label: "Số điện thoại",
         name: "phone" as const,
         value: formData.phone,
-        placeholder: "0702252678",
+        placeholder: "0352.787777",
         type: "tel",
         required: true,
       },
@@ -450,3 +450,4 @@ const SubmittedState = memo(function SubmittedState({ onReset }: { onReset: () =
 });
 
 export default React.memo(ContactFormSection);
+

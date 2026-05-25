@@ -1,4 +1,4 @@
-export interface ApartmentType {
+﻿export interface ApartmentType {
   code: string;
   bedrooms: number;
   bathrooms: number;
@@ -221,7 +221,7 @@ export const PROJECTS: Record<string, ProjectData> = {
     seoTitle:
       "Sun Symphony Residence Đà Nẵng — Căn Hộ Hạng Sang Mặt Tiền Sông Hàn | BĐS Đà Nẵng",
     seoDesc:
-      "Mua căn hộ Sun Symphony Residence Đà Nẵng — tổ hợp 39 tầng mặt tiền Sông Hàn, Trần Hưng Đạo. Giá từ 2.1 tỷ. Hotline: 0702252678.",
+      "Mua căn hộ Sun Symphony Residence Đà Nẵng — tổ hợp 39 tầng mặt tiền Sông Hàn, Trần Hưng Đạo. Giá từ 2.1 tỷ. Hotline: 0352.787777.",
   },
 
   "sun-ponte-residence": {
@@ -371,7 +371,7 @@ export const PROJECTS: Record<string, ProjectData> = {
     seoTitle:
       "Sun Ponte Residence Đà Nẵng — Căn Hộ View Cầu Rồng Độc Quyền | BĐS Đà Nẵng",
     seoDesc:
-      "Mua căn hộ Sun Ponte Residence Đà Nẵng — tầm nhìn trực diện Cầu Rồng huyền thoại. Giá từ 3.5 tỷ. Hotline: 0702252678.",
+      "Mua căn hộ Sun Ponte Residence Đà Nẵng — tầm nhìn trực diện Cầu Rồng huyền thoại. Giá từ 3.5 tỷ. Hotline: 0352.787777.",
   },
 
   "sun-cosmo-residence": {
@@ -520,7 +520,7 @@ export const PROJECTS: Record<string, ProjectData> = {
     seoTitle:
       "Sun Cosmo Residence Đà Nẵng — Căn Hộ Đã Bàn Giao View Sông Hàn & Ngũ Hành Sơn | BĐS Đà Nẵng",
     seoDesc:
-      "Mua căn hộ Sun Cosmo Residence — đã bàn giao, nhận nhà ngay. View Sông Hàn & Ngũ Hành Sơn. Giá từ 3 tỷ. Hotline: 0702252678.",
+      "Mua căn hộ Sun Cosmo Residence — đã bàn giao, nhận nhà ngay. View Sông Hàn & Ngũ Hành Sơn. Giá từ 3 tỷ. Hotline: 0352.787777.",
   },
 };
 
@@ -537,3 +537,4 @@ export const STATUS_CONFIG = {
   "under-construction": { label: "Đang Xây Dựng", bg: "bg-amber-500/20", text: "text-amber-400", dot: "bg-amber-400" },
   delivered: { label: "Đã Bàn Giao", bg: "bg-sky-500/20", text: "text-sky-400", dot: "bg-sky-400" },
 };
+

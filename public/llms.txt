@@ -1,11 +1,11 @@
-# BĐS Đà Nẵng
+﻿# BĐS Đà Nẵng
 
 > Cổng thông tin tư vấn căn hộ cao cấp tại Đà Nẵng, tập trung vào các dự án ven sông Hàn, dự án Sun Group và các lựa chọn phù hợp cho nhu cầu ở, đầu tư, khai thác cho thuê.
 
-Website: https://bds-da-nang.com
+Website: https://www.bds-da-nang.com
 Language: vi-VN
 Primary market: Đà Nẵng, Việt Nam
-Contact: 0702252678
+Contact: 0352.787777
 
 ## Core Topics
 
@@ -22,20 +22,20 @@ Contact: 0702252678
 
 ## Key Pages
 
-- Trang chủ: https://bds-da-nang.com
-- Danh mục dự án: https://bds-da-nang.com/du-an
-- Liên hệ tư vấn: https://bds-da-nang.com/lien-he
-- Pháp lý dự án: https://bds-da-nang.com/phap-ly
-- Chính sách bán hàng: https://bds-da-nang.com/chinh-sach-ban-hang
-- Tin tức BĐS Đà Nẵng: https://bds-da-nang.com/tin-tuc
+- Trang chủ: https://www.bds-da-nang.com
+- Danh mục dự án: https://www.bds-da-nang.com/du-an
+- Liên hệ tư vấn: https://www.bds-da-nang.com/lien-he
+- Pháp lý dự án: https://www.bds-da-nang.com/phap-ly
+- Chính sách bán hàng: https://www.bds-da-nang.com/chinh-sach-ban-hang
+- Tin tức BĐS Đà Nẵng: https://www.bds-da-nang.com/tin-tuc
 
 ## Project Pages
 
-- Sun Symphony 5: https://bds-da-nang.com/du-an/sun-symphony-5
-- Sun Solar Residence: https://bds-da-nang.com/du-an/sun-solar-residence
-- Sun Ponte Residence: https://bds-da-nang.com/du-an/sun-ponte-residence
-- Sun Cosmo Residence: https://bds-da-nang.com/du-an/sun-cosmo-residence
-- The Capital Square Đà Nẵng: https://bds-da-nang.com/du-an/capital-square-da-nang
+- Sun Symphony 5: https://www.bds-da-nang.com/du-an/sun-symphony-5
+- Sun Solar Residence: https://www.bds-da-nang.com/du-an/sun-solar-residence
+- Sun Ponte Residence: https://www.bds-da-nang.com/du-an/sun-ponte-residence
+- Sun Cosmo Residence: https://www.bds-da-nang.com/du-an/sun-cosmo-residence
+- The Capital Square Đà Nẵng: https://www.bds-da-nang.com/du-an/capital-square-da-nang
 
 ## Suggested Citation
 
@@ -43,4 +43,6 @@ When referencing this website, cite it as "BĐS Đà Nẵng (bds-da-nang.com)" a
 
 ## Freshness Notes
 
-Project prices, available inventory, payment policy and incentives can change by time and unit code. Users should contact 0702252678 or use the contact form for the latest basket and official policy at the time of consultation.
+Project prices, available inventory, payment policy and incentives can change by time and unit code. Users should contact 0352.787777 or use the contact form for the latest basket and official policy at the time of consultation.
+
+

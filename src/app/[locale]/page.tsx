@@ -19,7 +19,7 @@ import {
   webPageSchema,
 } from "@/lib/seo";
 
-const title = "BĐS cao cấp Đà Nẵng - Mua Căn Hộ Sun Group & Ven Sông Hàn";
+const title = "BĐS Đà Nẵng - Mua Căn Hộ Sun Group & Ven Sông Hàn";
 const description =
   "Tư vấn mua căn hộ cao cấp Sun Group tại Đà Nẵng: Sun Symphony, Sun Ponte, Sun Cosmo, Capital Square. Nhận bảng giá, giỏ hàng và chính sách mới nhất.";
 
@@ -37,6 +37,7 @@ export const metadata: Metadata = createMetadata({
     "bất động sản sông Hàn",
     "đầu tư căn hộ Đà Nẵng",
     "bảng giá căn hộ Sun Group",
+    "BĐS Đà Nẵng",
     "BĐS cao cấp Đà Nẵng",
   ],
 });

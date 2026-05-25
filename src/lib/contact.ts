@@ -1,4 +1,4 @@
-import {
+﻿import {
   FiClock,
   FiMail,
   FiMapPin,
@@ -20,9 +20,9 @@ export type ContactFormState = LeadFormState & {
   message: string;
 };
 
-export const HOTLINE_DISPLAY = "0702252678";
-export const HOTLINE_TEL = "tel:0702252678";
-export const ZALO_HREF = "https://zalo.me/0702252678";
+export const HOTLINE_DISPLAY = "0352.787777";
+export const HOTLINE_TEL = "tel:0352787777";
+export const ZALO_HREF = "https://zalo.me/0352787777";
 export const CONTACT_EMAIL = "sinh.dev.ops@gmail.com";
 export const CONTACT_EMAIL_HREF = `mailto:${CONTACT_EMAIL}`;
 export const OFFICE_ADDRESS = "04 Bình Minh 5, Đà Nẵng";
@@ -98,3 +98,4 @@ export const PROJECT_OPTIONS = [
   { label: "Sun Ponte Residence", value: "Sun Ponte Residence" },
   { label: "Capital Square Đà Nẵng", value: "Capital Square Đà Nẵng" },
 ];
+

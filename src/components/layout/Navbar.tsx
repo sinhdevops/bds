@@ -68,7 +68,7 @@ export default function Navbar() {
           <Link href="/" className="flex items-center group" onClick={closeMenu}>
             <Image
               src={scrolled ? "/images/logo-bds-da-nang-dark.svg" : "/images/logo-bds-da-nang-light.svg"}
-              alt="BĐS Đà Nẵng"
+              alt="BĐS cao cấp Đà Nẵng"
               width={178}
               height={50}
               priority

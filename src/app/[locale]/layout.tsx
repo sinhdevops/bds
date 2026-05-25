@@ -37,10 +37,11 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   ...createMetadata({
-    title: "BĐS cao cấp Đà Nẵng - Căn Hộ Cao Cấp Sun Group & Ven Sông Hàn",
+    title: "BĐS Đà Nẵng - Mua Căn Hộ Sun Group & Ven Sông Hàn",
     description:
       `Cổng thông tin tư vấn căn hộ cao cấp Đà Nẵng: Sun Symphony, Sun Ponte, Sun Cosmo, Sun Solar và Capital Square. Văn phòng ${OFFICE_ADDRESS}.`,
     keywords: [
+      "BĐS Đà Nẵng",
       "BĐS cao cấp Đà Nẵng",
       "bds-da-nang.com",
       "Sun Group Đà Nẵng",
@@ -72,7 +73,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     ...createMetadata({
-      title: "BĐS cao cấp Đà Nẵng - Căn Hộ Cao Cấp Sun Group & Ven Sông Hàn",
+      title: "BĐS Đà Nẵng - Mua Căn Hộ Sun Group & Ven Sông Hàn",
       description:
         `Tư vấn căn hộ Đà Nẵng: bảng giá, giỏ hàng, chính sách bán hàng, lịch xem nhà và pháp lý dự án. Văn phòng ${OFFICE_ADDRESS}.`,
     }).openGraph,
@@ -85,7 +86,7 @@ const organizationSchema = {
   "@type": "RealEstateAgent",
   "@id": `${SITE_URL}/#organization`,
   name: SITE_NAME,
-  alternateName: ["BĐS Đà Nẵng", "BDS Da Nang", "bds-da-nang.com"],
+  alternateName: ["BĐS cao cấp Đà Nẵng", "BDS Da Nang", "BDS cao cap Da Nang"],
   description:
     "Cổng thông tin tư vấn và cập nhật các dự án căn hộ cao cấp tại Đà Nẵng.",
   url: SITE_URL,
@@ -121,6 +122,9 @@ const websiteSchema = {
   "@id": `${SITE_URL}/#website`,
   url: SITE_URL,
   name: SITE_NAME,
+  alternateName: ["BĐS cao cấp Đà Nẵng", "BDS Da Nang"],
+  description:
+    "Cổng thông tin tư vấn căn hộ cao cấp Đà Nẵng, dự án Sun Group và bất động sản ven sông Hàn.",
   publisher: { "@id": `${SITE_URL}/#organization` },
   inLanguage: "vi-VN",
   potentialAction: {

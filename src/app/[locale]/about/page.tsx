@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import InfoPageLayout from "@/components/page/info/InfoPageLayout";
 import { ROUTES, absoluteUrl, breadcrumbSchema, createMetadata, webPageSchema } from "@/lib/seo";
 
@@ -93,10 +93,10 @@ export default function AboutPage() {
               Gửi ngân sách và mục tiêu, đội ngũ tư vấn sẽ đề xuất shortlist rõ ràng thay vì để bạn tự đọc quá nhiều thông tin rời rạc.
             </p>
             <a
-              href="tel:0702252678"
+              href="tel:0352787777"
               className="mt-6 inline-flex w-full justify-center rounded-[3px] bg-[#C6A77D] px-5 py-3 label-small font-bold text-white transition-colors hover:bg-white hover:text-[#071522]"
             >
-              Gọi 0702252678
+              Gọi 0352.787777
             </a>
           </aside>
         </div>
@@ -104,3 +104,4 @@ export default function AboutPage() {
     </>
   );
 }
+

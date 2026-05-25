@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React from "react";
 import { motion } from "framer-motion";
@@ -67,11 +67,11 @@ const ContactHero = () => {
               <FiArrowRight className="h-4 w-4" aria-hidden="true" />
             </button>
             <a
-              href="tel:0702252678"
+              href="tel:0352787777"
               className="inline-flex h-12 items-center justify-center gap-2 rounded-[4px] border border-white/22 px-6 text-xs font-bold uppercase tracking-[0.14em] text-white transition-colors duration-300 hover:border-[#C6A77D] hover:text-[#C6A77D]"
             >
               <FiPhoneCall className="h-4 w-4" aria-hidden="true" />
-              0702252678
+              0352.787777
             </a>
           </motion.div>
 
@@ -118,3 +118,4 @@ const ContactHero = () => {
 };
 
 export default React.memo(ContactHero);
+

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { ROUTES, absoluteUrl, breadcrumbSchema, createMetadata, webPageSchema } from "@/lib/seo";
 
 const title = "Chính Sách Bảo Mật - BĐS Đà Nẵng";
@@ -61,10 +61,11 @@ export default function PrivacyPage() {
             3. Quyền của khách hàng
           </h2>
           <p>
-            Quý khách có quyền yêu cầu chỉnh sửa, cập nhật hoặc xóa dữ liệu cá nhân đã đăng ký bằng cách liên hệ bộ phận chăm sóc khách hàng qua hotline 0702252678.
+            Quý khách có quyền yêu cầu chỉnh sửa, cập nhật hoặc xóa dữ liệu cá nhân đã đăng ký bằng cách liên hệ bộ phận chăm sóc khách hàng qua hotline 0352.787777.
           </p>
         </div>
       </section>
     </>
   );
 }
+

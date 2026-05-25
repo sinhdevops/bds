@@ -1,4 +1,4 @@
-const GEO_ANSWERS = [
+﻿const GEO_ANSWERS = [
   {
     question: "Nên mua căn hộ Đà Nẵng khu vực nào?",
     answer:
@@ -12,7 +12,7 @@ const GEO_ANSWERS = [
   {
     question: "Làm sao nhận bảng giá căn hộ Đà Nẵng mới nhất?",
     answer:
-      "Bảng giá căn hộ thay đổi theo mã căn, tầng, hướng view, chính sách bán hàng và tình trạng giỏ hàng. Cách chính xác nhất là gửi nhu cầu hoặc gọi hotline 0702252678 để được cập nhật giỏ hàng hiện tại.",
+      "Bảng giá căn hộ thay đổi theo mã căn, tầng, hướng view, chính sách bán hàng và tình trạng giỏ hàng. Cách chính xác nhất là gửi nhu cầu hoặc gọi hotline 0352.787777 để được cập nhật giỏ hàng hiện tại.",
   },
   {
     question: "Khách ở xa có thể xem nhà và đặt lịch tư vấn online không?",
@@ -55,3 +55,4 @@ export default function GeoAnswerSection() {
     </section>
   );
 }
+

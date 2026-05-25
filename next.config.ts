@@ -5,6 +5,18 @@ const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 const nextConfig: NextConfig = {
   reactCompiler: true,
+  async rewrites() {
+    return [
+      {
+        source: "/du-an",
+        destination: "/vi/project",
+      },
+      {
+        source: "/du-an/:slug*",
+        destination: "/vi/project/:slug*",
+      },
+    ];
+  },
   images: {
     remotePatterns: [
       {
