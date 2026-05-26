@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState, type FormEvent, type ReactNode } from "react";
 import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -8,16 +9,40 @@ import { Navigation } from "swiper/modules";
 import {
   FiArrowRight,
   FiAward,
+  FiBarChart2,
+  FiBriefcase,
+  FiCalendar,
+  FiCheck,
   FiCheckCircle,
   FiChevronLeft,
   FiChevronRight,
+  FiDollarSign,
+  FiGift,
+  FiGrid,
+  FiHeart,
+  FiHome,
+  FiLayers,
+  FiMapPin,
   FiPhone,
   FiShield,
+  FiStar,
+  FiTag,
   FiTrendingUp,
+  FiUsers,
   FiUser,
   FiX,
+  FiXCircle,
 } from "react-icons/fi";
+import {
+  FaBagShopping,
+  FaChampagneGlasses,
+  FaChildReaching,
+  FaDumbbell,
+  FaPersonSwimming,
+  FaTree,
+} from "react-icons/fa6";
 import { SiZalo } from "react-icons/si";
+import type { IconType } from "react-icons";
 import Footer from "@/components/layout/Footer";
 import type { ProjectCatalogItem } from "@/lib/projectCatalog";
 import { HOTLINE_DISPLAY, HOTLINE_TEL, ZALO_HREF } from "@/lib/contact";
@@ -25,19 +50,19 @@ import "swiper/css";
 
 const navItems = ["Tổng quan", "Vị trí", "Tiện ích", "Căn hộ", "Chính sách"];
 
-const heroFeatures = [
-  ["Gần biển", "Mỹ Khê"],
-  ["Sở hữu", "lâu dài"],
-  ["Vị trí", "Sơn Trà"],
-  ["Chuẩn sống", "resort"],
+const heroFeatures: [IconType, string, string][] = [
+  [FiAward, "View biển", "Mỹ Khê"],
+  [FiHome, "Sở hữu", "lâu dài"],
+  [FiMapPin, "Vị trí", "Sơn Trà"],
+  [FiBriefcase, "Chuẩn sống", "resort"],
 ];
 
-const heroStats = [
-  ["Số lượng căn còn lại", "08", "căn đẹp"],
-  ["Giá chỉ từ", "3.09", "tỷ"],
-  ["Chiết khấu", "5%", "early bird"],
-  ["Hỗ trợ vay", "70%", "GTCH"],
-  ["Ân hạn gốc", "30", "tháng"],
+const heroStats: [IconType, string, string, string][] = [
+  [FiHome, "Số lượng còn lại", "08", "căn đẹp"],
+  [FiDollarSign, "Giá chỉ từ", "3.09", "tỷ"],
+  [FiTag, "Chiết khấu", "5%", "early bird"],
+  [FiBriefcase, "Hỗ trợ vay", "70%", "GTCH"],
+  [FiCalendar, "Ân hạn gốc", "30", "tháng"],
 ];
 
 const hotUnits = [
@@ -121,42 +146,81 @@ type HotUnit = (typeof hotUnits)[number];
 const buyingReasons = [
   {
     icon: FiTrendingUp,
-    title: "Trung tâm phát triển mới Nam Đà Nẵng",
+    image: "/images/projects/fours/fours-street.webp",
+    title: ["Trung tâm", "phát triển mới", "Nam Đà Nẵng"],
     copy: "Hạ tầng phía Nam được Sun Group đẩy mạnh, giá còn đang đầu chu kỳ.",
   },
   {
     icon: FiAward,
-    title: "Giá vẫn còn thấp hơn trung tâm sông Hàn",
+    image: "/images/hero-song-han-clean.png",
+    title: ["Giá vẫn còn thấp hơn", "trung tâm sông Hàn"],
     copy: "Trong khi quỹ căn mới gần sông không còn nhiều.",
   },
   {
     icon: FiShield,
-    title: "Căn hộ sở hữu lâu dài hiếm dần",
+    image: "/images/projects/sun-symphony-tower.jpg",
+    title: ["Căn hộ sở hữu", "lâu dài hiếm dần"],
     copy: "Đặc biệt tại khu ven sông, quy hoạch lớn và pháp lý rõ.",
   },
   {
     icon: FiCheckCircle,
-    title: "Chính sách kéo giãn dòng tiền mạnh",
+    image: "/images/projects/fours/fours-banner.webp",
+    title: ["Chính sách kéo giãn dòng", "tiền mạnh"],
     copy: "Hỗ trợ vay và ân hạn giúp khách dễ dàng xuống tiền.",
   },
 ];
 
-const comparisonRows = [
-  ["Chủ đầu tư", "Sun Group", "Chủ đầu tư nhỏ lẻ"],
-  ["Pháp lý", "Sở hữu lâu dài", "Thường chỉ 50 năm"],
-  ["Hạ tầng", "Quy hoạch đồng bộ, hiện đại", "Hạ tầng cũ, manh mún"],
-  ["Tiềm năng tăng giá", "Cao", "Thấp"],
-  ["Công viên / sông", "Công viên, sông, tiện ích đa dạng", "Ít tiện ích, không gian hạn chế"],
+const comparisonRows: [IconType, string, string, string][] = [
+  [FiMapPin, "Chủ đầu tư", "Sun Group", "Chủ đầu tư nhỏ lẻ"],
+  [FiShield, "Pháp lý", "Sở hữu lâu dài", "Thường chỉ 50 năm"],
+  [FiLayers, "Hạ tầng", "Quy hoạch đồng bộ, hiện đại", "Hạ tầng cũ, manh mún"],
+  [FiBarChart2, "Tiềm năng tăng giá", "Cao", "Thấp"],
+  [FiUsers, "Công viên / sông", "Công viên, sông, tiện ích đa dạng", "Ít tiện ích, không gian hạn chế"],
 ];
 
-const amenities = [
-  ["Hồ bơi vô cực", "/images/projects/capital-square-hero.png"],
-  ["Gym & Yoga", "/images/projects/capital-square-street.jpg"],
-  ["Công viên nội khu", "/images/hero-song-han-clean.png"],
-  ["Kid Club", "/images/projects/sun-solar-masterplan.jpg"],
-  ["Sky Lounge", "/images/projects/sun-symphony-tower.jpg"],
-  ["Shophouse khối đế", "/images/projects/sun-ponte-hero.jpg"],
-];
+const amenities: {
+  label: string;
+  desc: string;
+  image: string;
+  icon: IconType;
+}[] = [
+    {
+      label: "Hồ bơi vô cực",
+      desc: "Tầm nhìn panorama hướng sông Hàn & biển Mỹ Khê.",
+      image: "/images/projects/capital-square-hero.png",
+      icon: FaPersonSwimming,
+    },
+    {
+      label: "Gym & Yoga",
+      desc: "Không gian tập luyện hiện đại với trang thiết bị cao cấp.",
+      image: "/images/projects/capital-square-street.jpg",
+      icon: FaDumbbell,
+    },
+    {
+      label: "Công viên nội khu",
+      desc: "Không gian xanh mát với vườn thiền, đường dạo bộ thư giãn.",
+      image: "/images/projects/fours/fours-street.webp",
+      icon: FaTree,
+    },
+    {
+      label: "Kid Club",
+      desc: "Khu vui chơi trẻ em an toàn, sáng tạo và đầy màu sắc.",
+      image: "/images/projects/sun-solar-masterplan.jpg",
+      icon: FaChildReaching,
+    },
+    {
+      label: "Sky Lounge",
+      desc: "Không gian thư giãn trên cao với view thành phố tuyệt đẹp.",
+      image: "/images/projects/sun-symphony-tower.jpg",
+      icon: FaChampagneGlasses,
+    },
+    {
+      label: "Shophouse khối đế",
+      desc: "Trung tâm mua sắm, ẩm thực đa dạng ngay dưới chân tòa nhà.",
+      image: "/images/projects/fours/fours-banner.webp",
+      icon: FaBagShopping,
+    },
+  ];
 
 const policies = [
   ["Chiết khấu", "5%", "Early bird"],
@@ -206,7 +270,7 @@ export default function FoursTowerLanding({ project }: { project: ProjectCatalog
     <main className="min-h-screen overflow-hidden bg-[#020812] text-white">
       <FoursHeader />
 
-      <section id="tong-quan" className="relative min-h-screen overflow-hidden px-5 pb-12 pt-24 sm:px-8 lg:px-10">
+      <section id="tong-quan" className="relative min-h-screen overflow-hidden px-5 pb-8 pt-24 sm:px-8 lg:px-10 lg:pb-10">
         <Image
           src="/images/projects/fours/fours-banner.webp"
           alt={project.name}
@@ -215,134 +279,93 @@ export default function FoursTowerLanding({ project }: { project: ProjectCatalog
           className="object-cover object-center"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-linear-to-r from-[#020812]/96 via-[#06111e]/58 to-[#020812]/8" />
-        <div className="absolute inset-0 bg-linear-to-t from-[#020812] via-transparent to-[#020812]/52" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_34%,rgba(245,199,106,0.18),transparent_22%),radial-gradient(circle_at_72%_18%,rgba(34,130,255,0.2),transparent_26%)]" />
+        <div className="absolute inset-0 bg-[#040816]/38" />
+        <div className="absolute inset-0 bg-linear-to-r from-[#040816]/98 via-[#091B34]/78 to-[#091B34]/12" />
+        <div className="absolute inset-0 bg-linear-to-t from-[#040816] via-[#040816]/16 to-[#040816]/10" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(14,42,87,0.45),transparent_45%),radial-gradient(circle_at_34%_50%,rgba(245,178,77,0.18),transparent_24%)]" />
 
-        <div className="relative z-10 mx-auto flex min-h-[calc(100vh-96px)] max-w-7xl flex-col justify-center">
-          <div className="max-w-[740px] pt-8 lg:pt-12">
-            <h1 className="mt-5 max-w-5xl text-4xl font-black uppercase leading-[1.02] text-white sm:text-5xl lg:text-6xl">
-              <span className="block bg-linear-to-b from-[#FFF8DE] via-[#FFD071] to-[#9C5C1E] bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(255,198,93,0.34)]">
-                FourS Tower Đà Nẵng
-              </span>
-              <span className="block bg-linear-to-b from-[#FFF8DE] via-[#FFD071] to-[#9C5C1E] bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(255,198,93,0.34)]">
-                Căn hộ view biển Mỹ Khê cao cấp
+        <div className="relative z-10 mx-auto flex min-h-[calc(100vh-112px)] max-w-[1480px] flex-col justify-start pt-4 sm:pt-6 lg:pt-10">
+          <div className="max-w-[1180px]">
+            <div className="inline-flex h-9 items-center rounded-full border border-[#F5B24D]/70 bg-[#091B34]/58 px-4 text-[0.68rem] font-black uppercase tracking-[0.08em] text-[#F3F5F8] shadow-[inset_0_0_18px_rgba(255,255,255,0.04)] backdrop-blur-md">
+              FourS Tower Đà Nẵng
+            </div>
+
+            <h1 className="mt-5 max-w-[980px] text-[2rem] font-bold uppercase leading-none tracking-normal text-[#F3F5F8] drop-shadow-[0_10px_28px_rgba(0,0,0,0.48)] sm:text-[2.85rem] lg:text-[3.35rem] xl:text-[3.6rem]">
+              <span className="block py-1 leading-[1.12] lg:whitespace-nowrap">Căn hộ view biển Mỹ Khê</span>
+              <span className="block py-1 leading-[1.12] bg-linear-to-b from-[#FFCC73] via-[#F5B24D] to-[#D88A1D] bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(245,178,77,0.35)] lg:whitespace-nowrap">
+                Khẳng định đẳng cấp
               </span>
             </h1>
-            <p className="mt-4 flex items-center gap-4 text-xl font-semibold uppercase tracking-[0.04em] text-white/95 sm:text-3xl">
-              Giỏ hàng đẹp từ Sun Group
-              <span className="hidden h-px flex-1 bg-linear-to-r from-[#F5C76A] to-transparent sm:block" />
-            </p>
-            <p className="mt-4 max-w-2xl text-sm font-semibold leading-7 text-white/78 sm:text-base">
-              FourS Tower sở hữu vị trí gần biển Mỹ Khê, phù hợp khách hàng tìm kiếm căn hộ view biển Đà Nẵng để ở, đầu tư lâu dài hoặc khai thác cho thuê du lịch.
+
+            <div className="mt-5 h-px w-full max-w-[650px] bg-linear-to-r from-transparent via-[#F5B24D]/90 to-transparent shadow-[0_0_30px_rgba(245,178,77,0.35),0_0_80px_rgba(245,178,77,0.12)]" />
+
+            <p className="mt-5 max-w-[640px] text-sm font-medium leading-[1.7] text-[#F3F5F8]/85 sm:text-lg">
+              FourS Tower sở hữu vị trí vàng bên bờ biển Mỹ Khê, mang đến tầm nhìn panorama tuyệt mỹ và tiềm năng đầu tư vượt trội.
             </p>
 
-            <div className="mt-7 grid max-w-[620px] grid-cols-2 gap-3 sm:grid-cols-4">
-              {heroFeatures.map(([title, meta]) => (
-                <div key={title} className="flex min-h-14 items-center gap-2 rounded-full border border-[#F5C76A]/28 bg-[#03111f]/42 px-3 py-2 shadow-[inset_0_0_20px_rgba(255,255,255,0.04)] backdrop-blur-md">
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#F5C76A]/58 bg-[#F5C76A]/10 text-[#F5C76A] shadow-[0_0_18px_rgba(245,199,106,0.28)]">
-                    <FiCheckCircle className="h-3.5 w-3.5" />
-                  </span>
-                  <p className="text-[0.62rem] font-bold leading-tight text-white/82">
+            <div className="mt-6 grid max-w-[640px] grid-cols-2 gap-3 sm:grid-cols-4">
+              {heroFeatures.map(([Icon, title, meta]) => (
+                <div key={title as string} className="flex min-h-[62px] items-center gap-3 rounded-[10px] border border-white/[0.08] bg-[#091B34]/62 px-3 py-2.5 shadow-[inset_0_0_22px_rgba(255,255,255,0.035)] backdrop-blur-md">
+                  <Icon className="h-5 w-5 shrink-0 text-[#F5B24D] drop-shadow-[0_0_14px_rgba(245,178,77,0.35)]" />
+                  <p className="text-[0.7rem] font-bold uppercase leading-4 text-[#AAB6C8] lg:text-xs">
                     {title}
-                    <span className="block text-white">{meta}</span>
+                    <span className="block text-[#F3F5F8]">{meta}</span>
                   </p>
                 </div>
               ))}
             </div>
 
-            <div className="mt-6 grid max-w-[920px] grid-cols-2 overflow-hidden rounded-[12px] border border-[#F5C76A]/24 bg-[#07131f]/58 shadow-[0_22px_70px_rgba(0,0,0,0.36),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl sm:grid-cols-5">
-              {heroStats.map(([label, value, unit], index) => (
-                <div
-                  key={label}
-                  className={`border-[#F5C76A]/16 px-3 py-3 text-center sm:border-r sm:px-4 sm:py-4 sm:last:border-r-0 ${index === 0 ? "col-span-2 border-b sm:col-span-1 sm:border-b-0" : "border-b odd:border-r sm:border-b-0 sm:odd:border-r"}`}
-                >
-                  <p className="text-[0.54rem] font-black uppercase tracking-[0.08em] text-white/74 sm:text-[0.58rem]">{label}</p>
-                  <p className="mt-1.5 bg-linear-to-b from-[#FFF8DE] via-[#FFD071] to-[#B46A23] bg-clip-text text-3xl font-black leading-none text-transparent sm:mt-2 sm:text-4xl lg:text-5xl">
-                    {value}
-                  </p>
-                  <p className="mt-1 text-[0.56rem] font-black uppercase tracking-[0.08em] text-[#FFE1A0] sm:text-[0.62rem]">{unit}</p>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:ml-[190px] lg:max-w-[680px]">
-              <a href="#form" className="group inline-flex min-h-12 items-center justify-center gap-3 rounded-[11px] bg-linear-to-b from-[#FFF2C2] via-[#F5C76A] to-[#B87325] px-7 text-xs font-black uppercase text-[#08111d] shadow-[0_0_34px_rgba(245,199,106,0.38)] transition-transform hover:-translate-y-0.5">
+            <div className="mt-6 grid max-w-[700px] gap-4 sm:grid-cols-2">
+              <a href="#form" className="group inline-flex min-h-[56px] items-center justify-center gap-3 rounded-[14px] bg-linear-to-br from-[#F5B24D] to-[#FFCC73] px-7 text-sm font-semibold uppercase tracking-normal text-[#040816] shadow-[0_0_30px_rgba(245,178,77,0.35),0_0_80px_rgba(245,178,77,0.12)] transition-transform hover:-translate-y-0.5 hover:from-[#FFCC73] hover:to-[#FF9D2F]">
                 Xem bảng giá thật
-                <FiArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                <FiArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
               </a>
-              <a href="#form" className="inline-flex min-h-12 items-center justify-center rounded-[11px] border border-[#F5C76A]/72 bg-[#07131f]/42 px-7 text-xs font-black uppercase text-white shadow-[inset_0_0_18px_rgba(245,199,106,0.08)] backdrop-blur transition-colors hover:bg-[#F5C76A] hover:text-[#08111d]">
+              <a href="#form" className="inline-flex min-h-[56px] items-center justify-center gap-3 rounded-[14px] border border-[#F5B24D]/80 bg-[#091B34]/42 px-7 text-sm font-semibold uppercase tracking-normal text-[#F3F5F8] shadow-[inset_0_0_18px_rgba(245,178,77,0.12)] backdrop-blur-md transition-colors hover:bg-[#F5B24D] hover:text-[#040816]">
+                <FiAward className="h-5 w-5 text-[#F5B24D]" />
                 Nhận giỏ hàng VIP
               </a>
             </div>
           </div>
+
+          <div className="mt-8 grid overflow-hidden rounded-[14px] border border-white/[0.08] bg-[rgba(7,14,28,0.72)] shadow-[0_22px_80px_rgba(0,0,0,0.48),0_0_30px_rgba(245,178,77,0.18),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl sm:grid-cols-5 lg:mt-10 lg:max-w-[1370px]">
+            {heroStats.map(([Icon, label, value, unit], index) => (
+              <div
+                key={label as string}
+                className={`flex min-h-[92px] items-center gap-3 border-white/[0.08] px-4 py-3 sm:border-r sm:last:border-r-0 lg:px-5 ${index === 0 ? "border-b sm:border-b-0" : "border-b sm:border-b-0"}`}
+              >
+                <span className="hidden h-12 w-12 shrink-0 items-center justify-center rounded-full border border-[#F5B24D]/42 bg-[#040816]/72 text-[#F5B24D] shadow-[0_0_30px_rgba(245,178,77,0.35)] md:flex">
+                  <Icon className="h-6 w-6" />
+                </span>
+                <div className="min-w-0">
+                  <p className="text-[0.62rem] font-semibold uppercase tracking-[0.08em] text-[#AAB6C8] sm:whitespace-nowrap">{label}</p>
+                  <p className="mt-1 bg-linear-to-b from-[#FFCC73] via-[#F5B24D] to-[#D88A1D] bg-clip-text text-3xl font-bold leading-none text-transparent lg:text-[2.65rem]">
+                    {value}
+                  </p>
+                  <p className="mt-1 text-xs font-medium uppercase tracking-[0.08em] text-[#AAB6C8]">{unit}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="absolute bottom-[160px] right-6 hidden max-w-[235px] items-center gap-3 rounded-[14px] bg-[#091B34]/90 px-5 py-4 shadow-[0_0_30px_rgba(245,178,77,0.35),0_22px_50px_rgba(0,0,0,0.42)] backdrop-blur-xl lg:flex">
+            <FiMapPin className="h-8 w-8 shrink-0 text-[#F5B24D]" />
+            <p className="text-[0.64rem] font-black uppercase leading-5 tracking-[0.04em] text-[#F3F5F8]">
+              Vị trí kim cương
+              <span className="block text-[#F3F5F8]/86">Mặt tiền Trần Hưng Đạo</span>
+              <span className="block text-[#F3F5F8]/86">View biển Mỹ Khê</span>
+            </p>
+          </div>
         </div>
       </section>
 
-      <section id="can-ho" className="px-5 py-14 sm:px-8 lg:px-10 lg:py-18">
-        <SectionTitle eyebrow="Mặt bằng căn hộ FourS" title="Giỏ hàng căn hộ FourS Tower Đà Nẵng đang nhận booking" />
+      <section id="can-ho" className="relative overflow-hidden bg-[#040816] px-4 py-14 sm:px-8 lg:px-10 lg:py-18">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(14,42,87,0.48),transparent_42%),linear-gradient(180deg,#040816_0%,#091B34_48%,#040816_100%)]" />
+        <div className="absolute inset-x-0 top-0 h-64 bg-[radial-gradient(ellipse_at_top,rgba(245,178,77,0.20),transparent_64%)]" />
+        <div className="absolute left-0 top-0 h-full w-[34%] bg-[linear-gradient(90deg,rgba(245,178,77,0.08),transparent)] opacity-70" />
         <HotUnitsShowcase />
-        {false && (
-          <>
-            <SectionTitle eyebrow="Căn hot nhất" title="Các mã căn đẹp đang được hỏi nhiều" />
-            <div className="mx-auto mt-8 grid max-w-[1280px] gap-5 lg:grid-cols-[1.05fr_1.25fr]">
-              <FeaturedUnit unit={hotUnits[0]} />
-              <div className="grid gap-5 md:grid-cols-3">
-                {hotUnits.slice(1).map((unit) => (
-                  <SmallUnit key={unit.code} unit={unit} />
-                ))}
-              </div>
-            </div>
-            <div className="mx-auto mt-7 max-w-[1280px] text-right">
-              <a href="#form" className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-[0.14em] text-[#F5C76A] hover:text-white">
-                Xem tất cả 08 căn còn lại
-                <FiArrowRight />
-              </a>
-            </div>
-          </>
-        )}
       </section>
 
       <WhyCompareSection />
-      {false && (
-        <>
-          <section className="border-y border-[#F5C76A]/10 bg-[#030B15] px-5 py-14 sm:px-8 lg:px-10">
-            <SectionTitle eyebrow="Vì sao khách đang mua FourS?" title="Bốn lý do khiến giỏ hàng đẹp không nằm lâu" />
-            <div className="mx-auto mt-8 grid max-w-[1280px] gap-4 md:grid-cols-2 lg:grid-cols-4">
-              {buyingReasons.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <article key={item.title} className="group rounded-[16px] border border-[#F5C76A]/12 bg-white/[0.035] p-6 shadow-[0_20px_50px_rgba(0,0,0,0.24)] transition-all hover:-translate-y-1 hover:border-[#F5C76A]/42 hover:bg-white/[0.055]">
-                    <div className="flex h-16 w-16 items-center justify-center rounded-[18px] border border-[#F5C76A]/28 bg-[#F5C76A]/10 text-[#F5C76A] shadow-[0_0_30px_rgba(245,199,106,0.16)]">
-                      <Icon className="h-7 w-7" />
-                    </div>
-                    <h3 className="mt-6 text-sm font-black uppercase leading-relaxed text-[#FFE7AA]">{item.title}</h3>
-                    <p className="mt-3 text-sm font-medium leading-7 text-white/56">{item.copy}</p>
-                  </article>
-                );
-              })}
-            </div>
-          </section>
-
-          <section className="px-5 py-14 sm:px-8 lg:px-10">
-            <SectionTitle eyebrow="So sánh FourS với chung cư truyền thống" title="Khác biệt nằm ở pháp lý, quy hoạch và dư địa" />
-            <div className="mx-auto mt-8 max-w-[1040px] overflow-hidden rounded-[18px] border border-[#F5C76A]/18 bg-white/[0.035] shadow-[0_24px_70px_rgba(0,0,0,0.28)]">
-              <div className="grid grid-cols-3 bg-white/[0.045] text-center text-xs font-black uppercase tracking-[0.1em] text-white/78">
-                <div className="p-4">Tiêu chí</div>
-                <div className="border-x border-[#F5C76A]/20 bg-[#F5C76A]/10 p-4 text-[#F5C76A]">FourS Tower</div>
-                <div className="p-4">Chung cư cũ</div>
-              </div>
-              {comparisonRows.map(([label, fours, old]) => (
-                <div key={label} className="grid grid-cols-3 border-t border-white/8 text-center text-sm font-semibold text-white/68">
-                  <div className="p-4 text-white">{label}</div>
-                  <div className="border-x border-[#F5C76A]/16 bg-[#F5C76A]/[0.045] p-4 text-[#FFE7AA]">{fours}</div>
-                  <div className="p-4">{old}</div>
-                </div>
-              ))}
-            </div>
-          </section>
-        </>
-      )}
 
       <section id="vi-tri" className="px-5 py-14 sm:px-8 lg:px-10">
         <SectionTitle eyebrow="Vị trí FourS Tower Đà Nẵng" title="Căn hộ gần biển Mỹ Khê trong trung tâm du lịch Đà Nẵng" />
@@ -362,30 +385,7 @@ export default function FoursTowerLanding({ project }: { project: ProjectCatalog
         </div>
       </section>
 
-      <section id="tien-ich" className="px-5 py-14 sm:px-8 lg:px-10">
-        <SectionTitle eyebrow="Tiện ích chuẩn resort" title="Không gian sống đẳng cấp cho căn hộ cao cấp Đà Nẵng" />
-        <div className="mx-auto mt-8 max-w-7xl lg:hidden">
-          <Swiper
-            slidesPerView={1.08}
-            spaceBetween={14}
-            breakpoints={{
-              640: { slidesPerView: 2.15, spaceBetween: 16 },
-            }}
-            className="!overflow-visible"
-          >
-            {amenities.map(([label, image]) => (
-              <SwiperSlide key={label}>
-                <AmenityCard label={label} image={image} sizes="88vw" />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
-        <div className="mx-auto mt-8 hidden max-w-7xl gap-4 lg:grid lg:grid-cols-6">
-          {amenities.map(([label, image]) => (
-            <AmenityCard key={label} label={label} image={image} sizes="16vw" />
-          ))}
-        </div>
-      </section>
+      <ResortAmenitiesSection />
 
       <section id="chinh-sach" className="px-5 pb-24 pt-12 sm:px-8 lg:px-10 lg:pb-18">
         <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-[1.1fr_0.9fr]">
@@ -471,27 +471,27 @@ export default function FoursTowerLanding({ project }: { project: ProjectCatalog
 
 function FoursHeader() {
   return (
-    <header className="fixed left-0 right-0 top-0 z-50 border-b border-[#F5C76A]/12 bg-[#020812]/72 backdrop-blur-xl">
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 sm:px-8 lg:px-10">
-        <a href="#tong-quan" className="flex items-center">
+    <header className="fixed left-0 right-0 top-0 z-50 bg-linear-to-b from-[#020812]/80 to-transparent">
+      <div className="mx-auto flex h-24 max-w-[1480px] items-center justify-between px-5 sm:px-8 lg:px-10">
+        <Link href="/vi" className="flex items-center">
           <Image
             src="/images/logo-bds-da-nang-light.svg"
             alt="BĐS Đà Nẵng"
             width={178}
             height={50}
             priority
-            className="h-11 w-auto object-contain"
+            className="h-12 w-auto object-contain"
           />
-        </a>
-        <nav className="hidden items-center gap-8 lg:flex">
+        </Link>
+        <nav className="hidden items-center gap-12 lg:flex">
           {navItems.map((item) => (
-            <a key={item} href={`#${slugifyNav(item)}`} className="text-[0.68rem] font-black uppercase tracking-[0.12em] text-white/70 transition-colors hover:text-[#F5C76A]">
+            <a key={item} href={`#${slugifyNav(item)}`} className="text-[15px] font-semibold uppercase tracking-[2px] text-[#F3F5F8]/76 transition-colors hover:text-[#F5B24D]">
               {item}
             </a>
           ))}
         </nav>
-        <a href={HOTLINE_TEL} className="inline-flex h-11 items-center gap-2 rounded-full border border-[#F5C76A]/50 px-4 text-xs font-black text-white transition-colors hover:bg-[#F5C76A] hover:text-[#08111d]">
-          <FiPhone className="h-4 w-4 text-[#F5C76A]" />
+        <a href={HOTLINE_TEL} className="inline-flex h-13 items-center gap-3 rounded-full border border-[#F5B24D]/80 bg-[#091B34]/26 px-5 text-sm font-black text-[#FFCC73] shadow-[inset_0_0_18px_rgba(245,178,77,0.12)] backdrop-blur-md transition-colors hover:bg-[#F5B24D] hover:text-[#040816] sm:px-6">
+          <FiPhone className="h-5 w-5 text-[#F5B24D]" />
           <span className="hidden sm:inline">{HOTLINE_DISPLAY}</span>
         </a>
       </div>
@@ -518,34 +518,46 @@ function SectionTitle({
 
 function WhyCompareSection() {
   return (
-    <section className="relative overflow-hidden border-y border-[#F5C76A]/8 bg-[#020A12] px-5 py-10 sm:px-8 lg:px-10">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_15%,rgba(245,199,106,0.12),transparent_26%),radial-gradient(circle_at_82%_30%,rgba(0,120,255,0.09),transparent_28%)]" />
-      <div className="relative z-10 mx-auto max-w-7xl">
-        <LuxuryTitle>Lý do nên đầu tư FourS Tower</LuxuryTitle>
+    <section className="relative overflow-hidden border-y border-[#F5B24D]/10 bg-[#040816] px-4 py-12 sm:px-8 lg:px-10 lg:py-16">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(14,42,87,0.42),transparent_48%),linear-gradient(180deg,#040816_0%,#091B34_54%,#040816_100%)]" />
+      <div className="absolute inset-x-0 top-[17%] h-[260px] bg-[linear-gradient(90deg,transparent,rgba(245,178,77,0.12),transparent)] blur-3xl" />
+      <div className="absolute inset-x-0 bottom-0 h-[190px] bg-[radial-gradient(ellipse_at_bottom,rgba(245,178,77,0.28),transparent_62%)]" />
+      <div className="absolute inset-x-0 bottom-0 h-[210px] opacity-55 [background-image:linear-gradient(to_top,rgba(245,178,77,0.16)_0,transparent_62%),repeating-linear-gradient(90deg,transparent_0_42px,rgba(245,178,77,0.22)_43px,transparent_45px)]" />
 
-        <div className="mt-5 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+      <div className="relative z-10 mx-auto max-w-[1540px]">
+        <LuxuryTitle eyebrow="Lý do nên đầu tư">FourS Tower</LuxuryTitle>
+
+        <div className="mt-9 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {buyingReasons.map((item, index) => {
             const Icon = item.icon;
             return (
               <motion.article
-                key={item.title}
+                key={item.title.join(" ")}
                 initial={{ opacity: 0, y: 18 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.45, ease: "easeOut", delay: index * 0.06 }}
-                className="group relative min-h-[120px] overflow-hidden rounded-[12px] border border-white/[0.04] bg-linear-to-b from-white/[0.045] to-white/[0.015] px-5 py-4 shadow-[0_18px_36px_rgba(0,0,0,0.28)]"
+                className="group relative min-h-[212px] overflow-hidden rounded-[10px] border border-[#F5B24D]/45 bg-[rgba(7,14,28,0.72)] p-7 shadow-[0_0_30px_rgba(245,178,77,0.10),0_26px_70px_rgba(0,0,0,0.42)] backdrop-blur-[14px]"
               >
-                <div className="absolute -bottom-8 -right-7 h-24 w-24 rounded-full bg-[#F5C76A]/10 blur-2xl transition-opacity group-hover:opacity-90" />
-                <div className="flex items-start gap-4">
-                  <div className="relative flex h-14 w-14 shrink-0 items-center justify-center">
-                    <div className="absolute inset-0 rotate-45 rounded-[13px] border border-[#F5C76A]/36 bg-[#F5C76A]/9 shadow-[0_0_24px_rgba(245,199,106,0.26)]" />
-                    <Icon className="relative z-10 h-6 w-6 text-[#F5C76A]" />
+                <Image src={item.image} alt="" fill className="object-cover opacity-38 transition duration-700 group-hover:scale-105 group-hover:opacity-48" sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw" />
+                <div className="absolute inset-0 bg-linear-to-r from-[#040816]/92 via-[#091B34]/78 to-[#040816]/44" />
+                <div className="absolute inset-0 bg-linear-to-t from-[#040816]/86 via-transparent to-[#040816]/18" />
+                <div className="absolute -right-12 -top-10 h-32 w-32 rounded-full bg-[#F5B24D]/18 blur-3xl" />
+
+                <div className="relative z-10 flex h-full items-start gap-5">
+                  <div className="flex h-[76px] w-[76px] shrink-0 items-center justify-center rounded-full border border-[#F5B24D]/76 bg-[#091B34]/72 text-[#F5B24D] shadow-[0_0_22px_rgba(245,178,77,0.42),inset_0_0_22px_rgba(245,178,77,0.08)]">
+                    <Icon className="h-9 w-9" />
                   </div>
-                  <div>
-                    <h3 className="text-[0.72rem] font-black uppercase leading-relaxed text-[#FFE7A8]">
-                      {item.title}
+                  <div className="pt-1">
+                    <h3 className="text-[1rem] font-black uppercase leading-[1.45] tracking-[-0.01em] text-[#F3F5F8] sm:text-[1.08rem]">
+                      {item.title.map((line, lineIndex) => (
+                        <span key={line} className={`block ${lineIndex === item.title.length - 1 ? "text-[#F5B24D]" : ""}`}>
+                          {line}
+                        </span>
+                      ))}
                     </h3>
-                    <p className="mt-2 text-[0.72rem] font-medium leading-5 text-white/58">{item.copy}</p>
+                    <span className="mt-3 block h-px w-12 bg-[#F5B24D]" />
+                    <p className="mt-4 max-w-[260px] text-[0.82rem] font-medium leading-6 text-[#F3F5F8]/78">{item.copy}</p>
                   </div>
                 </div>
               </motion.article>
@@ -553,28 +565,30 @@ function WhyCompareSection() {
           })}
         </div>
 
-        <div className="mt-9">
-          <LuxuryTitle>FourS Tower trong nhóm căn hộ đầu tư Đà Nẵng</LuxuryTitle>
+        <div className="mt-12 lg:mt-16">
+          <ComparisonTitle />
 
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            className="mx-auto mt-5 hidden max-w-7xl gap-3 lg:grid lg:grid-cols-[1fr_1.28fr_1fr]"
+            className="mx-auto mt-7 hidden max-w-[1390px] items-end gap-0 lg:grid lg:grid-cols-[1.1fr_1.18fr_1.1fr]"
           >
             <ComparisonCard
               title="Tiêu chí"
-              values={comparisonRows.map(([label]) => label)}
+              type="criteria"
+              values={comparisonRows.map(([icon, label]) => ({ icon, text: label }))}
             />
             <ComparisonCard
               title="FourS Tower"
-              values={comparisonRows.map(([, fours]) => fours)}
+              values={comparisonRows.map(([, , fours]) => ({ text: fours }))}
               highlight
             />
             <ComparisonCard
               title="Chung cư cũ"
-              values={comparisonRows.map(([, , old]) => old)}
+              type="old"
+              values={comparisonRows.map(([, , , old]) => ({ text: old }))}
             />
           </motion.div>
 
@@ -583,18 +597,18 @@ function WhyCompareSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            className="mx-auto mt-5 overflow-hidden rounded-[8px] border border-[#F5C76A]/24 bg-[#06111b]/88 text-center shadow-[0_18px_40px_rgba(0,0,0,0.34)] lg:hidden"
+            className="mx-auto mt-6 overflow-hidden rounded-[10px] border border-[#F5B24D]/34 bg-[rgba(7,14,28,0.76)] text-center shadow-[0_0_30px_rgba(245,178,77,0.12),0_22px_60px_rgba(0,0,0,0.42)] backdrop-blur-[14px] lg:hidden"
           >
-            <div className="grid grid-cols-[0.86fr_1.14fr_0.9fr] bg-white/[0.055] text-[0.58rem] font-black uppercase leading-tight text-white">
+            <div className="grid grid-cols-[0.86fr_1.14fr_0.9fr] bg-[#091B34]/88 text-[0.58rem] font-black uppercase leading-tight text-[#F3F5F8]">
               <div className="px-2 py-3">Tiêu chí</div>
-              <div className="border-x border-[#F5C76A]/18 bg-[#5B3712]/78 px-2 py-3 text-[#FFE7A8]">FourS Tower</div>
+              <div className="border-x border-[#F5B24D]/22 bg-linear-to-b from-[#FFCC73] via-[#F5B24D] to-[#D88A1D] px-2 py-3 text-[#040816]">FourS Tower</div>
               <div className="px-2 py-3">Chung cư cũ</div>
             </div>
-            {comparisonRows.map(([label, fours, old]) => (
-              <div key={label} className="grid min-h-13 grid-cols-[0.86fr_1.14fr_0.9fr] border-t border-white/[0.06] text-[0.58rem] font-semibold leading-4">
-                <div className="flex items-center justify-center px-2 py-2 text-white/70">{label}</div>
-                <div className="flex items-center justify-center border-x border-[#F5C76A]/14 bg-[#F5C76A]/[0.055] px-2 py-2 font-black text-[#FFE7A8]">{fours}</div>
-                <div className="flex items-center justify-center px-2 py-2 text-white/54">{old}</div>
+            {comparisonRows.map(([Icon, label, fours, old]) => (
+              <div key={label} className="grid min-h-14 grid-cols-[0.86fr_1.14fr_0.9fr] border-t border-white/[0.07] text-[0.62rem] font-semibold leading-4">
+                <div className="flex items-center justify-center gap-1.5 px-2 py-2 text-[#F3F5F8]/78"><Icon className="hidden h-3.5 w-3.5 text-[#F5B24D] min-[390px]:block" />{label}</div>
+                <div className="flex items-center justify-center border-x border-[#F5B24D]/18 bg-[#F5B24D]/[0.06] px-2 py-2 font-black text-[#FFCC73]">{fours}</div>
+                <div className="flex items-center justify-center px-2 py-2 text-[#AAB6C8]">{old}</div>
               </div>
             ))}
           </motion.div>
@@ -604,16 +618,38 @@ function WhyCompareSection() {
   );
 }
 
-function LuxuryTitle({ children }: { children: ReactNode }) {
+function LuxuryTitle({ eyebrow, children }: { eyebrow?: string; children: ReactNode }) {
   return (
-    <div className="flex items-center justify-center gap-3 text-center">
-      <span className="h-px w-16 bg-linear-to-r from-transparent to-[#B7782B]" />
-      <span className="text-[#D99B42] drop-shadow-[0_0_12px_rgba(245,199,106,0.52)]">✦</span>
-      <h2 className="bg-linear-to-b from-[#FFF4C7] via-[#F3BD61] to-[#A16022] bg-clip-text text-lg font-black uppercase tracking-[0.04em] text-transparent sm:text-xl">
+    <div className="text-center">
+      {eyebrow ? (
+        <div className="flex items-center justify-center gap-4">
+          <span className="h-px w-20 bg-linear-to-r from-transparent via-[#F5B24D]/50 to-[#F5B24D]" />
+          <span className="text-[1.1rem] font-medium uppercase tracking-[0.08em] text-[#F5B24D] sm:text-[1.35rem]">{eyebrow}</span>
+          <span className="h-px w-20 bg-linear-to-l from-transparent via-[#F5B24D]/50 to-[#F5B24D]" />
+        </div>
+      ) : null}
+      <h2 className="mt-1 bg-linear-to-b from-[#FFCC73] via-[#F5B24D] to-[#D88A1D] bg-clip-text text-[2.25rem] font-black uppercase leading-[1.05] tracking-[-0.02em] text-transparent drop-shadow-[0_0_30px_rgba(245,178,77,0.35)] sm:text-[3rem] lg:text-[3.35rem]">
         {children}
       </h2>
-      <span className="text-[#D99B42] drop-shadow-[0_0_12px_rgba(245,199,106,0.52)]">✦</span>
-      <span className="h-px w-16 bg-linear-to-l from-transparent to-[#B7782B]" />
+    </div>
+  );
+}
+
+function ComparisonTitle() {
+  return (
+    <div className="relative mx-auto max-w-[1140px] text-center">
+      <div className="flex items-center justify-center gap-4">
+        <span className="hidden h-px flex-1 bg-linear-to-r from-transparent to-[#F5B24D] sm:block" />
+        <span className="text-[#F5B24D] drop-shadow-[0_0_16px_rgba(245,178,77,0.7)]">✦</span>
+        <div className="flex h-12 w-12 items-end justify-center text-[#F5B24D] drop-shadow-[0_0_20px_rgba(245,178,77,0.45)]">
+          <FiHome className="h-9 w-9" />
+        </div>
+        <span className="text-[#F5B24D] drop-shadow-[0_0_16px_rgba(245,178,77,0.7)]">✦</span>
+        <span className="hidden h-px flex-1 bg-linear-to-l from-transparent to-[#F5B24D] sm:block" />
+      </div>
+      <h2 className="mt-2 text-[1.3rem] font-black uppercase leading-tight tracking-[0.01em] text-[#F3F5F8] sm:text-[1.8rem] lg:text-[2rem]">
+        FourS Tower trong nhóm căn hộ đầu tư <span className="bg-linear-to-b from-[#FFCC73] via-[#F5B24D] to-[#D88A1D] bg-clip-text text-transparent">Đà Nẵng</span>
+      </h2>
     </div>
   );
 }
@@ -622,49 +658,137 @@ function ComparisonCard({
   title,
   values,
   highlight = false,
+  type = "normal",
 }: {
   title: string;
-  values: string[];
+  values: { icon?: IconType; text: string }[];
   highlight?: boolean;
+  type?: "criteria" | "normal" | "old";
 }) {
   return (
     <div
-      className={`overflow-hidden rounded-[8px] border text-center shadow-[0_20px_48px_rgba(0,0,0,0.3)] ${highlight
-        ? "border-[#F5C76A]/58 bg-[#0F1114] shadow-[0_0_34px_rgba(245,199,106,0.16),0_20px_48px_rgba(0,0,0,0.34)]"
-        : "border-white/[0.08] bg-[#06111b]/88"
+      className={`overflow-hidden border text-center shadow-[0_26px_80px_rgba(0,0,0,0.42)] backdrop-blur-[14px] ${highlight
+        ? "relative z-10 -mx-px rounded-[10px] border-[#F5B24D]/72 bg-[rgba(7,14,28,0.88)] shadow-[0_0_34px_rgba(245,178,77,0.22),0_26px_80px_rgba(0,0,0,0.45)]"
+        : type === "criteria"
+          ? "rounded-l-[10px] border-white/[0.10] bg-[rgba(7,14,28,0.74)]"
+          : "rounded-r-[10px] border-white/[0.10] bg-[rgba(7,14,28,0.74)]"
         }`}
     >
       <div
-        className={`px-4 py-3.5 text-[0.72rem] font-black uppercase ${highlight
-          ? "bg-linear-to-b from-[#6B4218]/92 to-[#241506]/94 text-[#FFF0B8] shadow-[inset_0_0_22px_rgba(245,199,106,0.2)]"
-          : "bg-white/[0.055] text-white"
+        className={`px-5 py-5 text-[1rem] font-black uppercase tracking-[-0.01em] ${highlight
+          ? "bg-linear-to-b from-[#FFCC73] via-[#F5B24D] to-[#D88A1D] text-[#040816] shadow-[inset_0_0_26px_rgba(255,255,255,0.28)]"
+          : "bg-linear-to-b from-white/[0.085] to-white/[0.025] text-[#F3F5F8]"
           }`}
       >
         {title}
       </div>
-      {values.map((value) => (
+      {values.map(({ icon: Icon, text }) => (
         <div
-          key={value}
-          className={`border-t px-4 py-3.5 text-[0.72rem] font-semibold leading-5 ${highlight
-            ? "border-[#F5C76A]/16 bg-linear-to-b from-[#24180B]/78 to-[#0F1216]/86 font-black text-[#FFE7A8]"
-            : "border-white/[0.055] text-white/72"
+          key={text}
+          className={`flex min-h-[64px] items-center border-t px-7 text-[1rem] font-medium leading-6 ${highlight
+            ? "justify-start gap-5 border-[#F5B24D]/18 bg-linear-to-r from-[#F5B24D]/[0.10] via-[#091B34]/70 to-[#040816]/88 font-semibold text-[#FFCC73]"
+            : type === "criteria"
+              ? "justify-start gap-6 border-white/[0.075] text-[#F3F5F8]"
+              : "justify-start gap-5 border-white/[0.075] text-[#F3F5F8]/82"
             }`}
         >
-          {value}
+          {type === "criteria" && Icon ? <Icon className="h-6 w-6 shrink-0 text-[#F5B24D]" /> : null}
+          {highlight ? <FiCheck className="h-6 w-6 shrink-0 rounded-full border border-[#F5B24D]/70 p-1 text-[#F5B24D]" /> : null}
+          {type === "old" ? <FiXCircle className="h-6 w-6 shrink-0 text-[#AAB6C8]/70" /> : null}
+          <span>{text}</span>
         </div>
       ))}
     </div>
   );
 }
 
-function AmenityCard({ label, image, sizes }: { label: string; image: string; sizes: string }) {
+function ResortAmenitiesSection() {
   return (
-    <article className="group relative min-h-[220px] overflow-hidden rounded-[12px] border border-white/10 bg-white/[0.035] lg:min-h-[190px]">
-      <Image src={image} alt={label} fill className="object-cover transition-transform duration-700 group-hover:scale-110" sizes={sizes} />
-      <div className="absolute inset-0 bg-linear-to-t from-[#020812]/88 via-[#020812]/12 to-transparent" />
-      <p className="absolute bottom-4 left-4 right-4 text-center text-xs font-black uppercase tracking-[0.08em] text-white drop-shadow">
-        {label}
-      </p>
+    <section id="tien-ich" className="relative overflow-hidden bg-[#040816] px-4 py-14 sm:px-8 lg:px-10 lg:py-18">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_18%,rgba(14,42,87,0.54),transparent_42%),linear-gradient(180deg,#040816_0%,#091B34_48%,#040816_100%)]" />
+      <div className="absolute inset-x-[-18%] top-[-18%] h-[460px] rounded-[50%] border-t border-[#F5B24D]/30 opacity-70 shadow-[0_-8px_70px_rgba(245,178,77,0.14)]" />
+      <div className="absolute inset-x-[4%] top-[9%] h-[250px] rounded-[50%] border-t border-[#F5B24D]/16 opacity-75" />
+      <div className="absolute right-0 top-20 h-[280px] w-[360px] bg-[radial-gradient(circle,rgba(245,178,77,0.24),transparent_62%)] blur-2xl" />
+      <div className="absolute left-0 bottom-0 h-[260px] w-[420px] bg-[radial-gradient(circle,rgba(245,178,77,0.16),transparent_64%)] blur-2xl" />
+
+      <div className="relative z-10 mx-auto max-w-[1600px]">
+        <div className="mx-auto max-w-[1040px] text-center">
+          <div className="mx-auto inline-flex h-12 items-center gap-4 rounded-[18px] border border-[#F5B24D]/46 bg-[#091B34]/70 px-9 shadow-[0_0_34px_rgba(245,178,77,0.22)] backdrop-blur-[14px]">
+            <span className="h-px w-12 bg-linear-to-r from-transparent to-[#F5B24D]" />
+            <span className="text-[0.95rem] font-black uppercase tracking-[0.22em] text-[#F5B24D]">Tiện ích chuẩn resort</span>
+            <span className="h-px w-12 bg-linear-to-l from-transparent to-[#F5B24D]" />
+          </div>
+          <h2 className="mt-5 text-[2rem] font-black uppercase leading-[1.08] tracking-[-0.02em] text-[#F3F5F8] sm:text-[3.35rem] lg:text-[4rem]">
+            <span className="block py-1">Không gian sống đẳng cấp</span>
+            <span className="block bg-linear-to-b from-[#FFCC73] via-[#F5B24D] to-[#D88A1D] bg-clip-text py-1 text-transparent drop-shadow-[0_0_30px_rgba(245,178,77,0.35)]">
+              Cho căn hộ cao cấp Đà Nẵng
+            </span>
+          </h2>
+          <p className="mx-auto mt-5 max-w-[660px] text-[1rem] font-medium leading-7 text-[#F3F5F8]/78 sm:text-[1.12rem]">
+            Hệ tiện ích chuẩn resort được quy hoạch đồng bộ, mang đến trải nghiệm sống trọn vẹn mỗi ngày.
+          </p>
+          <span className="mx-auto mt-5 block h-3 w-3 rotate-45 border border-[#F5B24D] shadow-[0_0_14px_rgba(245,178,77,0.7)]" />
+        </div>
+
+        <div className="mt-8 lg:hidden">
+          <Swiper
+            slidesPerView={1.08}
+            spaceBetween={16}
+            breakpoints={{
+              640: { slidesPerView: 2.15, spaceBetween: 18 },
+            }}
+            className="!overflow-visible"
+          >
+            {amenities.map((item, index) => (
+              <SwiperSlide key={item.label}>
+                <AmenityCard item={item} index={index} sizes="88vw" />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+
+        <div className="mt-9 hidden gap-5 lg:grid lg:grid-cols-6">
+          {amenities.map((item, index) => (
+            <AmenityCard key={item.label} item={item} index={index} sizes="17vw" />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function AmenityCard({
+  item,
+  index,
+  sizes,
+}: {
+  item: (typeof amenities)[number];
+  index: number;
+  sizes: string;
+}) {
+  const Icon = item.icon;
+
+  return (
+    <article className="group relative min-h-[410px] overflow-hidden rounded-[14px] border border-[#F5B24D]/34 bg-[rgba(7,14,28,0.72)] shadow-[0_0_26px_rgba(245,178,77,0.10),0_24px_70px_rgba(0,0,0,0.42)] backdrop-blur-[14px] lg:min-h-[445px]">
+      <div className="relative h-[210px] overflow-hidden lg:h-[230px]">
+        <Image src={item.image} alt={item.label} fill className="object-cover transition duration-700 group-hover:scale-105" sizes={sizes} />
+        <div className="absolute inset-0 bg-linear-to-t from-[#040816]/42 via-transparent to-transparent" />
+        <div className="absolute left-4 top-auto bottom-5 flex h-10 min-w-11 items-center justify-center rounded-[10px] border border-[#F5B24D]/60 bg-[#091B34]/72 px-2 text-[1.1rem] font-black text-[#F5B24D] shadow-[0_0_18px_rgba(245,178,77,0.34)]">
+          {String(index + 1).padStart(2, "0")}
+        </div>
+      </div>
+      <div className="relative px-5 pb-6 pt-11 text-center">
+        <div className="absolute left-0 right-0 top-0 h-px bg-linear-to-r from-transparent via-[#F5B24D]/42 to-transparent" />
+        <div className="absolute left-1/2 top-0 flex h-[74px] w-[74px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-[#F5B24D]/66 bg-[#091B34]/88 text-[#F5B24D] shadow-[0_0_28px_rgba(245,178,77,0.42),inset_0_0_22px_rgba(245,178,77,0.08)]">
+          <Icon className="h-8 w-8" />
+        </div>
+        <h3 className="text-[1rem] font-black uppercase leading-tight text-[#F3F5F8]">{item.label}</h3>
+        <p className="mx-auto mt-4 min-h-[54px] max-w-[210px] text-[0.86rem] font-medium leading-6 text-[#F3F5F8]/72">{item.desc}</p>
+        <a href="#form" className="mt-5 inline-flex items-center justify-center gap-2 text-[0.75rem] font-black uppercase tracking-[0.1em] text-[#F5B24D] transition-colors hover:text-[#FFCC73]">
+          Xem chi tiết
+          <FiArrowRight className="h-4 w-4" />
+        </a>
+      </div>
     </article>
   );
 }
@@ -673,21 +797,26 @@ function HotUnitsShowcase() {
   const [selectedUnit, setSelectedUnit] = useState<HotUnit | null>(null);
 
   return (
-    <div className="mx-auto max-w-7xl">
-      <div className="mb-7 flex items-center justify-center gap-3">
-        <span className="h-px w-12 bg-linear-to-r from-transparent to-[#B7782B]" />
-        <span className="text-[#D99B42] drop-shadow-[0_0_14px_rgba(245,199,106,0.55)]">✦</span>
-        <h2 className="bg-linear-to-b from-[#FFF4C7] via-[#F2B95D] to-[#A16022] bg-clip-text text-center text-xl font-black uppercase tracking-[0.06em] text-transparent">
-          Căn hot nhất
+    <div className="relative z-10 mx-auto max-w-[1500px]">
+      <div className="mb-7 text-center">
+        <h2 className="bg-linear-to-b from-[#FFCC73] via-[#F5B24D] to-[#D88A1D] bg-clip-text text-[2.45rem] font-black uppercase leading-none tracking-[-0.02em] text-transparent drop-shadow-[0_0_30px_rgba(245,178,77,0.35)] sm:text-[3.4rem] lg:text-[4.1rem]">
+          Đang nhận booking
         </h2>
-        <span className="text-[#D99B42] drop-shadow-[0_0_14px_rgba(245,199,106,0.55)]">✦</span>
-        <span className="h-px w-12 bg-linear-to-l from-transparent to-[#B7782B]" />
+        <div className="mt-5 flex items-center justify-center gap-5">
+          <span className="h-px w-28 bg-linear-to-r from-transparent to-[#F5B24D]/72" />
+          <span className="text-[#F5B24D] drop-shadow-[0_0_14px_rgba(245,178,77,0.55)]">✦</span>
+          <p className="text-[0.9rem] font-black uppercase tracking-[0.14em] text-[#F5B24D]">
+            Căn hot nhất
+          </p>
+          <span className="text-[#F5B24D] drop-shadow-[0_0_14px_rgba(245,178,77,0.55)]">✦</span>
+          <span className="h-px w-28 bg-linear-to-l from-transparent to-[#F5B24D]/72" />
+        </div>
       </div>
 
-      <div className="grid items-stretch gap-6 lg:grid-cols-[410px_minmax(0,1fr)]">
+      <div className="grid items-stretch gap-5 lg:grid-cols-[1.05fr_minmax(0,1.95fr)]">
         <FeaturedHotUnit unit={hotUnits[0]} onOpen={setSelectedUnit} />
 
-        <div className="relative min-w-0 px-0 lg:px-3">
+        <div className="relative min-w-0 px-0 lg:px-2">
           <Swiper
             modules={[Navigation]}
             navigation={{
@@ -700,7 +829,7 @@ function HotUnitsShowcase() {
               640: { slidesPerView: 2.1, spaceBetween: 16 },
               1024: { slidesPerView: 3, spaceBetween: 18 },
             }}
-            className="!h-[420px] !pb-0"
+            className="!h-[430px] !pb-0"
           >
             {hotUnits.slice(1).map((unit) => (
               <SwiperSlide key={unit.code} className="!h-full">
@@ -712,14 +841,14 @@ function HotUnitsShowcase() {
           <button
             type="button"
             aria-label="Căn trước"
-            className="fours-hot-prev absolute -left-7 top-1/2 z-20 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-[#F5C76A]/45 bg-[#241504]/94 text-[#F5C76A] shadow-[0_0_24px_rgba(245,199,106,0.3)] transition-colors hover:bg-[#F5C76A] hover:text-[#08111d] lg:flex"
+            className="fours-hot-prev absolute -left-7 top-1/2 z-20 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-[#F5B24D]/50 bg-[#091B34]/94 text-[#F5B24D] shadow-[0_0_24px_rgba(245,178,77,0.28)] transition-colors hover:bg-[#F5B24D] hover:text-[#040816] lg:flex"
           >
             <FiChevronLeft size={20} aria-hidden="true" />
           </button>
           <button
             type="button"
             aria-label="Căn tiếp theo"
-            className="fours-hot-next absolute -right-7 top-1/2 z-20 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-[#F5C76A]/45 bg-[#08111d]/94 text-[#F5C76A] shadow-[0_0_24px_rgba(245,199,106,0.3)] transition-colors hover:bg-[#F5C76A] hover:text-[#08111d] lg:flex"
+            className="fours-hot-next absolute -right-7 top-1/2 z-20 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-[#F5B24D]/50 bg-[#091B34]/94 text-[#F5B24D] shadow-[0_0_24px_rgba(245,178,77,0.28)] transition-colors hover:bg-[#F5B24D] hover:text-[#040816] lg:flex"
           >
             <FiChevronRight size={20} aria-hidden="true" />
           </button>
@@ -729,7 +858,7 @@ function HotUnitsShowcase() {
       <div className="mt-6 flex justify-center lg:justify-end">
         <a
           href="#form"
-          className="inline-flex items-center gap-2 text-[0.72rem] font-black uppercase tracking-[0.08em] text-[#F5C76A] drop-shadow-[0_0_12px_rgba(245,199,106,0.42)] transition-colors hover:text-white"
+          className="inline-flex items-center gap-2 text-[0.72rem] font-black uppercase tracking-[0.08em] text-[#F5B24D] drop-shadow-[0_0_12px_rgba(245,178,77,0.42)] transition-colors hover:text-white"
         >
           Xem tất cả 08 căn còn lại
           <FiArrowRight className="h-3.5 w-3.5" />
@@ -752,54 +881,61 @@ function FeaturedHotUnit({ unit, onOpen }: { unit: HotUnit; onOpen: (unit: HotUn
       onKeyDown={(event) => {
         if (event.key === "Enter" || event.key === " ") onOpen(unit);
       }}
-      className="relative min-h-[620px] cursor-pointer overflow-hidden rounded-[10px] border border-[#CF8D35]/70 bg-[#07111b]/88 p-5 shadow-[0_0_35px_rgba(245,199,106,0.14),inset_0_0_32px_rgba(245,199,106,0.04)] outline-none transition-all hover:-translate-y-1 hover:border-[#F5C76A] focus-visible:ring-2 focus-visible:ring-[#F5C76A] sm:min-h-0 lg:h-[420px]"
+      className="relative flex min-h-[610px] cursor-pointer flex-col overflow-hidden rounded-[10px] border border-[#F5B24D]/72 bg-[rgba(7,14,28,0.84)] shadow-[0_0_34px_rgba(245,178,77,0.18),0_24px_70px_rgba(0,0,0,0.48),inset_0_0_32px_rgba(245,178,77,0.04)] outline-none transition-all hover:-translate-y-1 hover:border-[#FFCC73] focus-visible:ring-2 focus-visible:ring-[#F5B24D] sm:min-h-0 lg:h-[430px]"
     >
-      <span className="absolute left-0 top-0 z-20 rounded-br-[8px] bg-linear-to-r from-[#C48632] via-[#FFE19A] to-[#B97628] px-3 py-1.5 text-[0.58rem] font-black uppercase text-[#15100a]">
+      <span className="absolute left-0 top-0 z-20 inline-flex items-center gap-1.5 rounded-br-[10px] bg-linear-to-r from-[#FFCC73] via-[#F5B24D] to-[#D88A1D] px-3 py-1.5 text-[0.58rem] font-black uppercase text-[#040816] shadow-[0_0_18px_rgba(245,178,77,0.38)]">
+        <FiStar className="h-3.5 w-3.5" />
         Căn sân vườn hiếm
       </span>
 
-      <div className="grid gap-5 pt-7 sm:grid-cols-[0.95fr_1.05fr] lg:h-[310px]">
-        <div className="relative z-10 flex min-w-0 flex-col">
-          <h3 className="bg-linear-to-b from-[#FFF3C6] via-[#F4BD62] to-[#A76322] bg-clip-text text-[2.35rem] font-black leading-none text-transparent">
+      <div className="grid min-h-0 flex-1 sm:grid-cols-[0.93fr_1.07fr]">
+        <div className="relative z-10 flex min-w-0 flex-col px-5 pb-4 pt-12">
+          <h3 className="bg-linear-to-b from-[#FFCC73] via-[#F5B24D] to-[#D88A1D] bg-clip-text text-[2rem] font-black leading-none text-transparent lg:text-[2.35rem]">
             {unit.code}
           </h3>
-          <p className="mt-2 text-sm font-black uppercase tracking-[0.02em] text-white">{unit.type}</p>
+          <p className="mt-2 text-[0.95rem] font-black uppercase tracking-[0.02em] text-[#F3F5F8]">{unit.type}</p>
+          <span className="mt-2 h-px w-10 bg-[#F5B24D]" />
 
-          <dl className="mt-7 grid grid-cols-2 gap-x-5 gap-y-3">
-            <HotSpec label="DT thông thủy" value={unit.area} />
-            <HotSpec label="DT sân vườn" value={unit.garden || ""} />
-            <HotSpec label="DT sàn" value="59.5 m²" />
-            <HotSpec label="Tổng diện tích" value={unit.total || ""} />
+          <dl className="mt-5 grid gap-3">
+            <HotSpec icon={FiGrid} label="DT thông thủy" value={unit.area} />
+            <HotSpec icon={FiHome} label="DT sàn" value={unit.garden || unit.area} />
+            <HotSpec icon={FiBriefcase} label="DT sân vườn" value={unit.garden || "0 m²"} />
+            <HotSpec icon={FiCalendar} label="Tổng diện tích" value={unit.total || unit.area} />
           </dl>
 
-          <div className="mt-auto pt-3 pb-2">
-            <p className="text-xs font-bold text-white/74">Giá bán</p>
-            <p className="mt-1 text-[1.25rem] font-black leading-tight text-[#FFE59B]">
-              {unit.price} <span className="text-[0.62rem] text-white/70">VND</span>
+          <div className="mt-auto border-t border-white/[0.09] pt-4">
+            <p className="text-[0.72rem] font-semibold text-[#AAB6C8]">Giá bán</p>
+            <p className="mt-1 whitespace-nowrap bg-linear-to-b from-[#FFCC73] via-[#F5B24D] to-[#D88A1D] bg-clip-text text-[1.18rem] font-black leading-tight text-transparent lg:text-[1.32rem]">
+              {unit.price} <span className="text-[0.58rem] text-[#AAB6C8]">VND</span>
             </p>
           </div>
         </div>
 
-        <div className="relative min-h-[220px] overflow-hidden rounded-[8px] sm:h-full">
+        <div className="relative min-h-[250px] overflow-hidden sm:h-full">
           <Image
             src={unit.image}
             alt={`Layout căn ${unit.code}`}
             fill
-            className="object-cover object-top"
+            className="object-cover object-top transition duration-700 hover:scale-105"
             sizes="(max-width: 1024px) 100vw, 380px"
           />
-          <div className="absolute inset-0 bg-linear-to-t from-[#06101a]/48 to-transparent" />
-          <div className="absolute bottom-5 right-3 flex h-19 w-19 rotate-[-10deg] items-center justify-center rounded-full border border-[#FFE19A]/70 bg-[#4B2A07]/82 text-center text-[0.56rem] font-black uppercase leading-tight text-[#FFE9B3] shadow-[0_0_28px_rgba(245,199,106,0.62)]">
+          <div className="absolute inset-0 bg-linear-to-t from-[#040816]/62 via-transparent to-transparent" />
+          <FiMapPin className="absolute left-1/2 top-[44%] h-10 w-10 -translate-x-1/2 -translate-y-1/2 fill-[#F5B24D] text-[#F5B24D] drop-shadow-[0_6px_18px_rgba(0,0,0,0.55)]" />
+          <div className="absolute bottom-9 right-4 flex h-[86px] w-[86px] rotate-[-8deg] flex-col items-center justify-center rounded-full border border-[#F5B24D]/72 bg-[#091B34]/88 text-center text-[0.56rem] font-black uppercase leading-tight text-[#FFCC73] shadow-[0_0_28px_rgba(245,178,77,0.62),inset_0_0_20px_rgba(245,178,77,0.08)]">
+            <FiAward className="mb-1 h-5 w-5" />
             Hiếm nhất<br />giỏ hàng
+            <span className="mt-1 tracking-[0.14em]">★★★★★</span>
           </div>
         </div>
       </div>
 
-      <div className="relative z-10 mt-5 grid gap-3 sm:grid-cols-2 lg:mt-10">
-        <button type="button" onClick={(event) => { event.stopPropagation(); onOpen(unit); }} className="inline-flex h-9 items-center justify-center rounded-[6px] bg-linear-to-b from-[#FFF2C2] via-[#F4BE63] to-[#A76222] text-[0.64rem] font-black uppercase text-[#0B1119] shadow-[0_0_18px_rgba(245,199,106,0.28)]">
+      <div className="relative z-10 grid shrink-0 gap-3 border-t border-white/[0.08] bg-[#07111b]/72 px-5 pb-5 pt-6 sm:grid-cols-2">
+        <button type="button" onClick={(event) => { event.stopPropagation(); onOpen(unit); }} className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-[6px] bg-linear-to-b from-[#FFCC73] via-[#F5B24D] to-[#D88A1D] text-[0.66rem] font-black uppercase text-[#040816] shadow-[0_0_18px_rgba(245,178,77,0.30)]">
+          <FiCalendar className="h-3.5 w-3.5" />
           Xem layout
         </button>
-        <a href="#form" onClick={(event) => event.stopPropagation()} className="inline-flex h-9 items-center justify-center rounded-[6px] border border-[#E2A34C]/60 bg-[#07111b]/42 text-[0.64rem] font-black uppercase text-white transition-colors hover:bg-[#F5C76A] hover:text-[#08111d]">
+        <a href="#form" onClick={(event) => event.stopPropagation()} className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-[6px] border border-[#F5B24D]/52 bg-[#07111b]/66 text-[0.66rem] font-black uppercase text-[#F3F5F8] transition-colors hover:bg-[#F5B24D] hover:text-[#040816]">
+          <FiGift className="h-3.5 w-3.5 text-[#F5B24D]" />
           Nhận giá tốt nhất
         </a>
       </div>
@@ -816,39 +952,51 @@ function HotUnitCard({ unit, onOpen }: { unit: HotUnit; onOpen: (unit: HotUnit) 
       onKeyDown={(event) => {
         if (event.key === "Enter" || event.key === " ") onOpen(unit);
       }}
-      className="group flex h-[420px] cursor-pointer flex-col overflow-hidden rounded-[9px] border border-[#D0903A]/30 bg-[#07111b]/78 shadow-[0_18px_45px_rgba(0,0,0,0.34)] outline-none transition-all hover:-translate-y-1 hover:border-[#F5C76A]/58 focus-visible:ring-2 focus-visible:ring-[#F5C76A]"
+      className="group flex h-[430px] cursor-pointer flex-col overflow-hidden rounded-[8px] border border-[#F5B24D]/30 bg-[rgba(7,14,28,0.82)] shadow-[0_20px_54px_rgba(0,0,0,0.42)] outline-none backdrop-blur-[14px] transition-all hover:-translate-y-1 hover:border-[#F5B24D]/68 hover:shadow-[0_0_28px_rgba(245,178,77,0.16),0_24px_60px_rgba(0,0,0,0.46)] focus-visible:ring-2 focus-visible:ring-[#F5B24D]"
     >
-      <div className="relative h-[165px] shrink-0 overflow-hidden">
+      <div className="relative h-[190px] shrink-0 overflow-hidden lg:h-[185px]">
         <Image
           src={unit.image}
           alt={`Căn hộ ${unit.code}`}
           fill
-          className="object-cover transition-transform duration-700 group-hover:scale-[1.08]"
+          className="object-cover object-top transition-transform duration-700"
           sizes="(max-width: 1024px) 48vw, 240px"
         />
-        <div className="absolute inset-0 bg-linear-to-t from-[#07111b]/58 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-[#040816]/62 via-transparent to-transparent" />
+        <button
+          type="button"
+          aria-label="Lưu căn hộ"
+          onClick={(event) => event.stopPropagation()}
+          className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full text-[#FFCC73] drop-shadow-[0_4px_12px_rgba(0,0,0,0.45)] transition-transform hover:scale-110"
+        >
+          <FiHeart className="h-5 w-5" />
+        </button>
+        <FiMapPin className="absolute left-1/2 top-[54%] h-8 w-8 -translate-x-1/2 -translate-y-1/2 fill-[#F5B24D] text-[#F5B24D] drop-shadow-[0_6px_16px_rgba(0,0,0,0.55)]" />
+        <span className="absolute bottom-3 left-4 rounded-[6px] bg-linear-to-r from-[#FFCC73] via-[#F5B24D] to-[#D88A1D] px-3 py-1 text-[0.64rem] font-black uppercase text-[#040816] shadow-[0_0_14px_rgba(245,178,77,0.32)]">
+          {unit.type}
+        </span>
       </div>
 
-      <div className="flex min-h-0 flex-1 flex-col p-5">
-        <h3 className="bg-linear-to-b from-[#FFF3C6] via-[#F2B95D] to-[#A16022] bg-clip-text text-2xl font-black leading-none text-transparent">
+      <div className="flex min-h-0 flex-1 flex-col px-5 pb-4 pt-4">
+        <h3 className="bg-linear-to-b from-[#FFCC73] via-[#F5B24D] to-[#D88A1D] bg-clip-text text-[1.45rem] font-black leading-none text-transparent">
           {unit.code}
         </h3>
-        <p className="mt-1 text-sm font-black uppercase text-white">{unit.type}</p>
 
-        <div className="mt-5 flex items-center justify-between text-[0.68rem] font-semibold">
-          <span className="text-white/64">DT TT</span>
-          <span className="text-white">{unit.area}</span>
+        <div className="mt-4 flex items-center justify-between border-b border-white/[0.07] pb-3 text-[0.72rem] font-semibold">
+          <span className="text-[#AAB6C8]">DT TT</span>
+          <span className="text-[#F3F5F8]">{unit.area}</span>
         </div>
 
-        <div className="mt-4">
-          <p className="text-[0.68rem] font-semibold text-white/64">Giá bán</p>
-          <p className="mt-1 text-base font-black leading-tight text-[#FFE59B]">
-            {unit.price} <span className="text-[0.58rem] text-white/64">VND</span>
+        <div className="mt-3">
+          <p className="text-[0.72rem] font-semibold text-[#AAB6C8]">Giá bán</p>
+          <p className="mt-1 bg-linear-to-b from-[#FFCC73] via-[#F5B24D] to-[#D88A1D] bg-clip-text text-[1.22rem] font-black leading-tight text-transparent">
+            {unit.price} <span className="text-[0.6rem] text-[#AAB6C8]">VND</span>
           </p>
         </div>
 
-        <button type="button" onClick={(event) => { event.stopPropagation(); onOpen(unit); }} className="mt-auto inline-flex h-9 shrink-0 items-center justify-center rounded-[6px] border border-[#D0903A]/68 bg-[#07111b]/38 text-[0.64rem] font-black uppercase text-white transition-colors hover:bg-[#F5C76A] hover:text-[#08111d]">
+        <button type="button" onClick={(event) => { event.stopPropagation(); onOpen(unit); }} className="mt-auto inline-flex h-10 shrink-0 items-center justify-center gap-3 rounded-[6px] border border-[#F5B24D]/42 bg-[#07111b]/54 text-[0.66rem] font-black uppercase text-[#F3F5F8] shadow-[inset_0_0_16px_rgba(245,178,77,0.06)] transition-colors hover:bg-[#F5B24D] hover:text-[#040816]">
           Xem chi tiết
+          <FiArrowRight className="h-3.5 w-3.5 text-[#F5B24D]" />
         </button>
       </div>
     </article>
@@ -897,9 +1045,9 @@ function UnitLayoutModal({ unit, onClose }: { unit: HotUnit; onClose: () => void
           </div>
 
           <div className="grid grid-cols-2 gap-x-3 gap-y-2 sm:grid-cols-4 sm:gap-3">
-            <HotSpec label="DT thông thủy" value={unit.area} />
-            <HotSpec label="DT sân vườn" value={unit.garden || "0 m²"} />
-            <HotSpec label="Tổng diện tích" value={unit.total || unit.area} />
+            <HotSpec icon={FiGrid} label="DT thông thủy" value={unit.area} />
+            <HotSpec icon={FiBriefcase} label="DT sân vườn" value={unit.garden || "0 m²"} />
+            <HotSpec icon={FiHome} label="Tổng diện tích" value={unit.total || unit.area} />
             <div>
               <p className="text-[0.68rem] font-semibold text-white/64">Giá bán</p>
               <p className="mt-1 text-base font-black leading-tight text-[#FFE59B]">
@@ -927,11 +1075,12 @@ function UnitLayoutModal({ unit, onClose }: { unit: HotUnit; onClose: () => void
   );
 }
 
-function HotSpec({ label, value }: { label: string; value: string }) {
+function HotSpec({ icon: Icon, label, value }: { icon: IconType; label: string; value: string }) {
   return (
-    <div>
-      <dt className="text-[0.68rem] font-semibold text-white/64">{label}</dt>
-      <dd className="mt-1 text-[0.72rem] font-black text-white">{value}</dd>
+    <div className="grid grid-cols-[18px_1fr_auto] items-center gap-2 text-[0.66rem]">
+      <Icon className="h-3.5 w-3.5 text-[#AAB6C8]" />
+      <dt className="font-medium text-[#AAB6C8]">{label}</dt>
+      <dd className="font-black text-[#F3F5F8]">{value}</dd>
     </div>
   );
 }
@@ -1015,4 +1164,3 @@ function slugifyNav(label: string) {
 
   return map[label] || "tong-quan";
 }
-
