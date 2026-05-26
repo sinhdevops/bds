@@ -251,14 +251,17 @@ export default function FoursTowerLanding({ project }: { project: ProjectCatalog
               ))}
             </div>
 
-            <div className="mt-7 grid max-w-[920px] overflow-hidden rounded-[12px] border border-[#F5C76A]/24 bg-[#07131f]/52 shadow-[0_22px_70px_rgba(0,0,0,0.36),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl sm:grid-cols-5">
-              {heroStats.map(([label, value, unit]) => (
-                <div key={label} className="border-b border-[#F5C76A]/16 px-4 py-4 text-center last:border-b-0 sm:border-b-0 sm:border-r sm:last:border-r-0">
-                  <p className="text-[0.58rem] font-black uppercase tracking-[0.08em] text-white/78">{label}</p>
-                  <p className="mt-2 bg-linear-to-b from-[#FFF8DE] via-[#FFD071] to-[#B46A23] bg-clip-text text-4xl font-black leading-none text-transparent lg:text-5xl">
+            <div className="mt-6 grid max-w-[920px] grid-cols-2 overflow-hidden rounded-[12px] border border-[#F5C76A]/24 bg-[#07131f]/58 shadow-[0_22px_70px_rgba(0,0,0,0.36),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl sm:grid-cols-5">
+              {heroStats.map(([label, value, unit], index) => (
+                <div
+                  key={label}
+                  className={`border-[#F5C76A]/16 px-3 py-3 text-center sm:border-r sm:px-4 sm:py-4 sm:last:border-r-0 ${index === 0 ? "col-span-2 border-b sm:col-span-1 sm:border-b-0" : "border-b odd:border-r sm:border-b-0 sm:odd:border-r"}`}
+                >
+                  <p className="text-[0.54rem] font-black uppercase tracking-[0.08em] text-white/74 sm:text-[0.58rem]">{label}</p>
+                  <p className="mt-1.5 bg-linear-to-b from-[#FFF8DE] via-[#FFD071] to-[#B46A23] bg-clip-text text-3xl font-black leading-none text-transparent sm:mt-2 sm:text-4xl lg:text-5xl">
                     {value}
                   </p>
-                  <p className="mt-1 text-[0.62rem] font-black uppercase tracking-[0.08em] text-[#FFE1A0]">{unit}</p>
+                  <p className="mt-1 text-[0.56rem] font-black uppercase tracking-[0.08em] text-[#FFE1A0] sm:text-[0.62rem]">{unit}</p>
                 </div>
               ))}
             </div>
@@ -361,15 +364,25 @@ export default function FoursTowerLanding({ project }: { project: ProjectCatalog
 
       <section id="tien-ich" className="px-5 py-14 sm:px-8 lg:px-10">
         <SectionTitle eyebrow="Tiện ích chuẩn resort" title="Không gian sống đẳng cấp cho căn hộ cao cấp Đà Nẵng" />
-        <div className="mx-auto mt-8 grid max-w-7xl gap-4 sm:grid-cols-2 lg:grid-cols-6">
+        <div className="mx-auto mt-8 max-w-7xl lg:hidden">
+          <Swiper
+            slidesPerView={1.08}
+            spaceBetween={14}
+            breakpoints={{
+              640: { slidesPerView: 2.15, spaceBetween: 16 },
+            }}
+            className="!overflow-visible"
+          >
+            {amenities.map(([label, image]) => (
+              <SwiperSlide key={label}>
+                <AmenityCard label={label} image={image} sizes="88vw" />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+        <div className="mx-auto mt-8 hidden max-w-7xl gap-4 lg:grid lg:grid-cols-6">
           {amenities.map(([label, image]) => (
-            <article key={label} className="group relative min-h-[190px] overflow-hidden rounded-[14px] border border-white/10 bg-white/[0.035]">
-              <Image src={image} alt={label} fill className="object-cover transition-transform duration-700 group-hover:scale-110" sizes="(max-width: 1024px) 50vw, 16vw" />
-              <div className="absolute inset-0 bg-linear-to-t from-[#020812]/88 via-[#020812]/12 to-transparent" />
-              <p className="absolute bottom-4 left-4 right-4 text-center text-xs font-black uppercase tracking-[0.08em] text-white drop-shadow">
-                {label}
-              </p>
-            </article>
+            <AmenityCard key={label} label={label} image={image} sizes="16vw" />
           ))}
         </div>
       </section>
@@ -548,7 +561,7 @@ function WhyCompareSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            className="mx-auto mt-5 grid max-w-7xl gap-3 lg:grid-cols-[1fr_1.28fr_1fr]"
+            className="mx-auto mt-5 hidden max-w-7xl gap-3 lg:grid lg:grid-cols-[1fr_1.28fr_1fr]"
           >
             <ComparisonCard
               title="Tiêu chí"
@@ -563,6 +576,27 @@ function WhyCompareSection() {
               title="Chung cư cũ"
               values={comparisonRows.map(([, , old]) => old)}
             />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="mx-auto mt-5 overflow-hidden rounded-[8px] border border-[#F5C76A]/24 bg-[#06111b]/88 text-center shadow-[0_18px_40px_rgba(0,0,0,0.34)] lg:hidden"
+          >
+            <div className="grid grid-cols-[0.86fr_1.14fr_0.9fr] bg-white/[0.055] text-[0.58rem] font-black uppercase leading-tight text-white">
+              <div className="px-2 py-3">Tiêu chí</div>
+              <div className="border-x border-[#F5C76A]/18 bg-[#5B3712]/78 px-2 py-3 text-[#FFE7A8]">FourS Tower</div>
+              <div className="px-2 py-3">Chung cư cũ</div>
+            </div>
+            {comparisonRows.map(([label, fours, old]) => (
+              <div key={label} className="grid min-h-13 grid-cols-[0.86fr_1.14fr_0.9fr] border-t border-white/[0.06] text-[0.58rem] font-semibold leading-4">
+                <div className="flex items-center justify-center px-2 py-2 text-white/70">{label}</div>
+                <div className="flex items-center justify-center border-x border-[#F5C76A]/14 bg-[#F5C76A]/[0.055] px-2 py-2 font-black text-[#FFE7A8]">{fours}</div>
+                <div className="flex items-center justify-center px-2 py-2 text-white/54">{old}</div>
+              </div>
+            ))}
           </motion.div>
         </div>
       </div>
@@ -620,6 +654,18 @@ function ComparisonCard({
         </div>
       ))}
     </div>
+  );
+}
+
+function AmenityCard({ label, image, sizes }: { label: string; image: string; sizes: string }) {
+  return (
+    <article className="group relative min-h-[220px] overflow-hidden rounded-[12px] border border-white/10 bg-white/[0.035] lg:min-h-[190px]">
+      <Image src={image} alt={label} fill className="object-cover transition-transform duration-700 group-hover:scale-110" sizes={sizes} />
+      <div className="absolute inset-0 bg-linear-to-t from-[#020812]/88 via-[#020812]/12 to-transparent" />
+      <p className="absolute bottom-4 left-4 right-4 text-center text-xs font-black uppercase tracking-[0.08em] text-white drop-shadow">
+        {label}
+      </p>
+    </article>
   );
 }
 
