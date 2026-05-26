@@ -752,13 +752,13 @@ function FeaturedHotUnit({ unit, onOpen }: { unit: HotUnit; onOpen: (unit: HotUn
       onKeyDown={(event) => {
         if (event.key === "Enter" || event.key === " ") onOpen(unit);
       }}
-      className="relative h-[420px] cursor-pointer overflow-hidden rounded-[10px] border border-[#CF8D35]/70 bg-[#07111b]/88 p-5 shadow-[0_0_35px_rgba(245,199,106,0.14),inset_0_0_32px_rgba(245,199,106,0.04)] outline-none transition-all hover:-translate-y-1 hover:border-[#F5C76A] focus-visible:ring-2 focus-visible:ring-[#F5C76A]"
+      className="relative min-h-[620px] cursor-pointer overflow-hidden rounded-[10px] border border-[#CF8D35]/70 bg-[#07111b]/88 p-5 shadow-[0_0_35px_rgba(245,199,106,0.14),inset_0_0_32px_rgba(245,199,106,0.04)] outline-none transition-all hover:-translate-y-1 hover:border-[#F5C76A] focus-visible:ring-2 focus-visible:ring-[#F5C76A] sm:min-h-0 lg:h-[420px]"
     >
       <span className="absolute left-0 top-0 z-20 rounded-br-[8px] bg-linear-to-r from-[#C48632] via-[#FFE19A] to-[#B97628] px-3 py-1.5 text-[0.58rem] font-black uppercase text-[#15100a]">
         Căn sân vườn hiếm
       </span>
 
-      <div className="grid h-[310px] gap-5 pt-7 sm:grid-cols-[0.95fr_1.05fr]">
+      <div className="grid gap-5 pt-7 sm:grid-cols-[0.95fr_1.05fr] lg:h-[310px]">
         <div className="relative z-10 flex min-w-0 flex-col">
           <h3 className="bg-linear-to-b from-[#FFF3C6] via-[#F4BD62] to-[#A76322] bg-clip-text text-[2.35rem] font-black leading-none text-transparent">
             {unit.code}
@@ -780,12 +780,12 @@ function FeaturedHotUnit({ unit, onOpen }: { unit: HotUnit; onOpen: (unit: HotUn
           </div>
         </div>
 
-        <div className="relative h-full overflow-hidden rounded-[8px]">
+        <div className="relative min-h-[220px] overflow-hidden rounded-[8px] sm:h-full">
           <Image
             src={unit.image}
             alt={`Layout căn ${unit.code}`}
             fill
-            className="object-cover"
+            className="object-cover object-top"
             sizes="(max-width: 1024px) 100vw, 380px"
           />
           <div className="absolute inset-0 bg-linear-to-t from-[#06101a]/48 to-transparent" />
@@ -795,7 +795,7 @@ function FeaturedHotUnit({ unit, onOpen }: { unit: HotUnit; onOpen: (unit: HotUn
         </div>
       </div>
 
-      <div className="relative z-10 mt-10 grid gap-3 sm:grid-cols-2">
+      <div className="relative z-10 mt-5 grid gap-3 sm:grid-cols-2 lg:mt-10">
         <button type="button" onClick={(event) => { event.stopPropagation(); onOpen(unit); }} className="inline-flex h-9 items-center justify-center rounded-[6px] bg-linear-to-b from-[#FFF2C2] via-[#F4BE63] to-[#A76222] text-[0.64rem] font-black uppercase text-[#0B1119] shadow-[0_0_18px_rgba(245,199,106,0.28)]">
           Xem layout
         </button>
@@ -858,14 +858,14 @@ function HotUnitCard({ unit, onOpen }: { unit: HotUnit; onOpen: (unit: HotUnit) 
 function UnitLayoutModal({ unit, onClose }: { unit: HotUnit; onClose: () => void }) {
   return (
     <div
-      className="fixed inset-0 z-[90] flex items-center justify-center bg-[#020812]/92 px-4 py-6 backdrop-blur-md"
+      className="fixed inset-0 z-[90] flex items-center justify-center overflow-hidden bg-[#020812]/92 px-3 py-3 backdrop-blur-md sm:px-4 sm:py-6"
       role="dialog"
       aria-modal="true"
       aria-label={`Layout căn ${unit.code}`}
       onClick={onClose}
     >
       <div
-        className="relative grid max-h-[calc(100vh-48px)] w-full max-w-7xl overflow-hidden rounded-[12px] border border-[#F5C76A]/28 bg-[#06101a] shadow-[0_30px_90px_rgba(0,0,0,0.58)] lg:grid-cols-[minmax(0,1fr)_330px]"
+        className="relative flex h-[calc(100dvh-24px)] w-full max-w-7xl flex-col overflow-hidden rounded-[12px] border border-[#F5C76A]/28 bg-[#06101a] shadow-[0_30px_90px_rgba(0,0,0,0.58)] sm:h-auto sm:max-h-[calc(100vh-48px)]"
         onClick={(event) => event.stopPropagation()}
       >
         <button
@@ -877,47 +877,47 @@ function UnitLayoutModal({ unit, onClose }: { unit: HotUnit; onClose: () => void
           <FiX className="h-5 w-5" />
         </button>
 
-        <div className="relative min-h-[40vw] bg-white p-3">
+        <div className="relative h-[44%] min-h-0 shrink-0 bg-white sm:h-[68vh] sm:min-h-[360px]">
           <Image
             src={unit.image}
             alt={`Layout căn ${unit.code}`}
             fill
-            className="object-contain p-3"
-            sizes="(max-width: 1024px) 100vw, 960px"
+            className="object-contain"
+            sizes="100vw"
           />
         </div>
 
-        <aside className="flex min-h-0 flex-col border-t border-[#F5C76A]/16 bg-[#07111b] p-5 lg:border-l lg:border-t-0 lg:p-6">
-          <p className="text-[0.68rem] font-black uppercase tracking-[0.16em] text-[#F5C76A]">Layout căn hộ</p>
-          <h3 className="mt-3 bg-linear-to-b from-[#FFF3C6] via-[#F2B95D] to-[#A16022] bg-clip-text text-4xl font-black leading-none text-transparent">
-            {unit.code}
-          </h3>
-          <p className="mt-2 text-sm font-black uppercase text-white">{unit.type}</p>
+        <aside className="flex min-h-0 flex-1 flex-col gap-3 border-t border-[#F5C76A]/16 bg-[#07111b] p-4 sm:grid sm:flex-none sm:gap-4 lg:grid-cols-[220px_minmax(0,1fr)_360px] lg:items-center lg:p-5">
+          <div>
+            <p className="text-[0.68rem] font-black uppercase tracking-[0.16em] text-[#F5C76A]">Layout căn hộ</p>
+            <h3 className="mt-1 bg-linear-to-b from-[#FFF3C6] via-[#F2B95D] to-[#A16022] bg-clip-text text-[2rem] font-black leading-none text-transparent sm:mt-2 sm:text-4xl">
+              {unit.code}
+            </h3>
+            <p className="mt-2 text-sm font-black uppercase text-white">{unit.type}</p>
+          </div>
 
-          <dl className="mt-6 grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-2 gap-x-3 gap-y-2 sm:grid-cols-4 sm:gap-3">
             <HotSpec label="DT thông thủy" value={unit.area} />
             <HotSpec label="DT sân vườn" value={unit.garden || "0 m²"} />
             <HotSpec label="Tổng diện tích" value={unit.total || unit.area} />
-            <HotSpec label="Chính sách" value="5% EB" />
-          </dl>
-
-          <div className="mt-6 rounded-[8px] border border-[#F5C76A]/18 bg-[#F5C76A]/8 p-4">
-            <p className="text-xs font-semibold text-white/64">Giá bán gồm VAT & KPBT</p>
-            <p className="mt-2 text-2xl font-black leading-tight text-[#FFE59B]">
-              {unit.price} <span className="text-xs text-white/68">VND</span>
-            </p>
+            <div>
+              <p className="text-[0.68rem] font-semibold text-white/64">Giá bán</p>
+              <p className="mt-1 text-base font-black leading-tight text-[#FFE59B]">
+                {unit.price} <span className="text-[0.58rem] text-white/68">VND</span>
+              </p>
+            </div>
           </div>
 
-          <div className="mt-auto grid gap-3 pt-6">
-            <a href={HOTLINE_TEL} className="inline-flex h-11 items-center justify-center gap-2 rounded-[8px] bg-linear-to-b from-[#FFF2C2] via-[#F4BE63] to-[#A76222] text-xs font-black uppercase text-[#08111d] shadow-[0_0_20px_rgba(245,199,106,0.26)]">
+          <div className="mt-auto grid gap-2 sm:mt-0 sm:grid-cols-3 lg:grid-cols-1">
+            <a href={HOTLINE_TEL} className="inline-flex h-10 items-center justify-center gap-2 rounded-[8px] bg-linear-to-b from-[#FFF2C2] via-[#F4BE63] to-[#A76222] text-[0.68rem] font-black uppercase text-[#08111d] shadow-[0_0_20px_rgba(245,199,106,0.26)] sm:h-11 sm:text-xs">
               <FiPhone className="h-4 w-4" />
               Gọi tư vấn căn này
             </a>
-            <a href={ZALO_HREF} target="_blank" rel="noreferrer" className="inline-flex h-11 items-center justify-center gap-2 rounded-[8px] border border-[#F5C76A]/48 bg-white/[0.035] text-xs font-black uppercase text-white transition-colors hover:bg-[#F5C76A] hover:text-[#08111d]">
+            <a href={ZALO_HREF} target="_blank" rel="noreferrer" className="inline-flex h-10 items-center justify-center gap-2 rounded-[8px] border border-[#F5C76A]/48 bg-white/[0.035] text-[0.68rem] font-black uppercase text-white transition-colors hover:bg-[#F5C76A] hover:text-[#08111d] sm:h-11 sm:text-xs">
               <SiZalo className="h-4 w-4" />
               Nhận layout qua Zalo
             </a>
-            <a href="#form" onClick={onClose} className="inline-flex h-11 items-center justify-center rounded-[8px] border border-white/12 text-xs font-black uppercase text-white/82 transition-colors hover:border-white/34 hover:text-white">
+            <a href="#form" onClick={onClose} className="inline-flex h-10 items-center justify-center rounded-[8px] border border-white/12 text-[0.68rem] font-black uppercase text-white/82 transition-colors hover:border-white/34 hover:text-white sm:h-11 sm:text-xs">
               Nhận bảng giá & chính sách
             </a>
           </div>

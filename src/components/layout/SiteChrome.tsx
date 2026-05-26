@@ -9,7 +9,8 @@ import StickyBar from "@/components/layout/StickyBar";
 const CUSTOM_LANDING_PATHS = ["/du-an/fours-tower-da-nang", "/project/fours-tower-da-nang"];
 
 function isCustomLanding(pathname: string) {
-  return CUSTOM_LANDING_PATHS.some((path) => pathname === path || pathname.startsWith(`${path}/`));
+  const normalizedPathname = pathname.replace(/^\/[a-z]{2}(?=\/)/, "");
+  return CUSTOM_LANDING_PATHS.some((path) => normalizedPathname === path || normalizedPathname.startsWith(`${path}/`));
 }
 
 export function SiteTopChrome() {
