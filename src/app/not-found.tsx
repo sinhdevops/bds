@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function RootNotFoundPage() {
   return (
     <html lang="vi">
@@ -27,18 +29,18 @@ export default function RootNotFoundPage() {
               </p>
 
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                <a
+                <Link
                   href="/"
                   className="inline-flex h-12 items-center justify-center rounded-[4px] bg-[#C6A77D] px-7 text-xs font-bold uppercase tracking-[0.14em] text-[#111111] transition-colors hover:bg-white"
                 >
                   Về trang chủ
-                </a>
-                <a
+                </Link>
+                <Link
                   href="/du-an"
                   className="inline-flex h-12 items-center justify-center rounded-[4px] border border-white/22 px-7 text-xs font-bold uppercase tracking-[0.14em] text-white transition-colors hover:border-[#C6A77D] hover:text-[#C6A77D]"
                 >
                   Xem dự án
-                </a>
+                </Link>
               </div>
             </div>
           </div>

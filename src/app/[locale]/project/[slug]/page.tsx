@@ -5,6 +5,7 @@ import { routing } from "@/i18n/routing";
 import { getCatalogProject, getCatalogProjectSlugs } from "@/lib/projectCatalog";
 import { parseProjectMarkdown } from "@/lib/projectMarkdown";
 import MarkdownProjectPage from "@/components/page/project/MarkdownProjectPage";
+import FoursTowerLanding from "@/components/page/project/FoursTowerLanding";
 import SymphonyFiveLanding from "@/components/page/project/SymphonyFiveLanding";
 import {
   HOTLINE_E164,
@@ -34,8 +35,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!project) return { title: "Dự án không tồn tại", robots: { index: false, follow: false } };
 
   const priceText = project.priceFrom ? `Giá từ ${project.priceFrom} tỷ` : "Nhận bảng giá mới nhất";
-  const title = `${project.name} - ${priceText} | BĐS Đà Nẵng`;
-  const description = `${project.name} tại ${project.location}. ${priceText}, cập nhật giỏ hàng, chính sách bán hàng và lịch xem nhà qua hotline 0352.787777.`;
+  const isFoursTower = project.slug === "fours-tower-da-nang";
+  const title = isFoursTower
+    ? "FourS Tower Đà Nẵng | Căn Hộ View Biển Mỹ Khê Cao Cấp"
+    : `${project.name} - ${priceText} | BĐS Đà Nẵng`;
+  const description = isFoursTower
+    ? "Khám phá FourS Tower Đà Nẵng - căn hộ cao cấp view biển Mỹ Khê, vị trí trung tâm Sơn Trà, tiện ích chuẩn resort, phù hợp an cư và đầu tư."
+    : `${project.name} tại ${project.location}. ${priceText}, cập nhật giỏ hàng, chính sách bán hàng và lịch xem nhà qua hotline 0352.787777.`;
 
   return createMetadata({
     title,
@@ -129,6 +135,18 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
         />
         <SymphonyFiveLanding project={project} />
+      </>
+    );
+  }
+
+  if (project.slug === "fours-tower-da-nang") {
+    return (
+      <>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
+        />
+        <FoursTowerLanding project={project} />
       </>
     );
   }

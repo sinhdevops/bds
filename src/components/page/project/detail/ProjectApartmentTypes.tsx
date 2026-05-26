@@ -9,7 +9,7 @@ interface Props {
   project: ProjectData;
 }
 
-function AptCard({ apt, projectSlug }: { apt: ApartmentType; projectSlug: string }) {
+function AptCard({ apt }: { apt: ApartmentType }) {
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -187,7 +187,7 @@ export default function ProjectApartmentTypes({ project }: Props) {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: i * 0.08 }}
                 >
-                  <AptCard apt={apt} projectSlug={project.slug} />
+                  <AptCard apt={apt} />
                 </motion.div>
               )
             )}

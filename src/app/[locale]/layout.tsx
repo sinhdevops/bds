@@ -3,10 +3,7 @@ import { Montserrat, Playfair_Display } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
-import StickyBar from "@/components/layout/StickyBar";
-import FloatingContact from "@/components/layout/FloatingContact";
+import { SiteBottomChrome, SiteTopChrome } from "@/components/layout/SiteChrome";
 import ConsultationModal from "@/components/shared/ConsultationModal";
 import { routing } from "@/i18n/routing";
 import { OFFICE_ADDRESS } from "@/lib/contact";
@@ -166,11 +163,9 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
       </head>
       <body className="antialiased relative min-h-screen flex flex-col bg-[#FAF8F5]">
         <NextIntlClientProvider locale={locale}>
-          <Navbar />
+          <SiteTopChrome />
           <main className="grow relative">{children}</main>
-          <Footer />
-          <FloatingContact />
-          <StickyBar />
+          <SiteBottomChrome />
           <ConsultationModal />
         </NextIntlClientProvider>
       </body>
