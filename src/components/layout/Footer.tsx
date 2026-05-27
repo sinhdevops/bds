@@ -19,7 +19,7 @@ const INFO_LINKS = [
 const SOCIALS = [
   {
     label: "Facebook",
-    href: "#",
+    href: "https://www.facebook.com",
     icon: (
       <svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5">
         <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
@@ -27,32 +27,21 @@ const SOCIALS = [
     ),
   },
   {
-    label: "LinkedIn",
-    href: "#",
+    label: "Zalo",
+    href: "https://zalo.me/0352787777",
     icon: (
-      <svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5">
-        <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" />
-        <circle cx="4" cy="4" r="2" />
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.4" className="w-3.5 h-3.5">
+        <rect x="1.5" y="1.5" width="17" height="17" rx="4" />
+        <path d="M5 13h4L5.5 7h4M11 13V7h3c1.2 0 2 .7 2 1.8 0 1.2-.8 1.9-2 1.9H11" />
       </svg>
     ),
   },
   {
     label: "YouTube",
-    href: "#",
+    href: "https://www.youtube.com",
     icon: (
       <svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5">
         <path d="M17.5 5.5s-.2-1.4-.8-2c-.8-.8-1.6-.8-2-.9C12.8 2.5 10 2.5 10 2.5s-2.8 0-4.7.1c-.4 0-1.2.1-2 .9-.6.6-.8 2-.8 2S2.4 7.1 2.4 8.6v1.4c0 1.5.1 3.1.1 3.1s.2 1.4.8 2c.8.8 1.8.8 2.3.8C7 16 10 16 10 16s2.8 0 4.7-.1c.4 0 1.2-.1 2-.9.6-.6.8-2 .8-2s.1-1.6.1-3.1V8.6c0-1.5-.1-3.1-.1-3.1zM8.3 12.5v-5l5.4 2.5-5.4 2.5z" />
-      </svg>
-    ),
-  },
-  {
-    label: "Instagram",
-    href: "#",
-    icon: (
-      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.4" className="w-3.5 h-3.5">
-        <rect x="2" y="2" width="16" height="16" rx="4" />
-        <circle cx="10" cy="10" r="4" />
-        <circle cx="14.5" cy="5.5" r="0.8" fill="currentColor" />
       </svg>
     ),
   },
@@ -77,8 +66,11 @@ export default function Footer() {
                 className="h-11 w-auto object-contain opacity-90"
               />
             </div>
-            <p className="text-white/35 text-sm font-light leading-relaxed max-w-xs mb-5">
-              Tư vấn chuyên sâu các dự án căn hộ cao cấp ven sông Hàn tại Đà Nẵng.
+            <p className="text-white/35 text-sm font-light leading-relaxed max-w-xs mb-3">
+              Đơn vị môi giới bất động sản cao cấp độc lập tại Đà Nẵng. Không thuộc chủ đầu tư hay chủ sở hữu dự án.
+            </p>
+            <p className="text-white/20 text-xs font-light leading-relaxed max-w-xs mb-5">
+              Thông tin dự án chỉ mang tính tham khảo. Giá và chính sách cuối cùng theo chủ đầu tư.
             </p>
             <div className="flex items-start gap-2">
               <svg viewBox="0 0 16 20" fill="none" stroke="#C6A77D" strokeWidth="1.2" className="w-3.5 h-4.5 mt-0.5 shrink-0">
@@ -177,7 +169,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="pt-7 border-t border-white/8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-white/20 font-light">
-            ©2026 BDS Đà Nẵng. All rights reserved.
+            ©2026 BĐS Đà Nẵng — Đơn vị môi giới độc lập. All rights reserved.
           </p>
           <div className="flex items-center gap-5">
             <Link href="/terms" className="text-xs text-white/20 font-light hover:text-white/45 transition-colors duration-300">

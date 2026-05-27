@@ -287,8 +287,13 @@ export default function FoursTowerLanding({ project }: { project: ProjectCatalog
 
         <div className="relative z-10 mx-auto flex min-h-[calc(100vh-112px)] max-w-[1480px] flex-col justify-start pt-4 sm:pt-6 lg:pt-10">
           <div className="max-w-[1180px]">
-            <div className="inline-flex h-9 items-center rounded-full border border-[#F5B24D]/70 bg-[#091B34]/58 px-4 text-[0.68rem] font-black uppercase tracking-[0.08em] text-[#F3F5F8] shadow-[inset_0_0_18px_rgba(255,255,255,0.04)] backdrop-blur-md">
-              FourS Tower Đà Nẵng
+            <div className="flex flex-wrap items-center gap-2">
+              <div className="inline-flex h-9 items-center rounded-full border border-[#F5B24D]/70 bg-[#091B34]/58 px-4 text-[0.68rem] font-black uppercase tracking-[0.08em] text-[#F3F5F8] shadow-[inset_0_0_18px_rgba(255,255,255,0.04)] backdrop-blur-md">
+                FourS Tower Đà Nẵng
+              </div>
+              <div className="inline-flex h-7 items-center rounded-full border border-white/20 bg-white/[0.07] px-3 text-[0.6rem] font-semibold text-white/60 backdrop-blur-md">
+                Tư vấn bởi BĐS Đà Nẵng — Môi giới độc lập
+              </div>
             </div>
 
             <h1 className="mt-5 max-w-[980px] text-[2rem] font-bold uppercase leading-none tracking-normal text-[#F3F5F8] drop-shadow-[0_10px_28px_rgba(0,0,0,0.48)] sm:text-[2.85rem] lg:text-[3.35rem] xl:text-[3.6rem]">
@@ -439,7 +444,18 @@ export default function FoursTowerLanding({ project }: { project: ProjectCatalog
               {submitting ? "Đang gửi..." : sent ? "Đã nhận thông tin" : "Nhận giỏ hàng VIP ngay"}
             </button>
             {error ? <p className="mt-4 text-center text-xs font-semibold text-red-200">{error}</p> : null}
-            <p className="mt-4 text-center text-xs font-medium text-white/42">Cam kết bảo mật thông tin tuyệt đối</p>
+            <p className="mt-4 text-center text-xs font-medium text-white/42">
+              Bằng cách gửi thông tin, bạn đồng ý với{" "}
+              <a
+                href="/vi/privacy-policy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline text-white/60 hover:text-[#F5C76A] transition-colors"
+              >
+                Chính sách bảo mật
+              </a>{" "}
+              của BĐS Đà Nẵng. Thông tin chỉ dùng để tư vấn dự án theo yêu cầu của bạn.
+            </p>
           </form>
         </div>
       </section>
