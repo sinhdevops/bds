@@ -6,7 +6,12 @@ import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
 import StickyBar from "@/components/layout/StickyBar";
 
-const CUSTOM_LANDING_PATHS = ["/du-an/fours-tower-da-nang", "/project/fours-tower-da-nang"];
+const CUSTOM_LANDING_PATHS = [
+  "/du-an/fours-tower-da-nang",
+  "/project/fours-tower-da-nang",
+  "/du-an/sun-symphony-5",
+  "/project/sun-symphony-5",
+];
 
 function isCustomLanding(pathname: string) {
   const normalizedPathname = pathname.replace(/^\/[a-z]{2}(?=\/)/, "");
