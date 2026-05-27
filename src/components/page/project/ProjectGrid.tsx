@@ -93,7 +93,7 @@ function ProjectCard({ project, featured }: { project: ProjectCatalogItem; featu
           <div className="shrink-0 text-right">
             <p className="text-[0.66rem] font-bold uppercase tracking-[0.12em] text-[#9C7B5D]">Giá từ</p>
             <p className="font-serif text-2xl text-[#111111]" style={{ fontFamily: "var(--font-serif)" }}>
-              {project.priceFrom ? `${project.priceFrom} tỷ` : "Liên hệ"}
+              {project.priceDisplay ?? (project.priceFrom ? `${project.priceFrom} tỷ` : "Liên hệ")}
             </p>
           </div>
         </div>

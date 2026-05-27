@@ -70,7 +70,7 @@ export default function MarkdownProjectPage({
             <dl className="mt-4 space-y-3 text-sm">
               {[
                 ["Vị trí", project.location],
-                ["Giá từ", project.priceFrom ? `${project.priceFrom} tỷ` : "Đang cập nhật"],
+                ["Giá từ", project.priceDisplay ?? (project.priceFrom ? `${project.priceFrom} tỷ` : "Đang cập nhật")],
                 ["Diện tích", project.area],
                 ["Bàn giao", project.handover],
               ].map(([label, value]) => (
@@ -178,7 +178,7 @@ export default function MarkdownProjectPage({
 }
 
 function RelatedProjectCard({ project }: { project: ProjectCatalogItem }) {
-  const price = project.priceFrom ? `${project.priceFrom} tỷ` : "Liên hệ";
+  const price = project.priceDisplay ?? (project.priceFrom ? `${project.priceFrom} tỷ` : "Liên hệ");
 
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-md bg-[#FAF8F5] shadow-[0_8px_26px_rgba(10,18,28,0.07)] ring-1 ring-black/5 transition-shadow duration-300 hover:shadow-[0_18px_48px_rgba(10,18,28,0.13)]">

@@ -10,6 +10,7 @@ export interface ProjectCatalogItem {
   address: string;
   priceFrom: number | null;
   priceTo: number | null;
+  priceDisplay?: string;
   floors: number | null;
   totalUnits: number | null;
   area: string;
@@ -36,8 +37,9 @@ export const PROJECT_CATALOG: ProjectCatalogItem[] = [
     statusLabel: "Đang nhận giỏ hàng",
     location: "Nam Đà Nẵng",
     address: "Khu vực trung tâm phát triển mới Nam Đà Nẵng",
-    priceFrom: 3.09,
+    priceFrom: 3,
     priceTo: null,
+    priceDisplay: "3XX tỷ",
     floors: null,
     totalUnits: null,
     area: "1BR+ - 2BR sân vườn",

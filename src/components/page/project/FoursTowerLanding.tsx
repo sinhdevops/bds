@@ -60,7 +60,7 @@ const heroFeatures: [IconType, string, string][] = [
 
 const heroStats: [IconType, string, string, string][] = [
   [FiHome, "Số lượng còn lại", "08", "căn đẹp"],
-  [FiDollarSign, "Giá chỉ từ", "3.09", "tỷ"],
+  [FiDollarSign, "Giá chỉ từ", "3XX", "tỷ"],
   [FiTag, "Chiết khấu", "5%", "early bird"],
   [FiBriefcase, "Hỗ trợ vay", "70%", "GTCH"],
   [FiCalendar, "Ân hạn gốc", "30", "tháng"],
@@ -73,8 +73,8 @@ const hotUnits = [
     area: "73.1 m²",
     garden: "59.5 m²",
     total: "132.6 m²",
-    price: "5.583.822.200",
-    image: "/images/projects/fours/fours-f503a20.jpg",
+    price: "5XX tỷ",
+    image: "/images/projects/fours/fours-banner.webp",
     featured: true,
   },
   {
@@ -83,8 +83,8 @@ const hotUnits = [
     area: "45.2 m²",
     garden: "13.3 m²",
     total: "58.5 m²",
-    price: "3.237.889.352",
-    image: "/images/projects/fours/fours-F50526.jpg",
+    price: "3XX tỷ",
+    image: "/images/projects/fours/fours-street.webp",
   },
   {
     code: "F50830",
@@ -92,8 +92,8 @@ const hotUnits = [
     area: "53.8 m²",
     garden: "0 m²",
     total: "53.8 m²",
-    price: "3.115.519.529",
-    image: "/images/projects/fours/fours-F50830.jpg",
+    price: "3XX tỷ",
+    image: "/images/projects/fours/fours-banner.webp",
   },
   {
     code: "F51905",
@@ -101,8 +101,8 @@ const hotUnits = [
     area: "56.4 m²",
     garden: "3.8 m²",
     total: "60.2 m²",
-    price: "3.319.470.852",
-    image: "/images/projects/fours/fours-F51905.jpg",
+    price: "3XX tỷ",
+    image: "/images/projects/fours/fours-street.webp",
   },
   {
     code: "F503A24",
@@ -110,8 +110,8 @@ const hotUnits = [
     area: "45.2 m²",
     garden: "13.3 m²",
     total: "58.5 m²",
-    price: "3.206.395.605",
-    image: "/images/projects/fours/fours-F50526.jpg",
+    price: "3XX tỷ",
+    image: "/images/projects/fours/fours-banner.webp",
   },
   {
     code: "F51508",
@@ -119,8 +119,8 @@ const hotUnits = [
     area: "50.5 m²",
     garden: "0 m²",
     total: "50.5 m²",
-    price: "3.094.851.211",
-    image: "/images/projects/fours/fours-F51508.jpg",
+    price: "3XX tỷ",
+    image: "/images/projects/fours/fours-street.webp",
   },
   {
     code: "F51608",
@@ -128,8 +128,8 @@ const hotUnits = [
     area: "50.5 m²",
     garden: "0 m²",
     total: "50.5 m²",
-    price: "3.140.081.897",
-    image: "/images/projects/fours/fours-F51608.jpg",
+    price: "3XX tỷ",
+    image: "/images/projects/fours/fours-banner.webp",
   },
   {
     code: "F10610",
@@ -137,8 +137,8 @@ const hotUnits = [
     area: "64.8 m²",
     garden: "16.0 m²",
     total: "80.8 m²",
-    price: "4.578.378.303",
-    image: "/images/projects/fours/fours-F10610.jpg",
+    price: "4XX tỷ",
+    image: "/images/projects/fours/fours-street.webp",
   },
 ];
 
@@ -907,7 +907,7 @@ function FeaturedHotUnit({ unit, onOpen }: { unit: HotUnit; onOpen: (unit: HotUn
           <div className="mt-auto border-t border-white/[0.09] pt-4">
             <p className="text-[0.72rem] font-semibold text-[#AAB6C8]">Giá bán</p>
             <p className="mt-1 whitespace-nowrap bg-linear-to-b from-[#FFCC73] via-[#F5B24D] to-[#D88A1D] bg-clip-text text-[1.18rem] font-black leading-tight text-transparent lg:text-[1.32rem]">
-              {unit.price} <span className="text-[0.58rem] text-[#AAB6C8]">VND</span>
+              {unit.price}
             </p>
           </div>
         </div>
@@ -991,7 +991,7 @@ function HotUnitCard({ unit, onOpen }: { unit: HotUnit; onOpen: (unit: HotUnit) 
         <div className="mt-3">
           <p className="text-[0.72rem] font-semibold text-[#AAB6C8]">Giá bán</p>
           <p className="mt-1 bg-linear-to-b from-[#FFCC73] via-[#F5B24D] to-[#D88A1D] bg-clip-text text-[1.22rem] font-black leading-tight text-transparent">
-            {unit.price} <span className="text-[0.6rem] text-[#AAB6C8]">VND</span>
+            {unit.price}
           </p>
         </div>
 
@@ -1052,7 +1052,7 @@ function UnitLayoutModal({ unit, onClose }: { unit: HotUnit; onClose: () => void
             <div>
               <p className="text-[0.68rem] font-semibold text-white/64">Giá bán</p>
               <p className="mt-1 text-base font-black leading-tight text-[#FFE59B]">
-                {unit.price} <span className="text-[0.58rem] text-white/68">VND</span>
+                {unit.price}
               </p>
             </div>
           </div>
@@ -1104,7 +1104,7 @@ function FeaturedUnit({ unit }: { unit: (typeof hotUnits)[number] }) {
             <Spec label="Tổng diện tích" value={unit.total || ""} />
           </dl>
           <p className="mt-6 text-xs font-bold text-white/54">Giá bán</p>
-          <p className="mt-1 text-2xl font-black text-[#FFE7AA]">{unit.price} <span className="text-xs">VND</span></p>
+          <p className="mt-1 text-2xl font-black text-[#FFE7AA]">{unit.price}</p>
         </div>
         <div className="relative min-h-[280px] overflow-hidden rounded-[16px] bg-[#06111d]">
           <Image src={unit.image} alt={`Layout căn ${unit.code}`} fill className="object-cover" sizes="(max-width: 1024px) 100vw, 40vw" />
@@ -1137,7 +1137,7 @@ function SmallUnit({ unit }: { unit: (typeof hotUnits)[number] }) {
           <span className="font-bold text-white">{unit.area}</span>
         </div>
         <p className="mt-5 text-xs font-bold text-white/52">Giá bán</p>
-        <p className="mt-1 text-lg font-black text-white">{unit.price} <span className="text-[0.62rem] text-white/52">VND</span></p>
+        <p className="mt-1 text-lg font-black text-white">{unit.price}</p>
         <a href="#form" className="mt-5 inline-flex h-10 w-full items-center justify-center rounded-[10px] border border-[#F5C76A]/35 text-xs font-black uppercase text-white transition-colors hover:bg-[#F5C76A] hover:text-[#08111d]">
           Xem chi tiết
         </a>

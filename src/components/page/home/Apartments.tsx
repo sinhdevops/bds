@@ -24,7 +24,7 @@ function ProjectCard({
   onLeave: () => void;
 }) {
   const projectHref = { pathname: "/project/[slug]" as const, params: { slug: project.slug } };
-  const price = project.priceFrom ? `${project.priceFrom} tỷ` : "Liên hệ";
+  const price = project.priceDisplay ?? (project.priceFrom ? `${project.priceFrom} tỷ` : "Liên hệ");
   const floors = project.floors ? `${project.floors} tầng` : "Đang cập nhật";
   const units = project.totalUnits ? `${project.totalUnits} căn` : project.handover;
 
