@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { createPortal } from "react-dom";
 import { useState, type FormEvent, type ReactNode } from "react";
 import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -1004,9 +1005,9 @@ function HotUnitCard({ unit, onOpen }: { unit: HotUnit; onOpen: (unit: HotUnit) 
 }
 
 function UnitLayoutModal({ unit, onClose }: { unit: HotUnit; onClose: () => void }) {
-  return (
+  return createPortal(
     <div
-      className="fixed inset-0 z-[90] flex items-center justify-center overflow-hidden bg-[#020812]/92 px-3 py-3 backdrop-blur-md sm:px-4 sm:py-6"
+      className="fixed inset-0 z-[1000] flex items-center justify-center overflow-hidden bg-[#020812]/92 px-3 py-3 backdrop-blur-md sm:px-4 sm:py-6"
       role="dialog"
       aria-modal="true"
       aria-label={`Layout căn ${unit.code}`}
@@ -1071,7 +1072,8 @@ function UnitLayoutModal({ unit, onClose }: { unit: HotUnit; onClose: () => void
           </div>
         </aside>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }
 

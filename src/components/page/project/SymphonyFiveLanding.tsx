@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import {
   FiArrowRight,
   FiBarChart2,
@@ -40,28 +40,28 @@ const navItems = [
 ];
 
 const indicators = [
-  ["01", "Tổng quan"],
-  ["02", "Vị trí"],
-  ["03", "Tiện ích"],
-  ["04", "Mặt bằng"],
-  ["05", "Liên hệ"],
+  ["01", "Tổng quan", "#tong-quan"],
+  ["02", "Vị trí", "#vi-tri"],
+  ["03", "Tiện ích", "#tien-ich"],
+  ["04", "Mặt bằng", "#mat-bang"],
+  ["05", "Liên hệ", "#dang-ky"],
 ];
 
 const trustItems = [
-  { icon: FiGrid, title: "Vị trí kim cương", copy: "Mặt tiền sông Hàn, đối diện trung tâm Hải Châu" },
-  { icon: FiCompass, title: "View triệu đô", copy: "Panorama sông Hàn, Cầu Rồng và pháo hoa DIFF" },
-  { icon: FiStar, title: "Tháp cuối cùng", copy: "Tòa S5, mảnh ghép hoàn thiện của Sun Symphony" },
-  { icon: FiHome, title: "Sản phẩm đa dạng", copy: "Studio, 1PN, 2PN, 3PN, sky villa và penthouse" },
-  { icon: FiBarChart2, title: "Giá trị bền vững", copy: "Nguồn cung ven sông trung tâm ngày càng khan hiếm" },
+  { icon: FiGrid, title: "Vị trí kim cương", copy: "Mặt sông Hàn, đối diện trung tâm Hải Châu" },
+  { icon: FiCompass, title: "View triệu đô", copy: "Panorama sông Hàn - Cầu Rồng - pháo hoa DIFF" },
+  { icon: FiStar, title: "Tháp cuối cùng", copy: "Tòa S5 - mảnh ghép hoàn thiện Sun Symphony Residence" },
+  { icon: FiHome, title: "Sản phẩm đa dạng", copy: "Studio, 1PN, 2PN, 3PN đáp ứng mọi nhu cầu" },
+  { icon: FiBarChart2, title: "Tiềm năng vượt trội", copy: "Khu vực trung tâm, khan hiếm nguồn cung ven sông" },
 ];
 
 const amenities = [
   { title: "Hồ bơi vô cực", subtitle: "Sky Infinity Pool", image: `${img}/symphony-river-panorama-sunset.png` },
-  { title: "Sky lounge", subtitle: "View pháo hoa sông Hàn", image: `${img}/symphony-fireworks-balcony-view.jpg` },
-  { title: "Căn hộ mẫu", subtitle: "Không gian view thành phố", image: `${img}/symphony-bedroom-river-view.jpeg` },
-  { title: "Cảnh quan nội khu", subtitle: "Resort trong lòng đô thị", image: `${img}/symphony-overview-aerial-day.jpg` },
+  { title: "Lounge trên cao", subtitle: "Sky Lounge", image: `${img}/symphony-fireworks-balcony-view.jpg` },
+  { title: "Căn hộ mẫu", subtitle: "Không gian view sông", image: `${img}/symphony-bedroom-river-view.jpeg` },
+  { title: "Cảnh quan nội khu", subtitle: "Zen Garden", image: `${img}/symphony-overview-aerial-day.jpg` },
   { title: "Tầm view panorama", subtitle: "Sông Hàn - biển Mỹ Khê", image: `${img}/symphony-view-directions-map.jpg` },
-  { title: "Sảnh đón", subtitle: "Chuẩn sống 5 sao", image: `${img}/symphony-masterplan-and-location.jpg` },
+  { title: "Sảnh đón", subtitle: "Chuẩn 5 sao", image: `${img}/symphony-masterplan-and-location.jpg` },
 ];
 
 const products = [
@@ -74,38 +74,22 @@ const products = [
 const distances = ["Cầu Rồng 1 phút", "Hải Châu 2 phút", "Vincom 5 phút", "Mỹ Khê 7 phút", "Sân bay 15 phút"];
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 28 },
+  hidden: { opacity: 0, y: 24 },
   visible: { opacity: 1, y: 0 },
 };
 
 const goldButton =
-  "inline-flex h-12 items-center justify-center gap-3 rounded-full bg-linear-to-r from-[#F0D295] via-[#D4B278] to-[#B88A44] px-6 text-[11px] font-bold uppercase tracking-[0.09em] text-[#07101F] shadow-[0_18px_48px_rgba(212,178,120,0.25)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_24px_70px_rgba(212,178,120,0.4)]";
+  "inline-flex h-12 items-center justify-center gap-3 rounded-[7px] bg-linear-to-r from-[#F0D295] via-[#D4B278] to-[#B88A44] px-6 text-[11px] font-bold uppercase tracking-[0.08em] text-[#07101F] shadow-[0_18px_46px_rgba(212,178,120,0.25)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_22px_64px_rgba(212,178,120,0.38)]";
 
 const ghostButton =
-  "inline-flex h-12 items-center justify-center gap-3 rounded-full border border-[#D4B278]/45 bg-white/[0.035] px-6 text-[11px] font-bold uppercase tracking-[0.09em] text-[#F5F1E8] backdrop-blur transition duration-300 hover:border-[#D4B278] hover:bg-[#D4B278]/10 hover:text-[#E0C48A]";
-
-function SectionIntro({ eyebrow, title, copy, center = false }: { eyebrow: string; title: string; copy?: string; center?: boolean }) {
-  return (
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-80px" }}
-      variants={fadeUp}
-      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-      className={center ? "mx-auto max-w-3xl text-center" : "max-w-xl"}
-    >
-      <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#D4B278]">{eyebrow}</p>
-      <h2 className="mt-4 font-serif text-[38px] font-normal uppercase leading-[1.05] text-[#F5F1E8] sm:text-[52px]">
-        {title}
-      </h2>
-      {copy ? <p className="mt-5 text-[15px] leading-[1.85] text-white/64">{copy}</p> : null}
-    </motion.div>
-  );
-}
+  "inline-flex h-12 items-center justify-center gap-3 rounded-[7px] border border-[#D4B278]/45 bg-white/[0.035] px-6 text-[11px] font-bold uppercase tracking-[0.08em] text-[#F5F1E8] backdrop-blur transition duration-300 hover:border-[#D4B278] hover:bg-[#D4B278]/10 hover:text-[#E0C48A]";
 
 export default function SymphonyFiveLanding({ project }: { project: ProjectCatalogItem }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [ctaSubmitting, setCtaSubmitting] = useState(false);
+  const [ctaSent, setCtaSent] = useState(false);
+  const [ctaError, setCtaError] = useState("");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 36);
@@ -114,11 +98,46 @@ export default function SymphonyFiveLanding({ project }: { project: ProjectCatal
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const submitCta = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const form = event.currentTarget;
+
+    setCtaSubmitting(true);
+    setCtaError("");
+
+    try {
+      const response = await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.get("name"),
+          phone: formData.get("phone"),
+          project: project.name,
+          source: window.location.href,
+          message: "Đăng ký nhận tư vấn từ CTA Sun Symphony 5",
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json().catch(() => null);
+        throw new Error(data?.error ?? "Không thể lưu thông tin");
+      }
+
+      setCtaSent(true);
+      form.reset();
+    } catch {
+      setCtaError("Chưa lưu được thông tin. Vui lòng thử lại.");
+    } finally {
+      setCtaSubmitting(false);
+    }
+  };
+
   return (
     <main className="min-h-screen overflow-hidden bg-[#050B16] font-sans text-[#F5F1E8]">
       <header
         className={`fixed inset-x-0 top-0 z-50 transition duration-500 ${
-          scrolled ? "border-b border-white/10 bg-[#06101E]/78 shadow-[0_18px_70px_rgba(0,0,0,0.35)] backdrop-blur-2xl" : "bg-transparent"
+          scrolled ? "border-b border-white/10 bg-[#06101E]/80 shadow-[0_18px_70px_rgba(0,0,0,0.35)] backdrop-blur-2xl" : "bg-transparent"
         }`}
       >
         <div className="mx-auto flex h-[76px] max-w-[1440px] items-center justify-between px-5 sm:px-8 lg:px-16">
@@ -138,11 +157,11 @@ export default function SymphonyFiveLanding({ project }: { project: ProjectCatal
             ))}
           </nav>
 
-          <button type="button" onClick={openConsultationModal} className="hidden h-11 rounded-full border border-[#D4B278]/65 px-6 text-[11px] font-bold uppercase tracking-[0.09em] text-[#D4B278] transition hover:bg-[#D4B278] hover:text-[#07101F] lg:inline-flex lg:items-center">
+          <button type="button" onClick={openConsultationModal} className="hidden h-11 items-center rounded-[7px] border border-[#D4B278]/65 px-6 text-[11px] font-bold uppercase tracking-[0.09em] text-[#D4B278] transition hover:bg-[#D4B278] hover:text-[#07101F] lg:inline-flex">
             Đăng ký nhận thông tin
           </button>
 
-          <button type="button" className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#D4B278]/60 text-[#D4B278] xl:hidden" onClick={() => setMenuOpen((value) => !value)} aria-label="Mở menu">
+          <button type="button" className="inline-flex h-11 w-11 items-center justify-center rounded-[7px] border border-[#D4B278]/60 text-[#D4B278] xl:hidden" onClick={() => setMenuOpen((value) => !value)} aria-label="Mở menu">
             {menuOpen ? <FiX className="h-5 w-5" /> : <FiMenu className="h-5 w-5" />}
           </button>
         </div>
@@ -167,13 +186,13 @@ export default function SymphonyFiveLanding({ project }: { project: ProjectCatal
 
       <section id="hero" className="relative min-h-screen overflow-hidden">
         <Image src={project.heroImage} alt="Sun Symphony 5 bên sông Hàn" fill priority className="object-cover object-[62%_50%]" sizes="100vw" />
-        <div className="absolute inset-0 bg-linear-to-r from-[#050B16]/96 via-[#07101F]/64 to-[#050B16]/14" />
-        <div className="absolute inset-0 bg-linear-to-t from-[#050B16] via-[#050B16]/12 to-[#050B16]/18" />
-        <div className="absolute right-[18%] top-[8%] h-[42rem] w-[42rem] rounded-full bg-[#D4B278]/16 blur-[120px]" />
+        <div className="absolute inset-0 bg-linear-to-r from-[#050B16]/96 via-[#07101F]/56 to-[#050B16]/6" />
+        <div className="absolute inset-0 bg-linear-to-t from-[#050B16] via-[#050B16]/10 to-[#050B16]/20" />
+        <div className="absolute right-[14%] top-[10%] h-[44rem] w-[44rem] rounded-full bg-[#D4B278]/16 blur-[130px]" />
         <div className="absolute left-0 top-0 h-full w-1/2 bg-radial-[circle_at_22%_36%] from-[#12304E]/42 via-transparent to-transparent" />
 
-        <div className="relative z-10 mx-auto flex min-h-screen max-w-[1440px] items-center px-5 pb-28 pt-28 sm:px-8 lg:px-16">
-          <motion.div className="max-w-[640px]" initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}>
+        <div className="relative z-10 mx-auto flex min-h-screen max-w-[1440px] items-center px-5 pb-32 pt-28 sm:px-8 lg:px-16">
+          <motion.div className="max-w-[650px]" initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}>
             <p className="inline-flex border-b border-[#D4B278]/65 pb-2 text-[13px] font-semibold uppercase leading-[1.7] tracking-[0.16em] text-[#D4B278]">
               Tháp căn hộ cuối cùng / Sun Symphony Residence
             </p>
@@ -198,8 +217,8 @@ export default function SymphonyFiveLanding({ project }: { project: ProjectCatal
 
           <div className="absolute right-6 top-1/2 hidden -translate-y-1/2 lg:block xl:right-16">
             <div className="grid gap-7 border-l border-white/12 pl-5">
-              {indicators.map(([num, label], index) => (
-                <a key={num} href={navItems[index]?.href ?? "#dang-ky"} className={`relative text-left transition hover:text-[#D4B278] ${index === 0 ? "text-white" : "text-white/38"}`}>
+              {indicators.map(([num, label, href], index) => (
+                <a key={num} href={href} className={`relative text-left transition hover:text-[#D4B278] ${index === 0 ? "text-white" : "text-white/38"}`}>
                   {index === 0 ? <span className="absolute -left-[21px] top-0 h-8 w-px bg-[#D4B278]" /> : null}
                   <span className="block text-[18px] font-medium">{num}</span>
                   <span className="text-[12px]">{label}</span>
@@ -210,8 +229,8 @@ export default function SymphonyFiveLanding({ project }: { project: ProjectCatal
         </div>
       </section>
 
-      <section id="tong-quan" className="relative z-20 -mt-20 px-5 sm:px-8 lg:px-16">
-        <motion.div className="mx-auto grid max-w-[1320px] overflow-hidden rounded-[18px] border border-white/10 bg-[#07101F]/70 shadow-[0_30px_100px_rgba(0,0,0,0.5)] backdrop-blur-2xl md:grid-cols-5" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} variants={fadeUp} transition={{ duration: 0.7 }}>
+      <section id="tong-quan" className="relative z-20 -mt-24 px-5 sm:px-8 lg:px-16">
+        <motion.div className="mx-auto grid max-w-[1320px] overflow-hidden rounded-[10px] border border-white/12 bg-[#06101E]/78 shadow-[0_30px_100px_rgba(0,0,0,0.5)] backdrop-blur-2xl md:grid-cols-5" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} variants={fadeUp} transition={{ duration: 0.7 }}>
           {trustItems.map((item) => {
             const Icon = item.icon;
             return (
@@ -225,63 +244,61 @@ export default function SymphonyFiveLanding({ project }: { project: ProjectCatal
         </motion.div>
       </section>
 
-      <section id="vi-tri" className="relative px-5 py-24 sm:px-8 lg:px-16 lg:py-32">
-        <div className="absolute inset-x-0 top-0 h-80 bg-radial-[circle_at_70%_10%] from-[#1B4A73]/28 via-transparent to-transparent" />
-        <div className="relative mx-auto grid max-w-[1320px] gap-10 lg:grid-cols-[0.38fr_0.62fr] lg:items-center">
-          <div>
-            <SectionIntro
-              eyebrow="Vị trí độc tôn"
-              title="Trung tâm của trung tâm"
-              copy="Tọa lạc tại trục Trần Hưng Đạo - Lê Văn Duyệt, Symphony 5 kết nối nhanh đến trung tâm Hải Châu, bãi biển Mỹ Khê, sân bay và các biểu tượng bên sông Hàn."
-            />
-            <div className="mt-8 flex flex-wrap gap-3">
-              {distances.map((item) => (
-                <span key={item} className="rounded-full border border-[#D4B278]/28 bg-white/[0.035] px-4 py-2 text-[12px] font-semibold text-white/72 backdrop-blur">
-                  {item}
-                </span>
-              ))}
-            </div>
+      <section id="vi-tri" className="relative overflow-hidden px-5 pb-20 pt-28 sm:px-8 lg:px-16 lg:pb-24 lg:pt-32">
+        <Image src={`${img}/symphony-river-panorama-sunset.png`} alt="Vị trí Sun Symphony 5 bên sông Hàn" fill className="object-cover opacity-72" sizes="100vw" />
+        <div className="absolute inset-0 bg-linear-to-r from-[#050B16] via-[#07101F]/70 to-[#050B16]/12" />
+        <div className="absolute inset-0 bg-linear-to-t from-[#050B16] via-[#050B16]/24 to-[#050B16]/30" />
+        <div className="relative z-10 mx-auto grid min-h-[540px] max-w-[1320px] gap-10 lg:grid-cols-[0.38fr_0.62fr] lg:items-end">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} variants={fadeUp} transition={{ duration: 0.7 }}>
+            <p className="border-b border-[#D4B278]/55 pb-2 text-[13px] font-semibold uppercase tracking-[0.14em] text-[#D4B278]">
+              Vị trí độc tôn
+            </p>
+            <h2 className="mt-5 font-serif text-[42px] font-normal uppercase leading-[1.08] text-[#E0C48A] sm:text-[56px]">
+              Trung tâm của trung tâm
+            </h2>
+            <p className="mt-7 text-[15px] leading-[1.9] text-white/72">
+              Tọa lạc tại trục Trần Hưng Đạo - Lê Văn Duyệt, Symphony 5 kết nối nhanh đến Hải Châu, Mỹ Khê, sân bay và những biểu tượng bên sông Hàn.
+            </p>
             <a href="#dang-ky" className={`${ghostButton} mt-8`}>
               Khám phá vị trí <FiArrowRight />
             </a>
-          </div>
+          </motion.div>
 
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} variants={fadeUp} transition={{ duration: 0.8 }} className="relative overflow-hidden rounded-[24px] border border-[#D4B278]/18 bg-white/[0.035] p-2 shadow-[0_28px_110px_rgba(0,0,0,0.45)]">
-            <div className="relative aspect-[16/10] overflow-hidden rounded-[18px]">
-              <Image src={`${img}/symphony-location-river-map.jpg`} alt="Bản đồ vị trí Sun Symphony 5 bên sông Hàn" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 760px" />
-            </div>
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} variants={fadeUp} transition={{ duration: 0.75 }} className="grid gap-3 sm:grid-cols-5">
+            {distances.map((item) => (
+              <div key={item} className="border-t border-[#D4B278]/40 bg-[#050B16]/28 px-3 py-4 backdrop-blur-sm">
+                <p className="text-[12px] font-semibold uppercase leading-[1.4] tracking-[0.08em] text-white/78">{item}</p>
+              </div>
+            ))}
           </motion.div>
         </div>
       </section>
 
-      <section id="tien-ich" className="relative px-5 py-20 sm:px-8 lg:px-16">
-        <div className="absolute inset-x-0 top-24 h-96 bg-radial-[circle_at_50%_50%] from-[#D4B278]/10 via-transparent to-transparent" />
-        <div className="relative mx-auto max-w-[1320px]">
-          <div className="mb-10 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-            <SectionIntro
-              eyebrow="Tiện ích"
-              title="Tiện ích chuẩn resort 5 sao"
-              copy="Mỗi tiện ích được đặt trong trải nghiệm sống ven sông: yên tĩnh, riêng tư, nhưng vẫn sát nhịp năng lượng của Đà Nẵng."
-            />
+      <section id="tien-ich" className="relative px-5 py-16 sm:px-8 lg:px-16">
+        <div className="mx-auto max-w-[1320px]">
+          <div className="mb-8 flex items-center justify-between gap-4">
+            <h2 className="mx-auto font-serif text-[24px] font-normal uppercase tracking-[0.08em] text-[#F5F1E8] sm:text-[28px]">
+              Tiện ích chuẩn resort 5 sao
+            </h2>
             <div className="hidden gap-3 sm:flex">
-              <button type="button" className="symphony-prev flex h-11 w-11 items-center justify-center rounded-full border border-[#D4B278]/55 text-[#D4B278] transition hover:bg-[#D4B278] hover:text-[#07101F]" aria-label="Trước">
+              <button type="button" className="symphony-prev flex h-10 w-10 items-center justify-center rounded-full border border-[#D4B278]/55 text-[#D4B278] transition hover:bg-[#D4B278] hover:text-[#07101F]" aria-label="Trước">
                 <FiChevronLeft />
               </button>
-              <button type="button" className="symphony-next flex h-11 w-11 items-center justify-center rounded-full border border-[#D4B278]/55 text-[#D4B278] transition hover:bg-[#D4B278] hover:text-[#07101F]" aria-label="Sau">
+              <button type="button" className="symphony-next flex h-10 w-10 items-center justify-center rounded-full border border-[#D4B278]/55 text-[#D4B278] transition hover:bg-[#D4B278] hover:text-[#07101F]" aria-label="Sau">
                 <FiChevronRight />
               </button>
             </div>
           </div>
 
-          <Swiper modules={[Navigation, Pagination, Autoplay]} navigation={{ prevEl: ".symphony-prev", nextEl: ".symphony-next" }} pagination={{ clickable: true, el: ".symphony-pagination" }} autoplay={{ delay: 3600, disableOnInteraction: false }} loop spaceBetween={22} slidesPerView={1.15} breakpoints={{ 640: { slidesPerView: 2.15 }, 1024: { slidesPerView: 3.2 }, 1280: { slidesPerView: 4 } }}>
+          <Swiper modules={[Navigation, Pagination, Autoplay]} navigation={{ prevEl: ".symphony-prev", nextEl: ".symphony-next" }} pagination={{ clickable: true, el: ".symphony-pagination" }} autoplay={{ delay: 3600, disableOnInteraction: false }} loop spaceBetween={18} slidesPerView={1.15} breakpoints={{ 640: { slidesPerView: 2.15 }, 1024: { slidesPerView: 4 }, 1280: { slidesPerView: 5 } }}>
             {amenities.map((item) => (
               <SwiperSlide key={item.title}>
-                <article className="group relative h-[330px] overflow-hidden rounded-[22px] border border-white/10 bg-white/[0.035]">
-                  <Image src={item.image} alt={item.title} fill className="object-cover transition duration-700 group-hover:scale-105" sizes="(max-width: 768px) 85vw, 330px" />
+                <article className="group relative h-[250px] overflow-hidden rounded-[8px] border border-white/10 bg-white/[0.035]">
+                  <Image src={item.image} alt={item.title} fill className="object-cover transition duration-700 group-hover:scale-105" sizes="(max-width: 768px) 85vw, 260px" />
                   <div className="absolute inset-0 bg-linear-to-t from-[#050B16]/94 via-[#050B16]/18 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#D4B278]">{item.subtitle}</p>
-                    <h3 className="mt-2 font-serif text-2xl font-normal text-white">{item.title}</h3>
+                  <div className="absolute bottom-0 left-0 right-0 p-5 text-center">
+                    <p className="text-[11px] text-[#D4B278]">{item.subtitle}</p>
+                    <h3 className="mt-2 text-[13px] font-bold uppercase tracking-[0.08em] text-white">{item.title}</h3>
                   </div>
                 </article>
               </SwiperSlide>
@@ -291,28 +308,28 @@ export default function SymphonyFiveLanding({ project }: { project: ProjectCatal
         </div>
       </section>
 
-      <section id="mat-bang" className="px-5 py-24 sm:px-8 lg:px-16">
-        <div className="mx-auto grid max-w-[1320px] gap-10 lg:grid-cols-[0.32fr_0.68fr] lg:items-center">
-          <div>
-            <SectionIntro
-              eyebrow="Mặt bằng"
-              title="Đa dạng diện tích tối ưu công năng"
-              copy="Dải sản phẩm linh hoạt cho cả nhu cầu ở, khai thác thuê và nắm giữ tài sản ven sông dài hạn."
-            />
-            <button type="button" onClick={openConsultationModal} className={`${ghostButton} mt-8`}>
+      <section id="mat-bang" className="px-5 py-20 sm:px-8 lg:px-16">
+        <div className="mx-auto grid max-w-[1320px] gap-10 lg:grid-cols-[0.28fr_0.72fr] lg:items-center">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} variants={fadeUp} transition={{ duration: 0.7 }}>
+            <p className="border-b border-[#D4B278]/55 pb-2 text-[13px] font-semibold uppercase tracking-[0.14em] text-[#D4B278]">Mặt bằng</p>
+            <h2 className="mt-5 font-serif text-[38px] font-normal uppercase leading-[1.08] text-[#E0C48A] sm:text-[48px]">
+              Đa dạng diện tích tối ưu công năng
+            </h2>
+            <p className="mt-6 text-[15px] leading-[1.85] text-white/64">
+              Dải sản phẩm linh hoạt cho nhu cầu ở, khai thác thuê và nắm giữ tài sản ven sông dài hạn.
+            </p>
+            <button type="button" onClick={openConsultationModal} className={`${ghostButton} mt-7`}>
               Xem chi tiết mặt bằng <FiArrowRight />
             </button>
-          </div>
+          </motion.div>
 
           <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
             {products.map((plan) => (
-              <article key={plan.type} className="group overflow-hidden rounded-[20px] border border-white/10 bg-white/[0.035] p-3 transition duration-300 hover:-translate-y-1.5 hover:border-[#D4B278]/45 hover:bg-white/[0.06]">
-                <div className="relative aspect-[4/3] overflow-hidden rounded-[15px] bg-[#0A1320]">
+              <article key={plan.type} className="group overflow-hidden rounded-[8px] border border-white/10 bg-white/[0.035] p-4 transition duration-300 hover:-translate-y-1 hover:border-[#D4B278]/45 hover:bg-white/[0.06]">
+                <h3 className="text-[16px] font-medium uppercase text-white">{plan.type}</h3>
+                <p className="mt-1 text-[15px] text-[#D4B278]">{plan.area}</p>
+                <div className="relative mt-5 aspect-[4/3] overflow-hidden rounded-[5px] bg-[#0A1320]">
                   <Image src={plan.image} alt={`${plan.type} Sun Symphony 5`} fill className="object-cover transition duration-700 group-hover:scale-105" sizes="(max-width: 768px) 100vw, 260px" />
-                </div>
-                <div className="px-2 py-4">
-                  <h3 className="text-[14px] font-bold uppercase tracking-[0.08em] text-white">{plan.type}</h3>
-                  <p className="mt-2 text-[17px] text-[#D4B278]">{plan.area}</p>
                 </div>
               </article>
             ))}
@@ -320,23 +337,47 @@ export default function SymphonyFiveLanding({ project }: { project: ProjectCatal
         </div>
       </section>
 
-      <section id="dang-ky" className="px-5 pb-14 sm:px-8 lg:px-16">
-        <div className="mx-auto grid max-w-[1320px] overflow-hidden rounded-[24px] border border-white/10 bg-[#07101F]/72 p-3 shadow-[0_28px_110px_rgba(0,0,0,0.42)] backdrop-blur-2xl lg:grid-cols-[0.36fr_0.28fr_0.36fr] lg:items-center">
-          <div className="relative min-h-[210px] overflow-hidden rounded-[18px]">
-            <Image src={`${img}/symphony-fireworks-balcony-view.jpg`} alt="View pháo hoa từ Sun Symphony 5" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 460px" />
+      <section id="dang-ky" className="px-5 pb-12 sm:px-8 lg:px-16">
+        <div className="relative mx-auto max-w-[1320px] overflow-hidden rounded-[16px] border border-[#D4B278]/22 bg-[#07101F] shadow-[0_34px_120px_rgba(0,0,0,0.5)]">
+          <Image src={`${img}/symphony-fireworks-balcony-view.jpg`} alt="View pháo hoa từ Sun Symphony 5" fill className="object-cover opacity-52" sizes="100vw" />
+          <div className="absolute inset-0 bg-linear-to-r from-[#050B16]/96 via-[#07101F]/82 to-[#050B16]/58" />
+          <div className="absolute right-10 top-8 h-56 w-56 rounded-full bg-[#D4B278]/18 blur-[80px]" />
+
+          <div className="relative z-10 grid gap-8 px-6 py-8 sm:px-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:px-12 lg:py-11">
+            <div>
+              <p className="inline-flex rounded-full border border-[#D4B278]/35 bg-[#D4B278]/10 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.14em] text-[#E0C48A]">
+                Giỏ hàng ưu tiên Symphony 5
+              </p>
+              <h2 className="mt-5 max-w-[560px] font-serif text-[38px] font-normal uppercase leading-[1.02] text-white sm:text-[52px]">
+                Nhận bảng giá & chính sách mới nhất
+              </h2>
+              <p className="mt-5 max-w-[520px] text-[15px] leading-[1.8] text-white/72">
+                Để lại thông tin để nhận tư vấn hướng view, tầng đẹp và lịch thanh toán phù hợp ngân sách.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-3 text-[12px] font-semibold text-white/72">
+                {["Bảng giá mới", "Chính sách bán hàng", "Tư vấn mã căn đẹp"].map((item) => (
+                  <span key={item} className="rounded-full border border-white/12 bg-white/[0.06] px-4 py-2 backdrop-blur">
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <form className="rounded-[12px] border border-white/12 bg-[#050B16]/72 p-4 shadow-[0_18px_70px_rgba(0,0,0,0.35)] backdrop-blur-xl sm:p-5" onSubmit={submitCta}>
+              <div className="grid gap-3 sm:grid-cols-2">
+                <input name="name" className="h-13 rounded-[7px] border border-white/12 bg-white/[0.04] px-5 text-[14px] text-white outline-none transition placeholder:text-white/42 focus:border-[#D4B278]/75" placeholder="Họ và tên" required />
+                <input name="phone" type="tel" className="h-13 rounded-[7px] border border-white/12 bg-white/[0.04] px-5 text-[14px] text-white outline-none transition placeholder:text-white/42 focus:border-[#D4B278]/75" placeholder="Số điện thoại" required />
+              </div>
+              <button type="submit" disabled={ctaSubmitting} className={`${goldButton} mt-4 w-full disabled:cursor-not-allowed disabled:opacity-70`}>
+                {ctaSubmitting ? "Đang lưu..." : "Đăng ký nhận tư vấn"} <FiArrowRight className="h-4 w-4" />
+              </button>
+              {ctaSent ? <p className="mt-3 text-center text-[12px] font-semibold text-[#E0C48A]">Đã nhận thông tin. Chuyên viên sẽ liên hệ lại sớm.</p> : null}
+              {ctaError ? <p className="mt-3 text-center text-[12px] font-semibold text-red-200">{ctaError}</p> : null}
+              <p className="mt-3 text-center text-[11px] leading-[1.6] text-white/42">
+                Thông tin chỉ dùng để tư vấn dự án, không chia sẻ cho bên thứ ba.
+              </p>
+            </form>
           </div>
-          <div className="px-4 py-7 lg:px-8">
-            <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[#D4B278]">Private consultation</p>
-            <h2 className="mt-3 font-serif text-[34px] font-normal uppercase leading-[1.05] text-white">Đăng ký nhận thông tin</h2>
-            <p className="mt-4 text-[13px] leading-[1.8] text-white/64">Nhận bảng giá, chính sách bán hàng và tư vấn mã căn đẹp nhất.</p>
-          </div>
-          <form className="grid gap-3 p-2 sm:grid-cols-2 lg:grid-cols-1" onSubmit={(event) => event.preventDefault()}>
-            <input className="h-12 rounded-full border border-white/12 bg-[#050B16]/72 px-5 text-[13px] text-white outline-none transition placeholder:text-white/38 focus:border-[#D4B278]/70" placeholder="Họ và tên" />
-            <input className="h-12 rounded-full border border-white/12 bg-[#050B16]/72 px-5 text-[13px] text-white outline-none transition placeholder:text-white/38 focus:border-[#D4B278]/70" placeholder="Số điện thoại" />
-            <button type="button" onClick={openConsultationModal} className={`${goldButton} sm:col-span-2 lg:col-span-1`}>
-              Đăng ký ngay
-            </button>
-          </form>
         </div>
       </section>
 

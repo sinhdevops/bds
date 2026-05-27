@@ -37,10 +37,11 @@ const GOOGLE_ADS_ID = "AW-18189993425";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   ...createMetadata({
-    title: "BĐS Đà Nẵng - Mua Căn Hộ Sun Group & Ven Sông Hàn",
+    title: "Bất Động Sản Cao Cấp Đà Nẵng - Căn Hộ Sun Group & Ven Sông Hàn",
     description:
-      `Cổng thông tin tư vấn căn hộ cao cấp Đà Nẵng: Sun Symphony, Sun Ponte, Sun Cosmo, Sun Solar và Capital Square. Văn phòng ${OFFICE_ADDRESS}.`,
+      `Cổng thông tin bất động sản cao cấp Đà Nẵng: Sun Symphony, Sun Ponte, Sun Cosmo, Sun Solar và Capital Square. Tư vấn miễn phí 0352.787777. Văn phòng ${OFFICE_ADDRESS}.`,
     keywords: [
+      "bất động sản cao cấp Đà Nẵng",
       "BĐS Đà Nẵng",
       "BĐS cao cấp Đà Nẵng",
       "bds-da-nang.com",
@@ -67,15 +68,21 @@ export const metadata: Metadata = {
     email: true,
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png", sizes: "192x192" },
+    ],
     shortcut: "/favicon.ico",
-    apple: "/images/logo-bds-da-nang-dark.svg",
+    apple: [
+      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
+    ],
   },
+  manifest: "/manifest.json",
   openGraph: {
     ...createMetadata({
-      title: "BĐS Đà Nẵng - Mua Căn Hộ Sun Group & Ven Sông Hàn",
+      title: "Bất Động Sản Cao Cấp Đà Nẵng - Căn Hộ Sun Group & Ven Sông Hàn",
       description:
-        `Tư vấn căn hộ Đà Nẵng: bảng giá, giỏ hàng, chính sách bán hàng, lịch xem nhà và pháp lý dự án. Văn phòng ${OFFICE_ADDRESS}.`,
+        `Tư vấn bất động sản cao cấp Đà Nẵng: bảng giá, giỏ hàng, chính sách bán hàng, lịch xem nhà và pháp lý dự án. Văn phòng ${OFFICE_ADDRESS}.`,
     }).openGraph,
     images: [{ url: absoluteUrl(DEFAULT_OG_IMAGE), width: 1200, height: 630, alt: SITE_NAME }],
   },
@@ -86,7 +93,7 @@ const organizationSchema = {
   "@type": "RealEstateAgent",
   "@id": `${SITE_URL}/#organization`,
   name: SITE_NAME,
-  alternateName: ["BĐS cao cấp Đà Nẵng", "BDS Da Nang", "BDS cao cap Da Nang"],
+  alternateName: ["BĐS Đà Nẵng", "BĐS cao cấp Đà Nẵng", "BDS Da Nang", "BDS cao cap Da Nang", "bat dong san cao cap da nang"],
   description:
     "Cổng thông tin tư vấn và cập nhật các dự án căn hộ cao cấp tại Đà Nẵng.",
   url: SITE_URL,
@@ -122,7 +129,7 @@ const websiteSchema = {
   "@id": `${SITE_URL}/#website`,
   url: SITE_URL,
   name: SITE_NAME,
-  alternateName: ["BĐS cao cấp Đà Nẵng", "BDS Da Nang"],
+  alternateName: ["BĐS Đà Nẵng", "BĐS cao cấp Đà Nẵng", "BDS Da Nang"],
   description:
     "Cổng thông tin tư vấn căn hộ cao cấp Đà Nẵng, dự án Sun Group và bất động sản ven sông Hàn.",
   publisher: { "@id": `${SITE_URL}/#organization` },

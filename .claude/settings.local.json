@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e \"const p = require\\('./node_modules/next-intl/package.json'\\); console.log\\('next-intl version:', p.version\\); console.log\\('exports middleware:', Object.keys\\(p.exports||{}\\).filter\\(k=>k.includes\\('middleware'\\)\\)\\)\")"
+    ]
+  }
+}
