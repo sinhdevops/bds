@@ -174,8 +174,8 @@ export default function PrivacyPage() {
           </div>
 
           <div className="border-t border-[#E5E0D8] pt-6 flex gap-4 text-xs text-[#888]">
-            <Link href="/vi/terms" className="hover:text-[#0B2545] underline">Điều khoản sử dụng</Link>
-            <Link href="/vi" className="hover:text-[#0B2545] underline">Trang chủ</Link>
+            <Link href="/terms" className="hover:text-[#0B2545] underline">Điều khoản sử dụng</Link>
+            <Link href="/" className="hover:text-[#0B2545] underline">Trang chủ</Link>
           </div>
         </div>
       </section>
