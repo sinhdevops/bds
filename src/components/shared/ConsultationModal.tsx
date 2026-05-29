@@ -258,6 +258,19 @@ const LeadForm = memo(function LeadForm({
         <FiPhoneCall className="h-4 w-4" aria-hidden="true" />
         Gọi ngay {HOTLINE_DISPLAY}
       </a>
+
+      <p className="text-center text-[0.68rem] font-medium text-white/30 leading-relaxed">
+        Bằng cách gửi thông tin, bạn đồng ý với{" "}
+        <a
+          href="/vi/privacy-policy"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline text-white/45 hover:text-[#C6A77D] transition-colors"
+        >
+          Chính sách bảo mật
+        </a>{" "}
+        của BĐS Đà Nẵng.
+      </p>
     </form>
   );
 });

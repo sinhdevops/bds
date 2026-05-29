@@ -30,9 +30,9 @@ const SOCIALS = [
     label: "Hotline",
     href: HOTLINE_TEL,
     icon: (
-      <svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5">
-        <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" />
-        <circle cx="4" cy="4" r="2" />
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.4" className="w-3.5 h-3.5">
+        <rect x="1.5" y="1.5" width="17" height="17" rx="4" />
+        <path d="M5 13h4L5.5 7h4M11 13V7h3c1.2 0 2 .7 2 1.8 0 1.2-.8 1.9-2 1.9H11" />
       </svg>
     ),
   },
@@ -77,8 +77,11 @@ export default function Footer() {
                 className="h-11 w-auto object-contain opacity-90"
               />
             </div>
-            <p className="text-white/35 text-sm font-light leading-relaxed max-w-xs mb-5">
-              Tư vấn chuyên sâu các dự án căn hộ cao cấp ven sông Hàn tại Đà Nẵng.
+            <p className="text-white/35 text-sm font-light leading-relaxed max-w-xs mb-3">
+              Đơn vị môi giới bất động sản cao cấp độc lập tại Đà Nẵng. Không thuộc chủ đầu tư hay chủ sở hữu dự án.
+            </p>
+            <p className="text-white/20 text-xs font-light leading-relaxed max-w-xs mb-5">
+              Thông tin dự án chỉ mang tính tham khảo. Giá và chính sách cuối cùng theo chủ đầu tư.
             </p>
             <div className="flex items-start gap-2">
               <svg viewBox="0 0 16 20" fill="none" stroke="#C6A77D" strokeWidth="1.2" className="w-3.5 h-4.5 mt-0.5 shrink-0">
@@ -177,7 +180,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="pt-7 border-t border-white/8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-white/20 font-light">
-            ©2026 BDS Đà Nẵng. All rights reserved.
+            ©2026 BĐS Đà Nẵng — Đơn vị môi giới độc lập. All rights reserved.
           </p>
           <div className="flex items-center gap-5">
             <Link href="/terms" className="text-xs text-white/20 font-light hover:text-white/45 transition-colors duration-300">

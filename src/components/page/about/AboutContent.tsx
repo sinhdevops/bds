@@ -71,7 +71,7 @@ const AboutContent = () => {
               <em>phân phối bất động sản cao cấp</em>
             </h2>
             <p className="text-[#555555] text-base leading-[1.8] font-light mb-6">
-              BĐS Đà Nẵng là kênh cập nhật và tư vấn các dự án bất động sản cao cấp tại Đà Nẵng. Chúng tôi tập trung cung cấp thông tin rõ ràng về vị trí, giỏ hàng, chính sách và pháp lý để khách hàng ra quyết định tốt hơn.
+              BĐS Đà Nẵng là đơn vị môi giới bất động sản độc lập, chuyên tư vấn các dự án căn hộ cao cấp tại Đà Nẵng. Chúng tôi không phải chủ đầu tư hay đại diện chính thức của bất kỳ chủ đầu tư nào. Mọi thông tin về vị trí, giỏ hàng, chính sách và pháp lý được cập nhật từ nguồn chủ đầu tư, chỉ mang tính tham khảo.
             </p>
           </motion.div>
 

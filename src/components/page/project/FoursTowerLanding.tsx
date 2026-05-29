@@ -59,11 +59,11 @@ const heroFeatures: [IconType, string, string][] = [
 ];
 
 const heroStats: [IconType, string, string, string][] = [
-  [FiHome, "Số lượng còn lại", "08", "căn đẹp"],
-  [FiDollarSign, "Giá chỉ từ", "3XX", "tỷ"],
+  [FiDollarSign, "Giá tham khảo từ", "3", "tỷ đồng"],
   [FiTag, "Chiết khấu", "5%", "early bird"],
   [FiBriefcase, "Hỗ trợ vay", "70%", "GTCH"],
   [FiCalendar, "Ân hạn gốc", "30", "tháng"],
+  [FiHome, "Loại căn", "1BR+", "và 2BR"],
 ];
 
 const hotUnits = [
@@ -73,7 +73,7 @@ const hotUnits = [
     area: "73.1 m²",
     garden: "59.5 m²",
     total: "132.6 m²",
-    price: "5XX tỷ",
+    price: "Liên hệ để biết giá",
     image: "/images/projects/fours/fours-banner.webp",
     featured: true,
   },
@@ -83,7 +83,7 @@ const hotUnits = [
     area: "45.2 m²",
     garden: "13.3 m²",
     total: "58.5 m²",
-    price: "3XX tỷ",
+    price: "Từ 3 tỷ",
     image: "/images/projects/fours/fours-street.webp",
   },
   {
@@ -92,7 +92,7 @@ const hotUnits = [
     area: "53.8 m²",
     garden: "0 m²",
     total: "53.8 m²",
-    price: "3XX tỷ",
+    price: "Từ 3 tỷ",
     image: "/images/projects/fours/fours-banner.webp",
   },
   {
@@ -101,7 +101,7 @@ const hotUnits = [
     area: "56.4 m²",
     garden: "3.8 m²",
     total: "60.2 m²",
-    price: "3XX tỷ",
+    price: "Từ 3 tỷ",
     image: "/images/projects/fours/fours-street.webp",
   },
   {
@@ -110,7 +110,7 @@ const hotUnits = [
     area: "45.2 m²",
     garden: "13.3 m²",
     total: "58.5 m²",
-    price: "3XX tỷ",
+    price: "Từ 3 tỷ",
     image: "/images/projects/fours/fours-banner.webp",
   },
   {
@@ -119,7 +119,7 @@ const hotUnits = [
     area: "50.5 m²",
     garden: "0 m²",
     total: "50.5 m²",
-    price: "3XX tỷ",
+    price: "Từ 3 tỷ",
     image: "/images/projects/fours/fours-street.webp",
   },
   {
@@ -128,7 +128,7 @@ const hotUnits = [
     area: "50.5 m²",
     garden: "0 m²",
     total: "50.5 m²",
-    price: "3XX tỷ",
+    price: "Từ 3 tỷ",
     image: "/images/projects/fours/fours-banner.webp",
   },
   {
@@ -137,7 +137,7 @@ const hotUnits = [
     area: "64.8 m²",
     garden: "16.0 m²",
     total: "80.8 m²",
-    price: "4XX tỷ",
+    price: "Từ 4 tỷ",
     image: "/images/projects/fours/fours-street.webp",
   },
 ];
@@ -269,6 +269,16 @@ export default function FoursTowerLanding({ project }: { project: ProjectCatalog
 
   return (
     <main className="min-h-screen overflow-hidden bg-[#020812] text-white">
+      {/* Broker disclaimer — required for ad policy compliance */}
+      <div className="relative z-[60] w-full bg-[#0a1a2e] border-b border-[#F5B24D]/20 px-4 py-2.5 text-center">
+        <p className="text-[0.7rem] font-medium text-white/60 leading-relaxed">
+          <span className="text-[#F5B24D] font-semibold">BĐS Đà Nẵng</span> là đơn vị môi giới bất động sản độc lập — không phải chủ đầu tư, không đại diện chính thức cho bất kỳ chủ đầu tư nào.
+          Thông tin dự án chỉ mang tính tham khảo. Giá và chính sách cuối cùng theo chủ đầu tư.{" "}
+          <a href="/vi/privacy-policy" target="_blank" rel="noopener noreferrer" className="underline text-white/50 hover:text-[#F5B24D] transition-colors">
+            Chính sách bảo mật
+          </a>
+        </p>
+      </div>
       <FoursHeader />
 
       <section id="tong-quan" className="relative min-h-screen overflow-hidden px-5 pb-8 pt-24 sm:px-8 lg:px-10 lg:pb-10">
@@ -287,8 +297,13 @@ export default function FoursTowerLanding({ project }: { project: ProjectCatalog
 
         <div className="relative z-10 mx-auto flex min-h-[calc(100vh-112px)] max-w-[1480px] flex-col justify-start pt-4 sm:pt-6 lg:pt-10">
           <div className="max-w-[1180px]">
-            <div className="inline-flex h-9 items-center rounded-full border border-[#F5B24D]/70 bg-[#091B34]/58 px-4 text-[0.68rem] font-black uppercase tracking-[0.08em] text-[#F3F5F8] shadow-[inset_0_0_18px_rgba(255,255,255,0.04)] backdrop-blur-md">
-              FourS Tower Đà Nẵng
+            <div className="flex flex-wrap items-center gap-2">
+              <div className="inline-flex h-9 items-center rounded-full border border-[#F5B24D]/70 bg-[#091B34]/58 px-4 text-[0.68rem] font-black uppercase tracking-[0.08em] text-[#F3F5F8] shadow-[inset_0_0_18px_rgba(255,255,255,0.04)] backdrop-blur-md">
+                FourS Tower Đà Nẵng
+              </div>
+              <div className="inline-flex h-7 items-center rounded-full border border-white/20 bg-white/[0.07] px-3 text-[0.6rem] font-semibold text-white/60 backdrop-blur-md">
+                Tư vấn bởi BĐS Đà Nẵng — Môi giới độc lập
+              </div>
             </div>
 
             <h1 className="mt-5 max-w-[980px] text-[2rem] font-bold uppercase leading-none tracking-normal text-[#F3F5F8] drop-shadow-[0_10px_28px_rgba(0,0,0,0.48)] sm:text-[2.85rem] lg:text-[3.35rem] xl:text-[3.6rem]">
@@ -318,12 +333,12 @@ export default function FoursTowerLanding({ project }: { project: ProjectCatalog
 
             <div className="mt-6 grid max-w-[700px] gap-4 sm:grid-cols-2">
               <a href="#form" className="group inline-flex min-h-[56px] items-center justify-center gap-3 rounded-[14px] bg-linear-to-br from-[#F5B24D] to-[#FFCC73] px-7 text-sm font-semibold uppercase tracking-normal text-[#040816] shadow-[0_0_30px_rgba(245,178,77,0.35),0_0_80px_rgba(245,178,77,0.12)] transition-transform hover:-translate-y-0.5 hover:from-[#FFCC73] hover:to-[#FF9D2F]">
-                Xem bảng giá thật
+                Xem thông tin dự án
                 <FiArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
               </a>
               <a href="#form" className="inline-flex min-h-[56px] items-center justify-center gap-3 rounded-[14px] border border-[#F5B24D]/80 bg-[#091B34]/42 px-7 text-sm font-semibold uppercase tracking-normal text-[#F3F5F8] shadow-[inset_0_0_18px_rgba(245,178,77,0.12)] backdrop-blur-md transition-colors hover:bg-[#F5B24D] hover:text-[#040816]">
                 <FiAward className="h-5 w-5 text-[#F5B24D]" />
-                Nhận giỏ hàng VIP
+                Đăng ký tư vấn
               </a>
             </div>
           </div>
@@ -401,12 +416,13 @@ export default function FoursTowerLanding({ project }: { project: ProjectCatalog
                 </div>
               ))}
             </div>
-            <p className="mt-7 text-sm font-semibold text-[#FFE7AA]">Áp dụng cho giỏ hàng hiện tại, cần kiểm tra theo từng mã căn.</p>
+            <p className="mt-7 text-sm font-semibold text-[#FFE7AA]">Thông tin chính sách mang tính tham khảo, cần xác nhận lại với chủ đầu tư.</p>
+            <p className="mt-2 text-xs text-white/40">BĐS Đà Nẵng là đơn vị môi giới độc lập, không phải chủ đầu tư dự án.</p>
           </div>
 
           <form id="form" onSubmit={submitLead} className="rounded-[20px] border border-[#F5C76A]/18 bg-[#07131f]/78 p-6 shadow-[0_24px_70px_rgba(0,0,0,0.34)] backdrop-blur-xl lg:p-10">
-            <p className="text-center text-[0.72rem] font-bold uppercase tracking-[0.2em] text-[#F5C76A]">Nhận giỏ hàng nội bộ FourS</p>
-            <h2 className="mt-3 text-center text-3xl font-black uppercase leading-tight text-white">Nhận giá căn hộ FourS và giỏ hàng mới nhất hôm nay</h2>
+            <p className="text-center text-[0.72rem] font-bold uppercase tracking-[0.2em] text-[#F5C76A]">Đăng ký nhận thông tin dự án</p>
+            <h2 className="mt-3 text-center text-3xl font-black uppercase leading-tight text-white">Tư vấn miễn phí về FourS Tower Đà Nẵng</h2>
             <div className="mt-7 grid gap-4">
               <label className="relative block">
                 <FiUser className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#F5C76A]" />
@@ -436,10 +452,21 @@ export default function FoursTowerLanding({ project }: { project: ProjectCatalog
               </div>
             </div>
             <button type="submit" disabled={submitting} className="mt-6 inline-flex h-14 w-full items-center justify-center rounded-[12px] bg-linear-to-r from-[#B8792E] via-[#FFE4A0] to-[#C5822D] px-6 text-sm font-black uppercase text-[#08111d] shadow-[0_0_34px_rgba(245,199,106,0.28)] transition-transform hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-70">
-              {submitting ? "Đang gửi..." : sent ? "Đã nhận thông tin" : "Nhận giỏ hàng VIP ngay"}
+              {submitting ? "Đang gửi..." : sent ? "Đã nhận thông tin" : "Đăng ký nhận tư vấn miễn phí"}
             </button>
             {error ? <p className="mt-4 text-center text-xs font-semibold text-red-200">{error}</p> : null}
-            <p className="mt-4 text-center text-xs font-medium text-white/42">Cam kết bảo mật thông tin tuyệt đối</p>
+            <p className="mt-4 text-center text-xs font-medium text-white/42">
+              Bằng cách gửi thông tin, bạn đồng ý với{" "}
+              <a
+                href="/vi/privacy-policy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline text-white/60 hover:text-[#F5C76A] transition-colors"
+              >
+                Chính sách bảo mật
+              </a>{" "}
+              của BĐS Đà Nẵng. Thông tin chỉ dùng để tư vấn dự án theo yêu cầu của bạn.
+            </p>
           </form>
         </div>
       </section>
@@ -462,7 +489,7 @@ export default function FoursTowerLanding({ project }: { project: ProjectCatalog
             <FiPhone className="h-5 w-5" />
           </a>
           <a href="#form" className="flex h-12 items-center justify-center rounded-full bg-linear-to-r from-[#B8792E] via-[#FFE4A0] to-[#C5822D] text-xs font-black uppercase text-[#08111d]">
-            Nhận giỏ hàng VIP
+            Đăng ký tư vấn
           </a>
         </div>
       </div>
@@ -861,7 +888,7 @@ function HotUnitsShowcase() {
           href="#form"
           className="inline-flex items-center gap-2 text-[0.72rem] font-black uppercase tracking-[0.08em] text-[#F5B24D] drop-shadow-[0_0_12px_rgba(245,178,77,0.42)] transition-colors hover:text-white"
         >
-          Xem tất cả 08 căn còn lại
+          Xem thêm các căn hộ
           <FiArrowRight className="h-3.5 w-3.5" />
         </a>
       </div>
@@ -937,7 +964,7 @@ function FeaturedHotUnit({ unit, onOpen }: { unit: HotUnit; onOpen: (unit: HotUn
         </button>
         <a href="#form" onClick={(event) => event.stopPropagation()} className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-[6px] border border-[#F5B24D]/52 bg-[#07111b]/66 text-[0.66rem] font-black uppercase text-[#F3F5F8] transition-colors hover:bg-[#F5B24D] hover:text-[#040816]">
           <FiGift className="h-3.5 w-3.5 text-[#F5B24D]" />
-          Nhận giá tốt nhất
+          Nhận thông tin tư vấn
         </a>
       </div>
     </article>

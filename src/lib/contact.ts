@@ -25,7 +25,7 @@ export const HOTLINE_TEL = "tel:0352787777";
 export const ZALO_HREF = "https://zalo.me/0352787777";
 export const CONTACT_EMAIL = "sinh.dev.ops@gmail.com";
 export const CONTACT_EMAIL_HREF = `mailto:${CONTACT_EMAIL}`;
-export const OFFICE_ADDRESS = "04 Bình Minh 5, Đà Nẵng";
+export const OFFICE_ADDRESS = "04 Bình Minh 5, Hòa Xuân, Cẩm Lệ, Đà Nẵng";
 
 export const INITIAL_LEAD_FORM: LeadFormState = {
   name: "",

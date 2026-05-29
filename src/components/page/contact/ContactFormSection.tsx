@@ -300,7 +300,15 @@ const ConsultationForm = memo(function ConsultationForm({
       ) : null}
 
       <p className="text-center text-xs font-medium leading-relaxed text-white/34">
-        Thông tin của bạn chỉ dùng cho mục đích tư vấn dự án và chính sách bán hàng.
+        Thông tin của bạn chỉ dùng cho mục đích tư vấn dự án và chính sách bán hàng.{" "}
+        <a
+          href="/vi/privacy-policy"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline text-white/50 hover:text-[#C6A77D] transition-colors"
+        >
+          Chính sách bảo mật
+        </a>
       </p>
     </form>
   );
