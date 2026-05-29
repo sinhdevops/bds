@@ -4,6 +4,7 @@ import Script from "next/script";
 import { NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
+import ConsentBanner from "@/components/layout/ConsentBanner";
 import { SiteBottomChrome, SiteTopChrome } from "@/components/layout/SiteChrome";
 import ConsultationModal from "@/components/shared/ConsultationModal";
 import { routing } from "@/i18n/routing";
@@ -163,6 +164,22 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
     <html lang={locale} className={`${playfair.variable} ${montserrat.variable}`}>
       <head>
         <Script
+          id="google-consent-default"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('consent', 'default', {
+                ad_storage: 'denied',
+                ad_user_data: 'denied',
+                ad_personalization: 'denied',
+                analytics_storage: 'denied'
+              });
+            `,
+          }}
+        />
+        <Script
           id="google-ads-gtag-src"
           src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}
           strategy="afterInteractive"
@@ -194,6 +211,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
           <main className="grow relative">{children}</main>
           <SiteBottomChrome />
           <ConsultationModal />
+          <ConsentBanner />
         </NextIntlClientProvider>
       </body>
     </html>

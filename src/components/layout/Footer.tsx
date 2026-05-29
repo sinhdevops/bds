@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
-import { CONTACT_EMAIL, CONTACT_EMAIL_HREF, OFFICE_ADDRESS } from "@/lib/contact";
+import { CONTACT_EMAIL, CONTACT_EMAIL_HREF, HOTLINE_TEL, OFFICE_ADDRESS, ZALO_HREF } from "@/lib/contact";
 
 const PROJECT_LINKS = [
   { label: "Tòa Symphony", href: "/project" },
@@ -18,8 +18,8 @@ const INFO_LINKS = [
 
 const SOCIALS = [
   {
-    label: "Facebook",
-    href: "#",
+    label: "Zalo",
+    href: ZALO_HREF,
     icon: (
       <svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5">
         <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
@@ -27,8 +27,8 @@ const SOCIALS = [
     ),
   },
   {
-    label: "LinkedIn",
-    href: "#",
+    label: "Hotline",
+    href: HOTLINE_TEL,
     icon: (
       <svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5">
         <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" />
@@ -37,8 +37,8 @@ const SOCIALS = [
     ),
   },
   {
-    label: "YouTube",
-    href: "#",
+    label: "Email",
+    href: CONTACT_EMAIL_HREF,
     icon: (
       <svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5">
         <path d="M17.5 5.5s-.2-1.4-.8-2c-.8-.8-1.6-.8-2-.9C12.8 2.5 10 2.5 10 2.5s-2.8 0-4.7.1c-.4 0-1.2.1-2 .9-.6.6-.8 2-.8 2S2.4 7.1 2.4 8.6v1.4c0 1.5.1 3.1.1 3.1s.2 1.4.8 2c.8.8 1.8.8 2.3.8C7 16 10 16 10 16s2.8 0 4.7-.1c.4 0 1.2-.1 2-.9.6-.6.8-2 .8-2s.1-1.6.1-3.1V8.6c0-1.5-.1-3.1-.1-3.1zM8.3 12.5v-5l5.4 2.5-5.4 2.5z" />
@@ -46,8 +46,8 @@ const SOCIALS = [
     ),
   },
   {
-    label: "Instagram",
-    href: "#",
+    label: "Dự án",
+    href: "/du-an",
     icon: (
       <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.4" className="w-3.5 h-3.5">
         <rect x="2" y="2" width="16" height="16" rx="4" />

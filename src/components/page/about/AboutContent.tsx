@@ -34,7 +34,7 @@ const AboutContent = () => {
       {
         num: "01",
         title: "Tín Nghĩa Hàng Đầu",
-        desc: "Luôn đặt chữ Tín làm kim chỉ nam, cam kết cung cấp những thông tin pháp lý dự án minh bạch và chính xác tuyệt đối.",
+        desc: "Luôn đặt chữ Tín làm kim chỉ nam, cung cấp thông tin pháp lý dự án minh bạch và khuyến nghị khách hàng đối chiếu với tài liệu chính thức.",
       },
       {
         num: "02",
@@ -44,7 +44,7 @@ const AboutContent = () => {
       {
         num: "03",
         title: "Giá Trị Bền Vững",
-        desc: "Đồng hành kiến tạo những bất động sản dòng chảy giá trị trường tồn, gia tăng giá trị theo thời gian bên bờ sông Hàn.",
+        desc: "Đồng hành phân tích các yếu tố vị trí, pháp lý, tiến độ và nhu cầu khai thác để khách hàng có thêm cơ sở ra quyết định.",
       },
     ],
     []
@@ -91,7 +91,7 @@ const AboutContent = () => {
             <div className="p-8 bg-[#F6F3EE] rounded-2xl border border-[#E5E0D8]/60">
               <h3 className="label-medium text-[#0B2545] font-bold mb-3 uppercase tracking-wider">Sứ Mệnh Đồng Hành</h3>
               <p className="text-sm text-[#555555] leading-relaxed font-light">
-                Không ngừng kiến tạo và khai mở tiềm năng bất động sản nghỉ dưỡng, mang đến cho nhà đầu tư những tuyệt tác kiến trúc sở hữu giá trị trường tồn cùng tính thanh khoản ưu tú.
+                Cập nhật thông tin dự án, chính sách và pháp lý để khách hàng có thêm dữ liệu khi đánh giá nhu cầu ở, đầu tư hoặc khai thác cho thuê.
               </p>
             </div>
           </motion.div>

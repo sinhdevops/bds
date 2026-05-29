@@ -105,7 +105,7 @@ export const PROJECTS: Record<string, ProjectData> = {
       {
         icon: "river",
         title: "Mặt Tiền Sông Hàn",
-        desc: "100% căn hộ hướng về sông Hàn hoặc biển Đông, đảm bảo tầm nhìn đắt giá",
+        desc: "Nhiều căn hộ có hướng nhìn ra sông Hàn hoặc biển Đông, tùy mã căn và tầng thực tế",
       },
       {
         icon: "location",

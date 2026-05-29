@@ -57,7 +57,7 @@ export default function AboutPage() {
         active="about"
         eyebrow="Về tôi"
         title="Đồng hành chọn đúng bất động sản Đà Nẵng"
-        description="BĐS Đà Nẵng là kênh tư vấn và cập nhật các dự án cao cấp tại Đà Nẵng, tập trung vào trải nghiệm mua rõ ràng, đủ dữ liệu và ít rủi ro hơn cho khách hàng."
+        description="BĐS Đà Nẵng là kênh tư vấn độc lập về các dự án cao cấp tại Đà Nẵng. Chúng tôi không đại diện chính thức cho chủ đầu tư nếu không có văn bản ủy quyền được công bố riêng."
       >
         <div className="grid gap-8 lg:grid-cols-[1fr_340px]">
           <div className="space-y-8">
@@ -68,6 +68,11 @@ export default function AboutPage() {
               </h2>
               <p className="mt-4 text-sm font-medium leading-[1.85] text-[#666666]">
                 Mỗi khách hàng có một mục tiêu khác nhau: mua để ở, giữ tài sản, khai thác thuê hoặc chờ tăng giá. Vì vậy quy trình tư vấn bắt đầu bằng việc xác định nhu cầu, sau đó so sánh dự án theo vị trí, giá, pháp lý, tiến độ và khả năng thanh khoản.
+              </p>
+              <p className="mt-4 rounded-[4px] bg-[#F8F5F0] p-4 text-sm font-semibold leading-relaxed text-[#555555]">
+                Lưu ý minh bạch: website này không mạo danh website chính thức của Sun Group,
+                Capital Square hoặc chủ đầu tư. Khi khách hàng cần đặt cọc/giao dịch, chúng tôi
+                khuyến nghị đối chiếu lại toàn bộ thông tin với tài liệu chính thức tại thời điểm đó.
               </p>
             </div>
 

@@ -7,10 +7,38 @@ import Image from "next/image";
 export default function CTASection() {
   const [form, setForm] = useState({ name: "", phone: "", email: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSubmitting(true);
+    setErrorMessage("");
+
+    try {
+      const response = await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...form,
+          interest: "Nhan thong tin du an",
+          channel: "Website",
+          source: typeof window !== "undefined" ? window.location.href : "Trang chu",
+          message: "Dang ky nhan thong tin tu CTA cuoi trang chu",
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Unable to submit lead");
+      }
+
+      setSubmitted(true);
+      setForm({ name: "", phone: "", email: "" });
+    } catch {
+      setErrorMessage("Chua gui duoc thong tin. Vui long thu lai hoac goi hotline.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -100,7 +128,7 @@ export default function CTASection() {
                   >
                     Thông tin chính xác
                   </span>
-                  <span className="text-gold text-lg">100%</span>
+                  <span className="text-gold text-lg">Rõ ràng</span>
                 </div>
               </div>
             </div>
@@ -205,12 +233,17 @@ export default function CTASection() {
 
                 <motion.button
                   type="submit"
+                  disabled={submitting}
                   whileHover={{ scale: 1.01 }}
                   whileTap={{ scale: 0.99 }}
-                  className="w-full rounded-[3px] py-4 bg-[#C6A77D] text-white label-small font-bold hover:bg-white hover:text-[#0B2545] transition-colors duration-300 mt-1"
+                  className="w-full rounded-[3px] py-4 bg-[#C6A77D] text-white label-small font-bold hover:bg-white hover:text-[#0B2545] transition-colors duration-300 mt-1 disabled:cursor-not-allowed disabled:opacity-70"
                 >
-                  Nhận Thông Tin Ngay
+                  {submitting ? "Đang gửi..." : "Nhận Thông Tin Ngay"}
                 </motion.button>
+
+                {errorMessage ? (
+                  <p className="text-center text-xs font-semibold text-red-200">{errorMessage}</p>
+                ) : null}
 
                 <p className="text-center text-xs text-white/20 font-light">
                   Chúng tôi cam kết bảo mật thông tin của bạn

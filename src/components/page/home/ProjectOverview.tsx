@@ -38,7 +38,7 @@ const STATS = [
         <path d="M2 7c2-2 5-3 10-3s8 1 10 3" />
       </svg>
     ),
-    number: "100%",
+    number: "Nhiều",
     unit: "",
     title: "căn hộ view",
     desc: "sông Hàn",

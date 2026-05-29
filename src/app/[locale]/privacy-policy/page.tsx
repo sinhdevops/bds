@@ -49,6 +49,10 @@ export default function PrivacyPage() {
           <p>
             BĐS Đà Nẵng thu thập thông tin khách hàng thông qua các form đăng ký nhằm cung cấp tài liệu dự án, liên hệ tư vấn trực tiếp và cập nhật chính sách bán hàng mới.
           </p>
+          <p>
+            Dữ liệu có thể bao gồm họ tên, số điện thoại, email, dự án quan tâm, nhu cầu tư vấn,
+            nội dung ghi chú và URL trang mà khách hàng gửi biểu mẫu.
+          </p>
 
           <h2 className="font-serif text-2xl text-[#0B2545] font-semibold mt-4" style={{ fontFamily: "var(--font-serif)" }}>
             2. Cam kết bảo mật thông tin
@@ -56,12 +60,26 @@ export default function PrivacyPage() {
           <p>
             Chúng tôi cam kết bảo mật dữ liệu cá nhân của quý khách như họ tên, số điện thoại và email; không chia sẻ cho bên thứ ba khi chưa có sự đồng ý, trừ trường hợp theo yêu cầu của cơ quan có thẩm quyền.
           </p>
+          <p>
+            Website có thể sử dụng các dịch vụ hạ tầng và đo lường như Supabase, Google Ads hoặc
+            Google Tag để lưu biểu mẫu, đo hiệu quả quảng cáo và cải thiện nội dung. Dữ liệu không
+            được bán cho bên thứ ba.
+          </p>
 
           <h2 className="font-serif text-2xl text-[#0B2545] font-semibold mt-4" style={{ fontFamily: "var(--font-serif)" }}>
             3. Quyền của khách hàng
           </h2>
           <p>
             Quý khách có quyền yêu cầu chỉnh sửa, cập nhật hoặc xóa dữ liệu cá nhân đã đăng ký bằng cách liên hệ bộ phận chăm sóc khách hàng qua hotline 0352.787777.
+          </p>
+
+          <h2 className="font-serif text-2xl text-[#0B2545] font-semibold mt-4" style={{ fontFamily: "var(--font-serif)" }}>
+            4. Thời gian lưu trữ và yêu cầu xoá dữ liệu
+          </h2>
+          <p>
+            Thông tin được lưu trong thời gian cần thiết để tư vấn, chăm sóc khách hàng và đáp ứng
+            nghĩa vụ pháp lý nếu có. Khách hàng có thể yêu cầu xoá dữ liệu qua hotline hoặc email
+            được công bố trên website.
           </p>
         </div>
       </section>

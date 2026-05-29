@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
+import { ZALO_HREF } from "@/lib/contact";
 
 const SIDE_ACTIONS = [
   {
@@ -16,7 +17,7 @@ const SIDE_ACTIONS = [
   },
   {
     label: "Zalo",
-    href: "#",
+    href: ZALO_HREF,
     icon: (
       <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.25" className="h-4 w-4">
         <rect x="1.5" y="1.5" width="13" height="13" rx="3" />

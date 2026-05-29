@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import ComplianceDisclaimer from "@/components/layout/ComplianceDisclaimer";
 import FloatingContact from "@/components/layout/FloatingContact";
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
@@ -26,10 +27,18 @@ export function SiteTopChrome() {
 
 export function SiteBottomChrome() {
   const pathname = usePathname();
-  if (isCustomLanding(pathname || "")) return null;
+  if (isCustomLanding(pathname || "")) {
+    return (
+      <>
+        <ComplianceDisclaimer />
+        <FloatingContact />
+      </>
+    );
+  }
 
   return (
     <>
+      <ComplianceDisclaimer />
       <Footer />
       <FloatingContact />
       <StickyBar />
