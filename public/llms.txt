@@ -1,16 +1,17 @@
 ﻿# BĐS Đà Nẵng
 
-> Cổng thông tin tư vấn căn hộ cao cấp tại Đà Nẵng, tập trung vào các dự án ven sông Hàn, dự án Sun Group và các lựa chọn phù hợp cho nhu cầu ở, đầu tư, khai thác cho thuê.
+> Kênh tư vấn và phân phối bất động sản cao cấp tại Đà Nẵng, tập trung vào các dự án ven sông Hàn và các lựa chọn phù hợp cho nhu cầu ở, đầu tư, khai thác cho thuê.
 
 Website: https://www.bds-da-nang.com
 Language: vi-VN
 Primary market: Đà Nẵng, Việt Nam
 Contact: 0352.787777
+Email: sinhlvsrtmientrung@gmail.com
 
 ## Core Topics
 
 - Mua căn hộ Đà Nẵng
-- Căn hộ Sun Group Đà Nẵng
+- Căn hộ cao cấp Đà Nẵng
 - Căn hộ ven sông Hàn
 - Sun Symphony Residence
 - Sun Ponte Residence

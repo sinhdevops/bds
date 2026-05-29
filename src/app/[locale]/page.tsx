@@ -19,9 +19,9 @@ import {
   webPageSchema,
 } from "@/lib/seo";
 
-const title = "BĐS Đà Nẵng - Mua Căn Hộ Sun Group & Ven Sông Hàn";
+const title = "BĐS Đà Nẵng - Tư Vấn Căn Hộ & Bất Động Sản Ven Sông Hàn";
 const description =
-  "Tư vấn mua căn hộ cao cấp Sun Group tại Đà Nẵng: Sun Symphony, Sun Ponte, Sun Cosmo, Capital Square. Nhận bảng giá, giỏ hàng và chính sách mới nhất.";
+  "Tư vấn mua căn hộ và bất động sản cao cấp tại Đà Nẵng: so sánh vị trí, nhận bảng giá, giỏ hàng và chính sách mới nhất.";
 
 export const metadata: Metadata = createMetadata({
   title,
@@ -29,14 +29,14 @@ export const metadata: Metadata = createMetadata({
   path: ROUTES.home,
   keywords: [
     "mua căn hộ Đà Nẵng",
-    "căn hộ Sun Group Đà Nẵng",
+    "căn hộ cao cấp Đà Nẵng",
     "Sun Symphony Residence Đà Nẵng",
     "Sun Ponte Residence",
     "Sun Cosmo Residence",
     "Capital Square Đà Nẵng",
     "bất động sản sông Hàn",
     "đầu tư căn hộ Đà Nẵng",
-    "bảng giá căn hộ Sun Group",
+    "bảng giá căn hộ Đà Nẵng",
     "BĐS Đà Nẵng",
     "BĐS cao cấp Đà Nẵng",
   ],
@@ -54,7 +54,7 @@ const homeSchemas = [
     "@context": "https://schema.org",
     "@type": "Service",
     "@id": `${absoluteUrl(ROUTES.home)}/#real-estate-consulting`,
-    name: "Tư vấn mua căn hộ Sun Group Đà Nẵng",
+    name: "Tư vấn mua căn hộ Đà Nẵng",
     provider: { "@id": `${SITE_URL}/#organization` },
     areaServed: ["Đà Nẵng", "Hà Nội", "Việt Nam"],
     serviceType: "Real estate consulting",

@@ -23,9 +23,12 @@ export type ContactFormState = LeadFormState & {
 export const HOTLINE_DISPLAY = "0352.787777";
 export const HOTLINE_TEL = "tel:0352787777";
 export const ZALO_HREF = "https://zalo.me/0352787777";
-export const CONTACT_EMAIL = "sinh.dev.ops@gmail.com";
+export const COMPANY_LEGAL_NAME = "Công ty TNHH Thương mại và Đầu tư SRT Miền Trung";
+export const TAX_CODE = "0402225356";
+export const CONTACT_EMAIL = "sinhlvsrtmientrung@gmail.com";
 export const CONTACT_EMAIL_HREF = `mailto:${CONTACT_EMAIL}`;
-export const OFFICE_ADDRESS = "04 Bình Minh 5, Hòa Xuân, Cẩm Lệ, Đà Nẵng";
+export const OFFICE_ADDRESS =
+  "Tầng 4, số 04-06 đường Bình Minh 5, phường Bình Thuận, quận Hải Châu, Đà Nẵng";
 
 export const INITIAL_LEAD_FORM: LeadFormState = {
   name: "",
@@ -53,7 +56,7 @@ export const CONTACT_CARDS: {
     icon: FiPhone,
     label: "Hotline",
     value: HOTLINE_DISPLAY,
-    meta: "Tư vấn 24/7",
+    meta: "Tư vấn theo lịch hẹn",
     href: HOTLINE_TEL,
   },
   {

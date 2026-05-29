@@ -49,7 +49,7 @@ const ContactHero = () => {
             className="mt-6 max-w-xl text-sm font-medium leading-[1.85] text-white/72 md:text-base"
           >
             Nhận bảng giá, chính sách ưu đãi và lịch xem nhà từ đội ngũ chuyên trách
-            các dự án Sun Group tại Đà Nẵng.
+            các dự án căn hộ tại Đà Nẵng.
           </motion.p>
 
           <motion.div

@@ -8,7 +8,7 @@ import ConsentBanner from "@/components/layout/ConsentBanner";
 import { SiteBottomChrome, SiteTopChrome } from "@/components/layout/SiteChrome";
 import ConsultationModal from "@/components/shared/ConsultationModal";
 import { routing } from "@/i18n/routing";
-import { OFFICE_ADDRESS } from "@/lib/contact";
+import { COMPANY_LEGAL_NAME, CONTACT_EMAIL, OFFICE_ADDRESS, TAX_CODE } from "@/lib/contact";
 import {
   DEFAULT_OG_IMAGE,
   HOTLINE_E164,
@@ -38,17 +38,15 @@ const GOOGLE_ADS_ID = "AW-18189993425";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   ...createMetadata({
-    title: "Bất Động Sản Cao Cấp Đà Nẵng - Căn Hộ Sun Group & Ven Sông Hàn",
+    title: "Bất Động Sản Cao Cấp Đà Nẵng - Tư Vấn Căn Hộ & Nhà Phố",
     description:
-      `Cổng thông tin bất động sản cao cấp Đà Nẵng: Sun Symphony, Sun Ponte, Sun Cosmo, Sun Solar và Capital Square. Tư vấn miễn phí 0352.787777. Văn phòng ${OFFICE_ADDRESS}.`,
+      `Kênh tư vấn và phân phối bất động sản Đà Nẵng thuộc ${COMPANY_LEGAL_NAME}. Tư vấn bảng giá, giỏ hàng, chính sách và lịch xem nhà. Văn phòng ${OFFICE_ADDRESS}.`,
     keywords: [
       "bất động sản cao cấp Đà Nẵng",
       "BĐS Đà Nẵng",
       "BĐS cao cấp Đà Nẵng",
       "bds-da-nang.com",
-      "Sun Group Đà Nẵng",
       "mua căn hộ Đà Nẵng",
-      "căn hộ Sun Group Đà Nẵng",
       "Sun Symphony Residence",
       "Sun Ponte Residence",
       "Sun Cosmo Residence",
@@ -81,7 +79,7 @@ export const metadata: Metadata = {
   manifest: "/manifest.json",
   openGraph: {
     ...createMetadata({
-      title: "Bất Động Sản Cao Cấp Đà Nẵng - Căn Hộ Sun Group & Ven Sông Hàn",
+      title: "Bất Động Sản Cao Cấp Đà Nẵng - Tư Vấn Căn Hộ & Nhà Phố",
       description:
         `Tư vấn bất động sản cao cấp Đà Nẵng: bảng giá, giỏ hàng, chính sách bán hàng, lịch xem nhà và pháp lý dự án. Văn phòng ${OFFICE_ADDRESS}.`,
     }).openGraph,
@@ -101,6 +99,8 @@ const organizationSchema = {
   logo: absoluteUrl("/images/logo-bds-da-nang-dark.svg"),
   image: absoluteUrl(DEFAULT_OG_IMAGE),
   telephone: HOTLINE_E164,
+  email: CONTACT_EMAIL,
+  taxID: TAX_CODE,
   priceRange: "$$",
   address: {
     "@type": "PostalAddress",
@@ -132,7 +132,7 @@ const websiteSchema = {
   name: SITE_NAME,
   alternateName: ["BĐS Đà Nẵng", "BĐS cao cấp Đà Nẵng", "BDS Da Nang"],
   description:
-    "Cổng thông tin tư vấn căn hộ cao cấp Đà Nẵng, dự án Sun Group và bất động sản ven sông Hàn.",
+    `Kênh tư vấn và phân phối bất động sản Đà Nẵng thuộc ${COMPANY_LEGAL_NAME}, MST ${TAX_CODE}.`,
   publisher: { "@id": `${SITE_URL}/#organization` },
   inLanguage: "vi-VN",
   potentialAction: {

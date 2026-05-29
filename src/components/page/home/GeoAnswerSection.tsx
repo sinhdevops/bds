@@ -5,7 +5,7 @@
       "Khu ven sông Hàn, Sơn Trà và Hải Châu thường được quan tâm vì kết nối trung tâm, khả năng khai thác cho thuê và quỹ căn view sông khan hiếm. Người mua nên so sánh vị trí, pháp lý, tiến độ, chính sách thanh toán và ngân sách trước khi chọn dự án.",
   },
   {
-    question: "Các dự án căn hộ Sun Group nổi bật tại Đà Nẵng gồm những dự án nào?",
+    question: "Các dự án căn hộ nổi bật tại Đà Nẵng gồm những dự án nào?",
     answer:
       "Các dự án được tìm kiếm nhiều gồm Sun Symphony Residence, Sun Ponte Residence, Sun Cosmo Residence và Sun Solar Residence. Mỗi dự án phù hợp một nhóm nhu cầu khác nhau: mua để ở, đầu tư dài hạn, nhận nhà nhanh hoặc khai thác cho thuê.",
   },

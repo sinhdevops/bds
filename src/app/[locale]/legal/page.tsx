@@ -2,16 +2,16 @@
 import InfoPageLayout from "@/components/page/info/InfoPageLayout";
 import { ROUTES, absoluteUrl, breadcrumbSchema, createMetadata, webPageSchema } from "@/lib/seo";
 
-const title = "FAQ & Pháp Lý Dự Án Căn Hộ Sun Group Đà Nẵng";
+const title = "FAQ & Pháp Lý Dự Án Căn Hộ Đà Nẵng";
 const description =
-  "Giải đáp câu hỏi về pháp lý, sổ hồng, quy trình đặt cọc, thanh toán và tư vấn mua căn hộ Sun Group tại Đà Nẵng.";
+  "Giải đáp câu hỏi về pháp lý, sổ hồng, quy trình đặt cọc, thanh toán và tư vấn mua căn hộ tại Đà Nẵng.";
 
 export const metadata: Metadata = createMetadata({
   title,
   description,
   path: ROUTES.legal,
   keywords: [
-    "pháp lý căn hộ Sun Group Đà Nẵng",
+    "pháp lý căn hộ Đà Nẵng",
     "sổ hồng căn hộ Đà Nẵng",
     "quy trình đặt cọc căn hộ",
     "FAQ mua căn hộ Đà Nẵng",

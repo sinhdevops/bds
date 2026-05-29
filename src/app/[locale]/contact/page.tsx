@@ -5,7 +5,7 @@ import { ROUTES, absoluteUrl, breadcrumbSchema, createMetadata, webPageSchema } 
 
 const title = "Liên Hệ Tư Vấn Mua Căn Hộ Đà Nẵng - Hotline 0352.787777";
 const description =
-  "Liên hệ BĐS Đà Nẵng để nhận tư vấn mua căn hộ Sun Group tại Đà Nẵng. Hỗ trợ xem nhà online, nhận bảng giá, chính sách ưu đãi và lịch xem nhà.";
+  "Liên hệ BĐS Đà Nẵng để nhận tư vấn mua căn hộ tại Đà Nẵng. Hỗ trợ xem nhà online, nhận bảng giá, chính sách ưu đãi và lịch xem nhà.";
 
 export const metadata: Metadata = createMetadata({
   title,
@@ -14,7 +14,7 @@ export const metadata: Metadata = createMetadata({
   keywords: [
     "liên hệ mua căn hộ Đà Nẵng",
     "hotline BĐS Đà Nẵng",
-    "tư vấn Sun Group Đà Nẵng",
+    "tư vấn căn hộ Đà Nẵng",
     "đăng ký nhận bảng giá Sun Symphony Residence",
     "xem nhà online Đà Nẵng",
   ],

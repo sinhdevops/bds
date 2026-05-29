@@ -241,7 +241,7 @@ const ProjectGrid = () => {
           <div>
             <p className="label-small text-[#9C7B5D]">Hiển thị {filteredProjects.length} dự án phù hợp</p>
             <h2 className="mt-2 font-serif text-3xl font-normal leading-tight text-[#111111]" style={{ fontFamily: "var(--font-serif)" }}>
-              Danh mục dự án Sun Group Đà Nẵng
+              Danh mục dự án căn hộ Đà Nẵng
             </h2>
           </div>
           <p className="max-w-md text-sm font-medium leading-relaxed text-[#666666]">

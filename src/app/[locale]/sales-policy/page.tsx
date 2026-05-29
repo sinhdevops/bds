@@ -2,17 +2,17 @@ import type { Metadata } from "next";
 import InfoPageLayout from "@/components/page/info/InfoPageLayout";
 import { ROUTES, absoluteUrl, breadcrumbSchema, createMetadata, webPageSchema } from "@/lib/seo";
 
-const title = "Chính Sách Bán Hàng & Ưu Đãi Dự Án Sun Group Đà Nẵng";
+const title = "Chính Sách Bán Hàng & Ưu Đãi Dự Án Căn Hộ Đà Nẵng";
 const description =
-  "Tổng hợp chính sách bán hàng, ưu đãi, tiến độ thanh toán và hỗ trợ vay cho khách hàng quan tâm các dự án Sun Group tại Đà Nẵng.";
+  "Tổng hợp chính sách bán hàng, ưu đãi, tiến độ thanh toán và hỗ trợ vay cho khách hàng quan tâm các dự án căn hộ tại Đà Nẵng.";
 
 export const metadata: Metadata = createMetadata({
   title,
   description,
   path: ROUTES.salesPolicy,
   keywords: [
-    "chính sách bán hàng Sun Group Đà Nẵng",
-    "ưu đãi căn hộ Sun Group",
+    "chính sách bán hàng căn hộ Đà Nẵng",
+    "ưu đãi căn hộ Đà Nẵng",
     "tiến độ thanh toán căn hộ Đà Nẵng",
     "hỗ trợ vay mua căn hộ",
   ],
@@ -45,7 +45,7 @@ const schemas = [
   {
     "@context": "https://schema.org",
     "@type": "HowTo",
-    name: "Quy trình mua căn hộ Sun Group Đà Nẵng",
+    name: "Quy trình mua căn hộ Đà Nẵng",
     description: "Các bước làm việc với đội ngũ tư vấn trước khi giữ chỗ, đặt cọc và ký hợp đồng.",
     step: STEPS.map(([, name, text], index) => ({
       "@type": "HowToStep",

@@ -5,7 +5,7 @@ import { ROUTES, absoluteUrl, breadcrumbSchema, createMetadata, webPageSchema } 
 
 const title = "Tin Tức BĐS Đà Nẵng - Quy Hoạch, Tiến Độ & Thị Trường";
 const description =
-  "Cập nhật tin tức bất động sản Đà Nẵng: quy hoạch đô thị, tiến độ dự án Sun Group, phân tích thị trường căn hộ và kinh nghiệm đầu tư.";
+  "Cập nhật tin tức bất động sản Đà Nẵng: quy hoạch đô thị, tiến độ dự án căn hộ, phân tích thị trường và kinh nghiệm đầu tư.";
 
 export const metadata: Metadata = createMetadata({
   title,

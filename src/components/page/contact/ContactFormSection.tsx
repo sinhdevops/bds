@@ -143,7 +143,7 @@ const ContactInfo = memo(function ContactInfo() {
     >
       <div>
         <span className="label-small mb-4 block text-[#9C7B5D]">
-          Kênh liên hệ chính thức
+          Kênh liên hệ của BĐS Đà Nẵng
         </span>
         <h2
           className="font-serif max-w-xl text-[#0B2545] font-light leading-[1.1]"
@@ -295,6 +295,27 @@ const ConsultationForm = memo(function ConsultationForm({
         <FiSend className="h-4 w-4" aria-hidden="true" />
       </button>
 
+      <label className="flex items-start gap-3 rounded-[4px] border border-white/10 bg-white/[0.04] px-4 py-3 text-left text-xs font-medium leading-relaxed text-white/42">
+        <input
+          type="checkbox"
+          required
+          className="mt-0.5 h-4 w-4 shrink-0 rounded border-white/20 accent-[#C6A77D]"
+        />
+        <span>
+          Tôi đồng ý để BĐS Đà Nẵng sử dụng họ tên, số điện thoại và email nhằm liên hệ tư vấn theo
+          nhu cầu đã gửi, theo{" "}
+          <a
+            href="/privacy-policy"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline text-white/58 hover:text-[#C6A77D] transition-colors"
+          >
+            Chính sách bảo mật
+          </a>
+          .
+        </span>
+      </label>
+
       {errorMessage ? (
         <p className="text-center text-xs font-semibold text-red-200">{errorMessage}</p>
       ) : null}
@@ -302,7 +323,7 @@ const ConsultationForm = memo(function ConsultationForm({
       <p className="text-center text-xs font-medium leading-relaxed text-white/34">
         Thông tin của bạn chỉ dùng cho mục đích tư vấn dự án và chính sách bán hàng.{" "}
         <a
-          href="/vi/privacy-policy"
+          href="/privacy-policy"
           target="_blank"
           rel="noopener noreferrer"
           className="underline text-white/50 hover:text-[#C6A77D] transition-colors"

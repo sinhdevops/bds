@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Link } from "@/i18n/navigation";
+import { COMPANY_LEGAL_NAME, CONTACT_EMAIL, HOTLINE_DISPLAY, OFFICE_ADDRESS, TAX_CODE } from "@/lib/contact";
 import { ROUTES, absoluteUrl, breadcrumbSchema, createMetadata, webPageSchema } from "@/lib/seo";
 
 const title = "Chính Sách Bảo Mật - BĐS Đà Nẵng";
@@ -48,7 +49,8 @@ export default function PrivacyPage() {
           {/* Intro */}
           <div className="rounded-[8px] bg-[#F0EDE8] border border-[#E5E0D8] px-6 py-5 text-sm text-[#555555] leading-relaxed">
             <p>
-              <strong className="text-[#0B2545]">BĐS Đà Nẵng</strong> là đơn vị môi giới bất động sản độc lập, không thuộc chủ đầu tư hay chủ sở hữu dự án.
+              <strong className="text-[#0B2545]">BĐS Đà Nẵng</strong> là kênh tư vấn và phân phối bất động sản
+              thuộc {COMPANY_LEGAL_NAME}, MST {TAX_CODE}.
               Chính sách này mô tả cách chúng tôi thu thập, sử dụng và bảo vệ thông tin cá nhân của quý khách
               theo quy định tại <strong>Nghị định 13/2023/NĐ-CP</strong> về bảo vệ dữ liệu cá nhân.
             </p>
@@ -124,9 +126,9 @@ export default function PrivacyPage() {
           </ul>
           <p>
             Để thực hiện các quyền trên, vui lòng liên hệ qua{" "}
-            <a href="tel:0352787777" className="text-[#0B2545] underline font-medium">0352.787777</a>{" "}
+            <a href="tel:0352787777" className="text-[#0B2545] underline font-medium">{HOTLINE_DISPLAY}</a>{" "}
             hoặc email{" "}
-            <a href="mailto:lienhe@bdsdanang.vn" className="text-[#0B2545] underline font-medium">lienhe@bdsdanang.vn</a>.
+            <a href={`mailto:${CONTACT_EMAIL}`} className="text-[#0B2545] underline font-medium">{CONTACT_EMAIL}</a>.
             Chúng tôi sẽ phản hồi trong vòng <strong>5 ngày làm việc</strong>.
           </p>
           <p>
@@ -145,12 +147,11 @@ export default function PrivacyPage() {
           </p>
 
           <h2 className="font-serif text-2xl text-[#0B2545] font-semibold mt-4" style={{ fontFamily: "var(--font-serif)" }}>
-            4. Thời gian lưu trữ và yêu cầu xoá dữ liệu
+            7. Yêu cầu xoá dữ liệu
           </h2>
           <p>
-            Thông tin được lưu trong thời gian cần thiết để tư vấn, chăm sóc khách hàng và đáp ứng
-            nghĩa vụ pháp lý nếu có. Khách hàng có thể yêu cầu xoá dữ liệu qua hotline hoặc email
-            được công bố trên website.
+            Khách hàng có thể yêu cầu xoá dữ liệu qua hotline hoặc email được công bố trên website.
+            Chúng tôi sẽ xử lý trong phạm vi dữ liệu do hệ thống của BĐS Đà Nẵng đang lưu trữ.
           </p>
           <p>
             Quý khách có thể tắt cookie trong cài đặt trình duyệt. Việc tắt cookie kỹ thuật có thể ảnh hưởng đến
@@ -159,7 +160,7 @@ export default function PrivacyPage() {
 
           {/* 7 */}
           <h2 className="font-serif text-2xl text-[#0B2545] font-semibold mt-4" style={{ fontFamily: "var(--font-serif)" }}>
-            7. Bảo mật dữ liệu
+            8. Bảo mật dữ liệu
           </h2>
           <p>
             Dữ liệu được truyền qua kết nối HTTPS mã hóa. Thông tin lưu trữ trên hệ thống được bảo vệ bằng các
@@ -169,7 +170,7 @@ export default function PrivacyPage() {
 
           {/* 8 */}
           <h2 className="font-serif text-2xl text-[#0B2545] font-semibold mt-4" style={{ fontFamily: "var(--font-serif)" }}>
-            8. Thay đổi chính sách
+            9. Thay đổi chính sách
           </h2>
           <p>
             Chúng tôi có thể cập nhật chính sách này theo thay đổi của pháp luật hoặc quy trình nội bộ.
@@ -179,16 +180,17 @@ export default function PrivacyPage() {
 
           {/* 9 */}
           <h2 className="font-serif text-2xl text-[#0B2545] font-semibold mt-4" style={{ fontFamily: "var(--font-serif)" }}>
-            9. Liên hệ về bảo mật
+            10. Liên hệ về bảo mật
           </h2>
           <p>
             Mọi thắc mắc liên quan đến chính sách bảo mật, vui lòng liên hệ:
           </p>
           <div className="rounded-[6px] border border-[#E5E0D8] bg-white px-5 py-4 flex flex-col gap-2 text-sm">
-            <p><strong>BĐS Đà Nẵng</strong> — Đơn vị môi giới bất động sản độc lập</p>
-            <p>Địa chỉ: 04 Bình Minh 5, Hòa Xuân, Cẩm Lệ, Đà Nẵng</p>
-            <p>Hotline: <a href="tel:0352787777" className="text-[#0B2545] font-medium underline">0352.787777</a></p>
-            <p>Email: <a href="mailto:lienhe@bdsdanang.vn" className="text-[#0B2545] font-medium underline">lienhe@bdsdanang.vn</a></p>
+            <p><strong>BĐS Đà Nẵng</strong> — {COMPANY_LEGAL_NAME}</p>
+            <p>MST: {TAX_CODE}</p>
+            <p>Địa chỉ: {OFFICE_ADDRESS}</p>
+            <p>Hotline: <a href="tel:0352787777" className="text-[#0B2545] font-medium underline">{HOTLINE_DISPLAY}</a></p>
+            <p>Email: <a href={`mailto:${CONTACT_EMAIL}`} className="text-[#0B2545] font-medium underline">{CONTACT_EMAIL}</a></p>
           </div>
 
           <div className="border-t border-[#E5E0D8] pt-6 flex gap-4 text-xs text-[#888]">

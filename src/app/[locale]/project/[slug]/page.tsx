@@ -54,7 +54,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       `${project.name} Đà Nẵng`,
       `bảng giá ${project.name}`,
       `mua căn hộ ${project.name}`,
-      "căn hộ Sun Group Đà Nẵng",
+      "căn hộ cao cấp Đà Nẵng",
       "BĐS Đà Nẵng",
     ],
   });

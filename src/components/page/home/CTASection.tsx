@@ -103,7 +103,7 @@ export default function CTASection() {
                     className="label-small text-white/30 block"
                     style={{ fontSize: "0.58rem" }}
                   >
-                    Tư vấn 24/7
+                    Tư vấn theo lịch hẹn
                   </span>
                   <span className="text-gold text-lg">0352.787777</span>
                 </div>
@@ -241,12 +241,32 @@ export default function CTASection() {
                   {submitting ? "Đang gửi..." : "Nhận Thông Tin Ngay"}
                 </motion.button>
 
+                <label className="flex items-start gap-3 rounded-[4px] border border-white/10 bg-white/[0.04] px-4 py-3 text-left text-xs font-medium leading-relaxed text-white/34">
+                  <input
+                    type="checkbox"
+                    required
+                    className="mt-0.5 h-4 w-4 shrink-0 rounded border-white/20 accent-[#C6A77D]"
+                  />
+                  <span>
+                    Tôi đồng ý để BĐS Đà Nẵng sử dụng họ tên, số điện thoại và email nhằm liên hệ tư vấn theo{" "}
+                    <a
+                      href="/privacy-policy"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline text-white/50 hover:text-[#C6A77D] transition-colors"
+                    >
+                      Chính sách bảo mật
+                    </a>
+                    .
+                  </span>
+                </label>
+
                 {errorMessage ? (
                   <p className="text-center text-xs font-semibold text-red-200">{errorMessage}</p>
                 ) : null}
 
                 <p className="text-center text-xs text-white/20 font-light">
-                  Chúng tôi cam kết bảo mật thông tin của bạn
+                  Thông tin chỉ dùng cho mục đích tư vấn theo yêu cầu đã gửi.
                 </p>
               </form>
             )}

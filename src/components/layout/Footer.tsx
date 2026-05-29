@@ -2,7 +2,15 @@
 
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
-import { CONTACT_EMAIL, CONTACT_EMAIL_HREF, HOTLINE_TEL, OFFICE_ADDRESS, ZALO_HREF } from "@/lib/contact";
+import {
+  COMPANY_LEGAL_NAME,
+  CONTACT_EMAIL,
+  CONTACT_EMAIL_HREF,
+  HOTLINE_TEL,
+  OFFICE_ADDRESS,
+  TAX_CODE,
+  ZALO_HREF,
+} from "@/lib/contact";
 
 const PROJECT_LINKS = [
   { label: "Tòa Symphony", href: "/project" },
@@ -78,10 +86,11 @@ export default function Footer() {
               />
             </div>
             <p className="text-white/35 text-sm font-light leading-relaxed max-w-xs mb-3">
-              Đơn vị môi giới bất động sản cao cấp độc lập tại Đà Nẵng. Không thuộc chủ đầu tư hay chủ sở hữu dự án.
+              Kênh tư vấn và phân phối bất động sản tại Đà Nẵng thuộc {COMPANY_LEGAL_NAME}.
             </p>
             <p className="text-white/20 text-xs font-light leading-relaxed max-w-xs mb-5">
-              Thông tin dự án chỉ mang tính tham khảo. Giá và chính sách cuối cùng theo chủ đầu tư.
+              Website không phải trang chính thức của chủ đầu tư. Thông tin dự án, giá và chính sách
+              cần được xác nhận lại theo tài liệu chính thức tại thời điểm giao dịch.
             </p>
             <div className="flex items-start gap-2">
               <svg viewBox="0 0 16 20" fill="none" stroke="#C6A77D" strokeWidth="1.2" className="w-3.5 h-4.5 mt-0.5 shrink-0">
@@ -92,6 +101,7 @@ export default function Footer() {
                 {OFFICE_ADDRESS}
               </p>
             </div>
+            <p className="mt-3 text-white/35 text-xs font-light leading-relaxed">MST: {TAX_CODE}</p>
           </div>
 
           {/* Dự Án */}
@@ -180,7 +190,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="pt-7 border-t border-white/8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-white/20 font-light">
-            ©2026 BĐS Đà Nẵng — Đơn vị môi giới độc lập. All rights reserved.
+            ©2026 BĐS Đà Nẵng — {COMPANY_LEGAL_NAME}. All rights reserved.
           </p>
           <div className="flex items-center gap-5">
             <Link href="/terms" className="text-xs text-white/20 font-light hover:text-white/45 transition-colors duration-300">

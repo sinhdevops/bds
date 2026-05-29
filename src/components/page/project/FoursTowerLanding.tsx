@@ -61,8 +61,8 @@ const heroFeatures: [IconType, string, string][] = [
 const heroStats: [IconType, string, string, string][] = [
   [FiDollarSign, "Giá tham khảo từ", "3", "tỷ đồng"],
   [FiTag, "Chiết khấu", "5%", "early bird"],
-  [FiBriefcase, "Hỗ trợ vay", "70%", "GTCH"],
-  [FiCalendar, "Ân hạn gốc", "30", "tháng"],
+  [FiBriefcase, "Hỗ trợ vay", "Có thể", "theo hồ sơ"],
+  [FiCalendar, "Ưu đãi lãi suất", "Đến", "30 tháng"],
   [FiHome, "Loại căn", "1BR+", "và 2BR"],
 ];
 
@@ -149,7 +149,7 @@ const buyingReasons = [
     icon: FiTrendingUp,
     image: "/images/projects/fours/fours-street.webp",
     title: ["Trung tâm", "phát triển mới", "Nam Đà Nẵng"],
-    copy: "Hạ tầng phía Nam được Sun Group đẩy mạnh, giá còn đang đầu chu kỳ.",
+    copy: "Hạ tầng phía Nam Đà Nẵng đang phát triển, giá và tiềm năng cần được đánh giá theo từng thời điểm.",
   },
   {
     icon: FiAward,
@@ -172,10 +172,10 @@ const buyingReasons = [
 ];
 
 const comparisonRows: [IconType, string, string, string][] = [
-  [FiMapPin, "Chủ đầu tư", "Sun Group", "Chủ đầu tư nhỏ lẻ"],
+  [FiMapPin, "Thông tin dự án", "Theo hồ sơ công bố", "Cần kiểm tra riêng"],
   [FiShield, "Pháp lý", "Sở hữu lâu dài", "Thường chỉ 50 năm"],
   [FiLayers, "Hạ tầng", "Quy hoạch đồng bộ, hiện đại", "Hạ tầng cũ, manh mún"],
-  [FiBarChart2, "Tiềm năng tăng giá", "Cao", "Thấp"],
+  [FiBarChart2, "Tiềm năng tăng giá", "Phụ thuộc thị trường", "Cần so sánh riêng"],
   [FiUsers, "Công viên / sông", "Công viên, sông, tiện ích đa dạng", "Ít tiện ích, không gian hạn chế"],
 ];
 
@@ -225,7 +225,7 @@ const amenities: {
 
 const policies = [
   ["Chiết khấu", "5%", "Early bird"],
-  ["Hỗ trợ vay", "70%", "Giá trị căn hộ"],
+  ["Hỗ trợ vay", "Theo hồ sơ", "Ngân hàng duyệt"],
   ["Ân hạn gốc", "30", "tháng"],
   ["Giãn tiến độ", "48", "tháng"],
 ];
@@ -272,9 +272,9 @@ export default function FoursTowerLanding({ project }: { project: ProjectCatalog
       {/* Broker disclaimer — required for ad policy compliance */}
       <div className="relative z-[60] w-full bg-[#0a1a2e] border-b border-[#F5B24D]/20 px-4 py-2.5 text-center">
         <p className="text-[0.7rem] font-medium text-white/60 leading-relaxed">
-          <span className="text-[#F5B24D] font-semibold">BĐS Đà Nẵng</span> là đơn vị môi giới bất động sản độc lập — không phải chủ đầu tư, không đại diện chính thức cho bất kỳ chủ đầu tư nào.
-          Thông tin dự án chỉ mang tính tham khảo. Giá và chính sách cuối cùng theo chủ đầu tư.{" "}
-          <a href="/vi/privacy-policy" target="_blank" rel="noopener noreferrer" className="underline text-white/50 hover:text-[#F5B24D] transition-colors">
+          <span className="text-[#F5B24D] font-semibold">BĐS Đà Nẵng</span> là kênh tư vấn và phân phối bất động sản, không phải trang chính thức của chủ đầu tư hoặc thương hiệu dự án.
+          Thông tin dự án chỉ mang tính tham khảo. Giá và chính sách cần xác nhận theo tài liệu chính thức.{" "}
+          <a href="/privacy-policy" target="_blank" rel="noopener noreferrer" className="underline text-white/50 hover:text-[#F5B24D] transition-colors">
             Chính sách bảo mật
           </a>
         </p>
@@ -302,7 +302,7 @@ export default function FoursTowerLanding({ project }: { project: ProjectCatalog
                 FourS Tower Đà Nẵng
               </div>
               <div className="inline-flex h-7 items-center rounded-full border border-white/20 bg-white/[0.07] px-3 text-[0.6rem] font-semibold text-white/60 backdrop-blur-md">
-                Tư vấn bởi BĐS Đà Nẵng — Môi giới độc lập
+                Tư vấn bởi BĐS Đà Nẵng
               </div>
             </div>
 
@@ -416,8 +416,8 @@ export default function FoursTowerLanding({ project }: { project: ProjectCatalog
                 </div>
               ))}
             </div>
-            <p className="mt-7 text-sm font-semibold text-[#FFE7AA]">Thông tin chính sách mang tính tham khảo, cần xác nhận lại với chủ đầu tư.</p>
-            <p className="mt-2 text-xs text-white/40">BĐS Đà Nẵng là đơn vị môi giới độc lập, không phải chủ đầu tư dự án.</p>
+            <p className="mt-7 text-sm font-semibold text-[#FFE7AA]">Thông tin chính sách mang tính tham khảo, cần xác nhận lại theo tài liệu chính thức.</p>
+            <p className="mt-2 text-xs text-white/40">BĐS Đà Nẵng là kênh tư vấn và phân phối bất động sản, không phải trang chính thức của chủ đầu tư.</p>
           </div>
 
           <form id="form" onSubmit={submitLead} className="rounded-[20px] border border-[#F5C76A]/18 bg-[#07131f]/78 p-6 shadow-[0_24px_70px_rgba(0,0,0,0.34)] backdrop-blur-xl lg:p-10">
@@ -454,18 +454,37 @@ export default function FoursTowerLanding({ project }: { project: ProjectCatalog
             <button type="submit" disabled={submitting} className="mt-6 inline-flex h-14 w-full items-center justify-center rounded-[12px] bg-linear-to-r from-[#B8792E] via-[#FFE4A0] to-[#C5822D] px-6 text-sm font-black uppercase text-[#08111d] shadow-[0_0_34px_rgba(245,199,106,0.28)] transition-transform hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-70">
               {submitting ? "Đang gửi..." : sent ? "Đã nhận thông tin" : "Đăng ký nhận tư vấn miễn phí"}
             </button>
+            <label className="mt-4 flex items-start gap-3 rounded-[10px] border border-white/10 bg-white/[0.04] px-4 py-3 text-left text-xs font-medium leading-relaxed text-white/42">
+              <input
+                type="checkbox"
+                required
+                className="mt-0.5 h-4 w-4 shrink-0 rounded border-white/20 accent-[#F5C76A]"
+              />
+              <span>
+                Tôi đồng ý để BĐS Đà Nẵng sử dụng thông tin đã gửi nhằm liên hệ tư vấn theo{" "}
+                <a
+                  href="/privacy-policy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline text-white/60 hover:text-[#F5C76A] transition-colors"
+                >
+                  Chính sách bảo mật
+                </a>
+                .
+              </span>
+            </label>
             {error ? <p className="mt-4 text-center text-xs font-semibold text-red-200">{error}</p> : null}
             <p className="mt-4 text-center text-xs font-medium text-white/42">
-              Bằng cách gửi thông tin, bạn đồng ý với{" "}
+              Thông tin chỉ dùng để tư vấn dự án theo yêu cầu của bạn.{" "}
               <a
-                href="/vi/privacy-policy"
+                href="/privacy-policy"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline text-white/60 hover:text-[#F5C76A] transition-colors"
               >
                 Chính sách bảo mật
               </a>{" "}
-              của BĐS Đà Nẵng. Thông tin chỉ dùng để tư vấn dự án theo yêu cầu của bạn.
+              của BĐS Đà Nẵng.
             </p>
           </form>
         </div>
@@ -1143,7 +1162,7 @@ function FeaturedUnit({ unit }: { unit: (typeof hotUnits)[number] }) {
       </div>
       <div className="mt-6 grid gap-3 sm:grid-cols-2">
         <a href="#form" className="inline-flex h-11 items-center justify-center rounded-[10px] bg-linear-to-r from-[#B8792E] via-[#FFE4A0] to-[#C5822D] text-xs font-black uppercase text-[#08111d]">Xem layout</a>
-        <a href="#form" className="inline-flex h-11 items-center justify-center rounded-[10px] border border-[#F5C76A]/42 text-xs font-black uppercase text-white hover:bg-[#F5C76A] hover:text-[#08111d]">Nhận giá tốt nhất</a>
+        <a href="#form" className="inline-flex h-11 items-center justify-center rounded-[10px] border border-[#F5C76A]/42 text-xs font-black uppercase text-white hover:bg-[#F5C76A] hover:text-[#08111d]">Nhận thông tin giá</a>
       </div>
     </article>
   );

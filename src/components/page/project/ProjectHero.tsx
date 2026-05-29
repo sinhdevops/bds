@@ -55,7 +55,7 @@ const ProjectHero = () => {
             transition={{ duration: 0.7, delay: 0.25 }}
             className="mb-8 max-w-[560px] text-base font-medium leading-[1.85] text-white/76"
           >
-            So sánh nhanh các dự án Sun Group nổi bật tại Đà Nẵng theo vị trí, trạng thái bàn giao, mức giá và nhu cầu khai thác.
+            So sánh nhanh các dự án căn hộ nổi bật tại Đà Nẵng theo vị trí, trạng thái bàn giao, mức giá và nhu cầu khai thác.
           </motion.p>
 
           <motion.div

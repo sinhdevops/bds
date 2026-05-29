@@ -70,7 +70,7 @@ export const PROJECTS: Record<string, ProjectData> = {
     tagline: "Khúc giao hưởng giữa lòng thành phố",
     description:
       "Sun Symphony Residence là tổ hợp căn hộ hạng sang tọa lạc tại vị trí đắc địa nhất ven bờ Sông Hàn — cung đường Trần Hưng Đạo tỷ đô. Kiến trúc lấy cảm hứng từ những nhịp sóng âm nhạc, tạo nên bản nhạc kiến trúc sống động giữa lòng Đà Nẵng. Mỗi căn hộ là một không gian sống nghỉ dưỡng đẳng cấp với tầm nhìn toàn cảnh sông biển.",
-    developer: "Tập Đoàn Sun Group",
+    developer: "Theo hồ sơ dự án",
     distributor: "BĐS Đà Nẵng",
     status: "open",
     statusLabel: "Đang Mở Bán — Symphony 5",
@@ -92,7 +92,7 @@ export const PROJECTS: Record<string, ProjectData> = {
       { src: "https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=900&q=80", alt: "Master Bedroom", caption: "Master Bedroom cao cấp" },
       { src: "https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=900&q=80", alt: "Hồ bơi vô cực", caption: "Infinity Pool tầng thượng" },
       { src: "https://images.unsplash.com/photo-1560184897-ae75f418493e?w=900&q=80", alt: "Sky Lounge", caption: "Sky Lounge & Bar" },
-      { src: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=900&q=80", alt: "Gym", caption: "Fitness Center 24/7" },
+      { src: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=900&q=80", alt: "Gym", caption: "Fitness Center" },
       { src: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&q=80", alt: "Nhà bếp", caption: "Bếp trang bị đồ Miele" },
     ],
     stats: [
@@ -115,12 +115,12 @@ export const PROJECTS: Record<string, ProjectData> = {
       {
         icon: "star",
         title: "Tiện Ích 5 Sao",
-        desc: "Hồ bơi vô cực, Sky Lounge, SPA, Gym Technogym, Kids Club, Concierge 24/7",
+        desc: "Hồ bơi, Sky Lounge, SPA, phòng gym, Kids Club và dịch vụ tiện ích theo chính sách vận hành dự án",
       },
       {
         icon: "invest",
         title: "Tiềm Năng Đầu Tư",
-        desc: "Tỷ lệ khai thác cho thuê cao nhất Đà Nẵng, thanh khoản tốt do Sun Group quản lý",
+        desc: "Khả năng khai thác cho thuê cần được đánh giá theo vị trí, loại căn, giá vào và chính sách vận hành tại từng thời điểm",
       },
     ],
     apartments: [
@@ -203,7 +203,7 @@ export const PROJECTS: Record<string, ProjectData> = {
       },
       {
         name: "Fitness Center",
-        desc: "Gym Technogym 500m² mở cửa 24/7",
+        desc: "Khu gym theo quy hoạch tiện ích dự án",
         image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=900&q=85",
         span: "col-span-2",
       },
@@ -231,7 +231,7 @@ export const PROJECTS: Record<string, ProjectData> = {
     tagline: "Kiệt tác sống bên Cầu Rồng huyền thoại",
     description:
       "Sun Ponte Residence mang đến trải nghiệm sống độc bản tại Đà Nẵng — tầm nhìn trực diện Cầu Rồng biểu tượng và toàn cảnh Sông Hàn huyền ảo về đêm. Kiến trúc đương đại kết hợp nội thất hạng sang tạo nên không gian sống xứng tầm đẳng cấp quốc tế.",
-    developer: "Tập Đoàn Sun Group",
+    developer: "Theo hồ sơ dự án",
     distributor: "BĐS Đà Nẵng",
     status: "under-construction",
     statusLabel: "Đang Xây Dựng — Dự Kiến 2026",
@@ -381,7 +381,7 @@ export const PROJECTS: Record<string, ProjectData> = {
     tagline: "Cuộc sống tầm cao giữa sông núi hữu tình",
     description:
       "Sun Cosmo Residence là tổ hợp căn hộ đã bàn giao tọa lạc bên bờ Sông Hàn nhìn ra Cầu Trần Thị Lý và dãy Ngũ Hành Sơn hùng vĩ. Với thiết kế tối ưu cho từng góc nhìn, Sun Cosmo mang đến không gian sống trọn vẹn giữa thiên nhiên sông — núi độc đáo của Đà Nẵng.",
-    developer: "Tập Đoàn Sun Group",
+    developer: "Theo hồ sơ dự án",
     distributor: "BĐS Đà Nẵng",
     status: "delivered",
     statusLabel: "Đã Bàn Giao — Nhận Nhà Ngay",
@@ -425,12 +425,12 @@ export const PROJECTS: Record<string, ProjectData> = {
       {
         icon: "star",
         title: "Khai Thác Cho Thuê",
-        desc: "Thu nhập cho thuê ổn định từ 25–40 triệu/tháng. Sun Group hỗ trợ quản lý vận hành",
+        desc: "Dòng tiền cho thuê phụ thuộc vị trí căn, nội thất, thời điểm thị trường và phương án vận hành thực tế",
       },
       {
         icon: "invest",
-        title: "Giá Tốt Nhất Thị Trường",
-        desc: "Giá từ 3 tỷ — cơ hội sở hữu bất động sản Sun Group với chi phí hợp lý nhất",
+        title: "Mức Giá Tham Khảo",
+        desc: "Giá bán cần được xác nhận theo mã căn, giỏ hàng và chính sách tại thời điểm tư vấn",
       },
     ],
     apartments: [

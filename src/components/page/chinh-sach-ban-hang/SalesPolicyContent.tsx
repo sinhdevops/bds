@@ -7,11 +7,11 @@ const SalesPolicyContent = () => {
   const steps = useMemo(
     () => [
       { step: "Đợt 1", val: "Đặt cọc", desc: "Đóng 50,000,000 VND ký văn bản thỏa thuận đặt cọc." },
-      { step: "Đợt 2", val: "10% giá trị", desc: "Thanh toán 10% (đã gồm cọc) trong vòng 10 ngày từ ngày cọc." },
-      { step: "Đợt 3", val: "15% ký HĐMB", desc: "Thanh toán 15% khi ký kết hợp đồng mua bán chính thức." },
-      { step: "Các Đợt Tiếp", val: "Năm 2026 - 2027", desc: "Chia nhỏ thành 8 đợt thanh toán từ 5% - 10% mỗi đợt cách nhau 60 ngày." },
-      { step: "Bàn Giao", val: "25% giá trị", desc: "Thanh toán 25% khi nhận thông báo bàn giao căn hộ hoàn thiện." },
-      { step: "Sổ Hồng", val: "5% cuối cùng", desc: "Thanh toán 5% còn lại khi có thông báo nhận bàn giao quyền sở hữu nhà." },
+      { step: "Lựa chọn 1", val: "Thanh toán theo đợt", desc: "Tỷ lệ và thời hạn từng đợt phụ thuộc chính sách bán hàng của từng dự án tại thời điểm tư vấn." },
+      { step: "Lựa chọn 2", val: "Thanh toán nhanh", desc: "Một số dự án có phương án thanh toán sớm, có thể lên đến khoảng 95% giá trị theo chính sách công bố." },
+      { step: "Hỗ trợ vay", val: "Theo ngân hàng", desc: "Tỷ lệ vay và thời gian hỗ trợ lãi suất phụ thuộc ngân hàng, hồ sơ khách hàng và chính sách từng dự án." },
+      { step: "Ký HĐMB", val: "Theo hồ sơ dự án", desc: "Khách hàng cần kiểm tra chủ thể ký hợp đồng, lịch thanh toán, phụ lục và điều kiện hoàn/khấu trừ cọc." },
+      { step: "Bàn giao", val: "Theo thông báo", desc: "Thời điểm bàn giao và chi phí liên quan cần được xác nhận bằng tài liệu chính thức." },
     ],
     []
   );
@@ -32,18 +32,18 @@ const SalesPolicyContent = () => {
           {[
             {
               title: "Chiết Khấu Thanh Toán Sớm",
-              val: "Lên Đến 10%",
-              desc: "Chiết khấu trực tiếp vào giá bán chưa VAT + KPBT khi quý khách chọn phương án thanh toán sớm bằng vốn tự có.",
+              val: "Theo từng dự án",
+              desc: "Một số chính sách có ưu đãi cho phương án thanh toán nhanh hoặc thanh toán sớm, cần xác nhận theo bảng chính sách hiện hành.",
             },
             {
               title: "Hỗ Trợ Lãi Suất Ngân Hàng",
-              val: "0% Lên Đến 24 Tháng",
-              desc: "Hỗ trợ vay vốn ngân hàng lên đến 70% giá trị căn hộ với lãi suất 0% và ân hạn nợ gốc suốt 24 tháng từ ngày giải ngân.",
+              val: "Có thể đến 30 tháng",
+              desc: "Thời gian hỗ trợ lãi suất, tỷ lệ vay và điều kiện duyệt vay phụ thuộc ngân hàng, hồ sơ khách hàng và chính sách từng thời điểm.",
             },
             {
-              title: "Quà Tặng Tri Ân Khách Hàng",
-              val: "Miễn Phí Quản Lý 3 Năm",
-              desc: "Đặc quyền miễn phí dịch vụ quản lý vận hành tòa tháp cao cấp trong 3 năm đầu tiên từ thời điểm nhận bàn giao nhà.",
+              title: "Chính Sách Cần Xác Nhận",
+              val: "Không cố định",
+              desc: "BĐS Đà Nẵng chỉ tư vấn thông tin tham khảo. Giá, ưu đãi và tiến độ thanh toán cuối cùng theo tài liệu chính thức.",
             },
           ].map((item, i) => (
             <motion.div
@@ -64,7 +64,7 @@ const SalesPolicyContent = () => {
         {/* Payment steps */}
         <div>
           <div className="text-center mb-12">
-            <h3 className="font-serif text-2xl text-[#0B2545] font-medium" style={{ fontFamily: "var(--font-serif)" }}>Tiến Độ Thanh Toán Chuẩn</h3>
+            <h3 className="font-serif text-2xl text-[#0B2545] font-medium" style={{ fontFamily: "var(--font-serif)" }}>Các Phương Án Thanh Toán Tham Khảo</h3>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">

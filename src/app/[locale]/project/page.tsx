@@ -4,7 +4,7 @@ import ProjectGrid from "@/components/page/project/ProjectGrid";
 import { PROJECT_CATALOG } from "@/lib/projectCatalog";
 import { ROUTES, absoluteUrl, breadcrumbSchema, createMetadata, webPageSchema } from "@/lib/seo";
 
-const title = "Dự Án Căn Hộ Cao Cấp Đà Nẵng - Sun Group & Ven Sông Hàn";
+const title = "Dự Án Căn Hộ Cao Cấp Đà Nẵng - Ven Sông Hàn";
 const description =
   "Danh mục dự án căn hộ cao cấp tại Đà Nẵng: Sun Symphony, Sun Ponte, Sun Cosmo, Sun Solar và Capital Square. So sánh vị trí, giá, tiến độ và tiềm năng đầu tư.";
 

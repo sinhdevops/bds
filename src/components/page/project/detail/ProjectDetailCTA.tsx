@@ -100,7 +100,7 @@ export default function ProjectDetailCTA({ project }: Props) {
                   </svg>
                 </div>
                 <div>
-                  <span className="label-small text-white/35 block mb-0.5">Hotline 24/7</span>
+                  <span className="label-small text-white/35 block mb-0.5">Hotline tư vấn</span>
                   <span
                     className="font-serif text-2xl text-[#C6A77D] font-light"
                     style={{ fontFamily: "var(--font-serif)" }}
@@ -152,7 +152,7 @@ export default function ProjectDetailCTA({ project }: Props) {
                     Đã nhận thông tin!
                   </h3>
                   <p className="text-white/50 text-sm font-light leading-relaxed max-w-xs mx-auto">
-                    Chuyên gia BĐS Đà Nẵng sẽ liên hệ với bạn trong vòng <strong className="text-[#C6A77D]">30 phút</strong> để tư vấn về {project.shortName}.
+                    Chuyên viên BĐS Đà Nẵng sẽ liên hệ lại theo thông tin bạn đã gửi để tư vấn về {project.shortName}.
                   </p>
                 </div>
               </div>
@@ -232,8 +232,28 @@ export default function ProjectDetailCTA({ project }: Props) {
                   Đăng Ký Tư Vấn Ngay
                 </button>
 
+                <label className="flex items-start gap-3 rounded-[4px] border border-white/10 bg-white/[0.04] px-4 py-3 text-left text-[10px] font-medium leading-relaxed text-white/35">
+                  <input
+                    type="checkbox"
+                    required
+                    className="mt-0.5 h-4 w-4 shrink-0 rounded border-white/20 accent-[#C6A77D]"
+                  />
+                  <span>
+                    Tôi đồng ý để BĐS Đà Nẵng sử dụng thông tin đã gửi nhằm liên hệ tư vấn theo{" "}
+                    <a
+                      href="/privacy-policy"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline text-white/50 hover:text-[#C6A77D] transition-colors"
+                    >
+                      Chính sách bảo mật
+                    </a>
+                    .
+                  </span>
+                </label>
+
                 <p className="text-center text-[10px] text-white/25 font-light">
-                  Thông tin của bạn được bảo mật tuyệt đối theo chính sách của BĐS Đà Nẵng
+                  Thông tin chỉ dùng cho mục đích tư vấn theo yêu cầu đã gửi.
                 </p>
               </form>
             )}

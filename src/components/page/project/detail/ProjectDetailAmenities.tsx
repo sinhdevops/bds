@@ -119,7 +119,7 @@ export default function ProjectDetailAmenities({ project }: Props) {
           className="mt-10 flex flex-wrap gap-2"
         >
           {[
-            "Concierge 24/7",
+            "Dịch vụ hỗ trợ cư dân",
             "Valet Parking",
             "Security 24h",
             "Co-working Space",

@@ -145,7 +145,7 @@ export default function SymphonyFiveLanding({ project }: { project: ProjectCatal
             <span className="font-serif text-[44px] leading-none text-[#D4B278]">S</span>
             <span className="leading-tight">
               <span className="block font-serif text-[18px] uppercase tracking-[0.07em] text-[#D4B278]">Sun Symphony 5</span>
-              <span className="block text-[9px] font-semibold uppercase tracking-[0.26em] text-[#D4B278]/72">By Sun Group</span>
+              <span className="block text-[9px] font-semibold uppercase tracking-[0.26em] text-[#D4B278]/72">BĐS Đà Nẵng phân phối</span>
             </span>
           </a>
 
@@ -371,6 +371,20 @@ export default function SymphonyFiveLanding({ project }: { project: ProjectCatal
               <button type="submit" disabled={ctaSubmitting} className={`${goldButton} mt-4 w-full disabled:cursor-not-allowed disabled:opacity-70`}>
                 {ctaSubmitting ? "Đang lưu..." : "Đăng ký nhận tư vấn"} <FiArrowRight className="h-4 w-4" />
               </button>
+              <label className="mt-3 flex items-start gap-3 rounded-[7px] border border-white/10 bg-white/[0.04] px-4 py-3 text-left text-[11px] font-medium leading-relaxed text-white/42">
+                <input
+                  type="checkbox"
+                  required
+                  className="mt-0.5 h-4 w-4 shrink-0 rounded border-white/20 accent-[#D4B278]"
+                />
+                <span>
+                  Tôi đồng ý để BĐS Đà Nẵng sử dụng thông tin đã gửi nhằm liên hệ tư vấn theo{" "}
+                  <a href="/privacy-policy" target="_blank" rel="noopener noreferrer" className="underline text-white/58 hover:text-[#D4B278]">
+                    Chính sách bảo mật
+                  </a>
+                  .
+                </span>
+              </label>
               {ctaSent ? <p className="mt-3 text-center text-[12px] font-semibold text-[#E0C48A]">Đã nhận thông tin. Chuyên viên sẽ liên hệ lại sớm.</p> : null}
               {ctaError ? <p className="mt-3 text-center text-[12px] font-semibold text-red-200">{ctaError}</p> : null}
               <p className="mt-3 text-center text-[11px] leading-[1.6] text-white/42">
@@ -387,7 +401,7 @@ export default function SymphonyFiveLanding({ project }: { project: ProjectCatal
             <span className="font-serif text-[36px] leading-none text-[#D4B278]">S</span>
             <span>
               <span className="block font-serif text-[17px] uppercase tracking-[0.06em] text-[#D4B278]">Sun Symphony 5</span>
-              <span className="block text-[9px] font-semibold uppercase tracking-[0.24em] text-[#D4B278]/70">By Sun Group</span>
+              <span className="block text-[9px] font-semibold uppercase tracking-[0.24em] text-[#D4B278]/70">BĐS Đà Nẵng phân phối</span>
             </span>
           </a>
           <nav className="flex flex-wrap gap-x-8 gap-y-3 text-[12px] text-white/58">

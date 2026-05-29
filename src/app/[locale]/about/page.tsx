@@ -12,9 +12,9 @@ export const metadata: Metadata = createMetadata({
   path: ROUTES.about,
   keywords: [
     "BĐS Đà Nẵng",
-    "đại lý Sun Group Đà Nẵng",
-    "nhà phân phối bất động sản Đà Nẵng",
-    "tư vấn căn hộ Sun Group",
+    "phân phối bất động sản Đà Nẵng",
+    "môi giới bất động sản Đà Nẵng",
+    "tư vấn căn hộ Đà Nẵng",
   ],
 });
 
@@ -57,7 +57,7 @@ export default function AboutPage() {
         active="about"
         eyebrow="Về tôi"
         title="Đồng hành chọn đúng bất động sản Đà Nẵng"
-        description="BĐS Đà Nẵng là kênh tư vấn độc lập về các dự án cao cấp tại Đà Nẵng. Chúng tôi không đại diện chính thức cho chủ đầu tư nếu không có văn bản ủy quyền được công bố riêng."
+        description="BĐS Đà Nẵng là kênh tư vấn và phân phối bất động sản tại Đà Nẵng, hỗ trợ khách hàng kiểm tra thông tin, so sánh phương án và làm việc theo nhu cầu thực tế."
       >
         <div className="grid gap-8 lg:grid-cols-[1fr_340px]">
           <div className="space-y-8">
@@ -70,9 +70,9 @@ export default function AboutPage() {
                 Mỗi khách hàng có một mục tiêu khác nhau: mua để ở, giữ tài sản, khai thác thuê hoặc chờ tăng giá. Vì vậy quy trình tư vấn bắt đầu bằng việc xác định nhu cầu, sau đó so sánh dự án theo vị trí, giá, pháp lý, tiến độ và khả năng thanh khoản.
               </p>
               <p className="mt-4 rounded-[4px] bg-[#F8F5F0] p-4 text-sm font-semibold leading-relaxed text-[#555555]">
-                Lưu ý minh bạch: website này không mạo danh website chính thức của Sun Group,
-                Capital Square hoặc chủ đầu tư. Khi khách hàng cần đặt cọc/giao dịch, chúng tôi
-                khuyến nghị đối chiếu lại toàn bộ thông tin với tài liệu chính thức tại thời điểm đó.
+                Lưu ý minh bạch: website này không phải trang chính thức của bất kỳ chủ đầu tư
+                hoặc thương hiệu dự án nào. Khi khách hàng cần đặt cọc/giao dịch, chúng tôi khuyến
+                nghị đối chiếu lại toàn bộ thông tin với tài liệu chính thức tại thời điểm đó.
               </p>
             </div>
 

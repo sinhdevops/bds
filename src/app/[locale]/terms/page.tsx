@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { Link } from "@/i18n/navigation";
+import { COMPANY_LEGAL_NAME, CONTACT_EMAIL, HOTLINE_DISPLAY, OFFICE_ADDRESS, TAX_CODE } from "@/lib/contact";
 import { ROUTES, absoluteUrl, breadcrumbSchema, createMetadata, webPageSchema } from "@/lib/seo";
 
 const title = "Điều Khoản Sử Dụng - BĐS Đà Nẵng";
@@ -49,19 +51,59 @@ export default function TermsPage() {
           <p>
             Chào mừng quý khách đến với cổng thông tin BĐS Đà Nẵng. Khi truy cập và sử dụng website, quý khách đồng ý tuân thủ các điều khoản được nêu tại trang này.
           </p>
-
-          <h2 className="font-serif text-2xl text-[#0B2545] font-semibold mt-4" style={{ fontFamily: "var(--font-serif)" }}>
-            2. Quyền sở hữu trí tuệ
-          </h2>
           <p>
-            Nội dung trên website bao gồm văn bản, thiết kế, hình ảnh dự án và dữ liệu tham khảo thuộc quyền sở hữu của BĐS Đà Nẵng hoặc các đối tác liên quan. Mọi hành vi sao chép, phân phối hoặc tái xuất bản cần có sự đồng ý phù hợp.
+            BĐS Đà Nẵng là kênh tư vấn và phân phối bất động sản thuộc {COMPANY_LEGAL_NAME}, MST {TAX_CODE}.
+            Địa chỉ liên hệ: {OFFICE_ADDRESS}. Hotline: {HOTLINE_DISPLAY}. Email: {CONTACT_EMAIL}.
           </p>
 
           <h2 className="font-serif text-2xl text-[#0B2545] font-semibold mt-4" style={{ fontFamily: "var(--font-serif)" }}>
-            3. Giới hạn trách nhiệm
+            2. Vai trò tư vấn và phạm vi thông tin
           </h2>
           <p>
-            Thông tin về căn hộ, giá bán và chính sách bán hàng chỉ mang tính tham khảo tại thời điểm công bố. Bảng giá và chính sách cuối cùng phụ thuộc vào chủ đầu tư, giỏ hàng và thời điểm tư vấn.
+            Website cung cấp thông tin tham khảo về thị trường, dự án, giỏ hàng, chính sách bán hàng
+            và quy trình giao dịch bất động sản. Website không phải trang chính thức của bất kỳ chủ đầu tư
+            hoặc thương hiệu dự án nào. Mọi thông tin trước khi đặt cọc, thanh toán hoặc ký hợp đồng cần
+            được đối chiếu với tài liệu chính thức tại thời điểm giao dịch.
+          </p>
+
+          <h2 className="font-serif text-2xl text-[#0B2545] font-semibold mt-4" style={{ fontFamily: "var(--font-serif)" }}>
+            3. Quyền sở hữu trí tuệ
+          </h2>
+          <p>
+            Nội dung trên website bao gồm văn bản, thiết kế, hình ảnh dự án và dữ liệu tham khảo thuộc
+            quyền sở hữu của BĐS Đà Nẵng hoặc được sử dụng cho mục đích thông tin, tư vấn và so sánh.
+            Mọi hành vi sao chép, phân phối hoặc tái xuất bản cần có sự đồng ý phù hợp.
+          </p>
+
+          <h2 className="font-serif text-2xl text-[#0B2545] font-semibold mt-4" style={{ fontFamily: "var(--font-serif)" }}>
+            4. Giới hạn trách nhiệm
+          </h2>
+          <p>
+            Thông tin về căn hộ, giá bán, tiến độ thanh toán, hỗ trợ vay, ưu đãi và chính sách bán hàng
+            chỉ mang tính tham khảo tại thời điểm công bố. Bảng giá và chính sách cuối cùng phụ thuộc vào
+            chủ đầu tư, ngân hàng, tình trạng giỏ hàng và thời điểm tư vấn.
+          </p>
+
+          <h2 className="font-serif text-2xl text-[#0B2545] font-semibold mt-4" style={{ fontFamily: "var(--font-serif)" }}>
+            5. Biểu mẫu đăng ký tư vấn
+          </h2>
+          <p>
+            Khi gửi biểu mẫu, quý khách chủ động cung cấp họ tên, số điện thoại, email và nhu cầu tư vấn.
+            Thông tin này chỉ được dùng để liên hệ, gửi thông tin dự án liên quan và chăm sóc yêu cầu của
+            quý khách. Chi tiết được công bố tại{" "}
+            <Link href="/privacy-policy" className="text-[#0B2545] underline font-medium">
+              Chính sách bảo mật
+            </Link>
+            .
+          </p>
+
+          <h2 className="font-serif text-2xl text-[#0B2545] font-semibold mt-4" style={{ fontFamily: "var(--font-serif)" }}>
+            6. Đặt cọc và giao dịch
+          </h2>
+          <p>
+            Website không yêu cầu khách hàng thanh toán trực tuyến trên trang. Trước mọi giao dịch, khách hàng
+            nên kiểm tra pháp lý, mã căn, giá bán, chính sách thanh toán, điều kiện hoàn cọc và chủ thể nhận tiền
+            trong tài liệu chính thức.
           </p>
         </div>
       </section>

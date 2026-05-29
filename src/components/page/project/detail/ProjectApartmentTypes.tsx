@@ -205,7 +205,8 @@ export default function ProjectApartmentTypes({ project }: Props) {
           <div>
             <p className="label-small text-[#C6A77D] mb-2">Chính Sách Thanh Toán Linh Hoạt</p>
             <p className="text-white font-light text-base leading-relaxed max-w-lg">
-              Thanh toán từ <strong className="text-[#C6A77D]">15%</strong> ký HĐMB — hỗ trợ vay ngân hàng lên đến <strong className="text-[#C6A77D]">70%</strong> giá trị căn hộ. Lãi suất ưu đãi 0% trong 24 tháng đầu.
+              Phương án thanh toán, hỗ trợ vay và ưu đãi lãi suất phụ thuộc chính sách từng dự án,
+              ngân hàng tài trợ và hồ sơ khách hàng tại thời điểm tư vấn.
             </p>
           </div>
           <a

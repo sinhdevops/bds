@@ -106,7 +106,7 @@ export const PROJECT_CATALOG: ProjectCatalogItem[] = [
     badge: "Dự án mới",
     segment: "urban",
     summary:
-      "Sun Solar Residence được truyền thông như một sản phẩm căn hộ đô thị của Sun Group tại Đà Nẵng, nhấn mạnh lợi thế kết nối trung tâm và khả năng khai thác dòng tiền.",
+      "Sun Solar Residence được truyền thông như một sản phẩm căn hộ đô thị tại Đà Nẵng, nhấn mạnh lợi thế kết nối trung tâm và khả năng khai thác dòng tiền.",
     contentFile: "sun-solar-residence.md",
     sourceNotes: ["sungroupsr.vn"],
   },

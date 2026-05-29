@@ -247,6 +247,26 @@ const LeadForm = memo(function LeadForm({
         <FiSend className="h-4 w-4" aria-hidden="true" />
       </button>
 
+      <label className="flex items-start gap-3 rounded-[4px] border border-white/10 bg-white/[0.04] px-4 py-3 text-left text-[0.68rem] font-medium leading-relaxed text-white/34">
+        <input
+          type="checkbox"
+          required
+          className="mt-0.5 h-4 w-4 shrink-0 rounded border-white/20 accent-[#C6A77D]"
+        />
+        <span>
+          Tôi đồng ý để BĐS Đà Nẵng sử dụng họ tên, số điện thoại và email nhằm liên hệ tư vấn theo{" "}
+          <a
+            href="/privacy-policy"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline text-white/45 hover:text-[#C6A77D] transition-colors"
+          >
+            Chính sách bảo mật
+          </a>
+          .
+        </span>
+      </label>
+
       {errorMessage ? (
         <p className="text-center text-xs font-semibold text-red-200">{errorMessage}</p>
       ) : null}
@@ -262,7 +282,7 @@ const LeadForm = memo(function LeadForm({
       <p className="text-center text-[0.68rem] font-medium text-white/30 leading-relaxed">
         Bằng cách gửi thông tin, bạn đồng ý với{" "}
         <a
-          href="/vi/privacy-policy"
+          href="/privacy-policy"
           target="_blank"
           rel="noopener noreferrer"
           className="underline text-white/45 hover:text-[#C6A77D] transition-colors"
