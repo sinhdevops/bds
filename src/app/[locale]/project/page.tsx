@@ -6,7 +6,7 @@ import { ROUTES, absoluteUrl, breadcrumbSchema, createMetadata, webPageSchema } 
 
 const title = "Dự Án Căn Hộ Cao Cấp Đà Nẵng - Ven Sông Hàn";
 const description =
-  "Danh mục dự án căn hộ cao cấp tại Đà Nẵng: Sun Symphony, Sun Ponte, Sun Cosmo, Sun Solar và Capital Square. So sánh vị trí, giá, tiến độ và tiềm năng đầu tư.";
+  "Danh mục dự án căn hộ tại Đà Nẵng: Sun Symphony, Sun Ponte, Sun Cosmo, Sun Solar và Capital Square. So sánh vị trí, giá tham khảo, tiến độ và thông tin cần xác minh trước giao dịch.";
 
 export const metadata: Metadata = createMetadata({
   title,

@@ -69,7 +69,7 @@ export const PROJECTS: Record<string, ProjectData> = {
     shortName: "Sun Symphony",
     tagline: "Khúc giao hưởng giữa lòng thành phố",
     description:
-      "Sun Symphony Residence là tổ hợp căn hộ hạng sang tọa lạc tại vị trí đắc địa nhất ven bờ Sông Hàn — cung đường Trần Hưng Đạo tỷ đô. Kiến trúc lấy cảm hứng từ những nhịp sóng âm nhạc, tạo nên bản nhạc kiến trúc sống động giữa lòng Đà Nẵng. Mỗi căn hộ là một không gian sống nghỉ dưỡng đẳng cấp với tầm nhìn toàn cảnh sông biển.",
+      "Sun Symphony Residence là tổ hợp căn hộ ven bờ Sông Hàn trên trục Trần Hưng Đạo. Thông tin về thiết kế, tầm nhìn và tiện ích cần được kiểm tra theo tài liệu dự án tại thời điểm tư vấn.",
     developer: "Theo hồ sơ dự án",
     distributor: "BĐS Đà Nẵng",
     status: "open",
@@ -217,11 +217,11 @@ export const PROJECTS: Record<string, ProjectData> = {
       { icon: "mountain", name: "Ngũ Hành Sơn", time: "20 phút", distance: "12km" },
     ],
     mapDescription:
-      "Sun Symphony Residence tọa lạc tại vị trí trung tâm nhất của Đà Nẵng — cung đường Trần Hưng Đạo ven Sông Hàn, kết nối thuận tiện đến mọi tiện ích đô thị đẳng cấp.",
+      "Sun Symphony Residence tọa lạc trên trục Trần Hưng Đạo ven Sông Hàn, kết nối thuận tiện đến các tiện ích đô thị trong khu vực.",
     seoTitle:
       "Sun Symphony Residence Đà Nẵng — Căn Hộ Hạng Sang Mặt Tiền Sông Hàn | BĐS Đà Nẵng",
     seoDesc:
-      "Mua căn hộ Sun Symphony Residence Đà Nẵng — tổ hợp 39 tầng mặt tiền Sông Hàn, Trần Hưng Đạo. Giá từ 2.1 tỷ. Hotline: 0352.787777.",
+      "Thông tin tham khảo Sun Symphony Residence Đà Nẵng. Giá cần xác minh theo mã căn và thời điểm tư vấn. Hotline: 0325.610016.",
   },
 
   "sun-ponte-residence": {
@@ -230,7 +230,7 @@ export const PROJECTS: Record<string, ProjectData> = {
     shortName: "Sun Ponte",
     tagline: "Kiệt tác sống bên Cầu Rồng huyền thoại",
     description:
-      "Sun Ponte Residence mang đến trải nghiệm sống độc bản tại Đà Nẵng — tầm nhìn trực diện Cầu Rồng biểu tượng và toàn cảnh Sông Hàn huyền ảo về đêm. Kiến trúc đương đại kết hợp nội thất hạng sang tạo nên không gian sống xứng tầm đẳng cấp quốc tế.",
+      "Sun Ponte Residence được giới thiệu với lợi thế gần khu vực Cầu Rồng và Sông Hàn. Thông tin tầm nhìn, thiết kế và nội thất cần kiểm tra theo từng mã căn và tài liệu dự án.",
     developer: "Theo hồ sơ dự án",
     distributor: "BĐS Đà Nẵng",
     status: "under-construction",
@@ -264,8 +264,8 @@ export const PROJECTS: Record<string, ProjectData> = {
     highlights: [
       {
         icon: "bridge",
-        title: "View Cầu Rồng Độc Quyền",
-        desc: "Vị trí duy nhất tại Đà Nẵng có tầm nhìn trực diện Cầu Rồng — biểu tượng phun lửa hàng đêm",
+        title: "View Cầu Rồng",
+        desc: "Một số căn có thể có tầm nhìn về khu vực Cầu Rồng, cần kiểm tra theo tầng, hướng và mã căn thực tế",
       },
       {
         icon: "luxury",
@@ -341,7 +341,7 @@ export const PROJECTS: Record<string, ProjectData> = {
       },
       {
         name: "Dragon View Lounge",
-        desc: "Lounge view độc quyền Cầu Rồng",
+        desc: "Lounge có hướng nhìn khu vực Cầu Rồng theo quy hoạch tiện ích dự án",
         image: "https://images.unsplash.com/photo-1560184897-ae75f418493e?w=600&q=85",
         span: "col-span-1",
       },
@@ -369,9 +369,9 @@ export const PROJECTS: Record<string, ProjectData> = {
     mapDescription:
       "Sun Ponte Residence tọa lạc ngay cạnh Cầu Rồng — trục kết nối trung tâm Đà Nẵng, dễ dàng di chuyển đến mọi điểm đến du lịch và thương mại của thành phố.",
     seoTitle:
-      "Sun Ponte Residence Đà Nẵng — Căn Hộ View Cầu Rồng Độc Quyền | BĐS Đà Nẵng",
+      "Sun Ponte Residence Đà Nẵng — Thông Tin Tham Khảo Căn Hộ View Cầu Rồng | BĐS Đà Nẵng",
     seoDesc:
-      "Mua căn hộ Sun Ponte Residence Đà Nẵng — tầm nhìn trực diện Cầu Rồng huyền thoại. Giá từ 3.5 tỷ. Hotline: 0352.787777.",
+      "Thông tin tham khảo Sun Ponte Residence Đà Nẵng. Giá cần xác minh theo mã căn và thời điểm tư vấn. Hotline: 0325.610016.",
   },
 
   "sun-cosmo-residence": {
@@ -520,7 +520,7 @@ export const PROJECTS: Record<string, ProjectData> = {
     seoTitle:
       "Sun Cosmo Residence Đà Nẵng — Căn Hộ Đã Bàn Giao View Sông Hàn & Ngũ Hành Sơn | BĐS Đà Nẵng",
     seoDesc:
-      "Mua căn hộ Sun Cosmo Residence — đã bàn giao, nhận nhà ngay. View Sông Hàn & Ngũ Hành Sơn. Giá từ 3 tỷ. Hotline: 0352.787777.",
+      "Thông tin tham khảo Sun Cosmo Residence. Giá cần xác minh theo mã căn và thời điểm tư vấn. Hotline: 0325.610016.",
   },
 };
 

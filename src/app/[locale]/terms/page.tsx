@@ -61,9 +61,9 @@ export default function TermsPage() {
           </h2>
           <p>
             Website cung cấp thông tin tham khảo về thị trường, dự án, giỏ hàng, chính sách bán hàng
-            và quy trình giao dịch bất động sản. Website không phải trang chính thức của bất kỳ chủ đầu tư
+            và quy trình giao dịch bất động sản. Website không phải trang của bất kỳ chủ đầu tư
             hoặc thương hiệu dự án nào. Mọi thông tin trước khi đặt cọc, thanh toán hoặc ký hợp đồng cần
-            được đối chiếu với tài liệu chính thức tại thời điểm giao dịch.
+            được đối chiếu với tài liệu có thẩm quyền tại thời điểm giao dịch.
           </p>
 
           <h2 className="font-serif text-2xl text-[#0B2545] font-semibold mt-4" style={{ fontFamily: "var(--font-serif)" }}>
@@ -71,8 +71,10 @@ export default function TermsPage() {
           </h2>
           <p>
             Nội dung trên website bao gồm văn bản, thiết kế, hình ảnh dự án và dữ liệu tham khảo thuộc
-            quyền sở hữu của BĐS Đà Nẵng hoặc được sử dụng cho mục đích thông tin, tư vấn và so sánh.
-            Mọi hành vi sao chép, phân phối hoặc tái xuất bản cần có sự đồng ý phù hợp.
+            quyền sở hữu của BĐS Đà Nẵng hoặc chủ sở hữu tương ứng. Tên thương hiệu, tên dự án,
+            phối cảnh, logo và hình ảnh dự án nếu được nhắc đến thuộc quyền của chủ sở hữu tương ứng.
+            Website chỉ sử dụng cho mục đích thông tin, tư vấn, tham khảo và không ngụ ý quan hệ sở hữu
+            hoặc đại diện nếu quan hệ đó không được công bố rõ.
           </p>
 
           <h2 className="font-serif text-2xl text-[#0B2545] font-semibold mt-4" style={{ fontFamily: "var(--font-serif)" }}>
@@ -103,7 +105,7 @@ export default function TermsPage() {
           <p>
             Website không yêu cầu khách hàng thanh toán trực tuyến trên trang. Trước mọi giao dịch, khách hàng
             nên kiểm tra pháp lý, mã căn, giá bán, chính sách thanh toán, điều kiện hoàn cọc và chủ thể nhận tiền
-            trong tài liệu chính thức.
+            trong tài liệu có thẩm quyền.
           </p>
         </div>
       </section>

@@ -10,6 +10,7 @@ import {
   INITIAL_LEAD_FORM,
   type LeadFormState,
 } from "@/lib/contact";
+import ComplianceDisclaimerBox, { FORM_DISCLOSURE_TEXT } from "@/components/shared/ComplianceDisclaimerBox";
 
 export const CONSULTATION_MODAL_EVENT = "open-consultation-modal";
 
@@ -238,6 +239,8 @@ const LeadForm = memo(function LeadForm({
         />
       </div>
 
+      <ComplianceDisclaimerBox variant="form" />
+
       <button
         type="submit"
         disabled={submitting}
@@ -254,7 +257,7 @@ const LeadForm = memo(function LeadForm({
           className="mt-0.5 h-4 w-4 shrink-0 rounded border-white/20 accent-[#C6A77D]"
         />
         <span>
-          Tôi đồng ý để BĐS Đà Nẵng sử dụng họ tên, số điện thoại và email nhằm liên hệ tư vấn theo{" "}
+          {FORM_DISCLOSURE_TEXT} Tôi đồng ý để BĐS Đà Nẵng/SRT Miền Trung sử dụng họ tên, số điện thoại và email nhằm liên hệ tư vấn theo{" "}
           <a
             href="/privacy-policy"
             target="_blank"
@@ -280,7 +283,7 @@ const LeadForm = memo(function LeadForm({
       </a>
 
       <p className="text-center text-[0.68rem] font-medium text-white/30 leading-relaxed">
-        Bằng cách gửi thông tin, bạn đồng ý với{" "}
+        Dữ liệu chỉ dùng để tư vấn theo nhu cầu đã gửi. Xem{" "}
         <a
           href="/privacy-policy"
           target="_blank"

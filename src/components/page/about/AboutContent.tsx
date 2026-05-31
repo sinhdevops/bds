@@ -34,7 +34,7 @@ const AboutContent = () => {
       {
         num: "01",
         title: "Tín Nghĩa Hàng Đầu",
-        desc: "Luôn đặt chữ Tín làm kim chỉ nam, cung cấp thông tin pháp lý dự án minh bạch và khuyến nghị khách hàng đối chiếu với tài liệu chính thức.",
+        desc: "Luôn đặt chữ Tín làm kim chỉ nam, cung cấp thông tin pháp lý dự án minh bạch và khuyến nghị khách hàng đối chiếu với tài liệu có thẩm quyền.",
       },
       {
         num: "02",
@@ -71,7 +71,7 @@ const AboutContent = () => {
               <em>phân phối bất động sản cao cấp</em>
             </h2>
             <p className="text-[#555555] text-base leading-[1.8] font-light mb-6">
-              BĐS Đà Nẵng là kênh tư vấn và phân phối bất động sản tại Đà Nẵng. Website không phải trang chính thức của bất kỳ chủ đầu tư hoặc thương hiệu dự án nào. Mọi thông tin về vị trí, giỏ hàng, chính sách và pháp lý chỉ mang tính tham khảo và cần được xác nhận lại trước giao dịch.
+              BĐS Đà Nẵng là kênh tư vấn và phân phối bất động sản tại Đà Nẵng. Website không phải trang của bất kỳ chủ đầu tư hoặc thương hiệu dự án nào. Mọi thông tin về vị trí, giỏ hàng, chính sách và pháp lý chỉ mang tính tham khảo và cần được xác nhận lại trước giao dịch.
             </p>
           </motion.div>
 

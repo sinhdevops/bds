@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import ComplianceDisclaimerBox, { FORM_DISCLOSURE_TEXT } from "@/components/shared/ComplianceDisclaimerBox";
+import { HOTLINE_DISPLAY } from "@/lib/contact";
 
 export default function CTASection() {
   const [form, setForm] = useState({ name: "", phone: "", email: "" });
@@ -76,13 +78,12 @@ export default function CTASection() {
               className="font-serif text-white font-light leading-[1.08] mb-5"
               style={{ fontSize: "clamp(1.75rem, 2.8vw, 2.75rem)" }}
             >
-              Sở hữu không gian sống đẳng cấp
+              Nhận thông tin dự án phù hợp
               <br />
               <em className="text-gold">bên bờ Sông Hàn</em>
             </h2>
             <p className="text-white/55 text-sm font-medium leading-[1.8] max-w-xs mb-8">
-              Đăng ký để nhận bảng giá, chính sách ưu đãi và thông tin mới nhất
-              từ dự án.
+              Đăng ký để nhận bảng giá và chính sách tham khảo tại thời điểm tư vấn.
             </p>
 
             <div className="flex items-center gap-8">
@@ -105,7 +106,7 @@ export default function CTASection() {
                   >
                     Tư vấn theo lịch hẹn
                   </span>
-                  <span className="text-gold text-lg">0352.787777</span>
+                  <span className="text-gold text-lg">{HOTLINE_DISPLAY}</span>
                 </div>
               </div>
 
@@ -176,6 +177,7 @@ export default function CTASection() {
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+                <ComplianceDisclaimerBox variant="form" />
                 {/* Mobile header */}
                 <div className="lg:hidden mb-4">
                   <div className="flex items-center gap-3 mb-4">
@@ -188,7 +190,7 @@ export default function CTASection() {
                     className="font-serif text-white text-2xl font-light"
                     style={{ fontFamily: "var(--font-serif)" }}
                   >
-                    Sở hữu không gian sống đẳng cấp
+                    Nhận thông tin dự án phù hợp
                     <br />
                     <em className="text-gold">bên bờ Sông Hàn</em>
                   </h2>
@@ -204,7 +206,7 @@ export default function CTASection() {
                   {
                     key: "phone",
                     label: "Số điện thoại",
-                    placeholder: "0352.787777",
+                    placeholder: HOTLINE_DISPLAY,
                     type: "tel",
                   },
                   {
@@ -248,7 +250,7 @@ export default function CTASection() {
                     className="mt-0.5 h-4 w-4 shrink-0 rounded border-white/20 accent-[#C6A77D]"
                   />
                   <span>
-                    Tôi đồng ý để BĐS Đà Nẵng sử dụng họ tên, số điện thoại và email nhằm liên hệ tư vấn theo{" "}
+                    {FORM_DISCLOSURE_TEXT} Tôi đồng ý để BĐS Đà Nẵng/SRT Miền Trung sử dụng họ tên, số điện thoại và email nhằm liên hệ tư vấn theo{" "}
                     <a
                       href="/privacy-policy"
                       target="_blank"

@@ -3,7 +3,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import type { ProjectData } from "@/lib/projects";
-import { CONTACT_EMAIL, CONTACT_EMAIL_HREF } from "@/lib/contact";
+import { CONTACT_EMAIL, CONTACT_EMAIL_HREF, HOTLINE_DISPLAY, HOTLINE_TEL } from "@/lib/contact";
+import ComplianceDisclaimerBox, { FORM_DISCLOSURE_TEXT } from "@/components/shared/ComplianceDisclaimerBox";
 
 interface Props {
   project: ProjectData;
@@ -93,7 +94,7 @@ export default function ProjectDetailCTA({ project }: Props) {
               transition={{ delay: 0.4 }}
               className="flex flex-col gap-5"
             >
-              <a href="tel:0352787777" className="flex items-center gap-4 group">
+              <a href={HOTLINE_TEL} className="flex items-center gap-4 group">
                 <div className="w-11 h-11 rounded-full border border-[#C6A77D]/30 flex items-center justify-center group-hover:bg-[#C6A77D]/10 transition-colors">
                   <svg viewBox="0 0 20 20" fill="none" stroke="#C6A77D" strokeWidth="1.3" className="w-4.5 h-4.5">
                     <path d="M15.9 12.9l-2.3.3c-.5.1-1 .3-1.3.8-.2.4-.5 1.5-3.8-1.8C5.2 8.9 6.3 8.6 6.7 8.4c.5-.3.7-.8.8-1.3l.3-2.3c.1-.5-.1-1-.4-1.4L6.2 2.3C5.8 1.8 5 1.6 4.4 2L2.6 3.3C2 3.7 1.7 4.5 1.9 5.2c.7 3.5 2.9 7 6 10.1s6.6 5.3 10.1 6c.7.1 1.5-.1 1.9-.7l1.3-1.8c.4-.6.2-1.4-.3-1.8l-1.1-1.2c-.4-.3-.9-.5-1.4-.4z" />
@@ -105,7 +106,7 @@ export default function ProjectDetailCTA({ project }: Props) {
                     className="font-serif text-2xl text-[#C6A77D] font-light"
                     style={{ fontFamily: "var(--font-serif)" }}
                   >
-                    0352.787777
+                    {HOTLINE_DISPLAY}
                   </span>
                 </div>
               </a>
@@ -191,7 +192,7 @@ export default function ProjectDetailCTA({ project }: Props) {
                       type="tel"
                       value={form.phone}
                       onChange={update("phone")}
-                      placeholder="0352.787777"
+                      placeholder={HOTLINE_DISPLAY}
                       required
                       className={inputCls}
                     />
@@ -232,6 +233,8 @@ export default function ProjectDetailCTA({ project }: Props) {
                   Đăng Ký Tư Vấn Ngay
                 </button>
 
+                <ComplianceDisclaimerBox variant="form" />
+
                 <label className="flex items-start gap-3 rounded-[4px] border border-white/10 bg-white/[0.04] px-4 py-3 text-left text-[10px] font-medium leading-relaxed text-white/35">
                   <input
                     type="checkbox"
@@ -239,7 +242,7 @@ export default function ProjectDetailCTA({ project }: Props) {
                     className="mt-0.5 h-4 w-4 shrink-0 rounded border-white/20 accent-[#C6A77D]"
                   />
                   <span>
-                    Tôi đồng ý để BĐS Đà Nẵng sử dụng thông tin đã gửi nhằm liên hệ tư vấn theo{" "}
+                    {FORM_DISCLOSURE_TEXT} Tôi đồng ý để BĐS Đà Nẵng/SRT Miền Trung sử dụng thông tin đã gửi nhằm liên hệ tư vấn theo{" "}
                     <a
                       href="/privacy-policy"
                       target="_blank"

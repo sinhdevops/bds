@@ -9,22 +9,21 @@ import {
   FiChevronLeft,
   FiChevronRight,
   FiCompass,
-  FiFacebook,
   FiGrid,
   FiHome,
-  FiInstagram,
   FiMenu,
   FiPlay,
   FiStar,
   FiX,
-  FiYoutube,
 } from "react-icons/fi";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import Footer from "@/components/layout/Footer";
 import { openConsultationModal } from "@/components/shared/ConsultationModal";
+import ComplianceDisclaimerBox, { FORM_DISCLOSURE_TEXT } from "@/components/shared/ComplianceDisclaimerBox";
 import type { ProjectCatalogItem } from "@/lib/projectCatalog";
 
 const img = "/images/projects/symphony5";
@@ -35,7 +34,7 @@ const navItems = [
   { label: "Tiện ích", href: "#tien-ich" },
   { label: "Mặt bằng", href: "#mat-bang" },
   { label: "Căn hộ mẫu", href: "#mat-bang" },
-  { label: "Chủ đầu tư", href: "#dang-ky" },
+  { label: "Thông tin CĐT", href: "#tong-quan" },
   { label: "Tin tức", href: "#dang-ky" },
 ];
 
@@ -48,11 +47,11 @@ const indicators = [
 ];
 
 const trustItems = [
-  { icon: FiGrid, title: "Vị trí kim cương", copy: "Mặt sông Hàn, đối diện trung tâm Hải Châu" },
-  { icon: FiCompass, title: "View triệu đô", copy: "Panorama sông Hàn - Cầu Rồng - pháo hoa DIFF" },
+  { icon: FiGrid, title: "Vị trí ven sông", copy: "Mặt sông Hàn, đối diện trung tâm Hải Châu" },
+  { icon: FiCompass, title: "Hướng nhìn nổi bật", copy: "Panorama sông Hàn - Cầu Rồng - pháo hoa DIFF" },
   { icon: FiStar, title: "Tháp cuối cùng", copy: "Tòa S5 - mảnh ghép hoàn thiện Sun Symphony Residence" },
   { icon: FiHome, title: "Sản phẩm đa dạng", copy: "Studio, 1PN, 2PN, 3PN đáp ứng mọi nhu cầu" },
-  { icon: FiBarChart2, title: "Tiềm năng vượt trội", copy: "Khu vực trung tâm, khan hiếm nguồn cung ven sông" },
+  { icon: FiBarChart2, title: "Góc nhìn tư vấn", copy: "Cần đánh giá theo giá vào, vận hành và nhu cầu thực tế" },
 ];
 
 const amenities = [
@@ -145,7 +144,7 @@ export default function SymphonyFiveLanding({ project }: { project: ProjectCatal
             <span className="font-serif text-[44px] leading-none text-[#D4B278]">S</span>
             <span className="leading-tight">
               <span className="block font-serif text-[18px] uppercase tracking-[0.07em] text-[#D4B278]">Sun Symphony 5</span>
-              <span className="block text-[9px] font-semibold uppercase tracking-[0.26em] text-[#D4B278]/72">BĐS Đà Nẵng phân phối</span>
+              <span className="block text-[9px] font-semibold uppercase tracking-[0.26em] text-[#D4B278]/72">BĐS Đà Nẵng tư vấn thông tin dự án</span>
             </span>
           </a>
 
@@ -203,7 +202,7 @@ export default function SymphonyFiveLanding({ project }: { project: ProjectCatal
               Bản giao hưởng bên sông Hàn
             </p>
             <p className="mt-7 max-w-[500px] text-[15px] leading-[1.9] text-white/70">
-              Sở hữu vị trí kim cương bên sông Hàn, đối diện trung tâm Hải Châu, nơi nhịp sống thành phố, ánh sáng mặt nước và giá trị tài sản cùng hội tụ.
+              Tìm hiểu vị trí ven sông Hàn, đối diện trung tâm Hải Châu và nhận tư vấn theo nhu cầu, ngân sách, khẩu vị tài chính/rủi ro.
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <button type="button" onClick={openConsultationModal} className={goldButton}>
@@ -213,6 +212,7 @@ export default function SymphonyFiveLanding({ project }: { project: ProjectCatal
                 Xem video <FiPlay className="h-4 w-4" />
               </a>
             </div>
+            <ComplianceDisclaimerBox variant="compact" className="mt-6 max-w-[620px]" />
           </motion.div>
 
           <div className="absolute right-6 top-1/2 hidden -translate-y-1/2 lg:block xl:right-16">
@@ -251,7 +251,7 @@ export default function SymphonyFiveLanding({ project }: { project: ProjectCatal
         <div className="relative z-10 mx-auto grid min-h-[540px] max-w-[1320px] gap-10 lg:grid-cols-[0.38fr_0.62fr] lg:items-end">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} variants={fadeUp} transition={{ duration: 0.7 }}>
             <p className="border-b border-[#D4B278]/55 pb-2 text-[13px] font-semibold uppercase tracking-[0.14em] text-[#D4B278]">
-              Vị trí độc tôn
+              Vị trí ven sông
             </p>
             <h2 className="mt-5 font-serif text-[42px] font-normal uppercase leading-[1.08] text-[#E0C48A] sm:text-[56px]">
               Trung tâm của trung tâm
@@ -278,7 +278,7 @@ export default function SymphonyFiveLanding({ project }: { project: ProjectCatal
         <div className="mx-auto max-w-[1320px]">
           <div className="mb-8 flex items-center justify-between gap-4">
             <h2 className="mx-auto font-serif text-[24px] font-normal uppercase tracking-[0.08em] text-[#F5F1E8] sm:text-[28px]">
-              Tiện ích chuẩn resort 5 sao
+              Tiện ích theo thông tin dự án
             </h2>
             <div className="hidden gap-3 sm:flex">
               <button type="button" className="symphony-prev flex h-10 w-10 items-center justify-center rounded-full border border-[#D4B278]/55 text-[#D4B278] transition hover:bg-[#D4B278] hover:text-[#07101F]" aria-label="Trước">
@@ -346,16 +346,16 @@ export default function SymphonyFiveLanding({ project }: { project: ProjectCatal
           <div className="relative z-10 grid gap-8 px-6 py-8 sm:px-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:px-12 lg:py-11">
             <div>
               <p className="inline-flex rounded-full border border-[#D4B278]/35 bg-[#D4B278]/10 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.14em] text-[#E0C48A]">
-                Giỏ hàng ưu tiên Symphony 5
+                Thông tin dự án Symphony 5
               </p>
               <h2 className="mt-5 max-w-[560px] font-serif text-[38px] font-normal uppercase leading-[1.02] text-white sm:text-[52px]">
-                Nhận bảng giá & chính sách mới nhất
+                Nhận thông tin bảng giá/chính sách tham khảo tại thời điểm tư vấn
               </h2>
               <p className="mt-5 max-w-[520px] text-[15px] leading-[1.8] text-white/72">
                 Để lại thông tin để nhận tư vấn hướng view, tầng đẹp và lịch thanh toán phù hợp ngân sách.
               </p>
               <div className="mt-6 flex flex-wrap gap-3 text-[12px] font-semibold text-white/72">
-                {["Bảng giá mới", "Chính sách bán hàng", "Tư vấn mã căn đẹp"].map((item) => (
+                {["Bảng giá tham khảo", "Chính sách cần xác minh", "Tư vấn mã căn phù hợp"].map((item) => (
                   <span key={item} className="rounded-full border border-white/12 bg-white/[0.06] px-4 py-2 backdrop-blur">
                     {item}
                   </span>
@@ -364,6 +364,7 @@ export default function SymphonyFiveLanding({ project }: { project: ProjectCatal
             </div>
 
             <form className="rounded-[12px] border border-white/12 bg-[#050B16]/72 p-4 shadow-[0_18px_70px_rgba(0,0,0,0.35)] backdrop-blur-xl sm:p-5" onSubmit={submitCta}>
+              <ComplianceDisclaimerBox variant="form" className="mb-4" />
               <div className="grid gap-3 sm:grid-cols-2">
                 <input name="name" className="h-13 rounded-[7px] border border-white/12 bg-white/[0.04] px-5 text-[14px] text-white outline-none transition placeholder:text-white/42 focus:border-[#D4B278]/75" placeholder="Họ và tên" required />
                 <input name="phone" type="tel" className="h-13 rounded-[7px] border border-white/12 bg-white/[0.04] px-5 text-[14px] text-white outline-none transition placeholder:text-white/42 focus:border-[#D4B278]/75" placeholder="Số điện thoại" required />
@@ -378,7 +379,7 @@ export default function SymphonyFiveLanding({ project }: { project: ProjectCatal
                   className="mt-0.5 h-4 w-4 shrink-0 rounded border-white/20 accent-[#D4B278]"
                 />
                 <span>
-                  Tôi đồng ý để BĐS Đà Nẵng sử dụng thông tin đã gửi nhằm liên hệ tư vấn theo{" "}
+                  {FORM_DISCLOSURE_TEXT} Tôi đồng ý để BĐS Đà Nẵng/SRT Miền Trung sử dụng thông tin đã gửi nhằm liên hệ tư vấn theo{" "}
                   <a href="/privacy-policy" target="_blank" rel="noopener noreferrer" className="underline text-white/58 hover:text-[#D4B278]">
                     Chính sách bảo mật
                   </a>
@@ -388,38 +389,14 @@ export default function SymphonyFiveLanding({ project }: { project: ProjectCatal
               {ctaSent ? <p className="mt-3 text-center text-[12px] font-semibold text-[#E0C48A]">Đã nhận thông tin. Chuyên viên sẽ liên hệ lại sớm.</p> : null}
               {ctaError ? <p className="mt-3 text-center text-[12px] font-semibold text-red-200">{ctaError}</p> : null}
               <p className="mt-3 text-center text-[11px] leading-[1.6] text-white/42">
-                Thông tin chỉ dùng để tư vấn dự án, không chia sẻ cho bên thứ ba.
+                Thông tin chỉ dùng để tư vấn dự án theo nhu cầu đã gửi, không bán dữ liệu cá nhân.
               </p>
             </form>
           </div>
         </div>
       </section>
 
-      <footer className="border-t border-white/10 px-5 py-7 sm:px-8 lg:px-16">
-        <div className="mx-auto flex max-w-[1320px] flex-col gap-6 md:flex-row md:items-center md:justify-between">
-          <a href="#hero" className="flex items-center gap-3">
-            <span className="font-serif text-[36px] leading-none text-[#D4B278]">S</span>
-            <span>
-              <span className="block font-serif text-[17px] uppercase tracking-[0.06em] text-[#D4B278]">Sun Symphony 5</span>
-              <span className="block text-[9px] font-semibold uppercase tracking-[0.24em] text-[#D4B278]/70">BĐS Đà Nẵng phân phối</span>
-            </span>
-          </a>
-          <nav className="flex flex-wrap gap-x-8 gap-y-3 text-[12px] text-white/58">
-            {navItems.map((item) => (
-              <a key={item.label} href={item.href} className="transition hover:text-[#D4B278]">
-                {item.label}
-              </a>
-            ))}
-          </nav>
-          <div className="flex gap-3">
-            {[FiFacebook, FiYoutube, FiInstagram].map((Icon, index) => (
-              <a key={index} href="#" className="flex h-9 w-9 items-center justify-center rounded-full border border-white/16 text-white/70 transition hover:border-[#D4B278] hover:text-[#D4B278]" aria-label="Social">
-                <Icon className="h-4 w-4" />
-              </a>
-            ))}
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </main>
   );
 }

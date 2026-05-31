@@ -4,10 +4,12 @@ import React, { memo, useCallback, useMemo, useState } from "react";
 import type { ChangeEvent, FormEvent } from "react";
 import { motion } from "framer-motion";
 import { FiCheck, FiSend } from "react-icons/fi";
+import ComplianceDisclaimerBox, { FORM_DISCLOSURE_TEXT } from "@/components/shared/ComplianceDisclaimerBox";
 import {
   CHANNEL_OPTIONS,
   CONTACT_CARDS,
   CONTACT_NOTES,
+  HOTLINE_DISPLAY,
   INITIAL_CONTACT_FORM,
   INTEREST_OPTIONS,
   PROJECT_OPTIONS,
@@ -40,7 +42,7 @@ const ContactFormSection = () => {
         label: "Số điện thoại",
         name: "phone" as const,
         value: formData.phone,
-        placeholder: "0352.787777",
+        placeholder: HOTLINE_DISPLAY,
         type: "tel",
         required: true,
       },
@@ -242,6 +244,7 @@ const ConsultationForm = memo(function ConsultationForm({
 }: ConsultationFormProps) {
   return (
     <form onSubmit={onSubmit} className="grid gap-6">
+      <ComplianceDisclaimerBox variant="form" />
       <div>
         <span className="label-small mb-3 block text-[#C6A77D]">Đăng ký tư vấn</span>
         <h3 className="font-serif text-2xl font-light text-white md:text-3xl">
@@ -302,8 +305,7 @@ const ConsultationForm = memo(function ConsultationForm({
           className="mt-0.5 h-4 w-4 shrink-0 rounded border-white/20 accent-[#C6A77D]"
         />
         <span>
-          Tôi đồng ý để BĐS Đà Nẵng sử dụng họ tên, số điện thoại và email nhằm liên hệ tư vấn theo
-          nhu cầu đã gửi, theo{" "}
+          {FORM_DISCLOSURE_TEXT} Tôi đồng ý để BĐS Đà Nẵng/SRT Miền Trung sử dụng họ tên, số điện thoại và email nhằm liên hệ tư vấn theo{" "}
           <a
             href="/privacy-policy"
             target="_blank"
@@ -321,7 +323,7 @@ const ConsultationForm = memo(function ConsultationForm({
       ) : null}
 
       <p className="text-center text-xs font-medium leading-relaxed text-white/34">
-        Thông tin của bạn chỉ dùng cho mục đích tư vấn dự án và chính sách bán hàng.{" "}
+        Thông tin của bạn chỉ dùng cho mục đích tư vấn dự án và chính sách bán hàng, không bán dữ liệu cá nhân.{" "}
         <a
           href="/privacy-policy"
           target="_blank"

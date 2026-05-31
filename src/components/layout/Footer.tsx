@@ -6,22 +6,19 @@ import {
   COMPANY_LEGAL_NAME,
   CONTACT_EMAIL,
   CONTACT_EMAIL_HREF,
+  HOTLINE_DISPLAY,
   HOTLINE_TEL,
   OFFICE_ADDRESS,
   TAX_CODE,
   ZALO_HREF,
 } from "@/lib/contact";
 
-const PROJECT_LINKS = [
-  { label: "Tòa Symphony", href: "/project" },
-  { label: "The River Villas", href: "/project" },
-  { label: "Tòa Danube", href: "/project" },
-];
-
 const INFO_LINKS = [
-  { label: "Về tôi", href: "/about" },
-  { label: "Chính sách", href: "/sales-policy" },
-  { label: "FAQ", href: "/legal" },
+  { label: "Liên hệ", href: "/contact" },
+  { label: "Về chúng tôi", href: "/about" },
+  { label: "Pháp lý", href: "/legal" },
+  { label: "Chính sách bảo mật", href: "/privacy-policy" },
+  { label: "Điều khoản", href: "/terms" },
 ];
 
 const SOCIALS = [
@@ -72,7 +69,7 @@ export default function Footer() {
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C6A77D]/30 to-transparent" />
 
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12 py-14 lg:py-18">
-        <div className="grid grid-cols-2 lg:grid-cols-[1fr_150px_150px_220px] gap-10 lg:gap-14 mb-12">
+        <div className="grid grid-cols-2 lg:grid-cols-[1fr_220px_260px] gap-10 lg:gap-14 mb-12">
 
           {/* Brand */}
           <div className="col-span-2 lg:col-span-1">
@@ -86,11 +83,12 @@ export default function Footer() {
               />
             </div>
             <p className="text-white/35 text-sm font-light leading-relaxed max-w-xs mb-3">
-              Kênh tư vấn và phân phối bất động sản tại Đà Nẵng thuộc {COMPANY_LEGAL_NAME}.
+              BĐS Đà Nẵng là website tư vấn bất động sản được vận hành bởi nhân viên kinh doanh
+              thuộc SRT Miền Trung.
             </p>
             <p className="text-white/20 text-xs font-light leading-relaxed max-w-xs mb-5">
-              Website không phải trang chính thức của chủ đầu tư. Thông tin dự án, giá và chính sách
-              cần được xác nhận lại theo tài liệu chính thức tại thời điểm giao dịch.
+              {COMPANY_LEGAL_NAME}. Website: bds-da-nang.com. Không phải website chính thức của
+              Sun Group/chủ đầu tư. Thông tin dự án, giá và chính sách cần được xác nhận lại trước giao dịch.
             </p>
             <div className="flex items-start gap-2">
               <svg viewBox="0 0 16 20" fill="none" stroke="#C6A77D" strokeWidth="1.2" className="w-3.5 h-4.5 mt-0.5 shrink-0">
@@ -104,23 +102,6 @@ export default function Footer() {
             <p className="mt-3 text-white/35 text-xs font-light leading-relaxed">MST: {TAX_CODE}</p>
           </div>
 
-          {/* Dự Án */}
-          <div>
-            <p className="label-small text-[#555555] mb-5 font-semibold">Dự Án</p>
-            <ul className="flex flex-col gap-3">
-              {PROJECT_LINKS.map((link, i) => (
-                <li key={i}>
-                  <Link
-                    href={link.href as "/project"}
-                    className="text-sm text-white/45 font-light hover:text-[#C6A77D] transition-colors duration-300"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
           {/* Thông Tin */}
           <div>
             <p className="label-small text-[#555555] mb-5 font-semibold">Thông Tin</p>
@@ -128,7 +109,7 @@ export default function Footer() {
               {INFO_LINKS.map((link) => (
                 <li key={link.href}>
                   <Link
-                    href={link.href as "/about" | "/sales-policy" | "/legal"}
+                    href={link.href as "/contact" | "/about" | "/legal" | "/privacy-policy" | "/terms"}
                     className="text-sm text-white/45 font-light hover:text-[#C6A77D] transition-colors duration-300"
                   >
                     {link.label}
@@ -143,13 +124,13 @@ export default function Footer() {
             <p className="label-small text-[#555555] mb-5 font-semibold">Liên Hệ</p>
             <div className="flex flex-col gap-3 mb-5">
               <a
-                href="tel:0352787777"
+                href={HOTLINE_TEL}
                 className="flex items-center gap-2 text-white/50 hover:text-[#C6A77D] transition-colors duration-300"
               >
                 <svg viewBox="0 0 16 16" fill="none" stroke="#C6A77D" strokeWidth="1.2" className="w-3.5 h-3.5 shrink-0">
                   <path d="M13 10.7l-1.9.2c-.4 0-.8.3-1 .6-.2.3-.4 1.2-3.1-1.5C4.4 7.3 5.3 7 5.5 6.7c.3-.3.5-.6.6-1l.2-1.9c0-.4-.1-.8-.3-1.1L5.2 1.9c-.3-.4-.9-.5-1.4-.2L2.3 2.7C1.7 3 1.5 3.7 1.7 4.3c.6 2.8 2.3 5.6 4.8 8.1 2.5 2.5 5.3 4.2 8.1 4.8.6.1 1.3-.1 1.6-.6l1.1-1.5c.3-.5.2-1.1-.2-1.4l-.9-1c-.3-.2-.7-.4-1.2-.3z" />
                 </svg>
-                <span className="text-sm font-medium">0352.787777</span>
+                <span className="text-sm font-medium">{HOTLINE_DISPLAY}</span>
               </a>
               <a
                 href={CONTACT_EMAIL_HREF}

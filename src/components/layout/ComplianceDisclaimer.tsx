@@ -5,15 +5,14 @@ export default function ComplianceDisclaimer() {
     <section className="border-t border-[#E5E0D8] bg-[#F8F5F0] px-6 py-5 text-[#555555] lg:px-12">
       <div className="mx-auto max-w-[1400px] text-xs font-medium leading-relaxed">
         <p>
-          BĐS Đà Nẵng là kênh thông tin và tư vấn phân phối bất động sản thuộc {COMPANY_LEGAL_NAME}.
-          Website này không phải website chính thức của bất kỳ chủ đầu tư hay thương hiệu dự án nào.
-          Tên dự án, thương hiệu và hình ảnh nếu được nhắc đến chỉ nhằm mục đích tham khảo, so sánh
-          và tư vấn theo nhu cầu của khách hàng.
+          BĐS Đà Nẵng (bds-da-nang.com) là website tư vấn bất động sản được vận hành bởi nhân viên
+          kinh doanh thuộc {COMPANY_LEGAL_NAME}, MST {TAX_CODE}. Website không phải trang của Sun Group,
+          chủ đầu tư hoặc bất kỳ thương hiệu dự án nào.
         </p>
         <p className="mt-2">
-          Thông tin giá bán, giỏ hàng, chính sách, pháp lý và tiến độ có thể thay đổi theo thời
-          điểm. Khách hàng nên kiểm tra tài liệu chính thức trước khi đặt cọc hoặc giao dịch. Liên
-          hệ: {HOTLINE_DISPLAY} - {CONTACT_EMAIL} - {OFFICE_ADDRESS}. MST: {TAX_CODE}.
+          Thông tin giá bán, giỏ hàng, chính sách, pháp lý và tiến độ chỉ mang tính tham khảo, có thể
+          thay đổi theo từng thời điểm và cần đối chiếu với tài liệu của chủ thể có thẩm quyền trước
+          khi giao dịch. Liên hệ: {HOTLINE_DISPLAY} - {CONTACT_EMAIL} - {OFFICE_ADDRESS}.
         </p>
       </div>
     </section>

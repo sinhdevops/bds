@@ -8,9 +8,7 @@ import MarkdownProjectPage from "@/components/page/project/MarkdownProjectPage";
 import FoursTowerLanding from "@/components/page/project/FoursTowerLanding";
 import SymphonyFiveLanding from "@/components/page/project/SymphonyFiveLanding";
 import {
-  HOTLINE_E164,
   ROUTES,
-  SITE_NAME,
   SITE_URL,
   absoluteUrl,
   breadcrumbSchema,
@@ -34,14 +32,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const project = getCatalogProject(slug);
   if (!project) return { title: "Dự án không tồn tại", robots: { index: false, follow: false } };
 
-  const priceText = project.priceFrom ? `Giá từ ${project.priceFrom} tỷ` : "Nhận bảng giá mới nhất";
+  const priceText = project.priceFrom ? `Giá tham khảo từ ${project.priceFrom} tỷ` : "Nhận thông tin giá tham khảo";
   const isFoursTower = project.slug === "fours-tower-da-nang";
   const title = isFoursTower
-    ? "FourS Tower Đà Nẵng | Căn Hộ View Biển Mỹ Khê Cao Cấp"
+    ? "FourS Tower Đà Nẵng | Thông tin tư vấn căn hộ tham khảo"
     : `${project.name} - ${priceText} | BĐS Đà Nẵng`;
   const description = isFoursTower
-    ? "Khám phá FourS Tower Đà Nẵng - căn hộ cao cấp view biển Mỹ Khê, vị trí trung tâm Sơn Trà, tiện ích chuẩn resort, phù hợp an cư và đầu tư."
-    : `${project.name} tại ${project.location}. ${priceText}, cập nhật giỏ hàng, chính sách bán hàng và lịch xem nhà qua hotline 0352.787777.`;
+    ? "Thông tin tư vấn tham khảo về FourS Tower Đà Nẵng. Website không phải trang của chủ đầu tư; giá, giỏ hàng và chính sách cần xác minh tại thời điểm tư vấn."
+    : `${project.name} tại ${project.location}. ${priceText}, cập nhật thông tin dự án, chính sách bán hàng tham khảo và lịch xem nhà qua hotline 0325.610016.`;
 
   return createMetadata({
     title,
@@ -62,14 +60,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 function buildProjectSchemas(project: NonNullable<ReturnType<typeof getCatalogProject>>) {
   const pageUrl = projectUrl(project.slug);
-  const price = project.priceFrom
-    ? {
-        "@type": "PriceSpecification",
-        priceCurrency: "VND",
-        minPrice: project.priceFrom * 1000000000,
-      }
-    : undefined;
-
   return [
     webPageSchema({
       id: `${pageUrl}/#webpage`,
@@ -84,37 +74,15 @@ function buildProjectSchemas(project: NonNullable<ReturnType<typeof getCatalogPr
     ]),
     {
       "@context": "https://schema.org",
-      "@type": "ApartmentComplex",
-      "@id": `${pageUrl}/#project`,
-      name: project.name,
-      description: project.summary,
+      "@type": "Service",
+      "@id": `${pageUrl}/#consulting-service`,
+      name: `Tư vấn thông tin ${project.name}`,
+      serviceType: "Real estate consulting",
+      description: `${project.summary} Thông tin do website tư vấn bất động sản tổng hợp, không phải website của chủ đầu tư.`,
       url: pageUrl,
-      image: absoluteUrl(project.heroImage),
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: project.address,
-        addressLocality: "Đà Nẵng",
-        addressRegion: "Đà Nẵng",
-        addressCountry: "VN",
-      },
-      amenityFeature: project.views.map((view) => ({
-        "@type": "LocationFeatureSpecification",
-        name: `View ${view}`,
-        value: true,
-      })),
-      offers: {
-        "@type": "Offer",
-        availability: "https://schema.org/InStock",
-        url: pageUrl,
-        seller: { "@id": `${SITE_URL}/#organization` },
-        priceSpecification: price,
-      },
-      seller: {
-        "@type": "RealEstateAgent",
-        name: SITE_NAME,
-        telephone: HOTLINE_E164,
-        url: SITE_URL,
-      },
+      provider: { "@id": `${SITE_URL}/#organization` },
+      areaServed: "Đà Nẵng",
+      subjectOf: { "@id": `${pageUrl}/#webpage` },
     },
   ];
 }

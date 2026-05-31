@@ -1,5 +1,6 @@
 ﻿import type { Metadata } from "next";
 import InfoPageLayout from "@/components/page/info/InfoPageLayout";
+import { HOTLINE_TEL } from "@/lib/contact";
 import { ROUTES, absoluteUrl, breadcrumbSchema, createMetadata, webPageSchema } from "@/lib/seo";
 
 const title = "FAQ & Pháp Lý Dự Án Căn Hộ Đà Nẵng";
@@ -21,7 +22,7 @@ export const metadata: Metadata = createMetadata({
 const FAQS = [
   {
     q: "Các dự án có pháp lý đầy đủ không?",
-    a: "Trước khi tư vấn giữ chỗ hoặc đặt cọc, đội ngũ sẽ cung cấp thông tin pháp lý theo từng dự án: quy hoạch, điều kiện bán hàng, hồ sơ chủ đầu tư và các tài liệu liên quan nếu khách hàng yêu cầu.",
+    a: "Thông tin pháp lý trên website chỉ mang tính tham khảo. Trước khi giữ chỗ hoặc đặt cọc, khách hàng nên đối chiếu quy hoạch, điều kiện bán hàng, hồ sơ chủ đầu tư, ngân hàng và tài liệu có thẩm quyền theo từng dự án.",
   },
   {
     q: "Khách ở xa có thể mua và làm việc online không?",
@@ -29,15 +30,19 @@ const FAQS = [
   },
   {
     q: "Khi nào cần đặt cọc?",
-    a: "Chỉ nên đặt cọc sau khi đã xác nhận mã căn, tầng, hướng view, giá bán, chính sách thanh toán và điều kiện hoàn hoặc khấu trừ cọc nếu có.",
+    a: "Chỉ nên đặt cọc sau khi đã tự kiểm tra hồ sơ pháp lý, xác nhận mã căn, tầng, hướng view, giá bán, chính sách thanh toán, chủ thể nhận tiền và điều kiện hoàn hoặc khấu trừ cọc nếu có.",
   },
   {
     q: "Có hỗ trợ vay ngân hàng không?",
-    a: "Tùy dự án và thời điểm mở bán, khách hàng có thể được tư vấn phương án vay, tỷ lệ vay, hồ sơ cần chuẩn bị và thời gian xét duyệt.",
+    a: "Đội ngũ chỉ hỗ trợ thông tin tư vấn ban đầu. Website không thay chủ đầu tư hoặc ngân hàng xác nhận tỷ lệ vay, lãi suất, thời gian phê duyệt hoặc điều kiện giải ngân.",
   },
   {
     q: "Thông tin trên website có phải giá cuối cùng không?",
     a: "Không. Giá trên website là thông tin tham khảo. Bảng giá chính xác phụ thuộc mã căn, tầng, view, chính sách hiện hành và tình trạng giỏ hàng tại thời điểm tư vấn.",
+  },
+  {
+    q: "Website có thu tiền đặt cọc hoặc thanh toán trực tuyến không?",
+    a: "Không. Website chỉ thu thông tin liên hệ để tư vấn qua điện thoại/Zalo và không yêu cầu khách hàng thanh toán trực tuyến. Mọi giao dịch cần thực hiện với đúng chủ thể được nêu trong tài liệu có thẩm quyền.",
   },
 ];
 
@@ -107,7 +112,7 @@ export default function LegalPage() {
               Chúng tôi có thể gửi danh sách tài liệu cần kiểm tra theo từng dự án và từng giai đoạn giao dịch.
             </p>
             <a
-              href="tel:0352787777"
+              href={HOTLINE_TEL}
               className="mt-6 inline-flex w-full justify-center rounded-[3px] bg-[#C6A77D] px-5 py-3 label-small font-bold text-white transition-colors hover:bg-[#071522]"
             >
               Gọi tư vấn pháp lý

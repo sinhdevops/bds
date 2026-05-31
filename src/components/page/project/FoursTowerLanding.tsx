@@ -45,6 +45,7 @@ import {
 import { SiZalo } from "react-icons/si";
 import type { IconType } from "react-icons";
 import Footer from "@/components/layout/Footer";
+import ComplianceDisclaimerBox, { FORM_DISCLOSURE_TEXT } from "@/components/shared/ComplianceDisclaimerBox";
 import type { ProjectCatalogItem } from "@/lib/projectCatalog";
 import { HOTLINE_DISPLAY, HOTLINE_TEL, ZALO_HREF } from "@/lib/contact";
 import "swiper/css";
@@ -160,13 +161,13 @@ const buyingReasons = [
   {
     icon: FiShield,
     image: "/images/projects/sun-symphony-tower.jpg",
-    title: ["Căn hộ sở hữu", "lâu dài hiếm dần"],
+    title: ["Pháp lý", "cần xác minh"],
     copy: "Đặc biệt tại khu ven sông, quy hoạch lớn và pháp lý rõ.",
   },
   {
     icon: FiCheckCircle,
     image: "/images/projects/fours/fours-banner.webp",
-    title: ["Chính sách kéo giãn dòng", "tiền mạnh"],
+    title: ["Chính sách thanh toán", "cần xác minh"],
     copy: "Hỗ trợ vay và ân hạn giúp khách dễ dàng xuống tiền.",
   },
 ];
@@ -175,7 +176,7 @@ const comparisonRows: [IconType, string, string, string][] = [
   [FiMapPin, "Thông tin dự án", "Theo hồ sơ công bố", "Cần kiểm tra riêng"],
   [FiShield, "Pháp lý", "Sở hữu lâu dài", "Thường chỉ 50 năm"],
   [FiLayers, "Hạ tầng", "Quy hoạch đồng bộ, hiện đại", "Hạ tầng cũ, manh mún"],
-  [FiBarChart2, "Tiềm năng tăng giá", "Phụ thuộc thị trường", "Cần so sánh riêng"],
+  [FiBarChart2, "Góc nhìn đầu tư", "Phụ thuộc thị trường", "Cần so sánh riêng"],
   [FiUsers, "Công viên / sông", "Công viên, sông, tiện ích đa dạng", "Ít tiện ích, không gian hạn chế"],
 ];
 
@@ -253,7 +254,7 @@ export default function FoursTowerLanding({ project }: { project: ProjectCatalog
           interest: need,
           channel: "Gọi điện/Zalo",
           source: window.location.href,
-          message: "Nhận giỏ hàng nội bộ FourS Tower",
+          message: "Nhận thông tin giỏ hàng tham khảo FourS Tower",
         }),
       });
 
@@ -261,7 +262,7 @@ export default function FoursTowerLanding({ project }: { project: ProjectCatalog
       setSent(true);
       event.currentTarget.reset();
     } catch {
-      setError("Chưa gửi được form. Anh/chị có thể gọi hoặc nhắn Zalo để nhận giỏ hàng ngay.");
+      setError("Chưa gửi được form. Anh/chị có thể gọi hoặc nhắn Zalo để nhận thông tin tham khảo.");
     } finally {
       setSubmitting(false);
     }
@@ -269,15 +270,10 @@ export default function FoursTowerLanding({ project }: { project: ProjectCatalog
 
   return (
     <main className="min-h-screen overflow-hidden bg-[#020812] text-white">
-      {/* Broker disclaimer — required for ad policy compliance */}
-      <div className="relative z-[60] w-full bg-[#0a1a2e] border-b border-[#F5B24D]/20 px-4 py-2.5 text-center">
-        <p className="text-[0.7rem] font-medium text-white/60 leading-relaxed">
-          <span className="text-[#F5B24D] font-semibold">BĐS Đà Nẵng</span> là kênh tư vấn và phân phối bất động sản, không phải trang chính thức của chủ đầu tư hoặc thương hiệu dự án.
-          Thông tin dự án chỉ mang tính tham khảo. Giá và chính sách cần xác nhận theo tài liệu chính thức.{" "}
-          <a href="/privacy-policy" target="_blank" rel="noopener noreferrer" className="underline text-white/50 hover:text-[#F5B24D] transition-colors">
-            Chính sách bảo mật
-          </a>
-        </p>
+      <div className="relative z-[60] w-full bg-[#0a1a2e] px-4 py-3">
+        <div className="mx-auto max-w-[1480px]">
+          <ComplianceDisclaimerBox variant="compact" />
+        </div>
       </div>
       <FoursHeader />
 
@@ -309,14 +305,14 @@ export default function FoursTowerLanding({ project }: { project: ProjectCatalog
             <h1 className="mt-5 max-w-[980px] text-[2rem] font-bold uppercase leading-none tracking-normal text-[#F3F5F8] drop-shadow-[0_10px_28px_rgba(0,0,0,0.48)] sm:text-[2.85rem] lg:text-[3.35rem] xl:text-[3.6rem]">
               <span className="block py-1 leading-[1.12] lg:whitespace-nowrap">Căn hộ view biển Mỹ Khê</span>
               <span className="block py-1 leading-[1.12] bg-linear-to-b from-[#FFCC73] via-[#F5B24D] to-[#D88A1D] bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(245,178,77,0.35)] lg:whitespace-nowrap">
-                Khẳng định đẳng cấp
+                Thông tin tham khảo
               </span>
             </h1>
 
             <div className="mt-5 h-px w-full max-w-[650px] bg-linear-to-r from-transparent via-[#F5B24D]/90 to-transparent shadow-[0_0_30px_rgba(245,178,77,0.35),0_0_80px_rgba(245,178,77,0.12)]" />
 
             <p className="mt-5 max-w-[640px] text-sm font-medium leading-[1.7] text-[#F3F5F8]/85 sm:text-lg">
-              FourS Tower sở hữu vị trí vàng bên bờ biển Mỹ Khê, mang đến tầm nhìn panorama tuyệt mỹ và tiềm năng đầu tư vượt trội.
+              FourS Tower có lợi thế gần biển Mỹ Khê; thông tin đầu tư cần đánh giá theo thị trường, giá vào, phương án vận hành và nhu cầu thực tế.
             </p>
 
             <div className="mt-6 grid max-w-[640px] grid-cols-2 gap-3 sm:grid-cols-4">
@@ -366,7 +362,7 @@ export default function FoursTowerLanding({ project }: { project: ProjectCatalog
           <div className="absolute bottom-[160px] right-6 hidden max-w-[235px] items-center gap-3 rounded-[14px] bg-[#091B34]/90 px-5 py-4 shadow-[0_0_30px_rgba(245,178,77,0.35),0_22px_50px_rgba(0,0,0,0.42)] backdrop-blur-xl lg:flex">
             <FiMapPin className="h-8 w-8 shrink-0 text-[#F5B24D]" />
             <p className="text-[0.64rem] font-black uppercase leading-5 tracking-[0.04em] text-[#F3F5F8]">
-              Vị trí kim cương
+              Vị trí ven biển
               <span className="block text-[#F3F5F8]/86">Mặt tiền Trần Hưng Đạo</span>
               <span className="block text-[#F3F5F8]/86">View biển Mỹ Khê</span>
             </p>
@@ -406,7 +402,7 @@ export default function FoursTowerLanding({ project }: { project: ProjectCatalog
       <section id="chinh-sach" className="px-5 pb-24 pt-12 sm:px-8 lg:px-10 lg:pb-18">
         <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="rounded-[20px] border border-[#F5C76A]/14 bg-white/[0.035] p-6 shadow-[0_24px_70px_rgba(0,0,0,0.28)] lg:p-10">
-            <SectionTitle eyebrow="Giá bán căn hộ FourS mới nhất" title="Bảng giá FourS Tower và chính sách dòng tiền hiện tại" align="left" />
+            <SectionTitle eyebrow="Giá bán tham khảo tại thời điểm tư vấn" title="Bảng giá FourS Tower và chính sách cần xác minh theo từng mã căn" align="left" />
             <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
               {policies.map(([label, value, meta]) => (
                 <div key={label} className="rounded-[16px] border border-[#F5C76A]/18 bg-linear-to-b from-[#F5C76A]/18 to-white/[0.035] p-5 text-center shadow-[0_0_30px_rgba(245,199,106,0.08)]">
@@ -416,11 +412,12 @@ export default function FoursTowerLanding({ project }: { project: ProjectCatalog
                 </div>
               ))}
             </div>
-            <p className="mt-7 text-sm font-semibold text-[#FFE7AA]">Thông tin chính sách mang tính tham khảo, cần xác nhận lại theo tài liệu chính thức.</p>
-            <p className="mt-2 text-xs text-white/40">BĐS Đà Nẵng là kênh tư vấn và phân phối bất động sản, không phải trang chính thức của chủ đầu tư.</p>
+            <p className="mt-7 text-sm font-semibold text-[#FFE7AA]">Thông tin chính sách mang tính tham khảo, cần xác nhận lại theo tài liệu có thẩm quyền.</p>
+            <p className="mt-2 text-xs text-white/40">BĐS Đà Nẵng là kênh tư vấn bất động sản, không phải website của chủ đầu tư.</p>
           </div>
 
           <form id="form" onSubmit={submitLead} className="rounded-[20px] border border-[#F5C76A]/18 bg-[#07131f]/78 p-6 shadow-[0_24px_70px_rgba(0,0,0,0.34)] backdrop-blur-xl lg:p-10">
+            <ComplianceDisclaimerBox variant="form" className="mb-5" />
             <p className="text-center text-[0.72rem] font-bold uppercase tracking-[0.2em] text-[#F5C76A]">Đăng ký nhận thông tin dự án</p>
             <h2 className="mt-3 text-center text-3xl font-black uppercase leading-tight text-white">Tư vấn miễn phí về FourS Tower Đà Nẵng</h2>
             <div className="mt-7 grid gap-4">
@@ -461,7 +458,7 @@ export default function FoursTowerLanding({ project }: { project: ProjectCatalog
                 className="mt-0.5 h-4 w-4 shrink-0 rounded border-white/20 accent-[#F5C76A]"
               />
               <span>
-                Tôi đồng ý để BĐS Đà Nẵng sử dụng thông tin đã gửi nhằm liên hệ tư vấn theo{" "}
+                {FORM_DISCLOSURE_TEXT} Tôi đồng ý để BĐS Đà Nẵng/SRT Miền Trung sử dụng thông tin đã gửi nhằm liên hệ tư vấn theo{" "}
                 <a
                   href="/privacy-policy"
                   target="_blank"
@@ -475,7 +472,7 @@ export default function FoursTowerLanding({ project }: { project: ProjectCatalog
             </label>
             {error ? <p className="mt-4 text-center text-xs font-semibold text-red-200">{error}</p> : null}
             <p className="mt-4 text-center text-xs font-medium text-white/42">
-              Thông tin chỉ dùng để tư vấn dự án theo yêu cầu của bạn.{" "}
+              Thông tin chỉ dùng để tư vấn dự án theo yêu cầu của bạn, không bán dữ liệu cá nhân.{" "}
               <a
                 href="/privacy-policy"
                 target="_blank"
@@ -496,7 +493,7 @@ export default function FoursTowerLanding({ project }: { project: ProjectCatalog
         href={ZALO_HREF}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Nhắn Zalo nhận giỏ hàng FourS"
+        aria-label="Nhắn Zalo nhận thông tin tham khảo FourS"
         className="fixed bottom-24 right-4 z-50 flex h-13 w-13 items-center justify-center rounded-full bg-[#0068FF] text-white shadow-[0_0_28px_rgba(0,104,255,0.42)] lg:bottom-7 lg:right-7"
       >
         <SiZalo className="h-6 w-6" />
@@ -766,7 +763,7 @@ function ResortAmenitiesSection() {
             <span className="h-px w-12 bg-linear-to-l from-transparent to-[#F5B24D]" />
           </div>
           <h2 className="mt-5 text-[2rem] font-black uppercase leading-[1.08] tracking-[-0.02em] text-[#F3F5F8] sm:text-[3.35rem] lg:text-[4rem]">
-            <span className="block py-1">Không gian sống đẳng cấp</span>
+            <span className="block py-1">Không gian sống tiện nghi</span>
             <span className="block bg-linear-to-b from-[#FFCC73] via-[#F5B24D] to-[#D88A1D] bg-clip-text py-1 text-transparent drop-shadow-[0_0_30px_rgba(245,178,77,0.35)]">
               Cho căn hộ cao cấp Đà Nẵng
             </span>
@@ -970,8 +967,8 @@ function FeaturedHotUnit({ unit, onOpen }: { unit: HotUnit; onOpen: (unit: HotUn
           <FiMapPin className="absolute left-1/2 top-[44%] h-10 w-10 -translate-x-1/2 -translate-y-1/2 fill-[#F5B24D] text-[#F5B24D] drop-shadow-[0_6px_18px_rgba(0,0,0,0.55)]" />
           <div className="absolute bottom-9 right-4 flex h-[86px] w-[86px] rotate-[-8deg] flex-col items-center justify-center rounded-full border border-[#F5B24D]/72 bg-[#091B34]/88 text-center text-[0.56rem] font-black uppercase leading-tight text-[#FFCC73] shadow-[0_0_28px_rgba(245,178,77,0.62),inset_0_0_20px_rgba(245,178,77,0.08)]">
             <FiAward className="mb-1 h-5 w-5" />
-            Hiếm nhất<br />giỏ hàng
-            <span className="mt-1 tracking-[0.14em]">★★★★★</span>
+            Số lượng<br />có thể đổi
+            <span className="mt-1 text-[0.42rem] tracking-normal">Theo từng thời điểm</span>
           </div>
         </div>
       </div>
@@ -1113,7 +1110,7 @@ function UnitLayoutModal({ unit, onClose }: { unit: HotUnit; onClose: () => void
               Nhận layout qua Zalo
             </a>
             <a href="#form" onClick={onClose} className="inline-flex h-10 items-center justify-center rounded-[8px] border border-white/12 text-[0.68rem] font-black uppercase text-white/82 transition-colors hover:border-white/34 hover:text-white sm:h-11 sm:text-xs">
-              Nhận bảng giá & chính sách
+              Nhận thông tin tham khảo
             </a>
           </div>
         </aside>
@@ -1156,7 +1153,7 @@ function FeaturedUnit({ unit }: { unit: (typeof hotUnits)[number] }) {
           <Image src={unit.image} alt={`Layout căn ${unit.code}`} fill className="object-cover" sizes="(max-width: 1024px) 100vw, 40vw" />
           <div className="absolute inset-0 bg-linear-to-t from-[#020812]/65 to-transparent" />
           <div className="absolute bottom-5 right-5 flex h-24 w-24 items-center justify-center rounded-full border border-[#F5C76A]/58 bg-[#3A240A]/70 text-center text-[0.64rem] font-black uppercase leading-tight text-[#FFE7AA] shadow-[0_0_35px_rgba(245,199,106,0.35)]">
-            Đẹp nhất<br />giỏ hàng
+            Phù hợp<br />nhu cầu
           </div>
         </div>
       </div>

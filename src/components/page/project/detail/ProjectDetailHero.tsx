@@ -7,6 +7,7 @@ import { Link } from "@/i18n/navigation";
 import type { ProjectData } from "@/lib/projects";
 import { STATUS_CONFIG } from "@/lib/projects";
 import { openConsultationModal } from "@/components/shared/ConsultationModal";
+import { HOTLINE_DISPLAY, HOTLINE_TEL } from "@/lib/contact";
 
 interface Props {
   project: ProjectData;
@@ -125,13 +126,13 @@ export default function ProjectDetailHero({ project }: Props) {
                 Đăng Ký Tư Vấn
               </button>
               <a
-                href="tel:0352787777"
+                href={HOTLINE_TEL}
                 className="flex items-center gap-2.5 px-6 py-3.5 border border-white/25 text-white label-small rounded-sm hover:border-[#C6A77D]/60 hover:text-[#C6A77D] transition-all duration-300"
               >
                 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-3.5 h-3.5">
                   <path d="M13 10.7l-1.9.2c-.4 0-.8.3-1 .6-.2.3-.4 1.2-3.1-1.5C4.4 7.3 5.3 7 5.5 6.7c.3-.3.5-.6.6-1l.2-1.9c0-.4-.1-.8-.3-1.1L5.2 1.9c-.3-.4-.9-.5-1.4-.2L2.3 2.7C1.7 3 1.5 3.7 1.7 4.3c.6 2.8 2.3 5.6 4.8 8.1 2.5 2.5 5.3 4.2 8.1 4.8.6.1 1.3-.1 1.6-.6l1.1-1.5c.3-.5.2-1.1-.2-1.4l-.9-1c-.3-.2-.7-.4-1.2-.3z" />
                 </svg>
-                0352.787777
+                {HOTLINE_DISPLAY}
               </a>
             </motion.div>
           </div>

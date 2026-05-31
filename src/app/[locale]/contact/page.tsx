@@ -3,7 +3,7 @@ import ContactHero from "@/components/page/contact/ContactHero";
 import ContactFormSection from "@/components/page/contact/ContactFormSection";
 import { ROUTES, absoluteUrl, breadcrumbSchema, createMetadata, webPageSchema } from "@/lib/seo";
 
-const title = "Liên Hệ Tư Vấn Mua Căn Hộ Đà Nẵng - Hotline 0352.787777";
+const title = "Liên Hệ Tư Vấn Mua Căn Hộ Đà Nẵng - Hotline 0325.610016";
 const description =
   "Liên hệ BĐS Đà Nẵng để nhận tư vấn mua căn hộ tại Đà Nẵng. Hỗ trợ xem nhà online, nhận bảng giá, chính sách ưu đãi và lịch xem nhà.";
 

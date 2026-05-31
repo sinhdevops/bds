@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 
 const STORAGE_KEY = "bds-consent-v1";
+const CONSENT_UPDATED_EVENT = "bds-consent-updated";
 
 declare global {
   interface Window {
@@ -29,6 +30,7 @@ export default function ConsentBanner() {
       ad_personalization: "granted",
       analytics_storage: "granted",
     });
+    window.dispatchEvent(new CustomEvent(CONSENT_UPDATED_EVENT));
     setVisible(false);
   };
 
@@ -40,6 +42,7 @@ export default function ConsentBanner() {
       ad_personalization: "denied",
       analytics_storage: "denied",
     });
+    window.dispatchEvent(new CustomEvent(CONSENT_UPDATED_EVENT));
     setVisible(false);
   };
 

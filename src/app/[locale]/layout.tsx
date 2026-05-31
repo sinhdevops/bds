@@ -5,6 +5,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import ConsentBanner from "@/components/layout/ConsentBanner";
+import MetaPixel from "@/components/layout/MetaPixel";
 import { SiteBottomChrome, SiteTopChrome } from "@/components/layout/SiteChrome";
 import ConsultationModal from "@/components/shared/ConsultationModal";
 import { routing } from "@/i18n/routing";
@@ -38,9 +39,9 @@ const GOOGLE_ADS_ID = "AW-18189993425";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   ...createMetadata({
-    title: "Bất Động Sản Cao Cấp Đà Nẵng - Tư Vấn Căn Hộ & Nhà Phố",
+    title: "BĐS Đà Nẵng | Tư vấn dự án căn hộ & bất động sản Đà Nẵng",
     description:
-      `Kênh tư vấn và phân phối bất động sản Đà Nẵng thuộc ${COMPANY_LEGAL_NAME}. Tư vấn bảng giá, giỏ hàng, chính sách và lịch xem nhà. Văn phòng ${OFFICE_ADDRESS}.`,
+      `Website tư vấn bất động sản Đà Nẵng được vận hành bởi nhân viên kinh doanh thuộc ${COMPANY_LEGAL_NAME}. Không phải website của chủ đầu tư. Nhận thông tin dự án, bảng giá tham khảo và tư vấn theo nhu cầu.`,
     keywords: [
       "bất động sản cao cấp Đà Nẵng",
       "BĐS Đà Nẵng",
@@ -57,9 +58,9 @@ export const metadata: Metadata = {
     ],
   }),
   applicationName: SITE_NAME,
-  authors: [{ name: SITE_NAME, url: SITE_URL }],
-  creator: SITE_NAME,
-  publisher: SITE_NAME,
+  authors: [{ name: COMPANY_LEGAL_NAME, url: SITE_URL }],
+  creator: COMPANY_LEGAL_NAME,
+  publisher: COMPANY_LEGAL_NAME,
   category: "Real Estate",
   formatDetection: {
     telephone: true,
@@ -79,9 +80,9 @@ export const metadata: Metadata = {
   manifest: "/manifest.json",
   openGraph: {
     ...createMetadata({
-      title: "Bất Động Sản Cao Cấp Đà Nẵng - Tư Vấn Căn Hộ & Nhà Phố",
+      title: "BĐS Đà Nẵng | Tư vấn dự án căn hộ & bất động sản Đà Nẵng",
       description:
-        `Tư vấn bất động sản cao cấp Đà Nẵng: bảng giá, giỏ hàng, chính sách bán hàng, lịch xem nhà và pháp lý dự án. Văn phòng ${OFFICE_ADDRESS}.`,
+        `Website tư vấn bất động sản Đà Nẵng thuộc ${COMPANY_LEGAL_NAME}. Không phải website của chủ đầu tư. Thông tin giá và chính sách chỉ mang tính tham khảo.`,
     }).openGraph,
     images: [{ url: absoluteUrl(DEFAULT_OG_IMAGE), width: 1200, height: 630, alt: SITE_NAME }],
   },
@@ -92,9 +93,10 @@ const organizationSchema = {
   "@type": "RealEstateAgent",
   "@id": `${SITE_URL}/#organization`,
   name: SITE_NAME,
+  legalName: COMPANY_LEGAL_NAME,
   alternateName: ["BĐS Đà Nẵng", "BĐS cao cấp Đà Nẵng", "BDS Da Nang", "BDS cao cap Da Nang", "bat dong san cao cap da nang"],
   description:
-    "Cổng thông tin tư vấn và cập nhật các dự án căn hộ cao cấp tại Đà Nẵng.",
+    "Website tư vấn bất động sản Đà Nẵng được vận hành bởi nhân viên kinh doanh thuộc SRT Miền Trung; không phải website của chủ đầu tư hoặc thương hiệu dự án.",
   url: SITE_URL,
   logo: absoluteUrl("/images/logo-bds-da-nang-dark.svg"),
   image: absoluteUrl(DEFAULT_OG_IMAGE),
@@ -132,7 +134,7 @@ const websiteSchema = {
   name: SITE_NAME,
   alternateName: ["BĐS Đà Nẵng", "BĐS cao cấp Đà Nẵng", "BDS Da Nang"],
   description:
-    `Kênh tư vấn và phân phối bất động sản Đà Nẵng thuộc ${COMPANY_LEGAL_NAME}, MST ${TAX_CODE}.`,
+    `Website tư vấn bất động sản Đà Nẵng thuộc ${COMPANY_LEGAL_NAME}, MST ${TAX_CODE}; không phải website của chủ đầu tư.`,
   publisher: { "@id": `${SITE_URL}/#organization` },
   inLanguage: "vi-VN",
   potentialAction: {
@@ -211,6 +213,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
           <main className="grow relative">{children}</main>
           <SiteBottomChrome />
           <ConsultationModal />
+          <MetaPixel />
           <ConsentBanner />
         </NextIntlClientProvider>
       </body>

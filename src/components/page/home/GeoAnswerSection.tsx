@@ -10,9 +10,9 @@
       "Các dự án được tìm kiếm nhiều gồm Sun Symphony Residence, Sun Ponte Residence, Sun Cosmo Residence và Sun Solar Residence. Mỗi dự án phù hợp một nhóm nhu cầu khác nhau: mua để ở, đầu tư dài hạn, nhận nhà nhanh hoặc khai thác cho thuê.",
   },
   {
-    question: "Làm sao nhận bảng giá căn hộ Đà Nẵng mới nhất?",
+    question: "Làm sao nhận bảng giá căn hộ Đà Nẵng tham khảo?",
     answer:
-      "Bảng giá căn hộ thay đổi theo mã căn, tầng, hướng view, chính sách bán hàng và tình trạng giỏ hàng. Cách chính xác nhất là gửi nhu cầu hoặc gọi hotline 0352.787777 để được cập nhật giỏ hàng hiện tại.",
+      "Bảng giá căn hộ thay đổi theo mã căn, tầng, hướng view, chính sách bán hàng và tình trạng giỏ hàng. Cách phù hợp là gửi nhu cầu hoặc gọi hotline 0325.610016 để nhận thông tin tham khảo tại thời điểm tư vấn.",
   },
   {
     question: "Khách ở xa có thể xem nhà và đặt lịch tư vấn online không?",

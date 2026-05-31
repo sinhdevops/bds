@@ -100,7 +100,7 @@ export default function SalesPolicyPage() {
           <div className="rounded-md bg-[#071522] p-7 text-white">
             <p className="label-small text-[#C6A77D]">Lưu ý</p>
             <p className="mt-3 text-sm font-medium leading-[1.8] text-white/70">
-              Chính sách bán hàng có thể thay đổi theo từng thời điểm, từng dự án và từng mã căn. Khách hàng nên nhận bảng giá mới nhất trước khi quyết định giữ chỗ hoặc đặt cọc.
+              Chính sách bán hàng có thể thay đổi theo từng thời điểm, từng dự án và từng mã căn. Khách hàng nên nhận bảng giá tham khảo tại thời điểm tư vấn và đối chiếu tài liệu có thẩm quyền trước khi quyết định giữ chỗ hoặc đặt cọc.
             </p>
           </div>
         </div>

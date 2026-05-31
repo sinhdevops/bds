@@ -36,7 +36,7 @@ const ARTICLES: Article[] = [
     title: "Tiến độ Symphony 5: những mốc người mua cần theo dõi",
     date: "18 Tháng 5, 2026",
     readTime: "4 phút đọc",
-    desc: "Khi chọn căn hộ đang triển khai, người mua nên theo dõi pháp lý bán hàng, tiến độ móng, lịch thanh toán và cam kết bàn giao.",
+    desc: "Khi chọn căn hộ đang triển khai, người mua nên theo dõi pháp lý bán hàng, tiến độ móng, lịch thanh toán và điều kiện bàn giao.",
     image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=900&q=85&fit=crop",
     category: "progress",
     categoryLabel: "Tiến độ",
@@ -58,7 +58,7 @@ const ARTICLES: Article[] = [
     title: "Nhà đầu tư Hà Nội nên chọn dự án đã bàn giao hay đang mở bán?",
     date: "12 Tháng 5, 2026",
     readTime: "7 phút đọc",
-    desc: "Dự án đã bàn giao phù hợp dòng tiền sớm, dự án đang mở bán phù hợp kỳ vọng tăng giá và lịch thanh toán linh hoạt.",
+    desc: "Dự án đã bàn giao phù hợp nhu cầu kiểm tra sản phẩm thực tế, dự án đang mở bán phù hợp người chấp nhận biến số về tiến độ và lịch thanh toán.",
     image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=900&q=85&fit=crop",
     category: "guide",
     categoryLabel: "Cẩm nang",
@@ -293,7 +293,7 @@ const NewsGrid = () => {
                 <div className="rounded-md bg-white p-6 shadow-[0_8px_26px_rgba(10,18,28,0.07)] ring-1 ring-black/5">
                   <p className="label-small text-[#9C7B5D]">Nhận bản tin</p>
                   <h3 className="mt-3 font-serif text-2xl font-normal leading-tight text-[#111111]" style={{ fontFamily: "var(--font-serif)" }}>
-                    Cập nhật giá và tiến độ mới nhất
+                    Nhận giá và tiến độ tham khảo
                   </h3>
                   <p className="mt-3 text-sm font-medium leading-relaxed text-[#666666]">
                     Để lại thông tin, BĐS Đà Nẵng sẽ gửi bản tin ngắn gọn theo nhu cầu của bạn.

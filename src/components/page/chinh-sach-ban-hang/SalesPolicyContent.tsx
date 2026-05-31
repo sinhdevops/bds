@@ -11,7 +11,7 @@ const SalesPolicyContent = () => {
       { step: "Lựa chọn 2", val: "Thanh toán nhanh", desc: "Một số dự án có phương án thanh toán sớm, có thể lên đến khoảng 95% giá trị theo chính sách công bố." },
       { step: "Hỗ trợ vay", val: "Theo ngân hàng", desc: "Tỷ lệ vay và thời gian hỗ trợ lãi suất phụ thuộc ngân hàng, hồ sơ khách hàng và chính sách từng dự án." },
       { step: "Ký HĐMB", val: "Theo hồ sơ dự án", desc: "Khách hàng cần kiểm tra chủ thể ký hợp đồng, lịch thanh toán, phụ lục và điều kiện hoàn/khấu trừ cọc." },
-      { step: "Bàn giao", val: "Theo thông báo", desc: "Thời điểm bàn giao và chi phí liên quan cần được xác nhận bằng tài liệu chính thức." },
+      { step: "Bàn giao", val: "Theo thông báo", desc: "Thời điểm bàn giao và chi phí liên quan cần được xác nhận bằng tài liệu có thẩm quyền." },
     ],
     []
   );
@@ -43,7 +43,7 @@ const SalesPolicyContent = () => {
             {
               title: "Chính Sách Cần Xác Nhận",
               val: "Không cố định",
-              desc: "BĐS Đà Nẵng chỉ tư vấn thông tin tham khảo. Giá, ưu đãi và tiến độ thanh toán cuối cùng theo tài liệu chính thức.",
+              desc: "BĐS Đà Nẵng chỉ tư vấn thông tin tham khảo. Giá, ưu đãi và tiến độ thanh toán cuối cùng theo tài liệu có thẩm quyền.",
             },
           ].map((item, i) => (
             <motion.div

@@ -20,9 +20,9 @@ Danh mục sản phẩm tập trung vào căn hộ có diện tích vừa phải
 
 - Có thể xem nhà thật, không phụ thuộc hoàn toàn vào phối cảnh.
 - Dễ đánh giá giá thuê thực tế và tệp khách thuê.
-- Phù hợp khách muốn nhận nhà nhanh hoặc tạo dòng tiền sớm.
+- Phù hợp khách muốn nhận nhà nhanh hoặc cân nhắc phương án vận hành theo nhu cầu thực tế.
 - Rủi ro tiến độ thấp hơn dự án đang xây dựng.
 
 ## Khuyến nghị
 
-Sun Cosmo phù hợp với khách hàng thực dụng: cần sản phẩm rõ, dòng tiền sớm và ít biến số. Khi so sánh, nên đặt Sun Cosmo cạnh các dự án đang mở bán để xem chênh lệch giữa “mua kỳ vọng” và “mua sản phẩm đã hình thành”.
+Sun Cosmo phù hợp với khách hàng thực dụng: cần sản phẩm rõ, có thể kiểm tra thực tế và giảm biến số về tiến độ. Khi so sánh, nên đặt Sun Cosmo cạnh các dự án đang mở bán để xem chênh lệch giữa “mua kỳ vọng” và “mua sản phẩm đã hình thành”.

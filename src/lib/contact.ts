@@ -20,9 +20,9 @@ export type ContactFormState = LeadFormState & {
   message: string;
 };
 
-export const HOTLINE_DISPLAY = "0352.787777";
-export const HOTLINE_TEL = "tel:0352787777";
-export const ZALO_HREF = "https://zalo.me/0352787777";
+export const HOTLINE_DISPLAY = "0325.610016";
+export const HOTLINE_TEL = "tel:0325610016";
+export const ZALO_HREF = "https://zalo.me/0325610016";
 export const COMPANY_LEGAL_NAME = "Công ty TNHH Thương mại và Đầu tư SRT Miền Trung";
 export const TAX_CODE = "0402225356";
 export const CONTACT_EMAIL = "sinhlvsrtmientrung@gmail.com";

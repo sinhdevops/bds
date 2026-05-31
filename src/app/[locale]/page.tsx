@@ -19,9 +19,9 @@ import {
   webPageSchema,
 } from "@/lib/seo";
 
-const title = "BĐS Đà Nẵng - Tư Vấn Căn Hộ & Bất Động Sản Ven Sông Hàn";
+const title = "BĐS Đà Nẵng | Tư vấn dự án căn hộ & bất động sản Đà Nẵng";
 const description =
-  "Tư vấn mua căn hộ và bất động sản cao cấp tại Đà Nẵng: so sánh vị trí, nhận bảng giá, giỏ hàng và chính sách mới nhất.";
+  "Website tư vấn bất động sản Đà Nẵng được vận hành bởi nhân viên kinh doanh thuộc SRT Miền Trung. Không phải website của chủ đầu tư. Nhận thông tin dự án, bảng giá tham khảo và tư vấn theo nhu cầu.";
 
 export const metadata: Metadata = createMetadata({
   title,
@@ -54,10 +54,11 @@ const homeSchemas = [
     "@context": "https://schema.org",
     "@type": "Service",
     "@id": `${absoluteUrl(ROUTES.home)}/#real-estate-consulting`,
-    name: "Tư vấn mua căn hộ Đà Nẵng",
+    name: "Tư vấn bất động sản Đà Nẵng",
     provider: { "@id": `${SITE_URL}/#organization` },
     areaServed: ["Đà Nẵng", "Hà Nội", "Việt Nam"],
     serviceType: "Real estate consulting",
+    description: "Dịch vụ tư vấn thông tin dự án bất động sản; không phải website của chủ đầu tư.",
     telephone: HOTLINE,
     url: absoluteUrl(ROUTES.contact),
     brand: SITE_NAME,

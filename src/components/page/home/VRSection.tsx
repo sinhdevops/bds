@@ -81,7 +81,7 @@ export default function VRSection() {
               <em className="text-[#C6A77D]">từng chi tiết</em>
             </h2>
             <p className="mb-8 max-w-xs text-sm font-medium leading-[1.8] text-white/70">
-              Mỗi không gian được chăm chút tỉ mỉ, mang đến trải nghiệm sống đẳng cấp và khác biệt.
+              Mỗi không gian cần được kiểm tra theo thông tin thực tế, nhu cầu sử dụng và tài liệu dự án tại thời điểm tư vấn.
             </p>
             <a
               href="#contact"

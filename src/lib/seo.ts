@@ -1,10 +1,10 @@
 ﻿import type { Metadata } from "next";
 
-export const SITE_NAME = "Bất Động Sản Cao Cấp Đà Nẵng";
+export const SITE_NAME = "BĐS Đà Nẵng";
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.bds-da-nang.com";
 export const DEFAULT_OG_IMAGE = "/images/hero-song-han-clean.png";
-export const HOTLINE = "0352.787777";
-export const HOTLINE_E164 = "+84352787777";
+export const HOTLINE = "0325.610016";
+export const HOTLINE_E164 = "+84325610016";
 
 export const ROUTES = {
   home: "/",
@@ -134,4 +134,3 @@ export function webPageSchema({
     about: { "@id": `${SITE_URL}/#organization` },
   };
 }
-

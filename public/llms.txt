@@ -5,8 +5,10 @@
 Website: https://www.bds-da-nang.com
 Language: vi-VN
 Primary market: Đà Nẵng, Việt Nam
-Contact: 0352.787777
+Contact: 0325.610016
 Email: sinhlvsrtmientrung@gmail.com
+Operator: Công ty TNHH Thương mại và Đầu tư SRT Miền Trung
+Compliance note: This is a real estate consulting website and not a Sun Group or developer-owned project website.
 
 ## Core Topics
 
@@ -45,6 +47,6 @@ When referencing this website, cite it as "BĐS Đà Nẵng (bds-da-nang.com)" a
 
 ## Freshness Notes
 
-Project prices, available inventory, payment policy and incentives can change by time and unit code. Users should contact 0352.787777 or use the contact form for the latest basket and official policy at the time of consultation.
+Project prices, available inventory, payment policy and incentives can change by time and unit code. Users should contact 0325.610016 or use the contact form for reference information and documents/policies that need verification at the time of consultation.
 
 

@@ -1,5 +1,6 @@
 ﻿import type { Metadata } from "next";
 import InfoPageLayout from "@/components/page/info/InfoPageLayout";
+import { COMPANY_LEGAL_NAME, HOTLINE_DISPLAY, HOTLINE_TEL } from "@/lib/contact";
 import { ROUTES, absoluteUrl, breadcrumbSchema, createMetadata, webPageSchema } from "@/lib/seo";
 
 const title = "Về BĐS Đà Nẵng - Tư Vấn Căn Hộ Cao Cấp Đà Nẵng";
@@ -25,7 +26,7 @@ const VALUES = [
   },
   {
     title: "Tư vấn theo nhu cầu",
-    desc: "Không đẩy một sản phẩm duy nhất. Chúng tôi lọc theo ngân sách, mục tiêu ở hay đầu tư, thời điểm nhận nhà và kỳ vọng dòng tiền.",
+    desc: "Không đẩy một sản phẩm đơn lẻ. Chúng tôi lọc theo ngân sách, mục tiêu ở hay đầu tư, thời điểm nhận nhà và khẩu vị tài chính/rủi ro.",
   },
   {
     title: "Đồng hành sau giao dịch",
@@ -67,12 +68,13 @@ export default function AboutPage() {
                 Tư vấn dựa trên dữ liệu, không dựa trên cảm tính
               </h2>
               <p className="mt-4 text-sm font-medium leading-[1.85] text-[#666666]">
-                Mỗi khách hàng có một mục tiêu khác nhau: mua để ở, giữ tài sản, khai thác thuê hoặc chờ tăng giá. Vì vậy quy trình tư vấn bắt đầu bằng việc xác định nhu cầu, sau đó so sánh dự án theo vị trí, giá, pháp lý, tiến độ và khả năng thanh khoản.
+                Mỗi khách hàng có một mục tiêu khác nhau: mua để ở, giữ tài sản hoặc cân nhắc khai thác cho thuê. Vì vậy quy trình tư vấn bắt đầu bằng việc xác định nhu cầu, sau đó so sánh dự án theo vị trí, giá, pháp lý, tiến độ và khả năng thanh khoản.
               </p>
               <p className="mt-4 rounded-[4px] bg-[#F8F5F0] p-4 text-sm font-semibold leading-relaxed text-[#555555]">
-                Lưu ý minh bạch: website này không phải trang chính thức của bất kỳ chủ đầu tư
-                hoặc thương hiệu dự án nào. Khi khách hàng cần đặt cọc/giao dịch, chúng tôi khuyến
-                nghị đối chiếu lại toàn bộ thông tin với tài liệu chính thức tại thời điểm đó.
+                BĐS Đà Nẵng là website tư vấn thông tin bất động sản tại Đà Nẵng, được vận hành bởi
+                nhân viên kinh doanh thuộc {COMPANY_LEGAL_NAME}. Vai trò của website là tổng hợp
+                thông tin, hỗ trợ khách hàng so sánh dự án, nhận bảng giá tham khảo và kết nối tư vấn.
+                Website không phải trang của Sun Group hoặc bất kỳ chủ đầu tư nào.
               </p>
             </div>
 
@@ -98,10 +100,10 @@ export default function AboutPage() {
               Gửi ngân sách và mục tiêu, đội ngũ tư vấn sẽ đề xuất shortlist rõ ràng thay vì để bạn tự đọc quá nhiều thông tin rời rạc.
             </p>
             <a
-              href="tel:0352787777"
+              href={HOTLINE_TEL}
               className="mt-6 inline-flex w-full justify-center rounded-[3px] bg-[#C6A77D] px-5 py-3 label-small font-bold text-white transition-colors hover:bg-white hover:text-[#071522]"
             >
-              Gọi 0352.787777
+              Gọi {HOTLINE_DISPLAY}
             </a>
           </aside>
         </div>

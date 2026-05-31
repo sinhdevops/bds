@@ -53,6 +53,7 @@ export default function PrivacyPage() {
               thuộc {COMPANY_LEGAL_NAME}, MST {TAX_CODE}.
               Chính sách này mô tả cách chúng tôi thu thập, sử dụng và bảo vệ thông tin cá nhân của quý khách
               theo quy định tại <strong>Nghị định 13/2023/NĐ-CP</strong> về bảo vệ dữ liệu cá nhân.
+              BĐS Đà Nẵng/SRT Miền Trung không đại diện Sun Group hoặc chủ đầu tư khi thu lead trên website.
             </p>
             <p className="mt-3 text-xs text-[#888]">
               Ngày có hiệu lực: 01/01/2025 &nbsp;·&nbsp; Cập nhật lần cuối: 27/05/2026
@@ -66,7 +67,7 @@ export default function PrivacyPage() {
           <p>Chúng tôi thu thập thông tin khi quý khách chủ động điền vào biểu mẫu trên website, bao gồm:</p>
           <ul className="list-disc pl-6 flex flex-col gap-2">
             <li><strong>Thông tin định danh:</strong> họ tên, số điện thoại, địa chỉ email.</li>
-            <li><strong>Thông tin nhu cầu:</strong> loại căn hộ quan tâm, ngân sách dự kiến, kênh liên hệ ưu tiên.</li>
+            <li><strong>Thông tin nhu cầu:</strong> dự án quan tâm, loại căn hộ quan tâm, ngân sách dự kiến, kênh liên hệ ưu tiên.</li>
             <li><strong>Dữ liệu kỹ thuật:</strong> địa chỉ IP, loại trình duyệt, trang web giới thiệu và thời gian truy cập thông qua cookie phân tích ẩn danh.</li>
           </ul>
           <p>Chúng tôi <strong>không thu thập</strong> số CMND/CCCD, thông tin tài chính hay dữ liệu nhạy cảm khác.</p>
@@ -77,19 +78,20 @@ export default function PrivacyPage() {
           </h2>
           <p>Thông tin thu thập được sử dụng cho các mục đích sau:</p>
           <ul className="list-disc pl-6 flex flex-col gap-2">
-            <li>Liên hệ tư vấn dự án theo yêu cầu của quý khách.</li>
+            <li>Liên hệ tư vấn dự án theo yêu cầu của quý khách qua điện thoại/Zalo.</li>
             <li>Gửi bảng giá, chính sách bán hàng và tài liệu dự án liên quan.</li>
             <li>Đặt lịch xem nhà mẫu hoặc hỗ trợ thủ tục vay vốn.</li>
             <li>Cải thiện chất lượng dịch vụ tư vấn thông qua phân tích dữ liệu nặc danh.</li>
           </ul>
           <p>Chúng tôi <strong>không sử dụng</strong> thông tin của quý khách cho mục đích tiếp thị ngoài phạm vi bất động sản mà quý khách đã đăng ký quan tâm.</p>
+          <p>Đơn vị nhận và xử lý thông tin là BĐS Đà Nẵng/SRT Miền Trung. Website không thu lead với tư cách đại diện Sun Group hoặc chủ đầu tư.</p>
 
           {/* 3 */}
           <h2 className="font-serif text-2xl text-[#0B2545] font-semibold mt-4" style={{ fontFamily: "var(--font-serif)" }}>
             3. Cam kết bảo mật và không chia sẻ
           </h2>
           <p>
-            Chúng tôi cam kết bảo mật dữ liệu cá nhân của quý khách. Thông tin <strong>không được chia sẻ</strong> với bên thứ ba
+            Chúng tôi bảo vệ dữ liệu cá nhân của quý khách. Thông tin <strong>không được chia sẻ</strong> với bên thứ ba
             vì mục đích thương mại, trừ các trường hợp sau:
           </p>
           <ul className="list-disc pl-6 flex flex-col gap-2">
@@ -126,7 +128,7 @@ export default function PrivacyPage() {
           </ul>
           <p>
             Để thực hiện các quyền trên, vui lòng liên hệ qua{" "}
-            <a href="tel:0352787777" className="text-[#0B2545] underline font-medium">{HOTLINE_DISPLAY}</a>{" "}
+            <a href={`tel:${HOTLINE_DISPLAY.replace(/\D/g, "")}`} className="text-[#0B2545] underline font-medium">{HOTLINE_DISPLAY}</a>{" "}
             hoặc email{" "}
             <a href={`mailto:${CONTACT_EMAIL}`} className="text-[#0B2545] underline font-medium">{CONTACT_EMAIL}</a>.
             Chúng tôi sẽ phản hồi trong vòng <strong>5 ngày làm việc</strong>.
@@ -173,8 +175,8 @@ export default function PrivacyPage() {
             9. Thay đổi chính sách
           </h2>
           <p>
-            Chúng tôi có thể cập nhật chính sách này theo thay đổi của pháp luật hoặc quy trình nội bộ.
-            Phiên bản mới nhất luôn được công bố tại trang này kèm ngày hiệu lực.
+            Chúng tôi có thể cập nhật chính sách này theo thay đổi của pháp luật hoặc quy trình xử lý dữ liệu.
+            Phiên bản cập nhật luôn được công bố tại trang này kèm ngày hiệu lực.
             Việc tiếp tục sử dụng website sau khi chính sách thay đổi đồng nghĩa với việc quý khách chấp nhận phiên bản mới.
           </p>
 
@@ -189,7 +191,7 @@ export default function PrivacyPage() {
             <p><strong>BĐS Đà Nẵng</strong> — {COMPANY_LEGAL_NAME}</p>
             <p>MST: {TAX_CODE}</p>
             <p>Địa chỉ: {OFFICE_ADDRESS}</p>
-            <p>Hotline: <a href="tel:0352787777" className="text-[#0B2545] font-medium underline">{HOTLINE_DISPLAY}</a></p>
+            <p>Hotline: <a href={`tel:${HOTLINE_DISPLAY.replace(/\D/g, "")}`} className="text-[#0B2545] font-medium underline">{HOTLINE_DISPLAY}</a></p>
             <p>Email: <a href={`mailto:${CONTACT_EMAIL}`} className="text-[#0B2545] font-medium underline">{CONTACT_EMAIL}</a></p>
           </div>
 

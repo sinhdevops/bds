@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
+import ComplianceDisclaimerBox from "@/components/shared/ComplianceDisclaimerBox";
 import type { MarkdownBlock, TocItem } from "@/lib/projectMarkdown";
 import { PROJECT_CATALOG, type ProjectCatalogItem } from "@/lib/projectCatalog";
 
@@ -43,6 +44,12 @@ export default function MarkdownProjectPage({
               </span>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="bg-[#FAF8F5] px-6 pt-6">
+        <div className="mx-auto max-w-[1240px]">
+          <ComplianceDisclaimerBox variant="full" />
         </div>
       </section>
 
