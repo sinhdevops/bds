@@ -34,7 +34,7 @@ const montserrat = Montserrat({
   display: "swap",
 });
 
-const GOOGLE_ADS_ID = "AW-18189993425";
+const GOOGLE_ADS_ID = "AW-18191913688";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
